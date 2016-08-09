@@ -1957,4 +1957,58 @@ Checks that tokens are surrounded by whitespace.
 
 TODO
 
+## Disabled Checks
+
+These checks are not enabled. Notes are included for each explaining why.
+
+### Checkstyle
+
+#### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
+#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
+#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
+#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+#### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
+#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
+#### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
+#### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl)
+#### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder)
+#### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
+#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
+#### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
+#### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
+#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
+#### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
+#### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
+#### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
+#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
+#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
+#### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
+
+Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
+
+#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
+#### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
+
+#### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
+#### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader)
+#### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline)
+#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline)
+#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#c)
+#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
+
+#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
+#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#c)
+#### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone)
+#### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
+#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
+
+#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
+
+#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
+#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
+
+#### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
+
 [Effective Java]: http://amzn.to/2aSz6GE
