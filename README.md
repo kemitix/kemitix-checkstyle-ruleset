@@ -1972,50 +1972,165 @@ These checks are not enabled. Notes are included for each explaining why.
 ### Checkstyle
 
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+
 #### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
+
+> TODO: enable
+
 #### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
+
+> TODO: enable
+
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
+
+> TODO: enable
+
 #### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+> TODO: enable
+
+> TODO: headerFile = LICENSE.txt
+
+> TODO: fileExtensions = java
+
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
+
+Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
+
 #### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
+
+> TODO: enable
+
 #### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+
 #### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
+
+> TODO: enable
+
 #### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+
 #### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
+
+Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
+
 #### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
+
+> TODO: enable
+
 #### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
+
+> TODO: enable
+
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
+
+The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
+
 #### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
+
+> TODO: enable
+
 #### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
+
+> TODO: enable
+
 #### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
 
 Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 
 #### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
+
+> TODO: enable
+
 #### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
 
+> TODO: enable
+
 #### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#c)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
 
+> TODO: enable
+
+> TODO: checkMethods = false
+
 #### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
-#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#c)
+
+I don't use single line javadoc blocks.
+
+#### [SummaryJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc)
+
+Generic rule; doesn't embody a 'quality' check.
+
 #### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone)
+
+Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check.
+
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
+
+> TODO: enable
+
 #### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
+
+> TODO: enable
+
+> TODO: format = ^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$
 
 #### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
 
+> TODO: enable
+
 #### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
+
+> TODO: enable
+
+> TODO: excludedClasses = "Main$"
+
 #### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
 
+> TODO: enable
+
 #### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
+
+Generic rule; doesn't embody a 'quality' check.
 
 [Effective Java]: http://amzn.to/2aSz6GE
