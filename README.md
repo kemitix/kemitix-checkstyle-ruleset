@@ -1367,6 +1367,10 @@ try {
 
 > TODO: max = 0 - don't nest try blocks
 
+#### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
+
+Checks that files end with a line-feed character, (i.e. unix-style line ending).
+
 #### [NoClone](http://checkstyle.sourceforge.net/config_coding.html#NoClone)
 
 Checks that the `clone()` method from `Object` has not been overridden.  Use a copy constructor, or better yet, a static factory method.
@@ -1984,7 +1988,6 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
 #### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
-#### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
 #### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
 #### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
 #### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
