@@ -996,7 +996,9 @@ interface Foo {
 Checks that all public methods have a Javadoc block.
 
 > TODO: scope = private (reset to default) - will require lots of new javadoc blocks
+
 > TODO: validateThrows = true
+
 > TODO: allowMissingPropertyJavadoc = true
 
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
@@ -1024,7 +1026,9 @@ Restricts the NCSS score for methods, classes and files to 50, 1500 and 2000 res
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
 
 > TODO: methodMaximum = 40 - reduce by 20%
+
 > TODO: classMaximum = 1200
+
 > TODO: fileMaximum = 1600
 
 #### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly)
