@@ -1963,7 +1963,189 @@ Checks that tokens are surrounded by whitespace.
 
 ### Sevntu
 
-TODO
+#### [AvoidConstantAsFirstOperandInCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html)
+
+Checks that condition expressions don't become less readable by attempting to use a constant on the left-hand-side of a comparison.
+
+Valid:
+````
+if (a == 12) {}
+````
+
+Invalid:
+````
+if (12 == a) {}
+````
+
+#### [AvoidHidingCauseException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html)
+
+Ensures that an exception is re-thrown properly and is not swallowed by a `catch` block.
+
+Valid:
+````
+try {
+    doSomething();
+} catch (MyException e) {
+    throw new MyOtherException(e);
+}
+````
+
+Invalid:
+````
+try {
+    doSomething();
+} catch (MyException e) {
+    throw new MyOtherException();
+}
+````
+
+#### [AvoidNotShortCircuitOperatorsForBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidNotShortCircuitOperatorsForBooleanCheck.html)
+
+Prevents the use of boolean operators that don't allow short-circuiting the expression. (e.g. '|', '&', '|=' and '&=')
+
+Valid:
+````
+if ((a < b) || (b > getExpensiveValue())) {}
+````
+
+Invalid:
+````
+if ((a < b) | (b > getExpensiveValue())) {}
+````
+
+#### [ConfusingCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ConfusingConditionCheck.html)
+
+Checks that the expression with the `if` condition in an `if-then-else` statement is not negated.
+
+Valid:
+````
+if (isValid()) {
+    handleValidCondition();
+} else {
+    handleInvalidCondition();
+}
+````
+
+Invalid:
+````
+if (!isValid()) {
+    handleInvalidCondition();
+} else {
+    handleValidCondition();
+}
+````
+
+#### [ConstructorWithoutParams](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ConstructorWithoutParamsCheck.html)
+
+Exception class constructors must accept parameters for message and/or cause. This check is applied to classes whose name ends with `Exception`.
+
+#### [DiamondOperatorForVariableDefinition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/DiamondOperatorForVariableDefinitionCheck.html)
+
+Checks that the diamond operator is used where possible.
+
+Valid:
+````
+Map<Long, String> idTable = new HashMap<>();
+````
+
+Invalid:
+````
+Map<Long, String> idTable = new HashMap<Long, String>();
+````
+
+#### [EitherLogOrThrow](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EitherLogOrThrowCheck.html)
+
+Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
+
+> TODO: loggingMethodNames: add 'log'
+
+#### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
+
+Forces Enum values to be all upper-case when the enum has no methods or fields, otherwise the values must must be either all upper-case or must match the class naming format.
+
+Valid:
+````
+enum ValidConstants {
+
+    ALPHA, BETA;
+}
+
+enum ValidClassLike {
+
+    Alpha("a"),
+    Beta("b");
+
+    private String name;
+
+    ValidClassLike(String name) {
+        this.name = name;
+    }
+}
+````
+
+Invalid:
+````
+enum InvalidConstants {
+
+    alpha, Beta;
+}
+
+enum InvalidClassLike {
+
+    alpha("a"),
+    beta("b");
+
+    private String name;
+
+    ValidClassLike(String name) {
+        this.name = name;
+    }
+}
+````
+
+#### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
+
+#### [ForbidReturnInFinallyBlock](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html)
+
+#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
+
+#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+
+#### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
+
+#### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
+
+#### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html)
+
+#### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html)
+
+#### [NestedSwitch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NestedSwitchCheck.html)
+
+#### [NoMainMethodInAbstractClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NoMainMethodInAbstractClassCheck.html)
+
+#### [NumericLiteralNeedsUnderscore](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NumericLiteralNeedsUnderscoreCheck.html)
+
+#### [OverridableMethodInConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/OverridableMethodInConstructorCheck.html)
+
+#### [PublicReferenceToPrivateType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/PublicReferenceToPrivateTypeCheck.html)
+
+#### [RedundantReturn](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/RedundantReturnCheck.html)
+
+#### [ReturnBooleanFromTernary](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html)
+
+#### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html)
+
+#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+
+#### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
+
+#### [TernaryPerExpressionCount](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html)
+
+#### [UniformEnumConstantName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/UniformEnumConstantNameCheck.html)
+
+#### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html)
+
+#### [UselessSuperCtorCall](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html)
 
 ## Disabled Checks
 
@@ -2132,5 +2314,64 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 #### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
 
 Generic rule; doesn't embody a 'quality' check.
+
+### Sevntu
+
+As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
+
+#### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
+
+Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
+
+> TODO: disable
+
+#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
+
+> TODO: enable
+
+#### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
+
+#### [CauseParameterInException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html)
+
+Should already be covered by [AvoidHidingCauseException](#avoidhidingcauseexception).
+
+#### [ChildBlockLength](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html)
+
+Appears to be broken as of `1.21.0`.
+
+#### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
+
+#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
+
+#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
+
+#### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
+
+#### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html)
+
+#### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
+
+#### [IllegalCatchExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/IllegalCatchExtendedCheck.html)
+
+#### [InnerClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/InnerClassCheck.html)
+
+#### [InterfaceTypeParameterName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/InterfaceTypeParameterNameCheck.html)
+
+#### [LineLengthExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/sizes/LineLengthExtendedCheck.html)
+
+#### [MultipleStringLiteralsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleStringLiteralsExtendedCheck.html)
+
+#### [MultipleVariableDeclarationsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleVariableDeclarationsExtendedCheck.html)
+
+#### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
+
+#### [ReturnCountExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnCountExtendedCheck.html)
+#### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
+
+#### [UnnecessaryParenthesesExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UnnecessaryParenthesesExtendedCheck.html)
+
+#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
 
 [Effective Java]: http://amzn.to/2aSz6GE
