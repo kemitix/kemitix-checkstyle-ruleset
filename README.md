@@ -4,6 +4,15 @@ Provides an extensive Checkstyle ruleset for use with Apache's `maven-checkstyle
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
 
+* [Requirements](#requirements)
+* [Usage](#usage)
+* [Enabled Checks](#enabled-checks)
+    * [Checkstyle](#checkstyle)
+    * [Sevntu](#sevntu)
+* [Disabled Checks](#disabled-checks)
+    * [Checkstyle](#checkstyle-1)
+    * [Sevntu](#sevntu-1)
+
 ## Requirements
 
 * [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/) 2.17+
