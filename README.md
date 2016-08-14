@@ -6,6 +6,7 @@ The ruleset includes checks from both the core Checkstyle library and from the S
 
 * [Requirements](#requirements)
 * [Usage](#usage)
+* [All Checks](#all-checks)
 * [Enabled Checks](#enabled-checks)
     * [Checkstyle](#checkstyle)
     * [Sevntu](#sevntu)
