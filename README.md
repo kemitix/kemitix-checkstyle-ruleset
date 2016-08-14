@@ -125,8 +125,8 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [GenericWhitespace](#genericwhitespace) - checkstyle - enabled
 * [Header](#header) - checkstyle - disabled
 * [HiddenField](#hiddenfield) - checkstyle - enabled
-* [HideUtilityClassConstructor](#hideutilityclassconstructor) - **checkstyle** - enabled
-* [HideUtilityClassConstructor](#hideutilityclassconstructor) - **sevntu** - enabled
+* [HideUtilityClassConstructor](#hideutilityclassconstructor) - checkstyle - enabled
+* [HideUtilityClassConstructor](#hideutilityclassconstructor-1) - sevntu - disabled
 * [IllegalCatchExtended](#illegalcatchextended) - sevntu - disabled
 * [IllegalCatch](#illegalcatch) - checkstyle - enabled
 * [IllegalImport](#illegalimport) - checkstyle - enabled
@@ -143,7 +143,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [InnerTypeLast](#innertypelast) - checkstyle - enabled
 * [InterfaceIsType](#interfaceistype) - checkstyle - enabled
 * [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - disabled
-* [InterfaceTypeParameterName](#interfacetypeparametername) - sevntu - disabled
+* [InterfaceTypeParameterName](#interfacetypeparametername-1) - sevntu - disabled
 * [JavadocMethod](#javadocmethod) - checkstyle - enabled
 * [JavadocPackage](#javadocpackage) - checkstyle - enabled
 * [JavadocParagraph](#javadocparagraph) - checkstyle - enabled
@@ -172,10 +172,10 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [MissingSwitchDefault](#missingswitchdefault) - checkstyle - enabled
 * [ModifiedControlVariable](#modifiedcontrolvariable) - checkstyle - enabled
 * [ModifierOrder](#modifierorder) - checkstyle - enabled
-* [MultipleStringLiteralsExtended](#multiplestringliteralsextended) - sevntu - disabled
 * [MultipleStringLiterals](#multiplestringliterals) - checkstyle - enabled
-* [MultipleVariableDeclarationsExtended](#multiplevariabledeclarationsextended) - sevntu - disabled
+* [MultipleStringLiteralsExtended](#multiplestringliteralsextended) - sevntu - disabled
 * [MultipleVariableDeclarations](#multiplevariabledeclarations) - checkstyle - enabled
+* [MultipleVariableDeclarationsExtended](#multiplevariabledeclarationsextended) - sevntu - disabled
 * [MutableException](#mutableexception) - checkstyle - enabled
 * [NameConventionForJunit4TestClasses](#nameconventionforjunit4testclasses) - sevntu - enabled
 * [NeedBraces](#needbraces) - checkstyle - enabled
@@ -211,12 +211,12 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [RedundantImport](#redundantimport) - checkstyle - enabled
 * [RedundantModifier](#redundantmodifier) - checkstyle - enabled
 * [RedundantReturn](#redundantreturn) - sevntu - enabled
+* [Regexp](#regexp) - checkstyle - disabled
 * [RegexpHeader](#regexpheader) - checkstyle - disabled
 * [RegexpMultiline](#regexpmultiline) - checkstyle - disabled
 * [RegexpOnFilename](#regexponfilename) - checkstyle - disabled
-* [Regexp](#regexp) - checkstyle - disabled
 * [RegexpSingleline](#regexpsingleline) - checkstyle - disabled
-* [RegexpSingleline](#regexpsingleline) - checkstyle - disabled
+* [RegexpSinglelineJava](#regexpsinglelinejava) - checkstyle - disabled
 * [RequiredParameterForAnnotation](#requiredparameterforannotation) - sevntu - disabled
 * [RequireThis](#requirethis) - checkstyle - disabled
 * [ReturnBooleanFromTernary](#returnbooleanfromternary) - sevntu - enabled
@@ -249,8 +249,8 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [UncommentedMain](#uncommentedmain) - checkstyle - disabled
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
 * [UniqueProperties](#uniqueproperties) - checkstyle - disabled
-* [UnnecessaryParenthesesExtended](#unnecessaryparenthesesextended) - sevntu - disabled
 * [UnnecessaryParentheses](#unnecessaryparentheses) - checkstyle - enabled
+* [UnnecessaryParenthesesExtended](#unnecessaryparenthesesextended) - sevntu - disabled
 * [UnusedImports](#unusedimports) - checkstyle - enabled
 * [UpperEll](#upperell) - checkstyle - enabled
 * [UselessSingleCatch](#uselesssinglecatch) - sevntu - enabled
@@ -2327,8 +2327,6 @@ enum InvalidClassLike {
 
 #### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
 
-#### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
-
 #### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
 
 #### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html)
@@ -2569,17 +2567,27 @@ Appears to be broken as of `1.21.0`.
 
 #### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
 
+#### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
+
+See [HideUtilityClassConstructor](#hideutilityclassconstructor).
+
 #### [IllegalCatchExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/IllegalCatchExtendedCheck.html)
 
 #### [InnerClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/InnerClassCheck.html)
 
 #### [InterfaceTypeParameterName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/InterfaceTypeParameterNameCheck.html)
 
+See [InterfaceTypeParameterName](#interfacetypeparametername).
+
 #### [LineLengthExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/sizes/LineLengthExtendedCheck.html)
 
 #### [MultipleStringLiteralsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleStringLiteralsExtendedCheck.html)
 
+See [MultipleStringLiteralsExtended](#multiplestringliteralsextended).
+
 #### [MultipleVariableDeclarationsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleVariableDeclarationsExtendedCheck.html)
+
+See [MultipleVariableDeclarations](#multiplevariabledeclarations).
 
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
@@ -2587,6 +2595,8 @@ Appears to be broken as of `1.21.0`.
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 #### [UnnecessaryParenthesesExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UnnecessaryParenthesesExtendedCheck.html)
+
+See [UnnecessaryParentheses](#unnecessaryparentheses).
 
 #### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
 
