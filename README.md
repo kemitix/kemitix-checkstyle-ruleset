@@ -385,7 +385,7 @@ Prevents use of obscure escape codes (e.g. `\u221e`). However, non-printable/con
 
 Valid:
 ````
-String unitAbbrev = "μs";
+String unitAbbrev = "??s";
 String byteOrdered = '\ufeff' = content;
 ````
 
@@ -2321,45 +2321,307 @@ enum InvalidClassLike {
 
 #### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
 
+Prevents the use of `/* C-style */` comments inside methods.
+
+Valid:
+````
+void doSomething() {
+    // a comment
+}
+````
+
+Invalid:
+````
+void doSomething() {
+    /* invalid */
+}
+````
+
 #### [ForbidReturnInFinallyBlock](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html)
+
+Prevent the use of a `return` statement in the `finally` block.
+
+Invalid:
+````
+try {
+    doSomething();
+{ catch (IOException e) {
+    // log error
+} finally (
+    return true; // invalid
+}
+````
 
 #### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
 
+TODO: remove - [IllegalThrows](#illegalthrows) performs a similar check.
+
 #### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+
+Prevents declaring a method from returning a wildcard type as its return value.
+
+Valid:
+````
+<E> List<E> getList() {}
+````
+
+Invalid:
+````
+<E> List<? extends E> getList() {}
+````
 
 #### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
 
+Prevent the placement of variables or fields after methods in an expression.
+
+Valid:
+````
+if (property && getProperty()) {}
+````
+
+Invalid:
+````
+if (getProperty() && property) {}
+````
+
 #### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html)
+
+Checks for unoptimised iterations over `Map`s. Check use of `map.values()`, `map.keySet()` and `map.entrySet()` against the use of the iterator produced to verify if another could be better.
 
 #### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html)
 
+Checks the names of JUnit test classes. Classes checked are those that have at least one method annotated with `Test` or `org.junit.Test`.
+
+Test class names must match: `.+Test\\d*|.+Tests\\d*|Test.+|Tests.+|.+IT|.+ITs|.+TestCase\\d*|.+TestCases\\d*`
+
 #### [NestedSwitch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NestedSwitchCheck.html)
+
+Checks that `switch` statements are not nested within one another.
+
+Valid:
+````
+void doSomething(int a, int b) {
+
+    switch(a) {
+        case 1:
+            doMore(b);
+            break;
+        case 2:
+            // ..
+        }
+    }
+}
+
+void doMore(int b) {
+
+    switch(b) {
+        case 1:
+            //
+        case 2:
+            //
+    }
+}
+````
+
+Invalid:
+````
+void doSomething(int a, int b) {
+
+    switch(a) {
+        case 1:
+            switch(b) {
+                case 1:
+                    //
+                case 2:
+                    //
+            }
+            break;
+        case 2:
+            // ..
+        }
+    }
+}
+````
 
 #### [NoMainMethodInAbstractClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NoMainMethodInAbstractClassCheck.html)
 
+Prevents a `main` method from existing in an `abstract` class.
+
 #### [NumericLiteralNeedsUnderscore](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NumericLiteralNeedsUnderscoreCheck.html)
+
+Checks that numeric literals use underscores ('_') if over a certain length.
+
+* Decimals
+
+    * 7 or more digits must use the underscore
+    * No more than 3 digits between underscores
+
+* Hex
+
+    * 5 or more digits must use the underscore
+    * No more than 4 digits between underscores
+
+* Binary
+
+    * 9 or more digits must use the underscore
+    * No more than 8 digits between underscores
 
 #### [OverridableMethodInConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/OverridableMethodInConstructorCheck.html)
 
+Prevents calls to overridable methods from constuctors including other methods that perform the same functions. (i.e. `Cloneable.clone()` and `Serializable.readObject()`)
+
+Invalid:
+````
+abstract class Base {
+    Base() {
+        overrideMe();
+    }
+}
+class Child extends Base {
+    final int x;
+    Child(int x) {
+        this.x = x;
+    }
+    void overrideMe() {
+        System.out.println(x);
+    }
+}
+new Child(42); // prints "0"
+````
+
 #### [PublicReferenceToPrivateType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/PublicReferenceToPrivateTypeCheck.html)
+
+Checks that a type is not exposed outside its declared scope.
+
+Invalid:
+````
+public class OuterClass {
+    public InnerClass inner = new InnerClass();
+    public SiblingClass sibling = new SiblingClass();
+    public InnerClass getValue() { return new InnerClass(); }
+    public SiblingClass getSibling() { return new SiblingClass(); }
+    private class InnerClass {}
+}
+class SiblingClass {}
+````
 
 #### [RedundantReturn](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/RedundantReturnCheck.html)
 
+Checks for redundant return statements.
+
+Invalid:
+````
+HelloWorld() {
+    doStuff();
+    return;
+}
+void doStuff() {
+    doMoreStuff();
+    return;
+}
+````
+
 #### [ReturnBooleanFromTernary](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html)
+
+Ternary statements shouldn't have `Boolean` values as results.
+
+Valid:
+````
+Boolean set = isSet() ? True : False;
+Boolean notReady = isReady() ? False : True;
+````
+
+Invalid:
+````
+Boolean set = isSet();
+Boolean notReady = !isReady();
+````
 
 #### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html)
 
+The `Boolean` type is meant to only represent a binary state: TRUE or FALSE. It is not a ternary value: TRUE, FALSE, null.
+
+Invalid:
+````
+Boolean isEnabled() {
+    if (level > 0) {
+        return True;
+    }
+    if (level < 0) {
+        return False;
+    }
+    return null;
+}
+````
 #### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+
+Checks that setters and getters follow the normal setField(), getField() and isField() pattern, where 'Field' is the name of the field being accessed.
 
 #### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
 
+Checks that there is at most one `continue` or `break` statement within a looping block (e.g. `for`, `while`, ...)
+
 #### [TernaryPerExpressionCount](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html)
+
+Checks that there is at most one ternary statments (`?:`) within an expression.
+
+Invalid:
+````
+String x = value != null ? "A" : "B" + value == null ? "C" : "D"
+````
 
 #### [UniformEnumConstantName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/UniformEnumConstantNameCheck.html)
 
+Checks that all the values of an `enum` follow the same naming pattern.
+
+Valid:
+````
+public enum EnumOne {
+    FirstElement, SecondElement, ThirdElement;
+}
+
+public enum EnumTwo {
+    FIRST_ELEMENT, SECOND_ELEMENT, THIRD_ELEMENT;
+}
+````
+
+Invalid:
+````
+public enum EnumThree {
+    FirstElement, SECOND_ELEMENT, ThirdElement;
+}
+````
+
 #### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html)
 
+Checks for catch blocks that are useless. i.e. that catch al exceptions and then just rethrow them.
+
+Invalid:
+````
+try {
+    doSomething();
+} catch (Exception e) {
+    throw e;
+}
+````
+
 #### [UselessSuperCtorCall](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html)
+
+Checks for useless calls the the `super()` method in constructors.
+
+Invalid:
+````
+class Dummy {
+    Dummy() {
+        super();
+    }
+}
+class Derived extends Base {
+    Derived() {
+        super();
+    }
+}
+````
 
 ## Disabled Checks
 
