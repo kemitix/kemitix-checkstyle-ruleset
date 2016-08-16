@@ -220,8 +220,8 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [RequiredParameterForAnnotation](#requiredparameterforannotation) - sevntu - disabled
 * [RequireThis](#requirethis) - checkstyle - disabled
 * [ReturnBooleanFromTernary](#returnbooleanfromternary) - sevntu - enabled
-* [ReturnCountExtended](#returncountextended) - sevntu - disabled
 * [ReturnCount](#returncount) - checkstyle - enabled
+* [ReturnCountExtended](#returncountextended) - sevntu - disabled
 * [ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean) - sevntu - enabled
 * [RightCurly](#rightcurly) - checkstyle - enabled
 * [SeparatorWrap](#separatorwrap) - checkstyle - enabled
@@ -2819,15 +2819,27 @@ Appears to be broken as of `1.21.0`.
 
 #### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
 
+The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
+
 #### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
+
+> TODO: enable
 
 #### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
 
+> TODO: enable
+
 #### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 
 #### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html)
 
+Generic rule; doesn't embody a 'quality' check.
+
 #### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 
 #### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
 
@@ -2835,13 +2847,19 @@ See [HideUtilityClassConstructor](#hideutilityclassconstructor).
 
 #### [IllegalCatchExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/IllegalCatchExtendedCheck.html)
 
+See [IllegalCatch](#illegalcatch).
+
 #### [InnerClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/InnerClassCheck.html)
+
+See [InnerTypeLast](#innertypelast).
 
 #### [InterfaceTypeParameterName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/InterfaceTypeParameterNameCheck.html)
 
 See [InterfaceTypeParameterName](#interfacetypeparametername).
 
 #### [LineLengthExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/sizes/LineLengthExtendedCheck.html)
+
+See [LineLength](#linelength)
 
 #### [MultipleStringLiteralsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleStringLiteralsExtendedCheck.html)
 
@@ -2853,13 +2871,22 @@ See [MultipleVariableDeclarations](#multiplevariabledeclarations).
 
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
+Generic rule; doesn't embody a 'quality' check.
+
 #### [ReturnCountExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnCountExtendedCheck.html)
+
+See [ReturnCount](#returncount).
+
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
+
+Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
 
 #### [UnnecessaryParenthesesExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UnnecessaryParenthesesExtendedCheck.html)
 
 See [UnnecessaryParentheses](#unnecessaryparentheses).
 
 #### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
+
+> TODO: enable
 
 [Effective Java]: http://amzn.to/2aSz6GE
