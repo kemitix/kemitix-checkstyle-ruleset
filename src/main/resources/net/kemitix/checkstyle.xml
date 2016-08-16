@@ -39,9 +39,11 @@
             <property name="excludes"
                       value="org.assertj.core.api.Assertions.assertThat,org.mockito.BDDMockito.given,org.mockito.Mockito.*,org.mockito.Matchers.*,org.mockito.Mockito.*"/>  <!-- unless selected testing shorthands -->
         </module>
+
         <module name="BooleanExpressionComplexity"> <!-- restrict number of &&, ||, &, | and ^ expressions -->
             <property name="max" value="2"/>
         </module>
+
         <module name="CatchParameterName"/> <!-- restrict parameter names when catching an Exception -->
         <module name="ClassDataAbstractionCoupling"/> <!-- restrict number of classes instantiated per class to 7 -->
         <module name="ClassFanOutComplexity"/> <!-- restrict class dependencies to 20 -->
@@ -52,9 +54,11 @@
         <module name="CyclomaticComplexity"> <!-- limit complexity score -->
             <property name="max" value="5"/>
         </module>
+
         <module name="DeclarationOrder"/> <!-- enforce order: static variables, variables, constructors, methods -->
         <module name="DefaultComesLast"/> <!-- enforce default as last option in switch statement -->
         <module name="DesignForExtension"/> <!-- protect against bad subclassing - use interfaces for mocking in unit tests -->
+
         <module name="EmptyBlock"/> <!-- checks for empty blocks -->
         <module name="EmptyCatchBlock"> <!-- checks the catch blocks contain comment -->
             <property name="commentFormat" value="expected|ignore"/>
@@ -66,15 +70,19 @@
         <module name="EqualsHashCode"/> <!-- if equals() is overridden then so must hashCode() be -->
         <module name="ExecutableStatementCount"/> <!-- limit executable statements to 30 per method -->
         <module name="ExplicitInitialization"/> <!-- avoid initializing a field twice to the same value -->
+
         <module name="FallThrough"/> <!-- checks that each switch case fall-through is commented as such -->
         <module name="FinalClass"/> <!-- class which has only private constructors is declared as final -->
         <module name="FinalParameters"/> <!-- parameters that never change must be declared final -->
+
         <module name="GenericWhitespace"/> <!-- generic tokens are spaced correctly -->
+
         <module name="HiddenField">
             <property name="ignoreConstructorParameter" value="true"/>
             <property name="ignoreSetter" value="true"/>
         </module>
         <module name="HideUtilityClassConstructor"/> <!-- suppress for class with public static void main(...) -->
+
         <module name="IllegalCatch"/> <!-- prevent generic catches (i.e. Exception, Throwable, RuntimeException) -->
         <module name="IllegalImport"/> <!-- prevent imports from the sun.* package -->
         <module name="IllegalThrows"/> <!-- prevent generic throws (i.e. Exception, Throwable, RuntimeException) -->
@@ -82,17 +90,20 @@
         <module name="InnerAssignment"/> <!-- prevent assignments in subexpressions (i.e. while((line = read()){}) -->
         <module name="InnerTypeLast"/> <!-- inner classes appear after methods and fields -->
         <module name="InterfaceIsType"/> <!-- interface must define method not just constants -->
-        <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
+
         <module name="JavadocMethod"> <!-- methods should have javadoc block -->
             <property name="scope" value="public"/> <!-- if they are public -->
         </module>
         <module name="JavadocParagraph"/> <!-- javadoc paragraphs have opening <p> elements -->
         <module name="JavadocStyle"/> <!-- javadoc comments are well formed -->
-        <module name="JavadocType"/> <!-- jacvadoc is present for classes, interfaces and enums -->
+        <module name="JavadocType"/> <!-- javadoc is present for classes, interfaces and enums -->
+        <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
+
         <module name="LeftCurly"/> <!-- placement of left curly braces ('{') for code blocks at end of line -->
         <module name="LineLength"/> <!-- lines can't be longer the 80 -->
         <module name="LocalFinalVariableName"/> <!-- validates identifiers for local, final variables, including catch parameters -->
         <module name="LocalVariableName"/> <!-- validates non-final identifiers -->
+
         <module name="MagicNumber"/> <!-- checks for magic numbers -->
         <module name="MemberName"/> <!--  instance variable names conform to ^[a-z][a-zA-Z0-9]*$ -->
         <module name="MethodCount"> <!-- restrict the number of methods in a class -->
@@ -110,9 +121,7 @@
         <module name="MultipleStringLiterals"/> <!-- merge string literals -->
         <module name="MultipleVariableDeclarations"/> <!-- declare variables separately -->
         <module name="MutableException"/> <!-- prevent changing an exception once created -->
-        <module name="NPathComplexity"> <!-- restrict method complexity -->
-            <property name="max" value="400"/>
-        </module>
+
         <module name="NeedBraces"/> <!-- braces around code blocks -->
         <module name="NestedForDepth"/> <!-- prevent nested for loops -->
         <module name="NestedIfDepth"/> <!-- prevent nested if-else blocks -->
@@ -121,21 +130,27 @@
         <module name="NonEmptyAtclauseDescription"/> <!-- javadoc tags have descriptions -->
         <module name="NoWhitespaceAfter"/> <!-- prevent white space after tokens -->
         <module name="NoWhitespaceBefore"/> <!-- prevent white space before tokens -->
+        <module name="NPathComplexity"> <!-- restrict method complexity -->
+            <property name="max" value="400"/>
+        </module>
+
         <module name="OneStatementPerLine"/> <!-- only one statement per line -->
         <module name="OneTopLevelClass"/> <!-- one top-level class per file -->
         <module name="OperatorWrap"/> <!-- when line wrapping on an operator, the operator is on the new line -->
         <module name="OuterTypeFilename"/> <!-- class name and filename must match -->
         <module name="OverloadMethodsDeclarationOrder"/> <!-- group overloaded methods together -->
+
         <module name="PackageDeclaration"/> <!-- class must have package and it must match the directory -->
         <module name="PackageName"/> <!-- validate package name format -->
         <module name="ParameterName"/> <!-- validate parameter name format -->
         <module name="ParameterNumber"/> <!-- limits the number of parameters to 7 -->
         <module name="ParenPad"/> <!-- parentheses should have no padding spaces -->
+
         <module name="RedundantImport"/> <!-- checks for redundant imports (i.e. in the same package) -->
         <module name="RedundantModifier"/> <!-- checks for redundant modifies (e.g. public methods in an interface) -->
         <module name="ReturnCount"/> <!-- Restricts return statements to 2 per method (1 if return type is void) -->
         <module name="RightCurly"/> <!-- placement of right curly braces ('}') for code blocks at end of line -->
-        <module name="SingleSpaceSeparator"/> <!-- Checks that non-whitespace characters are separated by only 1 character -->
+
         <module name="SeparatorWrap"> <!-- checks line wrapping on separators (,) have separator at the end of the line -->
             <property name="tokens" value="COMMA"/>
             <property name="option" value="eol"/>
@@ -146,21 +161,26 @@
         </module>
         <module name="SimplifyBooleanExpression"/> <!-- finds code like if (b == true), b || true, !false, etc. -->
         <module name="SimplifyBooleanReturn"/> <!-- overly complicated boolean return statements. -->
+        <module name="SingleSpaceSeparator"/> <!-- Checks that non-whitespace characters are separated by only 1 character -->
         <module name="StaticVariableName"/> <!-- Static non-finals should be formatted like normal identifiers -->
         <module name="StringLiteralEquality"/> <!-- use .equals(...) when comparing strings for equality -->
         <module name="SuppressWarningsHolder"/> <!-- holds all @SuppressWarnings found for SuppressWarningsFilter -->
+
         <module name="ThrowsCount"/> <!-- Restricts throws statements to 4 -->
         <module name="TodoComment"> <!-- no to do or fix me comments -->
             <property name="format" value="(TODO)|(FIXME)"/>
         </module>
         <module name="TrailingComment"/> <!-- no end-line comments (the irony!) -->
-        <module name="TypeName"/> <!-- validates class, interface, enum and annotation names -->
         <module name="TypecastParenPad"/> <!-- no spaces in type casting parentheses -->
+        <module name="TypeName"/> <!-- validates class, interface, enum and annotation names -->
+
         <module name="UnnecessaryParentheses"/> <!-- unnecessary parentheses -->
         <module name="UnusedImports"/> <!-- checks for import that aren't used -->
         <module name="UpperEll"/> <!-- long constants have an 'L' suffix -->
+
         <module name="VariableDeclarationUsageDistance"/> <!-- distance between declaration of variable and first usage -->
         <module name="VisibilityModifier"/> <!-- visibility of class members -->
+
         <module name="WhitespaceAfter"/> <!-- comma, semicolon, and type cast are followed by a space -->
         <module name="WhitespaceAround"/> <!-- selected token are surrounded by a space -->
 
