@@ -6,11 +6,24 @@
 
     <groupId>net.kemitix</groupId>
     <artifactId>kemitix-checkstyle-ruleset</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>Kemitix Checkstyle Ruleset</name>
     <description>Checkstyle Ruleset for use by packages derived from kemitix-parent</description>
+
+    <issueManagement>
+        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
+        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
+        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
+    </scm>
+
+    <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
 
     <inceptionYear>2016</inceptionYear>
 
