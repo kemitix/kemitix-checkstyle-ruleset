@@ -100,7 +100,9 @@
         <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
 
         <module name="LeftCurly"/> <!-- placement of left curly braces ('{') for code blocks at end of line -->
-        <module name="LineLength"/> <!-- lines can't be longer the 80 -->
+        <module name="LineLength"> <!-- lines can't be longer the 120 -->
+            <property name="max" value="120"/>
+        </module>
         <module name="LocalFinalVariableName"/> <!-- validates identifiers for local, final variables, including catch parameters -->
         <module name="LocalVariableName"/> <!-- validates non-final identifiers -->
 

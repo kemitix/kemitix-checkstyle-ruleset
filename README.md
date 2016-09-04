@@ -1289,11 +1289,9 @@ class Bar
 
 #### [LineLength](http://checkstyle.sourceforge.net/config_sizes.html#LineLength)
 
-Limits the line length to 80 characters.
+Limits the line length to 120 characters.
 
 Doesn't check package or import lines.
-
-> TODO: ignorePattern = "^\s\\* .+" exclude javadoc blocks
 
 #### [LocalFinalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalFinalVariableName)
 
