@@ -294,9 +294,7 @@ Rules are listed in alphabetical order.
 
 #### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
 
-Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to final or static variables, or @Overridden methods.
-
-> TODO: enable for final and static variables.
+Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to @Overridden methods.
 
 Valid:
 ````
