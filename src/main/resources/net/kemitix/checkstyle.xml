@@ -29,7 +29,10 @@
         <module name="AnnotationUseStyle"/> <!-- annotations should only use () and named attributes when needed -->
         <module name="AnonInnerLength"/> <!-- limits anonymous inner classes to 20 lines -->
         <module name="ArrayTypeStyle"/> <!-- enforce Java style arrays -->
-        <module name="AtclauseOrder"/> <!-- enforce standard order for javadoc elements -->
+        <module name="AtclauseOrder"> <!-- enforce standard order for javadoc elements - matches IntelliJ's order -->
+            <property name="tagOrder" value="@param, @author, @version, @serial, @return, @throws, @exception,
+            @serialData, @serialField, @see, @since, @deprecated"/>
+        </module>
         <module name="AvoidEscapedUnicodeCharacters"> <!-- prevent use of obscure escape codes -->
             <property name="allowEscapesForControlCharacters" value="true"/> <!-- unless non-printable controls -->
         </module>
