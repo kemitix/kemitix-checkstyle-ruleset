@@ -1728,9 +1728,7 @@ Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
 #### [ParameterNumber](http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber)
 
-Restricts the number of parameters in a method or constructor to 7.
-
-> TODO: ignoreOverriddenMethods = true
+Restricts the number of parameters in a method or constructor to 7. Overridden methods are not checked as there may be no access to change the super method.
 
 #### [ParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#ParenPad)
 

@@ -169,7 +169,9 @@
             <property name="format" value="^[a-z]+(\.[a-z]+)*$"/> <!-- only lowercase letters, no numbers of underscores -->
         </module>
         <module name="ParameterName"/> <!-- validate parameter name format -->
-        <module name="ParameterNumber"/> <!-- limits the number of parameters to 7 -->
+        <module name="ParameterNumber"> <!-- limits the number of parameters to 7 -->
+            <property name="ignoreOverriddenMethods" value="true"/> <!-- don't apply to @Overridden -->
+        </module>
         <module name="ParenPad"/> <!-- parentheses should have no padding spaces -->
 
         <module name="RedundantImport"/> <!-- checks for redundant imports (i.e. in the same package) -->
