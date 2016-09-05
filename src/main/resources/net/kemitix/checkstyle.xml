@@ -174,7 +174,6 @@
         </module>
         <module name="ParenPad"/> <!-- parentheses should have no padding spaces -->
 
-        <module name="RedundantImport"/> <!-- checks for redundant imports (i.e. in the same package) -->
         <module name="RedundantModifier"/> <!-- checks for redundant modifies (e.g. public methods in an interface) -->
         <module name="ReturnCount"/> <!-- Restricts return statements to 2 per method (1 if return type is void) -->
         <module name="RightCurly"/> <!-- placement of right curly braces ('}') for code blocks at end of line -->

@@ -230,7 +230,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ParameterNumber](#parameternumber) - checkstyle - enabled
 * [ParenPad](#parenpad) - checkstyle - enabled
 * [PublicReferenceToPrivateType](#publicreferencetoprivatetype) - sevntu - enabled
-* [RedundantImport](#redundantimport) - checkstyle - enabled
+* [RedundantImport](#redundantimport) - checkstyle - disabled
 * [RedundantModifier](#redundantmodifier) - checkstyle - enabled
 * [RedundantReturn](#redundantreturn) - sevntu - enabled
 * [Regexp](#regexp) - checkstyle - disabled
@@ -1747,12 +1747,6 @@ doSomethingElse( 5);
 doSomethingElse(5 );
 ````
 
-#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
-
-Checks for redundant `import`s. Checks for duplicates, imports from the `java.lang` package or from the current package.
-
-> TODO: remove - [UnusedImports](#unusedimports) performs all the same checks and more
-
 #### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
 
 Checks for redundant modifiers. Checks for:
@@ -2708,6 +2702,12 @@ Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 #### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
 
 > TODO: enable
+
+#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
+
+[UnusedImports](#unusedimports) performs all the same checks and more.
+
+Checks for redundant `import`s. Checks for duplicates, imports from the `java.lang` package or from the current package.
 
 #### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
 
