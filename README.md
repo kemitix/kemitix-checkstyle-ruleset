@@ -1245,9 +1245,7 @@ Checks the formatting of the Javadoc blocks. See the official [Checkstyle docume
 
 #### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType)
 
-Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags.
-
-> TODO: authorFormat = "^.+ (\S+@[\S.]+)$" - name followed by email in brackets
+Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags. The `@author` tag must have a name and, in brackets, an email address.
 
 #### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
 

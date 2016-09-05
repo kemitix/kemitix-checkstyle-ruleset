@@ -104,7 +104,9 @@
         </module>
         <module name="JavadocParagraph"/> <!-- javadoc paragraphs have opening <p> elements -->
         <module name="JavadocStyle"/> <!-- javadoc comments are well formed -->
-        <module name="JavadocType"/> <!-- javadoc is present for classes, interfaces and enums -->
+        <module name="JavadocType"> <!-- javadoc is present for classes, interfaces and enums -->
+            <property name="authorFormat" value="^.+ (\S+@[\S.]+)$"/> <!-- name followed by email in brackets -->
+        </module>
         <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
 
         <module name="LeftCurly"/> <!-- placement of left curly braces ('{') for code blocks at end of line -->
