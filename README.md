@@ -1665,9 +1665,7 @@ i --;
 
 #### [NPathComplexity](http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity)
 
-Checks that the NPATH score (number of paths) through a method is no more than 200. This is similar to [Cyclomatic Complexity](#cyclomaticcomplexity).
-
-> TODO: max = 5 - same as cyclomatic complexity
+Checks that the NPATH score (number of paths) through a method is no more than 5. This is similar to [Cyclomatic Complexity](#cyclomaticcomplexity).
 
 #### [OneStatementPerLine](http://checkstyle.sourceforge.net/config_coding.html#OneStatementPerLine)
 

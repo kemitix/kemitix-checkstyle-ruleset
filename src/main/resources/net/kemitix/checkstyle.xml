@@ -155,7 +155,7 @@
         </module>
         <module name="NoWhitespaceBefore"/> <!-- prevent white space before tokens -->
         <module name="NPathComplexity"> <!-- restrict method complexity -->
-            <property name="max" value="400"/>
+            <property name="max" value="5"/>
         </module>
 
         <module name="OneStatementPerLine"/> <!-- only one statement per line -->
