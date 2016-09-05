@@ -98,7 +98,9 @@
         <module name="InterfaceIsType"/> <!-- interface must define method not just constants -->
 
         <module name="JavadocMethod"> <!-- methods should have javadoc block -->
-            <property name="scope" value="public"/> <!-- if they are public -->
+            <property name="scope" value="package"/> <!-- if they are public, protected or package -->
+            <property name="validateThrows" value="true"/> <!-- warn about unused @throws tags -->
+            <property name="allowMissingPropertyJavadoc" value="true"/> <!-- skip basic setters and getters -->
         </module>
         <module name="JavadocParagraph"/> <!-- javadoc paragraphs have opening <p> elements -->
         <module name="JavadocStyle"/> <!-- javadoc comments are well formed -->

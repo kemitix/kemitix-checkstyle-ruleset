@@ -1229,13 +1229,7 @@ interface Foo {
 
 #### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
 
-Checks that all public methods have a Javadoc block.
-
-> TODO: scope = private (reset to default) - will require lots of new javadoc blocks
-
-> TODO: validateThrows = true
-
-> TODO: allowMissingPropertyJavadoc = true
+Checks that all public, protected and package methods have a Javadoc block, that all `@throws` tags are used. Basic setters and getters do not require javadoc.
 
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 
