@@ -126,7 +126,7 @@
             <property name="maxTotal" value="30"/>
         </module>
         <module name="MethodLength"> <!-- restrict the number of lines in a method -->
-            <property name="max" value="60"/>
+            <property name="max" value="40"/>
         </module>
         <module name="MethodName"/> <!-- method names conform to ^[a-z][a-zA-Z0-9]*$ -->
         <module name="MethodParamPad"/> <!-- verifies padding around method parameters -->
