@@ -1718,9 +1718,7 @@ Checks that the class has a `package` definition.
 
 Checks the format of package names.
 
-Identifiers must match `^[a-z]+(\.[a-zA-Z_][a-zA-Z0-9_]*)*$`.
-
-> TODO: format = `^[a-z]+(\.[a-z]+)*$` - only lowercase letters, no numbers or underscores
+Identifiers must match `^[a-z]+(\.[a-z]+)*$`.
 
 #### [ParameterName](http://checkstyle.sourceforge.net/config_naming.html#ParameterName)
 

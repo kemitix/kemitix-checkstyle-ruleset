@@ -165,7 +165,9 @@
         <module name="OverloadMethodsDeclarationOrder"/> <!-- group overloaded methods together -->
 
         <module name="PackageDeclaration"/> <!-- class must have package and it must match the directory -->
-        <module name="PackageName"/> <!-- validate package name format -->
+        <module name="PackageName"> <!-- validate package name format -->
+            <property name="format" value="^[a-z]+(\.[a-z]+)*$"/> <!-- only lowercase letters, no numbers of underscores -->
+        </module>
         <module name="ParameterName"/> <!-- validate parameter name format -->
         <module name="ParameterNumber"/> <!-- limits the number of parameters to 7 -->
         <module name="ParenPad"/> <!-- parentheses should have no padding spaces -->
