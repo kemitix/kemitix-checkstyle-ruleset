@@ -1551,18 +1551,16 @@ if (isValid()) { // depth 0
 
 #### [NestedTryDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedTryDepth)
 
-Checks that `try` blocks are not nested more than 1 deep.
+Checks that `try` blocks are not nested.
 
 Valid:
 ````
 try {
     doSomething();
-    try {
-        doSomeOtherThing();
-    } catch (OtherExceptions oe) {
-        // handle it
-    }
+    doSomeOtherThing();
 } catch (SomeException se) {
+    // handle it
+} catch (OtherExceptions oe) {
     // handle it
 }
 ````
@@ -1580,8 +1578,6 @@ try {
    // handle it
 }
 ````
-
-> TODO: max = 0 - don't nest try blocks
 
 #### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
 

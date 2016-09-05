@@ -143,7 +143,9 @@
         <module name="NeedBraces"/> <!-- braces around code blocks -->
         <module name="NestedForDepth"/> <!-- prevent nested for loops -->
         <module name="NestedIfDepth"/> <!-- prevent nested if-else blocks -->
-        <module name="NestedTryDepth"/> <!-- prevent nested try blocks -->
+        <module name="NestedTryDepth"> <!-- prevent nested try blocks -->
+            <property name="max" value="0"/>
+        </module>
         <module name="NoClone"/> <!-- prevent overriding Object.clone() -->
         <module name="NonEmptyAtclauseDescription"/> <!-- javadoc tags have descriptions -->
         <module name="NoWhitespaceAfter"/> <!-- prevent white space after tokens -->
