@@ -2255,7 +2255,7 @@ Map<Long, String> idTable = new HashMap<Long, String>();
 
 Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
 
-> TODO: loggingMethodNames: add 'log'
+Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 

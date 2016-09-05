@@ -219,6 +219,10 @@
         <module name="ConfusingConditionCheck"/> <!-- prevents negation within an "if" expression if "else" is present -->
         <module name="DiamondOperatorForVariableDefinitionCheck"/> <!-- use the diamond operator -->
         <module name="EitherLogOrThrowCheck"/> <!-- log or throw an exception - don't do both -->
+        <module name="EitherLogOrThrowCheck"> <!-- log or throw an exception - don't do both -->
+            <property name="loggerFullyQualifiedClassName" value="java.util.logging.Logger"/>
+            <property name="loggingMethodNames" value="log, severe, warning, info, config, fine, finer, finest, "/>
+        </module>
         <module name="ForbidCCommentsInMethodsCheck"/> <!-- prevent /* C-style */ comments inside methods -->
         <module name="ForbidReturnInFinallyBlockCheck"/> <!-- returns in finally override returns elsewhere in method -->
         <module name="ForbidThrowAnonymousExceptionsCheck"/> <!-- only throw concrete exceptions -->
