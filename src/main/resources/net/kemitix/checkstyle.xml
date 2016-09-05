@@ -107,7 +107,11 @@
         <module name="JavadocType"> <!-- javadoc is present for classes, interfaces and enums -->
             <property name="authorFormat" value="^.+ (\S+@[\S.]+)$"/> <!-- name followed by email in brackets -->
         </module>
-        <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
+        <module name="JavaNCSS"> <!-- Non-Commenting Source Statements complexity analysis -->
+            <property name="methodMaximum" value="40"/> <!-- lines per methods -->
+            <property name="classMaximum" value="1200"/> <!-- lines per class -->
+            <property name="fileMaximum" value="1600"/> <!-- lines per file -->
+        </module>
 
         <module name="LeftCurly"/> <!-- placement of left curly braces ('{') for code blocks at end of line -->
         <module name="LineLength"> <!-- lines can't be longer the 120 -->

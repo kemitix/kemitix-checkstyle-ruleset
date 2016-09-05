@@ -1249,15 +1249,9 @@ Checks the format for Javadoc for classes and enums. Javadoc must be present, no
 
 #### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
 
-Restricts the NCSS score for methods, classes and files to 50, 1500 and 2000 respectively. The NCSS score is a measure of the number of statements within a scope.
+Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
 
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
-
-> TODO: methodMaximum = 40 - reduce by 20%
-
-> TODO: classMaximum = 1200
-
-> TODO: fileMaximum = 1600
 
 #### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly)
 
