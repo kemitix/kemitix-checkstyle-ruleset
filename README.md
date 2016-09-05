@@ -1415,8 +1415,6 @@ for (int i = 0; i < 1; i++) {
 }
 ````
 
-> TODO: skipEnhancesForLoopVariable = true
-
 #### [ModifierOrder](http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder)
 
 Check that modifiers are in the following order:

@@ -132,7 +132,9 @@
         <module name="MethodParamPad"/> <!-- verifies padding around method parameters -->
         <module name="MissingDeprecated"/> <!-- @Deprecated annotation must be accompanied by javadoc @deprecated -->
         <module name="MissingSwitchDefault"/> <!-- switch must have a default -->
-        <module name="ModifiedControlVariable"/> <!-- prevent for loop control being modified inside loop -->
+        <module name="ModifiedControlVariable"> <!-- prevent for loop control being modified inside loop -->
+            <property name="skipEnhancedForLoopVariable" value="true"/> <!-- doesn't apply to for(String line : lines) {} -->
+        </module>
         <module name="ModifierOrder"/> <!-- enforce order: public protected private abstract static final transient volatile synchronized native strictfp -->
         <module name="MultipleStringLiterals"/> <!-- merge string literals -->
         <module name="MultipleVariableDeclarations"/> <!-- declare variables separately -->
