@@ -149,6 +149,10 @@
         <module name="NoClone"/> <!-- prevent overriding Object.clone() -->
         <module name="NonEmptyAtclauseDescription"/> <!-- javadoc tags have descriptions -->
         <module name="NoWhitespaceAfter"/> <!-- prevent white space after tokens -->
+        <module name="NoWhitespaceAfter"> <!-- prevent white space and line breaks after . separator-->
+            <property name="tokens" value="DOT"/>
+            <property name="allowLineBreaks" value="false"/>
+        </module>
         <module name="NoWhitespaceBefore"/> <!-- prevent white space before tokens -->
         <module name="NPathComplexity"> <!-- restrict method complexity -->
             <property name="max" value="400"/>

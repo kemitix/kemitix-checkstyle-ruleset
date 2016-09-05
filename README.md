@@ -1643,8 +1643,6 @@ int[ ] a;
 int d = a[ 2];
 ````
 
-> TODO: tokens = DOT & allowLineBreaks = false
-
 #### [NoWhitespaceBefore](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceBefore)
 
 Checks that there is no whitespace before the comma operator (','), statement terminator (';'), postfix increment ('++') or postfix decrement ('--').
