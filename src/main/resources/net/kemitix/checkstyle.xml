@@ -225,7 +225,6 @@
         </module>
         <module name="ForbidCCommentsInMethodsCheck"/> <!-- prevent /* C-style */ comments inside methods -->
         <module name="ForbidReturnInFinallyBlockCheck"/> <!-- returns in finally override returns elsewhere in method -->
-        <module name="ForbidThrowAnonymousExceptionsCheck"/> <!-- only throw concrete exceptions -->
         <module name="LogicConditionNeedOptimizationCheck"/> <!-- prevent placement of local variables and fields after call to method in logical conditionals -->
         <module name="MapIterationInForEachLoopCheck"/> <!-- warns of unoptimised map iteration -->
         <module name="NameConventionForJunit4TestClassesCheck"/> <!-- checks names of test classes -->

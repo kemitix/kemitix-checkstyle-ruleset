@@ -142,7 +142,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ForbidCertainImports](#forbidcertainimports) - sevntu - disabled
 * [ForbidInstantiation](#forbidinstantiation) - sevntu - disabled
 * [ForbidReturnInFinallyBlock](#forbidreturninfinallyblock) - sevntu - enabled
-* [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - sevntu - enabled
+* [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - sevntu - disabled
 * [ForbidWildcardAsReturnType](#forbidwildcardasreturntype) - sevntu - enabled
 * [GenericWhitespace](#genericwhitespace) - checkstyle - enabled
 * [Header](#header) - checkstyle - disabled
@@ -2334,10 +2334,6 @@ try {
 }
 ````
 
-#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
-
-TODO: remove - [IllegalThrows](#illegalthrows) performs a similar check.
-
 #### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
 
 Prevents declaring a method from returning a wildcard type as its return value.
@@ -2828,6 +2824,10 @@ Generic rule; doesn't embody a 'quality' check.
 #### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
+
+#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
+
+[IllegalThrows](#illegalthrows) performs a similar check.
 
 #### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
 
