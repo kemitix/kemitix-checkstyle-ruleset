@@ -164,7 +164,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [InnerClass](#innerclass) - sevntu - disabled
 * [InnerTypeLast](#innertypelast) - checkstyle - enabled
 * [InterfaceIsType](#interfaceistype) - checkstyle - enabled
-* [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - disabled
+* [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - enabled
 * [InterfaceTypeParameterName](#interfacetypeparametername-1) - sevntu - disabled
 * [JavadocMethod](#javadocmethod) - checkstyle - enabled
 * [JavadocPackage](#javadocpackage) - checkstyle - enabled
@@ -1257,6 +1257,20 @@ interface Foo {
 
     static final String "Foo!!";
 }
+````
+
+#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
+
+Checks that the type parameters for an interface are a single uppercase letter.
+
+Valid:
+````
+interface <T> Portable {}
+````
+
+Invalid:
+````
+interface <Type> Portable {}
 ````
 
 #### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
@@ -2660,10 +2674,6 @@ Generic rule; doesn't embody a 'quality' check.
 #### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
-
-#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
-
-> TODO: enable
 
 #### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
 

@@ -104,6 +104,7 @@
         <module name="InnerAssignment"/> <!-- prevent assignments in subexpressions (i.e. while((line = read()){}) -->
         <module name="InnerTypeLast"/> <!-- inner classes appear after methods and fields -->
         <module name="InterfaceIsType"/> <!-- interface must define method not just constants -->
+        <module name="InterfaceTypeParameterName"/> <!-- interface generic type is a single uppercase letter -->
 
         <module name="JavadocMethod"> <!-- methods should have javadoc block -->
             <property name="scope" value="package"/> <!-- if they are public, protected or package -->
