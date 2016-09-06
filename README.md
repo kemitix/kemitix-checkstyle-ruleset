@@ -1071,6 +1071,10 @@ List<T> list = ImmutableList.Builder<T>::new;
 sort(list, Comparable::<String>compareTo);
 ````
 
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+Checks that all `*.java` source files begin with the contents of the `LICENSE.txt` file.
+
 #### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField)
 
 Checks that a local variable or parameter in a method doesn't have the same name as a field. Doesn't apply in constructors or setters.
@@ -2632,14 +2636,6 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
-
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
-
-> TODO: enable
-
-> TODO: headerFile = LICENSE.txt
-
-> TODO: fileExtensions = java
 
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 

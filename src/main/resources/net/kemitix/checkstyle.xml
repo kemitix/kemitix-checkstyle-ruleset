@@ -86,6 +86,10 @@
 
         <module name="GenericWhitespace"/> <!-- generic tokens are spaced correctly -->
 
+        <module name="Header"> <!-- All java source files start with the contents of LICENSE.txt -->
+            <property name="headerFile" value="LICENSE.txt"/>
+            <property name="fileExtensions" value="java"/>
+        </module>
         <module name="HiddenField">
             <property name="ignoreConstructorParameter" value="true"/>
             <property name="ignoreSetter" value="true"/>
