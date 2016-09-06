@@ -154,7 +154,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [IllegalImport](#illegalimport) - checkstyle - enabled
 * [IllegalInstantiation](#illegalinstantiation) - checkstyle - disabled
 * [IllegalThrows](#illegalthrows) - checkstyle - enabled
-* [IllegalToken](#illegaltoken) - checkstyle - disabled
+* [IllegalToken](#illegaltoken) - checkstyle - enabled
 * [IllegalTokenText](#illegaltokentext) - checkstyle - disabled
 * [IllegalType](#illegaltype) - checkstyle - enabled
 * [ImportControl](#importcontrol) - checkstyle - disabled
@@ -1190,6 +1190,10 @@ Invalid:
 ````
 throw new RuntimeException("boom!");
 ````
+
+#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
+
+Checks that labels are not used.
 
 #### [IllegalType](http://checkstyle.sourceforge.net/config_coding.html#IllegalType)
 
@@ -2640,10 +2644,6 @@ Couldn't get my IDE's (IntelliJ) code style to match.
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 
 Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
-
-#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
-
-> TODO: enable
 
 #### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
 

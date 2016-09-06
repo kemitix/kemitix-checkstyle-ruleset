@@ -99,6 +99,7 @@
         <module name="IllegalCatch"/> <!-- prevent generic catches (i.e. Exception, Throwable, RuntimeException) -->
         <module name="IllegalImport"/> <!-- prevent imports from the sun.* package -->
         <module name="IllegalThrows"/> <!-- prevent generic throws (i.e. Exception, Throwable, RuntimeException) -->
+        <module name="IllegalToken"/> <!-- prevents use of labels -->
         <module name="IllegalType"/> <!-- prevents variables, returns or parameters of non-interface Collections classes  -->
         <module name="InnerAssignment"/> <!-- prevent assignments in subexpressions (i.e. while((line = read()){}) -->
         <module name="InnerTypeLast"/> <!-- inner classes appear after methods and fields -->
