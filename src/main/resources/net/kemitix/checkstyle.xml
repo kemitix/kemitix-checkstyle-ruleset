@@ -195,7 +195,7 @@
 
         <module name="ThrowsCount"/> <!-- Restricts throws statements to 4 -->
         <module name="TodoComment"> <!-- no to do or fix me comments -->
-            <property name="format" value="(TODO)|(FIXME)"/>
+            <property name="format" value="^(\s*\*).*((TODO)|(FIXME))"/>
         </module>
         <module name="TrailingComment"/> <!-- no end-line comments (the irony!) -->
         <module name="TypecastParenPad"/> <!-- no spaces in type casting parentheses -->

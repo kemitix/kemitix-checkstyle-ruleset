@@ -1967,8 +1967,6 @@ void doSomething() throws IllegalStateException,
 
 Checks for remaining `TODO` and `FIXME` comments left in code. Their presence indicates that the program isn't finished yet.
 
-> TODO: format = "(//\*).*((TODO)|(FIXME))" - only where in comments
-
 #### [TrailingComment](http://checkstyle.sourceforge.net/config_misc.html#TrailingComment)
 
 Checks for comments at the end of lines.
