@@ -93,7 +93,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses) - sevntu - disabled
 * [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters) - checkstyle - enabled
 * [AvoidHidingCauseException](#avoidhidingcauseexception) - sevntu - enabled
-* [AvoidInlineConditionals](#avoidinlineconditionals) - checkstyle - disabled
+* [AvoidInlineConditionals](#avoidinlineconditionals) - checkstyle - enabled
 * [AvoidModifiersForTypes](#avoidmodifiersfortypes) - sevntu - disabled
 * [AvoidNestedBlocks](#avoidnestedblocks) - checkstyle - enabled
 * [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean) - sevntu - enabled
@@ -413,6 +413,10 @@ Invalid:
 ````
 String unitAbbrev = "\u03bcs";
 ````
+
+#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
+
+Prevents use of the `?:` operators.
 
 #### [AvoidNestedBlocks](http://checkstyle.sourceforge.net/config_blocks.html#AvoidNestedBlocks)
 
@@ -2608,10 +2612,6 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
-
-#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
-
-> TODO: enable
 
 #### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
 

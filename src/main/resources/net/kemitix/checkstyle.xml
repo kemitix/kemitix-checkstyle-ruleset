@@ -39,6 +39,7 @@
         <module name="AvoidEscapedUnicodeCharacters"> <!-- prevent use of obscure escape codes -->
             <property name="allowEscapesForControlCharacters" value="true"/> <!-- unless non-printable controls -->
         </module>
+        <module name="AvoidInlineConditionals"/> <!-- detects ?: usage -->
         <module name="AvoidNestedBlocks"/> <!-- avoid unnecessary blocks {} -->
         <module name="AvoidStarImport"/> <!-- import package.* is not allowed -->
         <module name="AvoidStaticImport"> <!-- import static ... is not allowed -->
