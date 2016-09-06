@@ -2295,7 +2295,7 @@ enum InvalidClassLike {
 
     private String name;
 
-    ValidClassLike(String name) {
+    InvalidClassLike(String name) {
         this.name = name;
     }
 }
