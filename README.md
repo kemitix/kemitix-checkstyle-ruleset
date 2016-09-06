@@ -126,7 +126,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [EmptyPublicCtorInClass](#emptypublicctorinclass) - sevntu - disabled
 * [EmptyStatement](#emptystatement) - checkstyle - enabled
 * [EnumValueName](#enumvaluename) - sevntu - enabled
-* [EqualsAvoidNull](#equalsavoidnull) - checkstyle - disabled
+* [EqualsAvoidNull](#equalsavoidnull) - checkstyle - enabled
 * [EqualsHashCode](#equalshashcode) - checkstyle - enabled
 * [ExecutableStatementCount](#executablestatementcount) - checkstyle - enabled
 * [ExplicitInitialization](#explicitinitialization) - checkstyle - enabled
@@ -916,6 +916,22 @@ doSomething();
 Invalid:
 ````
 doSomething();;
+````
+
+#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
+
+Checks that string literals are on the left side in an `equals()` comparison.
+
+Valid:
+````
+String nullString = null;
+"value".equals(nullString);
+````
+
+Invalid:
+````
+String nullString = null;
+nullString.equals("value");
 ````
 
 #### [EqualsHashCode](http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode)
@@ -2612,10 +2628,6 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
-
-#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
-
-> TODO: enable
 
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 

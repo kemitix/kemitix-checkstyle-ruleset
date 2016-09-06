@@ -74,6 +74,7 @@
         <module name="EmptyForIteratorPad"/> <!-- empty for loop iterator muse have have no spaces -->
         <module name="EmptyLineSeparator"/> <!-- enforce blank lines after header, fields, constructors, methods, etc -->
         <module name="EmptyStatement"/> <!-- prevent standalone ";" semicolons -->
+        <module name="EqualsAvoidNull"/> <!-- prevents v = null; v.equals("..") -->
         <module name="EqualsHashCode"/> <!-- if equals() is overridden then so must hashCode() be -->
         <module name="ExecutableStatementCount"/> <!-- limit executable statements to 30 per method -->
         <module name="ExplicitInitialization"/> <!-- avoid initializing a field twice to the same value -->
