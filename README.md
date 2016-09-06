@@ -135,7 +135,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [FileTabCharacter](#filetabcharacter) - checkstyle - enabled
 * [FinalClass](#finalclass) - checkstyle - enabled
 * [FinalizeImplementation](#finalizeimplementation) - sevntu - disabled
-* [FinalLocalVariable](#finallocalvariable) - checkstyle - disabled
+* [FinalLocalVariable](#finallocalvariable) - checkstyle - enabled
 * [FinalParameters](#finalparameters) - checkstyle - enabled
 * [ForbidAnnotation](#forbidannotation) - sevntu - disabled
 * [ForbidCCommentsInMethods](#forbidccommentsinmethods) - sevntu - enabled
@@ -1037,6 +1037,10 @@ class Invalid {
     private Invalid() {}
 }
 ````
+
+#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
+
+Checks that local variables are `final` if they are never modified after declaration.
 
 #### [FinalParameters](http://checkstyle.sourceforge.net/config_misc.html#FinalParameters)
 
@@ -2628,10 +2632,6 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
-
-#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
-
-> TODO: enable
 
 #### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
 
