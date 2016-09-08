@@ -100,7 +100,9 @@
         <module name="IllegalImport"/> <!-- prevent imports from the sun.* package -->
         <module name="IllegalThrows"/> <!-- prevent generic throws (i.e. Exception, Throwable, RuntimeException) -->
         <module name="IllegalToken"/> <!-- prevents use of labels -->
-        <module name="IllegalType"/> <!-- prevents variables, returns or parameters of non-interface Collections classes  -->
+        <module name="IllegalType"> <!-- prevents variables, returns or parameters of non-interface Collections classes  -->
+            <property name="illegalClassNames" value="java.util.ArrayDeque, java.util.ArrayList, java.util.EnumMap, java.util.EnumSet, java.util.HashMap, java.util.HashSet, java.util.IdentityHashMap, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.PriorityQueue, java.util.TreeMap, java.util.TreeSet"/>
+        </module>
         <module name="InnerAssignment"/> <!-- prevent assignments in subexpressions (i.e. while((line = read()){}) -->
         <module name="InnerTypeLast"/> <!-- inner classes appear after methods and fields -->
         <module name="InterfaceIsType"/> <!-- interface must define method not just constants -->
