@@ -207,7 +207,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NestedTryDepth](#nestedtrydepth) - checkstyle - enabled
 * [NewlineAtEndOfFile](#newlineatendoffile) - checkstyle - enabled
 * [NoClone](#noclone) - checkstyle - enabled
-* [NoFinalizer](#nofinalizer) - checkstyle - disabled
+* [NoFinalizer](#nofinalizer) - checkstyle - enabled
 * [NoLineWrap](#nolinewrap) - checkstyle - disabled
 * [NoMainMethodInAbstractClass](#nomainmethodinabstractclass) - sevntu - enabled
 * [NonEmptyAtclauseDescription](#nonemptyatclausedescription) - checkstyle - enabled
@@ -1658,6 +1658,12 @@ Checks that the `clone()` method from `Object` has not been overridden.  Use a c
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 11: Override clone judiciously.
 
+#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
+
+Checks that the `finalize()` method from `Object` has not been overridden.
+
+> See [Effective Java], 2nd Edition by Josh Bloch: Item 7: Avoid finalizers.
+
 #### [NonEmptyAtclauseDescription](http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription)
 
 Checks that the Javadoc clauses `@param`, `@return`, `@throws` and `@deprecated` all have descriptions.
@@ -2713,10 +2719,6 @@ Would not see constructors created using Lombok's `@NoArgsConstructor`.
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
 
 The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
-
-#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
-
-> TODO: enable
 
 #### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
 

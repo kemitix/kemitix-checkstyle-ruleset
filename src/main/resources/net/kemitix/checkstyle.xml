@@ -159,6 +159,7 @@
             <property name="max" value="0"/>
         </module>
         <module name="NoClone"/> <!-- prevent overriding Object.clone() -->
+        <module name="NoFinalizer"/> <!-- prevent overriding Object.finalize() -->
         <module name="NonEmptyAtclauseDescription"/> <!-- javadoc tags have descriptions -->
         <module name="NoWhitespaceAfter"/> <!-- prevent white space after tokens -->
         <module name="NoWhitespaceAfter"> <!-- prevent white space and line breaks after . separator-->
