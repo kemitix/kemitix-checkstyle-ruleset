@@ -187,7 +187,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [MethodLength](#methodlength) - checkstyle - enabled
 * [MethodName](#methodname) - checkstyle - enabled
 * [MethodParamPad](#methodparampad) - checkstyle - enabled
-* [MethodTypeParameterName](#methodtypeparametername) - checkstyle - disabled
+* [MethodTypeParameterName](#methodtypeparametername) - checkstyle - enabled
 * [MissingCtor](#missingctor) - checkstyle - disabled
 * [MissingDeprecated](#missingdeprecated) - checkstyle - enabled
 * [MissingOverride](#missingoverride) - checkstyle - disabled
@@ -1394,6 +1394,22 @@ void getInstance ();
 
 void getValue
     ();
+````
+
+#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
+
+Restricts method generics parameters to be a single uppercase letter.
+
+Valid:
+````
+List<A> getItems() {}
+````
+
+Invalid:
+````
+List<a> getItems() {}
+List<BB> getItems() {}
+List<C3> getItems() {}
 ````
 
 #### [MissingDeprecated](http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated)
@@ -2689,10 +2705,6 @@ Couldn't get my IDE's (IntelliJ) code style to match.
 #### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
 
 Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
-
-#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
-
-> TODO: enable
 
 #### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
 

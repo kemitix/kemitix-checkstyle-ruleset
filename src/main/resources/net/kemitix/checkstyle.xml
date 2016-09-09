@@ -141,6 +141,7 @@
         </module>
         <module name="MethodName"/> <!-- method names conform to ^[a-z][a-zA-Z0-9]*$ -->
         <module name="MethodParamPad"/> <!-- verifies padding around method parameters -->
+        <module name="MethodTypeParameterName"/> <!-- restrict method type parameters (i.e. generics) to ^[A-Z]$ -->
         <module name="MissingDeprecated"/> <!-- @Deprecated annotation must be accompanied by javadoc @deprecated -->
         <module name="MissingSwitchDefault"/> <!-- switch must have a default -->
         <module name="ModifiedControlVariable"> <!-- prevent for loop control being modified inside loop -->
