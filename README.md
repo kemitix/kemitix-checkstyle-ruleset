@@ -240,7 +240,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [RegexpSingleline](#regexpsingleline) - checkstyle - disabled
 * [RegexpSinglelineJava](#regexpsinglelinejava) - checkstyle - disabled
 * [RequiredParameterForAnnotation](#requiredparameterforannotation) - sevntu - disabled
-* [RequireThis](#requirethis) - checkstyle - disabled
+* [RequireThis](#requirethis) - checkstyle - enabled
 * [ReturnBooleanFromTernary](#returnbooleanfromternary) - sevntu - enabled
 * [ReturnCount](#returncount) - checkstyle - enabled
 * [ReturnCountExtended](#returncountextended) - sevntu - disabled
@@ -1840,6 +1840,10 @@ Checks for redundant modifiers. Checks for:
 * Class constructors.
 * Nested enum definitions that are declared as static.
 
+#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
+
+Checks that references to instance fields where a parameter name overlaps are qualified by `this.`.
+
 #### [ReturnCount](http://checkstyle.sourceforge.net/config_coding.html#ReturnCount)
 
 Restricts methods to have at most 2 `return` statements in non-void methods, and at most 1 in void methods.
@@ -2765,12 +2769,6 @@ Generic rule; doesn't embody a 'quality' check.
 #### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#c)
 
 Generic rule; doesn't embody a 'quality' check.
-
-#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
-
-> TODO: enable
-
-> TODO: checkMethods = false
 
 #### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
 
