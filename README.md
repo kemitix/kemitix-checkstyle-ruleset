@@ -2708,7 +2708,7 @@ Member variables should usually be named such that it is clear what they are. Co
 
 #### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
 
-> TODO: enable
+Would not see constructors created using Lombok's `@NoArgsConstructor`.
 
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
 
