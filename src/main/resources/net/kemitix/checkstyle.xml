@@ -178,6 +178,7 @@
         <module name="OuterTypeFilename"/> <!-- class name and filename must match -->
         <module name="OverloadMethodsDeclarationOrder"/> <!-- group overloaded methods together -->
 
+        <module name="PackageAnnotation"/> <!-- package level annotations appear in package-info.java -->
         <module name="PackageDeclaration"/> <!-- class must have package and it must match the directory -->
         <module name="PackageName"> <!-- validate package name format -->
             <property name="format" value="^[a-z]+(\.[a-z]+)*$"/> <!-- only lowercase letters, no numbers of underscores -->

@@ -222,7 +222,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [OuterTypeNumber](#outertypenumber) - checkstyle - disabled
 * [OverloadMethodsDeclarationOrder](#overloadmethodsdeclarationorder) - checkstyle - enabled
 * [OverridableMethodInConstructor](#overridablemethodinconstructor) - sevntu - enabled
-* [PackageAnnotation](#packageannotation) - checkstyle - disabled
+* [PackageAnnotation](#packageannotation) - checkstyle - enabled
 * [PackageDeclaration](#packagedeclaration) - checkstyle - enabled
 * [PackageName](#packagename) - checkstyle - enabled
 * [ParameterAssignment](#parameterassignment) - checkstyle - disabled
@@ -1789,6 +1789,10 @@ Checks that the source filename matches the name of the top-level class.  e.g. `
 
 Checks that overload methods are grouped together in the source file.
 
+#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
+
+Checks that package level annotations are in the `package-info.java` file.
+
 #### [PackageDeclaration](http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration)
 
 Checks that the class has a `package` definition.
@@ -2727,10 +2731,6 @@ The javadoc compiler automatically inherits the javadoc from the overridden meth
 #### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
 
 Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
-
-#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
-
-> TODO: enable
 
 #### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
 
