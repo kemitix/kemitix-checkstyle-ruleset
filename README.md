@@ -208,7 +208,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NewlineAtEndOfFile](#newlineatendoffile) - checkstyle - enabled
 * [NoClone](#noclone) - checkstyle - enabled
 * [NoFinalizer](#nofinalizer) - checkstyle - enabled
-* [NoLineWrap](#nolinewrap) - checkstyle - disabled
+* [NoLineWrap](#nolinewrap) - checkstyle - enabled
 * [NoMainMethodInAbstractClass](#nomainmethodinabstractclass) - sevntu - enabled
 * [NonEmptyAtclauseDescription](#nonemptyatclausedescription) - checkstyle - enabled
 * [NoWhitespaceAfter](#nowhitespaceafter) - checkstyle - enabled
@@ -1664,6 +1664,10 @@ Checks that the `finalize()` method from `Object` has not been overridden.
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 7: Avoid finalizers.
 
+#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
+
+Prevents wrapping of `package` and `import` statements.
+
 #### [NonEmptyAtclauseDescription](http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription)
 
 Checks that the Javadoc clauses `@param`, `@return`, `@throws` and `@deprecated` all have descriptions.
@@ -2719,10 +2723,6 @@ Would not see constructors created using Lombok's `@NoArgsConstructor`.
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
 
 The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
-
-#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
-
-> TODO: enable
 
 #### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
 
