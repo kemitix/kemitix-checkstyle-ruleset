@@ -2734,7 +2734,7 @@ Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 
 #### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
 
-> TODO: enable
+[FinalParameters](#finalparameters) already protects against assigning values to parameters.
 
 #### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
 
