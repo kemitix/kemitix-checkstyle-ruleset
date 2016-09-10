@@ -24,6 +24,7 @@
         <property name="message" value="Line has trailing spaces."/>
     </module>
     <module name="SuppressWarningsFilter"/> <!-- enable @SuppressWarnings for checkstyle rules -->
+    <module name="Translation"/> <!-- Checks that messages files have the same keys -->
 
     <module name="TreeWalker">
 
@@ -220,7 +221,6 @@
             <property name="format" value="^(\s*\*).*((TODO)|(FIXME))"/>
         </module>
         <module name="TrailingComment"/> <!-- no end-line comments (the irony!) -->
-        <module name="Translation"/> <!-- Checks that messages files have the same keys -->
         <module name="TypecastParenPad"/> <!-- no spaces in type casting parentheses -->
         <module name="TypeName"/> <!-- validates class, interface, enum and annotation names -->
 
