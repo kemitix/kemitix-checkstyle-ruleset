@@ -270,7 +270,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [TypeName](#typename) - checkstyle - enabled - insuppressible
 * [UncommentedMain](#uncommentedmain) - checkstyle - enabled
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
-* [UniqueProperties](#uniqueproperties) - checkstyle - disabled
+* [UniqueProperties](#uniqueproperties) - checkstyle - enabled
 * [UnnecessaryParentheses](#unnecessaryparentheses) - checkstyle - enabled
 * [UnnecessaryParenthesesExtended](#unnecessaryparenthesesextended) - sevntu - disabled
 * [UnusedImports](#unusedimports) - checkstyle - enabled
@@ -2142,6 +2142,10 @@ Identifiers must match `^[A-Z][a-zA-Z0-9]*$`.
 
 Checks for `public static void main()` methods that may have been left over from testing. Allowed in classes whose names end in `Main` or `Application`.
 
+#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
+
+Checks `*.properties` files for duplicate property keys.
+
 #### [UnnecessaryParentheses](http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses)
 
 Checks for the use of unnecessary parentheses.
@@ -2825,10 +2829,6 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
 [NoFinalizer](#nofinalizer) prevents use of `finalize()`.
-
-#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
-
-> TODO: enable
 
 #### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
 
