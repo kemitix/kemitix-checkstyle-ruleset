@@ -268,7 +268,6 @@
         <module name="UselessSingleCatchCheck"/> <!-- prevent single catch blocks that just rethrow the original exception -->
         <module name="UselessSuperCtorCallCheck"/> <!-- detects calls to super() when not needed -->
         <!-- sevntu/design -->
-        <module name="AvoidConditionInversionCheck"/> <!-- catch condition inversion which could be more readable -->
         <!--<module name="ChildBlockLengthCheck"/> &lt;!&ndash; broken in sevntu 1.20 - limit child blocks to 80% of parent block &ndash;&gt;-->
         <module name="ConstructorWithoutParamsCheck"/> <!-- Exception classes must take parameters -->
         <module name="ForbidWildcardAsReturnTypeCheck"/> <!-- forbid <? extends|super Object> generics as return types on public, protected and package methods -->

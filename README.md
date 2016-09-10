@@ -2842,8 +2842,6 @@ As the sevntu check are considered experimental not all those that are not enabl
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
 
-> TODO: disable
-
 #### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
 
 > TODO: enable
