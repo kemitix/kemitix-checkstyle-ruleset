@@ -265,7 +265,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ThrowsCount](#throwscount) - checkstyle - enabled
 * [TodoComment](#todocomment) - checkstyle - enabled
 * [TrailingComment](#trailingcomment) - checkstyle - enabled
-* [Translation](#translation) - checkstyle - disabled
+* [Translation](#translation) - checkstyle - enabled
 * [TypecastParenPad](#typecastparenpad) - checkstyle - enabled
 * [TypeName](#typename) - checkstyle - enabled - insuppressible
 * [UncommentedMain](#uncommentedmain) - checkstyle - disabled
@@ -2110,6 +2110,10 @@ int[] a = new int[2](
 );
 ````
 
+#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
+
+Checks that all `messages*.properties` files all have the same set of keys.
+
 #### [TypecastParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad)
 
 Checks that there are no spaces within the typecasting parentheses.
@@ -2817,10 +2821,6 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
 [NoFinalizer](#nofinalizer) prevents use of `finalize()`.
-
-#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
-
-> TODO: enable
 
 #### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
 
