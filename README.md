@@ -108,9 +108,9 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ClassTypeParameterName](#classtypeparametername) - checkstyle - enabled
 * [CommentsIndentation](#commentsindentation) - checkstyle - enabled
 * [ConfusingCondition](#confusingcondition) - sevntu - enabled
-* [ConstantName](#constantname) - checkstyle - enabled
+* [ConstantName](#constantname) - checkstyle - enabled - insuppressible
 * [ConstructorWithoutParams](#constructorwithoutparams) - sevntu - enabled
-* [CovariantEquals](#covariantequals) - checkstyle - enabled
+* [CovariantEquals](#covariantequals) - checkstyle - enabled - insuppressible
 * [CustomDeclarationOrder](#customdeclarationorder) - sevntu - disabled
 * [CyclomaticComplexity](#cyclomaticcomplexity) - checkstyle - enabled
 * [DeclarationOrder](#declarationorder) - checkstyle - enabled
@@ -127,7 +127,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [EmptyStatement](#emptystatement) - checkstyle - enabled
 * [EnumValueName](#enumvaluename) - sevntu - enabled
 * [EqualsAvoidNull](#equalsavoidnull) - checkstyle - enabled
-* [EqualsHashCode](#equalshashcode) - checkstyle - enabled
+* [EqualsHashCode](#equalshashcode) - checkstyle - enabled - insuppressible
 * [ExecutableStatementCount](#executablestatementcount) - checkstyle - enabled
 * [ExplicitInitialization](#explicitinitialization) - checkstyle - enabled
 * [FallThrough](#fallthrough) - checkstyle - enabled
@@ -206,7 +206,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NestedSwitch](#nestedswitch) - sevntu - enabled
 * [NestedTryDepth](#nestedtrydepth) - checkstyle - enabled
 * [NewlineAtEndOfFile](#newlineatendoffile) - checkstyle - enabled
-* [NoClone](#noclone) - checkstyle - enabled
+* [NoClone](#noclone) - checkstyle - enabled - insuppressible
 * [NoFinalizer](#nofinalizer) - checkstyle - enabled
 * [NoLineWrap](#nolinewrap) - checkstyle - enabled
 * [NoMainMethodInAbstractClass](#nomainmethodinabstractclass) - sevntu - enabled
@@ -216,14 +216,14 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NPathComplexity](#npathcomplexity) - checkstyle - enabled
 * [NumericLiteralNeedsUnderscore](#numericliteralneedsunderscore) - sevntu - enabled
 * [OneStatementPerLine](#onestatementperline) - checkstyle - enabled
-* [OneTopLevelClass](#onetoplevelclass) - checkstyle - enabled
+* [OneTopLevelClass](#onetoplevelclass) - checkstyle - enabled - insuppressible
 * [OperatorWrap](#operatorwrap) - checkstyle - enabled
-* [OuterTypeFilename](#outertypefilename) - checkstyle - enabled
+* [OuterTypeFilename](#outertypefilename) - checkstyle - enabled - insuppressible
 * [OuterTypeNumber](#outertypenumber) - checkstyle - disabled
 * [OverloadMethodsDeclarationOrder](#overloadmethodsdeclarationorder) - checkstyle - enabled
 * [OverridableMethodInConstructor](#overridablemethodinconstructor) - sevntu - enabled
 * [PackageAnnotation](#packageannotation) - checkstyle - enabled
-* [PackageDeclaration](#packagedeclaration) - checkstyle - enabled
+* [PackageDeclaration](#packagedeclaration) - checkstyle - enabled - insuppressible
 * [PackageName](#packagename) - checkstyle - enabled
 * [ParameterAssignment](#parameterassignment) - checkstyle - disabled
 * [ParameterName](#parametername) - checkstyle - enabled
@@ -259,15 +259,15 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [SummaryJavadoc](#summaryjavadoc) - checkstyle - disabled
 * [SuperClone](#superclone) - checkstyle - disabled
 * [SuperFinalize](#superfinalize) - checkstyle - disabled
+* [SuppressWarnings](#suppresswarnings) - checkstyle - enabled
 * [SuppressWarningsHolder](#suppresswarningsholder) - checkstyle - enabled
-* [SuppressWarnings](#suppresswarnings) - checkstyle - disabled
 * [TernaryPerExpressionCount](#ternaryperexpressioncount) - sevntu - enabled
 * [ThrowsCount](#throwscount) - checkstyle - enabled
 * [TodoComment](#todocomment) - checkstyle - enabled
 * [TrailingComment](#trailingcomment) - checkstyle - enabled
 * [Translation](#translation) - checkstyle - disabled
 * [TypecastParenPad](#typecastparenpad) - checkstyle - enabled
-* [TypeName](#typename) - checkstyle - enabled
+* [TypeName](#typename) - checkstyle - enabled - insuppressible
 * [UncommentedMain](#uncommentedmain) - checkstyle - disabled
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
 * [UniqueProperties](#uniqueproperties) - checkstyle - disabled
@@ -278,7 +278,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [UselessSingleCatch](#uselesssinglecatch) - sevntu - enabled
 * [UselessSuperCtorCall](#uselesssuperctorcall) - sevntu - enabled
 * [VariableDeclarationUsageDistance](#variabledeclarationusagedistance) - checkstyle - enabled
-* [VisibilityModifier](#visibilitymodifier) - checkstyle - enabled
+* [VisibilityModifier](#visibilitymodifier) - checkstyle - enabled - insuppressible
 * [WhitespaceAfter](#whitespaceafter) - checkstyle - enabled
 * [WhitespaceAround](#whitespacearound) - checkstyle - enabled
 * [WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer) - sevntu - disabled
@@ -618,6 +618,8 @@ public void foo11() {
 
 #### [ConstantName](http://checkstyle.sourceforge.net/config_naming.html#ConstantName)
 
+> This check cannot be suppressed.
+
 Requires constants (static, final fields) to be all uppercase. Numbers and numbers are permitted but not as the first character.
 
 Valid:
@@ -632,6 +634,8 @@ private static final int 12_CARD = 12;
 ````
 
 #### [CovariantEquals](http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals)
+
+> This check cannot be suppressed.
 
 Checks that classes which define a covariant equals() method also override method equals(Object).
 
@@ -935,6 +939,8 @@ nullString.equals("value");
 ````
 
 #### [EqualsHashCode](http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode)
+
+> This check cannot be suppressed.
 
 Checks that when a class overrides the `equals()` method, that it also overrides the `hashCode()` method.
 
@@ -1654,6 +1660,8 @@ Checks that files end with a line-feed character, (i.e. unix-style line ending).
 
 #### [NoClone](http://checkstyle.sourceforge.net/config_coding.html#NoClone)
 
+> This check cannot be suppressed.
+
 Checks that the `clone()` method from `Object` has not been overridden.  Use a copy constructor, or better yet, a static factory method.
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 11: Override clone judiciously.
@@ -1763,6 +1771,8 @@ doSomething(); doSomethingElse();
 
 #### [OneTopLevelClass](http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass)
 
+> This check cannot be suppressed.
+
 Checks that each source file contains only one top-level class, interface or enum.
 
 #### [OperatorWrap](http://checkstyle.sourceforge.net/config_whitespace.html#OperatorWrap)
@@ -1783,6 +1793,8 @@ int answer = getTheAnswerToLife() + getTheAnswerToTheUniverse() +
 
 #### [OuterTypeFilename](http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename)
 
+> This check cannot be suppressed.
+
 Checks that the source filename matches the name of the top-level class.  e.g. `class Foo {}` is in file `Foo.java`.
 
 #### [OverloadMethodsDeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#OverloadMethodsDeclarationOrder)
@@ -1794,6 +1806,8 @@ Checks that overload methods are grouped together in the source file.
 Checks that package level annotations are in the `package-info.java` file.
 
 #### [PackageDeclaration](http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration)
+
+> This check cannot be suppressed.
 
 Checks that the class has a `package` definition.
 
@@ -2027,6 +2041,20 @@ Invalid:
 if (x == "something") {}
 ````
 
+#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
+
+Prevents the use of `@SuppressWarnings` for the following checks:
+
+* [ConstantName](#constantname)
+* [CovariantEquals](#covariantequals)
+* [EqualsHashCode](#equalshashcode)
+* [NoClone](#noclone)
+* [OneTopLevelClass](#onetoplevelclass)
+* [OuterTypeFilename](#outertypefilename)
+* [PackageDeclaration](#packagedeclaration)
+* [TypeName](#typename)
+* [VisibilityModifier](#visibilitymodifier)
+
 #### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
 
 Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
@@ -2100,6 +2128,8 @@ String s = ( String ) list.get(2);
 
 #### [TypeName](http://checkstyle.sourceforge.net/config_naming.html#TypeName)
 
+> This check cannot be suppressed.
+
 Checks the format of `class`, `interface`, `enum` identifiers, including annotations.
 
 Identifiers must match `^[A-Z][a-zA-Z0-9]*$`.
@@ -2151,6 +2181,8 @@ Checks that a variable declaration and its first usage are not more than 3 lines
 See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance) for examples.
 
 #### [VisibilityModifier](http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier)
+
+> This check cannot be suppressed.
 
 Checks the visibility of class members to help enforce encapsulation. Only `static final` fields, immutable (see list below) fields or field with special annotation (see list below), may be public.
 
@@ -2785,12 +2817,6 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
 [NoFinalizer](#nofinalizer) prevents use of `finalize()`.
-
-#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
-
-> TODO: enable
-
-> TODO: format = ^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$
 
 #### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
 

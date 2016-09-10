@@ -209,6 +209,10 @@
         <module name="SingleSpaceSeparator"/> <!-- Checks that non-whitespace characters are separated by only 1 character -->
         <module name="StaticVariableName"/> <!-- Static non-finals should be formatted like normal identifiers -->
         <module name="StringLiteralEquality"/> <!-- use .equals(...) when comparing strings for equality -->
+        <module name="SuppressWarnings">
+            <property name="format"
+                      value="^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$"/>
+        </module>
         <module name="SuppressWarningsHolder"/> <!-- holds all @SuppressWarnings found for SuppressWarningsFilter -->
 
         <module name="ThrowsCount"/> <!-- Restricts throws statements to 4 -->
