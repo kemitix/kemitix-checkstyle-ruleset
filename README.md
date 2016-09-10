@@ -2784,7 +2784,7 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
-> TODO: enable
+[NoFinalizer](#nofinalizer) prevents use of `finalize()`.
 
 #### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
 
