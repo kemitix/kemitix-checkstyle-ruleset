@@ -25,6 +25,7 @@
     </module>
     <module name="SuppressWarningsFilter"/> <!-- enable @SuppressWarnings for checkstyle rules -->
     <module name="Translation"/> <!-- Checks that messages files have the same keys -->
+    <module name="UniqueProperties"/> <!-- checks for duplicate keys in properties files -->
 
     <module name="TreeWalker">
 
@@ -228,7 +229,6 @@
             <!-- allowed in classes that end in Main or Application-->
             <property name="excludedClasses" value="(Main|Application)$"/>
         </module>
-        <module name="UniqueProperties"/> <!-- checks for duplicate keys in properties files -->
         <module name="UnnecessaryParentheses"/> <!-- unnecessary parentheses -->
         <module name="UnusedImports"/> <!-- checks for import that aren't used -->
         <module name="UpperEll"/> <!-- long constants have an 'L' suffix -->
