@@ -15,6 +15,10 @@
     </module>
     <module name="FileLength"/> <!-- files must be less than 2000 lines -->
     <module name="FileTabCharacter"/> <!-- tabs not allowed -->
+    <module name="Header"> <!-- All java source files start with the contents of LICENSE.txt -->
+        <property name="headerFile" value="LICENSE.txt"/>
+        <property name="fileExtensions" value="java"/>
+    </module>
     <module name="RegexpSingleline">
         <property name="format" value="\s+$"/>
         <property name="message" value="Line has trailing spaces."/>
@@ -86,10 +90,6 @@
 
         <module name="GenericWhitespace"/> <!-- generic tokens are spaced correctly -->
 
-        <module name="Header"> <!-- All java source files start with the contents of LICENSE.txt -->
-            <property name="headerFile" value="LICENSE.txt"/>
-            <property name="fileExtensions" value="java"/>
-        </module>
         <module name="HiddenField">
             <property name="ignoreConstructorParameter" value="true"/>
             <property name="ignoreSetter" value="true"/>
