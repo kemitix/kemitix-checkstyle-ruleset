@@ -268,7 +268,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [Translation](#translation) - checkstyle - enabled
 * [TypecastParenPad](#typecastparenpad) - checkstyle - enabled
 * [TypeName](#typename) - checkstyle - enabled - insuppressible
-* [UncommentedMain](#uncommentedmain) - checkstyle - disabled
+* [UncommentedMain](#uncommentedmain) - checkstyle - enabled
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
 * [UniqueProperties](#uniqueproperties) - checkstyle - disabled
 * [UnnecessaryParentheses](#unnecessaryparentheses) - checkstyle - enabled
@@ -2138,6 +2138,10 @@ Checks the format of `class`, `interface`, `enum` identifiers, including annotat
 
 Identifiers must match `^[A-Z][a-zA-Z0-9]*$`.
 
+#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
+
+Checks for `public static void main()` methods that may have been left over from testing. Allowed in classes whose names end in `Main` or `Application`.
+
 #### [UnnecessaryParentheses](http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses)
 
 Checks for the use of unnecessary parentheses.
@@ -2821,12 +2825,6 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
 [NoFinalizer](#nofinalizer) prevents use of `finalize()`.
-
-#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
-
-> TODO: enable
-
-> TODO: excludedClasses = "Main$"
 
 #### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
 
