@@ -30,30 +30,52 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 <properties>
     <checkstyle.version>7.0</checkstyle.version>
     <sevntu-checkstyle-maven-plugin.version>1.21.0</sevntu-checkstyle-maven-plugin.version>
-    <kemitix-checkstyle-ruleset.version>1.0.0</kemitix-checkstyle-ruleset.version>
+    <kemitix-checkstyle-ruleset.version>0.1.1</kemitix-checkstyle-ruleset.version>
 </properties>
+<pluginManagement>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <dependencies>
+                <dependency>
+                    <groupId>com.puppycrawl.tools</groupId>
+                    <artifactId>checkstyle</artifactId>
+                    <version>${checkstyle.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.github.sevntu.checkstyle</groupId>
+                    <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
+                    <version>${sevntu-checkstyle-maven-plugin.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>net.kemitix</groupId>
+                    <artifactId>kemitix-checkstyle-ruleset</artifactId>
+                    <version>${kemitix-checkstyle-ruleset.version}</version>
+                </dependency>
+                <configuration>
+                    <configLocation>net/kemitix/checkstyle.xml</configLocation>
+                </configuration>
+            </dependencies>
+        </plugin><!-- maven-checkstyle-plugin -->
+    </plugins>
+</pluginManagement>
 <plugins>
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <dependencies>
-            <dependency>
-                <groupId>com.puppycrawl.tools</groupId>
-                <artifactId>checkstyle</artifactId>
-                <version>${checkstyle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.sevntu.checkstyle</groupId>
-                <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                <version>${sevntu-checkstyle-maven-plugin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>net.kemitix</groupId>
-                <artifactId>kemitix-checkstyle-ruleset</artifactId>
-                <version>${kemitix-checkstyle-ruleset.version}</version>
-            </dependency>
-        </dependencies>
+        <executions>
+            <execution>
+                <id>validate</id>
+                <phase>validate</phase>
+                <goals>
+                    <goal>check</goal>
+                    <goal>checkstyle</goal>
+                </goals>
+            </execution>
+        </executions>
     </plugin><!-- maven-checkstyle-plugin -->
+</plugins>
 ````
 
 ## All Checks
@@ -71,7 +93,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses) - sevntu - disabled
 * [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters) - checkstyle - enabled
 * [AvoidHidingCauseException](#avoidhidingcauseexception) - sevntu - enabled
-* [AvoidInlineConditionals](#avoidinlineconditionals) - checkstyle - disabled
+* [AvoidInlineConditionals](#avoidinlineconditionals) - checkstyle - enabled
 * [AvoidModifiersForTypes](#avoidmodifiersfortypes) - sevntu - disabled
 * [AvoidNestedBlocks](#avoidnestedblocks) - checkstyle - enabled
 * [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean) - sevntu - enabled
@@ -86,9 +108,9 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ClassTypeParameterName](#classtypeparametername) - checkstyle - enabled
 * [CommentsIndentation](#commentsindentation) - checkstyle - enabled
 * [ConfusingCondition](#confusingcondition) - sevntu - enabled
-* [ConstantName](#constantname) - checkstyle - enabled
+* [ConstantName](#constantname) - checkstyle - enabled - insuppressible
 * [ConstructorWithoutParams](#constructorwithoutparams) - sevntu - enabled
-* [CovariantEquals](#covariantequals) - checkstyle - enabled
+* [CovariantEquals](#covariantequals) - checkstyle - enabled - insuppressible
 * [CustomDeclarationOrder](#customdeclarationorder) - sevntu - disabled
 * [CyclomaticComplexity](#cyclomaticcomplexity) - checkstyle - enabled
 * [DeclarationOrder](#declarationorder) - checkstyle - enabled
@@ -104,8 +126,8 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [EmptyPublicCtorInClass](#emptypublicctorinclass) - sevntu - disabled
 * [EmptyStatement](#emptystatement) - checkstyle - enabled
 * [EnumValueName](#enumvaluename) - sevntu - enabled
-* [EqualsAvoidNull](#equalsavoidnull) - checkstyle - disabled
-* [EqualsHashCode](#equalshashcode) - checkstyle - enabled
+* [EqualsAvoidNull](#equalsavoidnull) - checkstyle - enabled
+* [EqualsHashCode](#equalshashcode) - checkstyle - enabled - insuppressible
 * [ExecutableStatementCount](#executablestatementcount) - checkstyle - enabled
 * [ExplicitInitialization](#explicitinitialization) - checkstyle - enabled
 * [FallThrough](#fallthrough) - checkstyle - enabled
@@ -120,7 +142,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [ForbidCertainImports](#forbidcertainimports) - sevntu - disabled
 * [ForbidInstantiation](#forbidinstantiation) - sevntu - disabled
 * [ForbidReturnInFinallyBlock](#forbidreturninfinallyblock) - sevntu - enabled
-* [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - sevntu - enabled
+* [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - sevntu - disabled
 * [ForbidWildcardAsReturnType](#forbidwildcardasreturntype) - sevntu - enabled
 * [GenericWhitespace](#genericwhitespace) - checkstyle - enabled
 * [Header](#header) - checkstyle - disabled
@@ -132,7 +154,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [IllegalImport](#illegalimport) - checkstyle - enabled
 * [IllegalInstantiation](#illegalinstantiation) - checkstyle - disabled
 * [IllegalThrows](#illegalthrows) - checkstyle - enabled
-* [IllegalToken](#illegaltoken) - checkstyle - disabled
+* [IllegalToken](#illegaltoken) - checkstyle - enabled
 * [IllegalTokenText](#illegaltokentext) - checkstyle - disabled
 * [IllegalType](#illegaltype) - checkstyle - enabled
 * [ImportControl](#importcontrol) - checkstyle - disabled
@@ -142,7 +164,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [InnerClass](#innerclass) - sevntu - disabled
 * [InnerTypeLast](#innertypelast) - checkstyle - enabled
 * [InterfaceIsType](#interfaceistype) - checkstyle - enabled
-* [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - disabled
+* [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - enabled
 * [InterfaceTypeParameterName](#interfacetypeparametername-1) - sevntu - disabled
 * [JavadocMethod](#javadocmethod) - checkstyle - enabled
 * [JavadocPackage](#javadocpackage) - checkstyle - enabled
@@ -165,7 +187,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [MethodLength](#methodlength) - checkstyle - enabled
 * [MethodName](#methodname) - checkstyle - enabled
 * [MethodParamPad](#methodparampad) - checkstyle - enabled
-* [MethodTypeParameterName](#methodtypeparametername) - checkstyle - disabled
+* [MethodTypeParameterName](#methodtypeparametername) - checkstyle - enabled
 * [MissingCtor](#missingctor) - checkstyle - disabled
 * [MissingDeprecated](#missingdeprecated) - checkstyle - enabled
 * [MissingOverride](#missingoverride) - checkstyle - disabled
@@ -184,9 +206,9 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NestedSwitch](#nestedswitch) - sevntu - enabled
 * [NestedTryDepth](#nestedtrydepth) - checkstyle - enabled
 * [NewlineAtEndOfFile](#newlineatendoffile) - checkstyle - enabled
-* [NoClone](#noclone) - checkstyle - enabled
-* [NoFinalizer](#nofinalizer) - checkstyle - disabled
-* [NoLineWrap](#nolinewrap) - checkstyle - disabled
+* [NoClone](#noclone) - checkstyle - enabled - insuppressible
+* [NoFinalizer](#nofinalizer) - checkstyle - enabled
+* [NoLineWrap](#nolinewrap) - checkstyle - enabled
 * [NoMainMethodInAbstractClass](#nomainmethodinabstractclass) - sevntu - enabled
 * [NonEmptyAtclauseDescription](#nonemptyatclausedescription) - checkstyle - enabled
 * [NoWhitespaceAfter](#nowhitespaceafter) - checkstyle - enabled
@@ -194,21 +216,21 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [NPathComplexity](#npathcomplexity) - checkstyle - enabled
 * [NumericLiteralNeedsUnderscore](#numericliteralneedsunderscore) - sevntu - enabled
 * [OneStatementPerLine](#onestatementperline) - checkstyle - enabled
-* [OneTopLevelClass](#onetoplevelclass) - checkstyle - enabled
+* [OneTopLevelClass](#onetoplevelclass) - checkstyle - enabled - insuppressible
 * [OperatorWrap](#operatorwrap) - checkstyle - enabled
-* [OuterTypeFilename](#outertypefilename) - checkstyle - enabled
+* [OuterTypeFilename](#outertypefilename) - checkstyle - enabled - insuppressible
 * [OuterTypeNumber](#outertypenumber) - checkstyle - disabled
 * [OverloadMethodsDeclarationOrder](#overloadmethodsdeclarationorder) - checkstyle - enabled
 * [OverridableMethodInConstructor](#overridablemethodinconstructor) - sevntu - enabled
-* [PackageAnnotation](#packageannotation) - checkstyle - disabled
-* [PackageDeclaration](#packagedeclaration) - checkstyle - enabled
+* [PackageAnnotation](#packageannotation) - checkstyle - enabled
+* [PackageDeclaration](#packagedeclaration) - checkstyle - enabled - insuppressible
 * [PackageName](#packagename) - checkstyle - enabled
 * [ParameterAssignment](#parameterassignment) - checkstyle - disabled
 * [ParameterName](#parametername) - checkstyle - enabled
 * [ParameterNumber](#parameternumber) - checkstyle - enabled
 * [ParenPad](#parenpad) - checkstyle - enabled
 * [PublicReferenceToPrivateType](#publicreferencetoprivatetype) - sevntu - enabled
-* [RedundantImport](#redundantimport) - checkstyle - enabled
+* [RedundantImport](#redundantimport) - checkstyle - disabled
 * [RedundantModifier](#redundantmodifier) - checkstyle - enabled
 * [RedundantReturn](#redundantreturn) - sevntu - enabled
 * [Regexp](#regexp) - checkstyle - disabled
@@ -218,7 +240,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [RegexpSingleline](#regexpsingleline) - checkstyle - disabled
 * [RegexpSinglelineJava](#regexpsinglelinejava) - checkstyle - disabled
 * [RequiredParameterForAnnotation](#requiredparameterforannotation) - sevntu - disabled
-* [RequireThis](#requirethis) - checkstyle - disabled
+* [RequireThis](#requirethis) - checkstyle - enabled
 * [ReturnBooleanFromTernary](#returnbooleanfromternary) - sevntu - enabled
 * [ReturnCount](#returncount) - checkstyle - enabled
 * [ReturnCountExtended](#returncountextended) - sevntu - disabled
@@ -237,18 +259,18 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [SummaryJavadoc](#summaryjavadoc) - checkstyle - disabled
 * [SuperClone](#superclone) - checkstyle - disabled
 * [SuperFinalize](#superfinalize) - checkstyle - disabled
+* [SuppressWarnings](#suppresswarnings) - checkstyle - enabled
 * [SuppressWarningsHolder](#suppresswarningsholder) - checkstyle - enabled
-* [SuppressWarnings](#suppresswarnings) - checkstyle - disabled
 * [TernaryPerExpressionCount](#ternaryperexpressioncount) - sevntu - enabled
 * [ThrowsCount](#throwscount) - checkstyle - enabled
 * [TodoComment](#todocomment) - checkstyle - enabled
 * [TrailingComment](#trailingcomment) - checkstyle - enabled
-* [Translation](#translation) - checkstyle - disabled
+* [Translation](#translation) - checkstyle - enabled
 * [TypecastParenPad](#typecastparenpad) - checkstyle - enabled
-* [TypeName](#typename) - checkstyle - enabled
-* [UncommentedMain](#uncommentedmain) - checkstyle - disabled
+* [TypeName](#typename) - checkstyle - enabled - insuppressible
+* [UncommentedMain](#uncommentedmain) - checkstyle - enabled
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
-* [UniqueProperties](#uniqueproperties) - checkstyle - disabled
+* [UniqueProperties](#uniqueproperties) - checkstyle - enabled
 * [UnnecessaryParentheses](#unnecessaryparentheses) - checkstyle - enabled
 * [UnnecessaryParenthesesExtended](#unnecessaryparenthesesextended) - sevntu - disabled
 * [UnusedImports](#unusedimports) - checkstyle - enabled
@@ -256,7 +278,7 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
 * [UselessSingleCatch](#uselesssinglecatch) - sevntu - enabled
 * [UselessSuperCtorCall](#uselesssuperctorcall) - sevntu - enabled
 * [VariableDeclarationUsageDistance](#variabledeclarationusagedistance) - checkstyle - enabled
-* [VisibilityModifier](#visibilitymodifier) - checkstyle - enabled
+* [VisibilityModifier](#visibilitymodifier) - checkstyle - enabled - insuppressible
 * [WhitespaceAfter](#whitespaceafter) - checkstyle - enabled
 * [WhitespaceAround](#whitespacearound) - checkstyle - enabled
 * [WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer) - sevntu - disabled
@@ -272,9 +294,7 @@ Rules are listed in alphabetical order.
 
 #### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
 
-Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to final or static variables, or @Overridden methods.
-
-> TODO: enable for final and static variables.
+Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to @Overridden methods.
 
 Valid:
 ````
@@ -364,17 +384,17 @@ Javadoc `@` clauses must be in the order:
 ````
 /**
  *
+ * @param ...
  * @author ...
  * @version ...
- * @param ...
+ * @serial ...
  * @return ...
  * @throws ...
  * @exception ...
+ * @serialData ...
+ * @serialField ...
  * @see ...
  * @since ...
- * @serial ...
- * @serialField ...
- * @serialData ...
  * @deprecated ...
  */
 ````
@@ -393,6 +413,10 @@ Invalid:
 ````
 String unitAbbrev = "\u03bcs";
 ````
+
+#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
+
+Prevents use of the `?:` operators.
 
 #### [AvoidNestedBlocks](http://checkstyle.sourceforge.net/config_blocks.html#AvoidNestedBlocks)
 
@@ -594,6 +618,8 @@ public void foo11() {
 
 #### [ConstantName](http://checkstyle.sourceforge.net/config_naming.html#ConstantName)
 
+> This check cannot be suppressed.
+
 Requires constants (static, final fields) to be all uppercase. Numbers and numbers are permitted but not as the first character.
 
 Valid:
@@ -608,6 +634,8 @@ private static final int 12_CARD = 12;
 ````
 
 #### [CovariantEquals](http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals)
+
+> This check cannot be suppressed.
 
 Checks that classes which define a covariant equals() method also override method equals(Object).
 
@@ -894,7 +922,25 @@ Invalid:
 doSomething();;
 ````
 
+#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
+
+Checks that string literals are on the left side in an `equals()` comparison.
+
+Valid:
+````
+String nullString = null;
+"value".equals(nullString);
+````
+
+Invalid:
+````
+String nullString = null;
+nullString.equals("value");
+````
+
 #### [EqualsHashCode](http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode)
+
+> This check cannot be suppressed.
 
 Checks that when a class overrides the `equals()` method, that it also overrides the `hashCode()` method.
 
@@ -1027,6 +1073,10 @@ List<T> list = ImmutableList.Builder<T>::new;
 sort(list, Comparable::<String>compareTo);
 ````
 
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+Checks that all `*.java` source files begin with the contents of the `LICENSE.txt` file.
+
 #### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField)
 
 Checks that a local variable or parameter in a method doesn't have the same name as a field. Doesn't apply in constructors or setters.
@@ -1143,18 +1193,29 @@ Invalid:
 throw new RuntimeException("boom!");
 ````
 
+#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
+
+Checks that labels are not used.
+
 #### [IllegalType](http://checkstyle.sourceforge.net/config_coding.html#IllegalType)
 
-Prevents variables, parameters and method returns from being one of the following:
+Prevents use of implementation classes as variables, parameters or method returns. Use the interfaces instead.
 
-* java.util.HashSet
+Prevents variables, parameters and method returns from being any of the following:
+
+* java.util.ArrayDeque
+* java.util.ArrayList
+* java.util.EnumMap
+* java.util.EnumSet
 * java.util.HashMap
+* java.util.HashSet
+* java.util.IdentityHashMap
 * java.util.LinkedHashMap
 * java.util.LinkedHashSet
-* java.util.TreeSet
+* java.util.LinkedList
+* java.util.PriorityQueue
 * java.util.TreeMap
-
-> TODO: add more classes from Collections
+* java.util.TreeSet
 
 Valid:
 ````
@@ -1207,15 +1268,23 @@ interface Foo {
 }
 ````
 
+#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
+
+Checks that the type parameters for an interface are a single uppercase letter.
+
+Valid:
+````
+interface <T> Portable {}
+````
+
+Invalid:
+````
+interface <Type> Portable {}
+````
+
 #### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
 
-Checks that all public methods have a Javadoc block.
-
-> TODO: scope = private (reset to default) - will require lots of new javadoc blocks
-
-> TODO: validateThrows = true
-
-> TODO: allowMissingPropertyJavadoc = true
+Checks that all public, protected and package methods have a Javadoc block, that all `@throws` tags are used. Basic setters and getters do not require javadoc.
 
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 
@@ -1231,21 +1300,13 @@ Checks the formatting of the Javadoc blocks. See the official [Checkstyle docume
 
 #### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType)
 
-Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags.
-
-> TODO: authorFormat = "^.+ (\S+@[\S.]+)$" - name followed by email in brackets
+Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags. The `@author` tag must have a name and, in brackets, an email address.
 
 #### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
 
-Restricts the NCSS score for methods, classes and files to 50, 1500 and 2000 respectively. The NCSS score is a measure of the number of statements within a scope.
+Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
 
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
-
-> TODO: methodMaximum = 40 - reduce by 20%
-
-> TODO: classMaximum = 1200
-
-> TODO: fileMaximum = 1600
 
 #### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly)
 
@@ -1267,11 +1328,9 @@ class Bar
 
 #### [LineLength](http://checkstyle.sourceforge.net/config_sizes.html#LineLength)
 
-Limits the line length to 80 characters.
+Limits the line length to 120 characters.
 
 Doesn't check package or import lines.
-
-> TODO: ignorePattern = "^\s\\* .+" exclude javadoc blocks
 
 #### [LocalFinalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalFinalVariableName)
 
@@ -1316,8 +1375,6 @@ Restricts the number of methods in a type to 30.
 
 Restricts the number of lines in a method to 60. Include blank lines and single line comments. You should be able to see an entire method without needing to scroll.
 
-> TODO: max = 40
-
 #### [MethodName](http://checkstyle.sourceforge.net/config_naming.html#MethodName)
 
 Checks the format of method names.
@@ -1339,6 +1396,22 @@ void getInstance ();
 
 void getValue
     ();
+````
+
+#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
+
+Restricts method generics parameters to be a single uppercase letter.
+
+Valid:
+````
+List<A> getItems() {}
+````
+
+Invalid:
+````
+List<a> getItems() {}
+List<BB> getItems() {}
+List<C3> getItems() {}
 ````
 
 #### [MissingDeprecated](http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated)
@@ -1412,8 +1485,6 @@ for (int i = 0; i < 1; i++) {
     i++;
 }
 ````
-
-> TODO: skipEnhancesForLoopVariable = true
 
 #### [ModifierOrder](http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder)
 
@@ -1551,18 +1622,16 @@ if (isValid()) { // depth 0
 
 #### [NestedTryDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedTryDepth)
 
-Checks that `try` blocks are not nested more than 1 deep.
+Checks that `try` blocks are not nested.
 
 Valid:
 ````
 try {
     doSomething();
-    try {
-        doSomeOtherThing();
-    } catch (OtherExceptions oe) {
-        // handle it
-    }
+    doSomeOtherThing();
 } catch (SomeException se) {
+    // handle it
+} catch (OtherExceptions oe) {
     // handle it
 }
 ````
@@ -1581,17 +1650,27 @@ try {
 }
 ````
 
-> TODO: max = 0 - don't nest try blocks
-
 #### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
 
 Checks that files end with a line-feed character, (i.e. unix-style line ending).
 
 #### [NoClone](http://checkstyle.sourceforge.net/config_coding.html#NoClone)
 
+> This check cannot be suppressed.
+
 Checks that the `clone()` method from `Object` has not been overridden.  Use a copy constructor, or better yet, a static factory method.
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 11: Override clone judiciously.
+
+#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
+
+Checks that the `finalize()` method from `Object` has not been overridden.
+
+> See [Effective Java], 2nd Edition by Josh Bloch: Item 7: Avoid finalizers.
+
+#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
+
+Prevents wrapping of `package` and `import` statements.
 
 #### [NonEmptyAtclauseDescription](http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription)
 
@@ -1647,8 +1726,6 @@ int[ ] a;
 int d = a[ 2];
 ````
 
-> TODO: tokens = DOT & allowLineBreaks = false
-
 #### [NoWhitespaceBefore](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceBefore)
 
 Checks that there is no whitespace before the comma operator (','), statement terminator (';'), postfix increment ('++') or postfix decrement ('--').
@@ -1671,9 +1748,7 @@ i --;
 
 #### [NPathComplexity](http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity)
 
-Checks that the NPATH score (number of paths) through a method is no more than 200. This is similar to [Cyclomatic Complexity](#cyclomaticcomplexity).
-
-> TODO: max = 5 - same as cyclomatic complexity
+Checks that the NPATH score (number of paths) through a method is no more than 5. This is similar to [Cyclomatic Complexity](#cyclomaticcomplexity).
 
 #### [OneStatementPerLine](http://checkstyle.sourceforge.net/config_coding.html#OneStatementPerLine)
 
@@ -1691,6 +1766,8 @@ doSomething(); doSomethingElse();
 ````
 
 #### [OneTopLevelClass](http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass)
+
+> This check cannot be suppressed.
 
 Checks that each source file contains only one top-level class, interface or enum.
 
@@ -1712,23 +1789,29 @@ int answer = getTheAnswerToLife() + getTheAnswerToTheUniverse() +
 
 #### [OuterTypeFilename](http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename)
 
+> This check cannot be suppressed.
+
 Checks that the source filename matches the name of the top-level class.  e.g. `class Foo {}` is in file `Foo.java`.
 
 #### [OverloadMethodsDeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#OverloadMethodsDeclarationOrder)
 
 Checks that overload methods are grouped together in the source file.
 
+#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
+
+Checks that package level annotations are in the `package-info.java` file.
+
 #### [PackageDeclaration](http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration)
+
+> This check cannot be suppressed.
 
 Checks that the class has a `package` definition.
 
 #### [PackageName](http://checkstyle.sourceforge.net/config_naming.html#PackageName)
 
-Checks the format of package names.
+Checks the format of package names. Only lowercase letters, no initial numbers or any underscores.
 
-Identifiers must match `^[a-z]+(\.[a-zA-Z_][a-zA-Z0-9_]*)*$`.
-
-> TODO: format = `^[a-z]+(\.[a-z]+)*$` - only lowercase letters, no numbers or underscores
+Identifiers must match `^[a-z]+(\.[a-z][a-z0-9]+)*$`.
 
 #### [ParameterName](http://checkstyle.sourceforge.net/config_naming.html#ParameterName)
 
@@ -1738,9 +1821,7 @@ Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
 #### [ParameterNumber](http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber)
 
-Restricts the number of parameters in a method or constructor to 7.
-
-> TODO: ignoreOverriddenMethods = true
+Restricts the number of parameters in a method or constructor to 7. Overridden methods are not checked as there may be no access to change the super method.
 
 #### [ParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#ParenPad)
 
@@ -1759,12 +1840,6 @@ doSomethingElse( 5);
 doSomethingElse(5 );
 ````
 
-#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
-
-Checks for redundant `import`s. Checks for duplicates, imports from the `java.lang` package or from the current package.
-
-> TODO: remove - [UnusedImports](#unusedimports) performs all the same checks and more
-
 #### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
 
 Checks for redundant modifiers. Checks for:
@@ -1774,6 +1849,10 @@ Checks for redundant modifiers. Checks for:
 * Inner interface declarations that are declared as static.
 * Class constructors.
 * Nested enum definitions that are declared as static.
+
+#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
+
+Checks that references to instance fields where a parameter name overlaps are qualified by `this.`.
 
 #### [ReturnCount](http://checkstyle.sourceforge.net/config_coding.html#ReturnCount)
 
@@ -1958,6 +2037,20 @@ Invalid:
 if (x == "something") {}
 ````
 
+#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
+
+Prevents the use of `@SuppressWarnings` for the following checks:
+
+* [ConstantName](#constantname)
+* [CovariantEquals](#covariantequals)
+* [EqualsHashCode](#equalshashcode)
+* [NoClone](#noclone)
+* [OneTopLevelClass](#onetoplevelclass)
+* [OuterTypeFilename](#outertypefilename)
+* [PackageDeclaration](#packagedeclaration)
+* [TypeName](#typename)
+* [VisibilityModifier](#visibilitymodifier)
+
 #### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
 
 Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
@@ -1984,8 +2077,6 @@ void doSomething() throws IllegalStateException,
 #### [TodoComment](http://checkstyle.sourceforge.net/config_misc.html#TodoComment)
 
 Checks for remaining `TODO` and `FIXME` comments left in code. Their presence indicates that the program isn't finished yet.
-
-> TODO: format = "(//\*).*((TODO)|(FIXME))" - only where in comments
 
 #### [TrailingComment](http://checkstyle.sourceforge.net/config_misc.html#TrailingComment)
 
@@ -2015,6 +2106,10 @@ int[] a = new int[2](
 );
 ````
 
+#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
+
+Checks that all `messages*.properties` files all have the same set of keys.
+
 #### [TypecastParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad)
 
 Checks that there are no spaces within the typecasting parentheses.
@@ -2033,9 +2128,19 @@ String s = ( String ) list.get(2);
 
 #### [TypeName](http://checkstyle.sourceforge.net/config_naming.html#TypeName)
 
+> This check cannot be suppressed.
+
 Checks the format of `class`, `interface`, `enum` identifiers, including annotations.
 
 Identifiers must match `^[A-Z][a-zA-Z0-9]*$`.
+
+#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
+
+Checks for `public static void main()` methods that may have been left over from testing. Allowed in classes whose names end in `Main` or `Application`.
+
+#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
+
+Checks `*.properties` files for duplicate property keys.
 
 #### [UnnecessaryParentheses](http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses)
 
@@ -2084,6 +2189,8 @@ Checks that a variable declaration and its first usage are not more than 3 lines
 See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance) for examples.
 
 #### [VisibilityModifier](http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier)
+
+> This check cannot be suppressed.
 
 Checks the visibility of class members to help enforce encapsulation. Only `static final` fields, immutable (see list below) fields or field with special annotation (see list below), may be public.
 
@@ -2273,7 +2380,7 @@ Map<Long, String> idTable = new HashMap<Long, String>();
 
 Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
 
-> TODO: loggingMethodNames: add 'log'
+Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 
@@ -2313,7 +2420,7 @@ enum InvalidClassLike {
 
     private String name;
 
-    ValidClassLike(String name) {
+    InvalidClassLike(String name) {
         this.name = name;
     }
 }
@@ -2351,10 +2458,6 @@ try {
     return true; // invalid
 }
 ````
-
-#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
-
-TODO: remove - [IllegalThrows](#illegalthrows) performs a similar check.
 
 #### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
 
@@ -2633,33 +2736,15 @@ These checks are not enabled. Notes are included for each explaining why.
 
 Couldn't get my IDE's (IntelliJ) code style to match.
 
-#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
-
-> TODO: enable
-
-#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
-
-> TODO: enable
-
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
-> TODO: enable
+Doesn't recognise Lombok's `val` as being `final`.
 
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
-
-> TODO: enable
-
-> TODO: headerFile = LICENSE.txt
-
-> TODO: fileExtensions = java
+Checks that local variables are `final` if they are never modified after declaration.
 
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 
 Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
-
-#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
-
-> TODO: enable
 
 #### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
 
@@ -2677,10 +2762,6 @@ Generic rule; doesn't embody a 'quality' check.
 
 Couldn't get my IDE's (IntelliJ) code style to match.
 
-#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
-
-> TODO: enable
-
 #### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
@@ -2689,37 +2770,27 @@ Couldn't get my IDE's (IntelliJ) code style to match.
 
 Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
 
-#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
-
-> TODO: enable
-
 #### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
 
-> TODO: enable
+Would not see constructors created using Lombok's `@NoArgsConstructor`.
 
 #### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
 
 The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
 
-#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
-
-> TODO: enable
-
-#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
-
-> TODO: enable
-
 #### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
 
 Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 
-#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
-
-> TODO: enable
-
 #### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
 
-> TODO: enable
+[FinalParameters](#finalparameters) already protects against assigning values to parameters.
+
+#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
+
+[UnusedImports](#unusedimports) performs all the same checks and more.
+
+Checks for redundant `import`s. Checks for duplicates, imports from the `java.lang` package or from the current package.
 
 #### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
 
@@ -2745,12 +2816,6 @@ Generic rule; doesn't embody a 'quality' check.
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
-
-> TODO: enable
-
-> TODO: checkMethods = false
-
 #### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
 
 I don't use single line javadoc blocks.
@@ -2765,27 +2830,7 @@ Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check
 
 #### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
 
-> TODO: enable
-
-#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
-
-> TODO: enable
-
-> TODO: format = ^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$
-
-#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
-
-> TODO: enable
-
-#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
-
-> TODO: enable
-
-> TODO: excludedClasses = "Main$"
-
-#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
-
-> TODO: enable
+[NoFinalizer](#nofinalizer) prevents use of `finalize()`.
 
 #### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
 
@@ -2798,8 +2843,6 @@ As the sevntu check are considered experimental not all those that are not enabl
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
-
-> TODO: disable
 
 #### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
 
@@ -2840,6 +2883,10 @@ Generic rule; doesn't embody a 'quality' check.
 #### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
+
+#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
+
+[IllegalThrows](#illegalthrows) performs a similar check.
 
 #### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
 

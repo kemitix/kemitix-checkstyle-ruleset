@@ -5,3 +5,24 @@ CHANGELOG
 ------
 
 * Initial Release
+
+1.0.0
+------
+
+* LineLength: allow lines up to 120 characters
+* AtclauseOrder: use order forced by IntelliJ
+* JavadocMethod: now required on protected and package methods
+* JavadocType: require @author tag in name (email) format
+* JavaNCSS: restrict limits another 20%
+* MethodLength: reduced to max 40 lines
+* ModifiedControlVariable: don't apply to enhanced for loops
+* NestedTryDepth: prevent any nesting of try blocks
+* NoWhiteSpaceAfter: prevent dot separator (.) from being the last character on line
+* NPathComplexity: reduce to 5 to match CyclomaticComplexity
+* PackageName: restrict to lowercase letters and numbers
+* ParameterNumber: don't apply to @Overridden methods
+* EitherLogOrThrow: support java.util.logging.Logger
+* TodoComment: only match against comments
+* IllegalType: recognise more classes from Collections
+* Remove checks: RedundantImport, ForbidThrowAnonymousExceptions, AvoidConditionInversionCheck and FinalLocalVariable
+* Added checks: AvoidInlineConditionals, EqualsAvoidNull, FinalLocalVariable, Header, IllegalToken, InterfaceTypeParameterName, MethodTypeParameterName, NoFinalizer, NoLineWrap, PackageAnnotation, RequireThis, SuppressWarnings, Translation, UncommentedMain and UniqueProperties
