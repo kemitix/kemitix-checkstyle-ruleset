@@ -1809,9 +1809,9 @@ Checks that the class has a `package` definition.
 
 #### [PackageName](http://checkstyle.sourceforge.net/config_naming.html#PackageName)
 
-Checks the format of package names.
+Checks the format of package names. Only lowercase letters, no initial numbers or any underscores.
 
-Identifiers must match `^[a-z]+(\.[a-z]+)*$`.
+Identifiers must match `^[a-z]+(\.[a-z][a-z0-9]+)*$`.
 
 #### [ParameterName](http://checkstyle.sourceforge.net/config_naming.html#ParameterName)
 
