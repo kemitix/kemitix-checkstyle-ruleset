@@ -85,7 +85,6 @@
 
         <module name="FallThrough"/> <!-- checks that each switch case fall-through is commented as such -->
         <module name="FinalClass"/> <!-- class which has only private constructors is declared as final -->
-        <module name="FinalLocalVariable"/> <!-- unmodified local variables are final -->
         <module name="FinalParameters"/> <!-- parameters that never change must be declared final -->
 
         <module name="GenericWhitespace"/> <!-- generic tokens are spaced correctly -->
