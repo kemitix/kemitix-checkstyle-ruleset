@@ -30,8 +30,6 @@
     <module name="TreeWalker">
 
         <module name="AbbreviationAsWordInName"> <!-- enforce proper CamelCase -->
-            <property name="ignoreStatic" value="false"/>
-            <property name="ignoreFinal" value="false"/>
         </module>
         <module name="AbstractClassName"/> <!-- enforce Abstract.* in abstract class names -->
         <module name="AnnotationLocation"/> <!-- annotations should be on line by themselves -->
