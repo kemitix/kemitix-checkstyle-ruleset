@@ -15,24 +15,35 @@
     </module>
     <module name="FileLength"/> <!-- files must be less than 2000 lines -->
     <module name="FileTabCharacter"/> <!-- tabs not allowed -->
+    <module name="Header"> <!-- All java source files start with the contents of LICENSE.txt -->
+        <property name="headerFile" value="LICENSE.txt"/>
+        <property name="fileExtensions" value="java"/>
+    </module>
     <module name="RegexpSingleline">
         <property name="format" value="\s+$"/>
         <property name="message" value="Line has trailing spaces."/>
     </module>
     <module name="SuppressWarningsFilter"/> <!-- enable @SuppressWarnings for checkstyle rules -->
+    <module name="Translation"/> <!-- Checks that messages files have the same keys -->
+    <module name="UniqueProperties"/> <!-- checks for duplicate keys in properties files -->
 
     <module name="TreeWalker">
 
-        <module name="AbbreviationAsWordInName"/> <!-- enforce proper CamelCase -->
+        <module name="AbbreviationAsWordInName"> <!-- enforce proper CamelCase -->
+        </module>
         <module name="AbstractClassName"/> <!-- enforce Abstract.* in abstract class names -->
         <module name="AnnotationLocation"/> <!-- annotations should be on line by themselves -->
         <module name="AnnotationUseStyle"/> <!-- annotations should only use () and named attributes when needed -->
         <module name="AnonInnerLength"/> <!-- limits anonymous inner classes to 20 lines -->
         <module name="ArrayTypeStyle"/> <!-- enforce Java style arrays -->
-        <module name="AtclauseOrder"/> <!-- enforce standard order for javadoc elements -->
+        <module name="AtclauseOrder"> <!-- enforce standard order for javadoc elements - matches IntelliJ's order -->
+            <property name="tagOrder" value="@param, @author, @version, @serial, @return, @throws, @exception,
+            @serialData, @serialField, @see, @since, @deprecated"/>
+        </module>
         <module name="AvoidEscapedUnicodeCharacters"> <!-- prevent use of obscure escape codes -->
             <property name="allowEscapesForControlCharacters" value="true"/> <!-- unless non-printable controls -->
         </module>
+        <module name="AvoidInlineConditionals"/> <!-- detects ?: usage -->
         <module name="AvoidNestedBlocks"/> <!-- avoid unnecessary blocks {} -->
         <module name="AvoidStarImport"/> <!-- import package.* is not allowed -->
         <module name="AvoidStaticImport"> <!-- import static ... is not allowed -->
@@ -67,6 +78,7 @@
         <module name="EmptyForIteratorPad"/> <!-- empty for loop iterator muse have have no spaces -->
         <module name="EmptyLineSeparator"/> <!-- enforce blank lines after header, fields, constructors, methods, etc -->
         <module name="EmptyStatement"/> <!-- prevent standalone ";" semicolons -->
+        <module name="EqualsAvoidNull"/> <!-- prevents v = null; v.equals("..") -->
         <module name="EqualsHashCode"/> <!-- if equals() is overridden then so must hashCode() be -->
         <module name="ExecutableStatementCount"/> <!-- limit executable statements to 30 per method -->
         <module name="ExplicitInitialization"/> <!-- avoid initializing a field twice to the same value -->
@@ -86,21 +98,35 @@
         <module name="IllegalCatch"/> <!-- prevent generic catches (i.e. Exception, Throwable, RuntimeException) -->
         <module name="IllegalImport"/> <!-- prevent imports from the sun.* package -->
         <module name="IllegalThrows"/> <!-- prevent generic throws (i.e. Exception, Throwable, RuntimeException) -->
-        <module name="IllegalType"/> <!-- prevents variables, returns or parameters of non-interface Collections classes  -->
+        <module name="IllegalToken"/> <!-- prevents use of labels -->
+        <module name="IllegalType"> <!-- prevents variables, returns or parameters of non-interface Collections classes  -->
+            <property name="illegalClassNames" value="java.util.ArrayDeque, java.util.ArrayList, java.util.EnumMap, java.util.EnumSet, java.util.HashMap, java.util.HashSet, java.util.IdentityHashMap, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.PriorityQueue, java.util.TreeMap, java.util.TreeSet"/>
+        </module>
         <module name="InnerAssignment"/> <!-- prevent assignments in subexpressions (i.e. while((line = read()){}) -->
         <module name="InnerTypeLast"/> <!-- inner classes appear after methods and fields -->
         <module name="InterfaceIsType"/> <!-- interface must define method not just constants -->
+        <module name="InterfaceTypeParameterName"/> <!-- interface generic type is a single uppercase letter -->
 
         <module name="JavadocMethod"> <!-- methods should have javadoc block -->
-            <property name="scope" value="public"/> <!-- if they are public -->
+            <property name="scope" value="package"/> <!-- if they are public, protected or package -->
+            <property name="validateThrows" value="true"/> <!-- warn about unused @throws tags -->
+            <property name="allowMissingPropertyJavadoc" value="true"/> <!-- skip basic setters and getters -->
         </module>
         <module name="JavadocParagraph"/> <!-- javadoc paragraphs have opening <p> elements -->
         <module name="JavadocStyle"/> <!-- javadoc comments are well formed -->
-        <module name="JavadocType"/> <!-- javadoc is present for classes, interfaces and enums -->
-        <module name="JavaNCSS"/> <!-- Non-Commenting Source Statements complexity analysis -->
+        <module name="JavadocType"> <!-- javadoc is present for classes, interfaces and enums -->
+            <property name="authorFormat" value="^.+ (\S+@[\S.]+)$"/> <!-- name followed by email in brackets -->
+        </module>
+        <module name="JavaNCSS"> <!-- Non-Commenting Source Statements complexity analysis -->
+            <property name="methodMaximum" value="40"/> <!-- lines per methods -->
+            <property name="classMaximum" value="1200"/> <!-- lines per class -->
+            <property name="fileMaximum" value="1600"/> <!-- lines per file -->
+        </module>
 
         <module name="LeftCurly"/> <!-- placement of left curly braces ('{') for code blocks at end of line -->
-        <module name="LineLength"/> <!-- lines can't be longer the 80 -->
+        <module name="LineLength"> <!-- lines can't be longer the 120 -->
+            <property name="max" value="120"/>
+        </module>
         <module name="LocalFinalVariableName"/> <!-- validates identifiers for local, final variables, including catch parameters -->
         <module name="LocalVariableName"/> <!-- validates non-final identifiers -->
 
@@ -110,13 +136,16 @@
             <property name="maxTotal" value="30"/>
         </module>
         <module name="MethodLength"> <!-- restrict the number of lines in a method -->
-            <property name="max" value="60"/>
+            <property name="max" value="40"/>
         </module>
         <module name="MethodName"/> <!-- method names conform to ^[a-z][a-zA-Z0-9]*$ -->
         <module name="MethodParamPad"/> <!-- verifies padding around method parameters -->
+        <module name="MethodTypeParameterName"/> <!-- restrict method type parameters (i.e. generics) to ^[A-Z]$ -->
         <module name="MissingDeprecated"/> <!-- @Deprecated annotation must be accompanied by javadoc @deprecated -->
         <module name="MissingSwitchDefault"/> <!-- switch must have a default -->
-        <module name="ModifiedControlVariable"/> <!-- prevent for loop control being modified inside loop -->
+        <module name="ModifiedControlVariable"> <!-- prevent for loop control being modified inside loop -->
+            <property name="skipEnhancedForLoopVariable" value="true"/> <!-- doesn't apply to for(String line : lines) {} -->
+        </module>
         <module name="ModifierOrder"/> <!-- enforce order: public protected private abstract static final transient volatile synchronized native strictfp -->
         <module name="MultipleStringLiterals"/> <!-- merge string literals -->
         <module name="MultipleVariableDeclarations"/> <!-- declare variables separately -->
@@ -125,13 +154,21 @@
         <module name="NeedBraces"/> <!-- braces around code blocks -->
         <module name="NestedForDepth"/> <!-- prevent nested for loops -->
         <module name="NestedIfDepth"/> <!-- prevent nested if-else blocks -->
-        <module name="NestedTryDepth"/> <!-- prevent nested try blocks -->
+        <module name="NestedTryDepth"> <!-- prevent nested try blocks -->
+            <property name="max" value="0"/>
+        </module>
         <module name="NoClone"/> <!-- prevent overriding Object.clone() -->
+        <module name="NoFinalizer"/> <!-- prevent overriding Object.finalize() -->
+        <module name="NoLineWrap"/> <!-- prevent line wrapping package and import statements -->
         <module name="NonEmptyAtclauseDescription"/> <!-- javadoc tags have descriptions -->
         <module name="NoWhitespaceAfter"/> <!-- prevent white space after tokens -->
+        <module name="NoWhitespaceAfter"> <!-- prevent white space and line breaks after . separator-->
+            <property name="tokens" value="DOT"/>
+            <property name="allowLineBreaks" value="false"/>
+        </module>
         <module name="NoWhitespaceBefore"/> <!-- prevent white space before tokens -->
         <module name="NPathComplexity"> <!-- restrict method complexity -->
-            <property name="max" value="400"/>
+            <property name="max" value="5"/>
         </module>
 
         <module name="OneStatementPerLine"/> <!-- only one statement per line -->
@@ -140,14 +177,21 @@
         <module name="OuterTypeFilename"/> <!-- class name and filename must match -->
         <module name="OverloadMethodsDeclarationOrder"/> <!-- group overloaded methods together -->
 
+        <module name="PackageAnnotation"/> <!-- package level annotations appear in package-info.java -->
         <module name="PackageDeclaration"/> <!-- class must have package and it must match the directory -->
-        <module name="PackageName"/> <!-- validate package name format -->
+        <module name="PackageName"> <!-- validate package name format -->
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]+)*$"/> <!-- only lowercase letters, no initial numbers or underscores -->
+        </module>
         <module name="ParameterName"/> <!-- validate parameter name format -->
-        <module name="ParameterNumber"/> <!-- limits the number of parameters to 7 -->
+        <module name="ParameterNumber"> <!-- limits the number of parameters to 7 -->
+            <property name="ignoreOverriddenMethods" value="true"/> <!-- don't apply to @Overridden -->
+        </module>
         <module name="ParenPad"/> <!-- parentheses should have no padding spaces -->
 
-        <module name="RedundantImport"/> <!-- checks for redundant imports (i.e. in the same package) -->
         <module name="RedundantModifier"/> <!-- checks for redundant modifies (e.g. public methods in an interface) -->
+        <module name="RequireThis"> <!-- references to instance fields where parameter name overlaps use this. -->
+            <property name="checkMethods" value="false"/>
+        </module>
         <module name="ReturnCount"/> <!-- Restricts return statements to 2 per method (1 if return type is void) -->
         <module name="RightCurly"/> <!-- placement of right curly braces ('}') for code blocks at end of line -->
 
@@ -164,16 +208,24 @@
         <module name="SingleSpaceSeparator"/> <!-- Checks that non-whitespace characters are separated by only 1 character -->
         <module name="StaticVariableName"/> <!-- Static non-finals should be formatted like normal identifiers -->
         <module name="StringLiteralEquality"/> <!-- use .equals(...) when comparing strings for equality -->
+        <module name="SuppressWarnings">
+            <property name="format"
+                      value="^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$"/>
+        </module>
         <module name="SuppressWarningsHolder"/> <!-- holds all @SuppressWarnings found for SuppressWarningsFilter -->
 
         <module name="ThrowsCount"/> <!-- Restricts throws statements to 4 -->
         <module name="TodoComment"> <!-- no to do or fix me comments -->
-            <property name="format" value="(TODO)|(FIXME)"/>
+            <property name="format" value="^(\s*\*).*((TODO)|(FIXME))"/>
         </module>
         <module name="TrailingComment"/> <!-- no end-line comments (the irony!) -->
         <module name="TypecastParenPad"/> <!-- no spaces in type casting parentheses -->
         <module name="TypeName"/> <!-- validates class, interface, enum and annotation names -->
 
+        <module name="UncommentedMain"> <!-- checks for stray public static void main() methods -->
+            <!-- allowed in classes that end in Main or Application-->
+            <property name="excludedClasses" value="(Main|Application)$"/>
+        </module>
         <module name="UnnecessaryParentheses"/> <!-- unnecessary parentheses -->
         <module name="UnusedImports"/> <!-- checks for import that aren't used -->
         <module name="UpperEll"/> <!-- long constants have an 'L' suffix -->
@@ -192,9 +244,12 @@
         <module name="ConfusingConditionCheck"/> <!-- prevents negation within an "if" expression if "else" is present -->
         <module name="DiamondOperatorForVariableDefinitionCheck"/> <!-- use the diamond operator -->
         <module name="EitherLogOrThrowCheck"/> <!-- log or throw an exception - don't do both -->
+        <module name="EitherLogOrThrowCheck"> <!-- log or throw an exception - don't do both -->
+            <property name="loggerFullyQualifiedClassName" value="java.util.logging.Logger"/>
+            <property name="loggingMethodNames" value="log, severe, warning, info, config, fine, finer, finest, "/>
+        </module>
         <module name="ForbidCCommentsInMethodsCheck"/> <!-- prevent /* C-style */ comments inside methods -->
         <module name="ForbidReturnInFinallyBlockCheck"/> <!-- returns in finally override returns elsewhere in method -->
-        <module name="ForbidThrowAnonymousExceptionsCheck"/> <!-- only throw concrete exceptions -->
         <module name="LogicConditionNeedOptimizationCheck"/> <!-- prevent placement of local variables and fields after call to method in logical conditionals -->
         <module name="MapIterationInForEachLoopCheck"/> <!-- warns of unoptimised map iteration -->
         <module name="NameConventionForJunit4TestClassesCheck"/> <!-- checks names of test classes -->
@@ -210,7 +265,6 @@
         <module name="UselessSingleCatchCheck"/> <!-- prevent single catch blocks that just rethrow the original exception -->
         <module name="UselessSuperCtorCallCheck"/> <!-- detects calls to super() when not needed -->
         <!-- sevntu/design -->
-        <module name="AvoidConditionInversionCheck"/> <!-- catch condition inversion which could be more readable -->
         <!--<module name="ChildBlockLengthCheck"/> &lt;!&ndash; broken in sevntu 1.20 - limit child blocks to 80% of parent block &ndash;&gt;-->
         <module name="ConstructorWithoutParamsCheck"/> <!-- Exception classes must take parameters -->
         <module name="ForbidWildcardAsReturnTypeCheck"/> <!-- forbid <? extends|super Object> generics as return types on public, protected and package methods -->
