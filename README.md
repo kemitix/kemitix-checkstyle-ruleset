@@ -2384,7 +2384,14 @@ Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 
-Forces Enum values to be all upper-case when the enum has no methods or fields, otherwise the values must must be either all upper-case or must match the class naming format.
+Enums are considered to be of two distinct types: 'Class' or 'Value' enumerations. The distinction being that Class Enumerations have methods (other than `toString()`) defined.
+
+The values defined in the `enum` must much the appropriate pattern:
+
+* Class: `^[A-Z][a-zA-Z0-9]*$`
+* Value: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
+
+The difference being that Class enumerations can't contain underscores but can include lowercase letters (after the first initial capital). Value enumerations can include underscores, but not as the first or second character.
 
 Valid:
 ````
@@ -2410,7 +2417,7 @@ Invalid:
 ````
 enum InvalidConstants {
 
-    alpha, Beta;
+    alpha, Beta, GAMMA_RAY;
 }
 
 enum InvalidClassLike {
