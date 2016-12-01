@@ -2386,7 +2386,7 @@ Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 
 Enums are considered to be of two distinct types: 'Class' or 'Value' enumerations. The distinction being that Class Enumerations have methods (other than `toString()`) defined.
 
-The values defined in the `enum` must much the appropriate pattern:
+The values defined in the `enum` must match the appropriate pattern:
 
 * Class: `^[A-Z][a-zA-Z0-9]*$`
 * Value: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
