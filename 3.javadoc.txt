@@ -1,0 +1,14 @@
+- AtclauseOrder
+- FallThrough
+- JavadocMethod
+- JavadocPackage
+- JavadocParagraph
+- JavadocStyle
+- JavadocType
+- MissingDeprecated
+- NonEmptyAtclauseDescription
+- PackageDeclaration
+- TodoComment
+- Translation
+- UncommentedMain
+- UniqueProperties
