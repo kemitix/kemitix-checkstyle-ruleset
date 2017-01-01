@@ -1,0 +1,1148 @@
+output:
+    directory: src/main/resources/net/kemitix
+    level1: checkstyle-1-layout.xml
+    level2: checkstyle-2-naming.xml
+    level3: checkstyle-3-javadoc.xml
+    level4: checkstyle-4-tweaks.xml
+    level5: checkstyle-5-complexity.xml
+rules:
+    -
+        name: AbbreviationAsWordInName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName
+    -
+        name: AbstractClassName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName
+    -
+        name: AnnotationLocation
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#AnnotationLocation
+    -
+        name: AnnotationUseStyle
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#AnnotationUseStyle
+    -
+        name: AnonInnerLength
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#AnonInnerLength
+    -
+        name: ArrayTypeStyle
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle
+    -
+        name: AtclauseOrder
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#AtclauseOrder
+        properties:
+            tagOrder: @param, @author, @version, @serial, @return, @throws, @exception,             @serialData, @serialField, @see, @since, @deprecated
+    -
+        name: AvoidEscapedUnicodeCharacters
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#AvoidEscapedUnicodeCharacters
+        properties:
+            allowEscapesForControlCharacters: true
+    -
+        name: AvoidInlineConditionals
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals
+    -
+        name: AvoidNestedBlocks
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#AvoidNestedBlocks
+    -
+        name: AvoidStarImport
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport
+    -
+        name: AvoidStaticImport
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport
+        properties:
+            excludes: org.assertj.core.api.Assertions.assertThat,org.mockito.BDDMockito.given,org.mockito.Mockito.*,org.mockito.Matchers.*,org.mockito.Mockito.*
+    -
+        name: BooleanExpressionComplexity
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity
+        properties:
+            max: 2
+    -
+        name: CatchParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#CatchParameterName
+    -
+        name: ClassDataAbstractionCoupling
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#ClassDataAbstractionCoupling
+    -
+        name: ClassFanOutComplexity
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#ClassFanOutComplexity
+    -
+        name: ClassTypeParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#ClassTypeParameterName
+    -
+        name: CommentsIndentation
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#CommentsIndentation
+    -
+        name: ConstantName
+        parent: TREEWALKER
+        level: null
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#ConstantName
+    -
+        name: CovariantEquals
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals
+    -
+        name: CyclomaticComplexity
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#CyclomaticComplexity
+        properties:
+            max: 5
+    -
+        name: DeclarationOrder
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#DeclarationOrder
+    -
+        name: DefaultComesLast
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#DefaultComesLast
+    -
+        name: DesignForExtension
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#DesignForExtension
+    -
+        name: EmptyBlock
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#EmptyBlock
+    -
+        name: EmptyCatchBlock
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#EmptyCatchBlock
+        properties:
+            commentFormat: expected|ignore
+    -
+        name: EmptyForInitializerPad
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForInitializerPad
+    -
+        name: EmptyForIteratorPad
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForIteratorPad
+    -
+        name: EmptyLineSeparator
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator
+    -
+        name: EmptyStatement
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement
+    -
+        name: EqualsAvoidNull
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull
+    -
+        name: EqualsHashCode
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode
+    -
+        name: ExecutableStatementCount
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#ExecutableStatementCount
+    -
+        name: ExplicitInitialization
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization
+    -
+        name: FallThrough
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#FallThrough
+    -
+        name: FileLength
+        parent: CHECKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#FileLength
+    -
+        name: FileTabCharacter
+        parent: CHECKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter
+    -
+        name: FinalClass
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#FinalClass
+    -
+        name: FinalParameters
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#FinalParameters
+    -
+        name: GenericWhitespace
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#GenericWhitespace
+    -
+        name: Header
+        parent: CHECKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_header.html#Header
+        properties:
+            fileExtensions: java
+            headerFile: LICENSE.txt
+    -
+        name: HiddenField
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#HiddenField
+        properties:
+            ignoreConstructorParameter: true
+            ignoreSetter: true
+    -
+        name: HideUtilityClassConstructor
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor
+    -
+        name: IllegalCatch
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalCatch
+    -
+        name: IllegalImport
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#IllegalImport
+    -
+        name: IllegalThrows
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalThrows
+    -
+        name: IllegalToken
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalToken
+    -
+        name: IllegalType
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalType
+        properties:
+            illegalClassNames: java.util.ArrayDeque, java.util.ArrayList, java.util.EnumMap, java.util.EnumSet, java.util.HashMap, java.util.HashSet, java.util.IdentityHashMap, java.util.LinkedHashMap, java.util.LinkedHashSet, java.util.LinkedList, java.util.PriorityQueue, java.util.TreeMap, java.util.TreeSet
+    -
+        name: InnerAssignment
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#InnerAssignment
+    -
+        name: InnerTypeLast
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#InnerTypeLast
+    -
+        name: InterfaceIsType
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#InterfaceIsType
+    -
+        name: InterfaceTypeParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName
+    -
+        name: JavadocMethod
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod
+        properties:
+            allowMissingPropertyJavadoc: true
+            validateThrows: true
+            scope: package
+    -
+        name: JavadocPackage
+        parent: CHECKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage
+    -
+        name: JavadocParagraph
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocParagraph
+    -
+        name: JavadocStyle
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle
+    -
+        name: JavadocType
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType
+        properties:
+            authorFormat: ^.+ (\S+@[\S.]+)$
+    -
+        name: JavaNCSS
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS
+        properties:
+            classMaximum: 1200
+            fileMaximum: 1600
+            methodMaximum: 40
+    -
+        name: LeftCurly
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly
+    -
+        name: LineLength
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#LineLength
+        properties:
+            max: 120
+    -
+        name: LocalFinalVariableName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#LocalFinalVariableName
+    -
+        name: LocalVariableName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#LocalVariableName
+    -
+        name: MagicNumber
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#MagicNumber
+    -
+        name: MemberName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#MemberName
+    -
+        name: MethodCount
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#MethodCount
+        properties:
+            maxTotal: 30
+    -
+        name: MethodLength
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#MethodLength
+        properties:
+            max: 40
+    -
+        name: MethodName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#MethodName
+    -
+        name: MethodParamPad
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#MethodParamPad
+    -
+        name: MethodTypeParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName
+    -
+        name: MissingDeprecated
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated
+    -
+        name: MissingSwitchDefault
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#MissingSwitchDefault
+    -
+        name: ModifiedControlVariable
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#ModifiedControlVariable
+        properties:
+            skipEnhancedForLoopVariable: true
+    -
+        name: ModifierOrder
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder
+    -
+        name: MultipleStringLiterals
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#MultipleStringLiterals
+    -
+        name: MultipleVariableDeclarations
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#MultipleVariableDeclarations
+    -
+        name: MutableException
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#MutableException
+    -
+        name: NeedBraces
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#NeedBraces
+    -
+        name: NestedForDepth
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#NestedForDepth
+    -
+        name: NestedIfDepth
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#NestedIfDepth
+    -
+        name: NestedTryDepth
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#NestedTryDepth
+        properties:
+            max: 0
+    -
+        name: NewlineAtEndOfFile
+        parent: CHECKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile
+        properties:
+            lineSeparator: lf
+    -
+        name: NoClone
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#NoClone
+    -
+        name: NoFinalizer
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer
+    -
+        name: NoLineWrap
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap
+    -
+        name: NonEmptyAtclauseDescription
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription
+    -
+        name: NoWhitespaceAfter
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceAfter
+        properties:
+            tokens: DOT
+            allowLineBreaks: false
+    -
+        name: NoWhitespaceBefore
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceBefore
+    -
+        name: NPathComplexity
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity
+        properties:
+            max: 5
+    -
+        name: OneStatementPerLine
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#OneStatementPerLine
+    -
+        name: OneTopLevelClass
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass
+    -
+        name: OperatorWrap
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#OperatorWrap
+    -
+        name: OuterTypeFilename
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename
+    -
+        name: OverloadMethodsDeclarationOrder
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#OverloadMethodsDeclarationOrder
+    -
+        name: PackageAnnotation
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation
+    -
+        name: PackageDeclaration
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration
+    -
+        name: PackageName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#PackageName
+        properties:
+            format: ^[a-z]+(\.[a-z][a-z0-9]+)*$
+    -
+        name: ParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#ParameterName
+    -
+        name: ParameterNumber
+        parent: TREEWALKER
+        level: null
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber
+        properties:
+            ignoreOverriddenMethods: true
+    -
+        name: ParenPad
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#ParenPad
+    -
+        name: RedundantModifier
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier
+    -
+        name: RequireThis
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#RequireThis
+        properties:
+            checkMethods: false
+    -
+        name: ReturnCount
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#ReturnCount
+    -
+        name: RightCurly
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_blocks.html#RightCurly
+    -
+        name: SeparatorWrap
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#SeparatorWrap
+        properties:
+            tokens: DOT
+            option: nl
+    -
+        name: SimplifyBooleanExpression
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanExpression
+    -
+        name: SimplifyBooleanReturn
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanReturn
+    -
+        name: SingleSpaceSeparator
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#SingleSpaceSeparator
+    -
+        name: StaticVariableName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#StaticVariableName
+    -
+        name: StringLiteralEquality
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#StringLiteralEquality
+    -
+        name: SuppressWarnings
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings
+        properties:
+            format: ^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$
+    -
+        name: SuppressWarningsHolder
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder
+    -
+        name: ThrowsCount
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#ThrowsCount
+    -
+        name: TodoComment
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#TodoComment
+        properties:
+            format: ^(\s*\*).*((TODO)|(FIXME))
+    -
+        name: TrailingComment
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#TrailingComment
+    -
+        name: Translation
+        parent: CHECKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#Translation
+    -
+        name: TypecastParenPad
+        parent: TREEWALKER
+        level: null
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad
+    -
+        name: TypeName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#TypeName
+    -
+        name: UncommentedMain
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain
+        properties:
+            excludedClasses: (Main|Application)$
+    -
+        name: UniqueProperties
+        parent: CHECKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties
+    -
+        name: UnnecessaryParentheses
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses
+    -
+        name: UnusedImports
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#UnusedImports
+    -
+        name: UpperEll
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#UpperEll
+    -
+        name: VariableDeclarationUsageDistance
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance
+    -
+        name: VisibilityModifier
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier
+    -
+        name: WhitespaceAfter
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAfter
+    -
+        name: WhitespaceAround
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAround
+    -
+        name: AvoidConstantAsFirstOperandInCondition
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html
+    -
+        name: AvoidHidingCauseException
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html
+    -
+        name: AvoidNotShortCircuitOperatorsForBoolean
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidNotShortCircuitOperatorsForBooleanCheck.html
+    -
+        name: ConfusingCondition
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ConfusingConditionCheck.html
+    -
+        name: ConstructorWithoutParams
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ConstructorWithoutParamsCheck.html
+    -
+        name: DiamondOperatorForVariableDefinition
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/DiamondOperatorForVariableDefinitionCheck.html
+    -
+        name: EitherLogOrThrow
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EitherLogOrThrowCheck.html
+    -
+        name: EnumValueName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html
+    -
+        name: ForbidCCommentsInMethods
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html
+    -
+        name: ForbidReturnInFinallyBlock
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html
+    -
+        name: ForbidWildcardAsReturnType
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html
+    -
+        name: LogicConditionNeedOptimization
+        parent: TREEWALKER
+        level: null
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html
+    -
+        name: MapIterationInForEachLoop
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html
+    -
+        name: NameConventionForJunit4TestClasses
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html
+    -
+        name: NestedSwitch
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NestedSwitchCheck.html
+    -
+        name: NoMainMethodInAbstractClass
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NoMainMethodInAbstractClassCheck.html
+    -
+        name: NumericLiteralNeedsUnderscore
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NumericLiteralNeedsUnderscoreCheck.html
+    -
+        name: OverridableMethodInConstructor
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/OverridableMethodInConstructorCheck.html
+    -
+        name: PublicReferenceToPrivateType
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/PublicReferenceToPrivateTypeCheck.html
+    -
+        name: RedundantReturn
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/RedundantReturnCheck.html
+    -
+        name: ReturnBooleanFromTernary
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html
+    -
+        name: ReturnNullInsteadOfBoolean
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html
+    -
+        name: SimpleAccessorNameNotation
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html
+    -
+        name: SingleBreakOrContinue
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html
+    -
+        name: TernaryPerExpressionCount
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html
+    -
+        name: UniformEnumConstantName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/UniformEnumConstantNameCheck.html
+    -
+        name: UselessSingleCatch
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html
+    -
+        name: UselessSuperCtorCall
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html
