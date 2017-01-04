@@ -56,7 +56,7 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#AtclauseOrder
         properties:
-            tagOrder: @param, @author, @version, @serial, @return, @throws, @exception,             @serialData, @serialField, @see, @since, @deprecated
+            tagOrder: "@param, @author, @version, @serial, @return, @throws, @exception,             @serialData, @serialField, @see, @since, @deprecated"
     -
         name: AvoidEscapedUnicodeCharacters
         parent: TREEWALKER
