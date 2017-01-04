@@ -20,5 +20,8 @@ import java.util.List;
 @ConfigurationProperties
 class RulesProperties {
 
-    public List<Rule> rules;
+    /**
+     * The Checkstyle checks.
+     */
+    private List<Rule> rules;
 }
