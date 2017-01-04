@@ -1,8 +1,10 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Creates the checkstyle ruleset files.
@@ -18,5 +20,14 @@ public class CheckstyleRulesetBuilderApplication {
 
     public static void main(final String[] args) {
         SpringApplication.run(CheckstyleRulesetBuilderApplication.class, args);
+    }
+
+    @Bean
+    public CommandLineRunner listRules(final RulesProperties rulesProperties) {
+        return args -> rulesProperties.getRules()
+                                      .stream()
+                                      .map(Rule::getName)
+                                      .map(name -> String.format("- %s", name))
+                                      .forEach(System.out::println);
     }
 }
