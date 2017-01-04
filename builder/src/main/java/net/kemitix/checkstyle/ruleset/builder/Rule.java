@@ -18,7 +18,7 @@ import java.util.Map;
 @ToString
 @Setter
 @Getter
-class Rule {
+public class Rule {
 
     private String name;
 

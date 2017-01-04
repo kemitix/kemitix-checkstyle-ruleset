@@ -6,8 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Properties defining the enabled rules for each level.
@@ -18,8 +17,8 @@ import java.util.Set;
 @Setter
 @Getter
 @Configuration
-@ConfigurationProperties(prefix = "rules")
+@ConfigurationProperties
 class RulesProperties {
 
-    public Set<Rule> rules = new HashSet<>();
+    public List<Rule> rules;
 }
