@@ -1,9 +1,9 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-@Slf4j
+@EnableConfigurationProperties({RulesProperties.class, OutputProperties.class})
 @SpringBootApplication
 public class CheckstyleRulesetBuilderApplication {
 
