@@ -6,7 +6,10 @@ output:
         JAVADOC: checkstyle-3-javadoc.xml
         TWEAKS: checkstyle-4-tweaks.xml
         COMPLEXITY: checkstyle-5-complexity.xml
-    checkstyle-xml-template: builder/src/main/resources/checkstyle-template.xml
+template:
+    checkstyle-xml: builder/src/main/resources/checkstyle-template.xml
+    readme-template: builder/src/main/resources/README-template.md
+    readme-fragments: builder/src/main/resources/rules
 rules:
     -
         name: AbbreviationAsWordInName

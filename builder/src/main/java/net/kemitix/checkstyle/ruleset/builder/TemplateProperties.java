@@ -6,29 +6,30 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 import java.nio.file.Path;
-import java.util.Map;
 
 /**
- * Properties defining the output files.
+ * Properties for template files.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Setter
 @Getter
 @Configuration
-@ConfigurationProperties(prefix = "output")
-class OutputProperties {
+@ConfigurationProperties(prefix = "template")
+class TemplateProperties {
 
     /**
-     * The directory to create the output files in.
+     * Template for Checkstyle XML files.
      */
-    private Path directory;
+    private Path checkstyleXml;
 
     /**
-     * Checkstyle XML files to create for each ruleset level.
+     * Template for README.md file.
      */
-    private Map<RuleLevel, String> rulesetFiles;
+    private Path readmeTemplate;
 
     /**
+     * The directory containing the README fragments.
      */
+    private Path readmeFragments;
 }
