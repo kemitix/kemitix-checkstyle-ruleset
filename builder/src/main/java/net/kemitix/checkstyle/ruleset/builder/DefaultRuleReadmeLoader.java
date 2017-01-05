@@ -23,14 +23,21 @@ class DefaultRuleReadmeLoader implements RuleReadmeLoader {
 
     @Override
     public Stream<String> load(final Rule rule) {
-        try {
-            final Path resolve = templateProperties.getReadmeFragments()
-                                                   .resolve(rule.getName() + ".md");
-            log.info("Loading fragment: {}", resolve);
-            return Stream.concat(Stream.of(String.format("%n#### [%s](%s)", rule.getName(), rule.getUri())),
-                                 Files.lines(resolve));
-        } catch (IOException e) {
-            return Stream.empty();
+        if (rule.isEnabled()) {
+            try {
+                final Path resolve = templateProperties.getReadmeFragments()
+                                                       .resolve(rule.getName() + ".md");
+                log.info("Loading fragment: {}", resolve);
+                return Stream.concat(Stream.of(formatRuleHeader(rule)), Files.lines(resolve));
+            } catch (IOException e) {
+                return Stream.empty();
+            }
+        } else {
+            return Stream.of(formatRuleHeader(rule), "", rule.getReason());
         }
+    }
+
+    private String formatRuleHeader(final Rule rule) {
+        return String.format("%n#### [%s](%s)", rule.getName(), rule.getUri());
     }
 }
