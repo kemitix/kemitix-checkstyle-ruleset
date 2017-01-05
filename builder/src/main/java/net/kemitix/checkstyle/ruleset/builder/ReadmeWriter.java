@@ -35,6 +35,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Comparator;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -75,7 +76,8 @@ class ReadmeWriter implements CommandLineRunner {
     private String ruleIndex() {
         return rulesProperties.getRules()
                               .stream()
-                              .sorted(Comparator.comparing(rule -> rule.getName().toLowerCase(Locale.ENGLISH)))
+                              .sorted(Comparator.comparing(rule -> rule.getName()
+                                                                       .toLowerCase(Locale.ENGLISH)))
                               .map(this::formatRuleIndex)
                               .collect(Collectors.joining(NEWLINE));
     }
@@ -83,12 +85,17 @@ class ReadmeWriter implements CommandLineRunner {
     private String formatRuleIndex(final Rule rule) {
         final String ruleLink = rule.getName()
                                     .toLowerCase(Locale.ENGLISH);
+        final String level = Optional.ofNullable(rule.getLevel())
+                                     .orElse(RuleLevel.UNSPECIFIED)
+                                     .toString()
+                                     .toLowerCase(Locale.ENGLISH);
         final String source = rule.getSource()
                                   .toString()
                                   .toLowerCase(Locale.ENGLISH);
         final String enabled = rule.isEnabled() ? "enabled" : "disabled";
         final String insuppressible = rule.isInsuppressible() ? " - insuppressible" : "";
-        return String.format("* [%s](#%s) - %s - %s%s", rule.getName(), ruleLink, source, enabled, insuppressible);
+        return String.format(
+                "* [%s](#%s) - %s - %s - %s%s", rule.getName(), ruleLink, level, source, enabled, insuppressible);
     }
 
     private boolean isEnabledSevntuRule(final Rule rule) {

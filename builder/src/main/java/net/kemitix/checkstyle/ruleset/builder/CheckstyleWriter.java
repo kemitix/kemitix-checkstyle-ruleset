@@ -58,6 +58,7 @@ class CheckstyleWriter implements CommandLineRunner {
     @Override
     public void run(final String... args) throws Exception {
         Stream.of(RuleLevel.values())
+              .filter(level -> !level.equals(RuleLevel.UNSPECIFIED))
               .forEach(this::writeCheckstyleFile);
     }
 
@@ -103,7 +104,8 @@ class CheckstyleWriter implements CommandLineRunner {
             return String.format("<module name=\"%s\"/>", rule.getName());
         }
         return String.format("<module name=\"%s\">%n    %s%n</module>", rule.getName(),
-                             formatProperties(rule.getProperties()));
+                             formatProperties(rule.getProperties())
+                            );
     }
 
     private String formatProperties(final Map<String, String> properties) {

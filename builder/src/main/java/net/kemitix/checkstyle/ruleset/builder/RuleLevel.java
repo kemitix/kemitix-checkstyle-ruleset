@@ -11,5 +11,6 @@ public enum RuleLevel {
     NAMING,
     JAVADOC,
     TWEAKS,
-    COMPLEXITY;
+    COMPLEXITY,
+    UNSPECIFIED,
 }
