@@ -143,7 +143,7 @@ rules:
     -
         name: ConstantName
         parent: TREEWALKER
-        level: null
+        level: NAMING
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_naming.html#ConstantName
@@ -737,7 +737,7 @@ rules:
     -
         name: ParameterNumber
         parent: TREEWALKER
-        level: null
+        level: COMPLEXITY
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber
@@ -874,7 +874,7 @@ rules:
     -
         name: TypecastParenPad
         parent: TREEWALKER
-        level: null
+        level: LAYOUT
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad
@@ -1030,7 +1030,7 @@ rules:
     -
         name: LogicConditionNeedOptimization
         parent: TREEWALKER
-        level: null
+        level: TWEAKS
         enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html
