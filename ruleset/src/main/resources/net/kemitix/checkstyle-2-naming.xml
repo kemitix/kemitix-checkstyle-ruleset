@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+
+    <module name="FileTabCharacter"/>
+<module name="Header">
+    <property name="fileExtensions" value="java"/>
+<property name="headerFile" value="LICENSE.txt"/>
+</module>
+<module name="NewlineAtEndOfFile">
+    <property name="lineSeparator" value="lf"/>
+</module>
+
+    <module name="Treewalker">
+
+        <module name="AbbreviationAsWordInName"/>
+<module name="AbstractClassName"/>
+<module name="AnnotationLocation"/>
+<module name="AnnotationUseStyle"/>
+<module name="ArrayTypeStyle"/>
+<module name="AvoidStarImport"/>
+<module name="CatchParameterName"/>
+<module name="ClassTypeParameterName"/>
+<module name="CommentsIndentation"/>
+<module name="ConstantName"/>
+<module name="DeclarationOrder"/>
+<module name="EmptyForInitializerPad"/>
+<module name="EmptyForIteratorPad"/>
+<module name="EmptyLineSeparator"/>
+<module name="EmptyStatement"/>
+<module name="GenericWhitespace"/>
+<module name="InterfaceTypeParameterName"/>
+<module name="LeftCurly"/>
+<module name="LineLength">
+    <property name="max" value="120"/>
+</module>
+<module name="LocalFinalVariableName"/>
+<module name="LocalVariableName"/>
+<module name="MagicNumber"/>
+<module name="MemberName"/>
+<module name="MethodName"/>
+<module name="MethodParamPad"/>
+<module name="MethodTypeParameterName"/>
+<module name="ModifierOrder"/>
+<module name="MultipleStringLiterals"/>
+<module name="MultipleVariableDeclarations"/>
+<module name="NeedBraces"/>
+<module name="NoLineWrap"/>
+<module name="NoWhitespaceAfter">
+    <property name="tokens" value="DOT"/>
+<property name="allowLineBreaks" value="false"/>
+</module>
+<module name="NoWhitespaceBefore"/>
+<module name="OneStatementPerLine"/>
+<module name="OperatorWrap"/>
+<module name="OverloadMethodsDeclarationOrder"/>
+<module name="PackageName">
+    <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]+)*$"/>
+</module>
+<module name="ParameterName"/>
+<module name="ParenPad"/>
+<module name="RightCurly"/>
+<module name="SeparatorWrap">
+    <property name="tokens" value="DOT"/>
+<property name="option" value="nl"/>
+</module>
+<module name="SingleSpaceSeparator"/>
+<module name="StaticVariableName"/>
+<module name="SuppressWarnings">
+    <property name="format" value="^constantname|covariantequals|equalshashcode|noclone|onetoplevelclass|outertypefilename|packagedeclaration|typename|visibilitymodifier$"/>
+</module>
+<module name="SuppressWarningsHolder"/>
+<module name="TrailingComment"/>
+<module name="TypecastParenPad"/>
+<module name="TypeName"/>
+<module name="UnnecessaryParentheses"/>
+<module name="UnusedImports"/>
+<module name="UpperEll"/>
+<module name="WhitespaceAfter"/>
+<module name="WhitespaceAround"/>
+<module name="EnumValueName"/>
+<module name="ForbidCCommentsInMethods"/>
+<module name="NameConventionForJunit4TestClasses"/>
+<module name="NumericLiteralNeedsUnderscore"/>
+<module name="SimpleAccessorNameNotation"/>
+<module name="UniformEnumConstantName"/>
+
+    </module><!-- /Treewalker -->
+
+</module><!-- /Checker -->
