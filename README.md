@@ -26,11 +26,22 @@ To use this ruleset in your `maven-checkstyle-plugin` configuration add `checkst
 
 You need to include `checkstyle` as the version bundled with the `maven-checkstyle-plugin` is not up-to-date enough.
 
+Select the `configLocation` for the level of strictness required:
+
+* checkstyle-1-layout.xml
+* checkstyle-2-naming.xml
+* checkstyle-3-javadoc.xml
+* checkstyle-4-tweaks.xml
+* checkstyle-5-complexity.xml
+
+Only specify a single `configLocation` as each increasing level includes all the rules
+from the previous.
+
 ````
 <properties>
-    <checkstyle.version>7.0</checkstyle.version>
-    <sevntu-checkstyle-maven-plugin.version>1.21.0</sevntu-checkstyle-maven-plugin.version>
-    <kemitix-checkstyle-ruleset.version>0.1.1</kemitix-checkstyle-ruleset.version>
+    <checkstyle.version>7.3</checkstyle.version>
+    <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
+    <kemitix-checkstyle-ruleset.version>0.2.0</kemitix-checkstyle-ruleset.version>
 </properties>
 <pluginManagement>
     <plugins>
@@ -53,10 +64,10 @@ You need to include `checkstyle` as the version bundled with the `maven-checksty
                     <artifactId>kemitix-checkstyle-ruleset</artifactId>
                     <version>${kemitix-checkstyle-ruleset.version}</version>
                 </dependency>
-                <configuration>
-                    <configLocation>net/kemitix/checkstyle.xml</configLocation>
-                </configuration>
             </dependencies>
+            <configuration>
+                <configLocation>net/kemitix/checkstyle-5-complexity.xml</configLocation>
+            </configuration>
         </plugin><!-- maven-checkstyle-plugin -->
     </plugins>
 </pluginManagement>
