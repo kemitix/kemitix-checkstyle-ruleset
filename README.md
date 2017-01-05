@@ -295,7 +295,7 @@ The following is a list of each of the checks and the expectations each has on y
 Rules are listed in alphabetical order.
 
 
-#### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
+#### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName) (NAMING)
 
 Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to @Overridden methods.
 
@@ -309,7 +309,7 @@ Invalid:
 class DAOManager {}
 ````
 
-#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName)
+#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName) (NAMING)
 
 The name of an `abstract` class must start with `Abstract`. Classes that start with `Abstract` must be `abstract`.
 
@@ -323,7 +323,7 @@ Invalid:
 abstract class BaseCardHand implements CardHand {}
 ````
 
-#### [AnnotationLocation](http://checkstyle.sourceforge.net/config_annotation.html#AnnotationLocation)
+#### [AnnotationLocation](http://checkstyle.sourceforge.net/config_annotation.html#AnnotationLocation) (LAYOUT)
 
 Annotations must be on a line by themselves unless annotating a method parameter or among class modifiers.
 
@@ -345,7 +345,7 @@ Invalid:
 class RedStick implements Stick {}
 ````
 
-#### [AnnotationUseStyle](http://checkstyle.sourceforge.net/config_annotation.html#AnnotationUseStyle)
+#### [AnnotationUseStyle](http://checkstyle.sourceforge.net/config_annotation.html#AnnotationUseStyle) (LAYOUT)
 
 Annotations should only use brackets and named attributes when they are needed. If only the default parameter is specified, then only the attribute value should be given. If there are no parameters, then no brackets should be given.
 
@@ -362,11 +362,11 @@ Invalid:
 @Table(value = "names")
 ````
 
-#### [AnonInnerLength](http://checkstyle.sourceforge.net/config_sizes.html#AnonInnerLength)
+#### [AnonInnerLength](http://checkstyle.sourceforge.net/config_sizes.html#AnonInnerLength) (COMPLEXITY)
 
 Anonymous inner classes should be no more than 20 lines.
 
-#### [ArrayTypeStyle](http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle)
+#### [ArrayTypeStyle](http://checkstyle.sourceforge.net/config_misc.html#ArrayTypeStyle) (LAYOUT)
 
 Enforces Java style arrays.
 
@@ -380,7 +380,7 @@ Invalid:
 public static void main(String args[]) {}
 ````
 
-#### [AtclauseOrder](http://checkstyle.sourceforge.net/config_javadoc.html#AtclauseOrder)
+#### [AtclauseOrder](http://checkstyle.sourceforge.net/config_javadoc.html#AtclauseOrder) (JAVADOC)
 
 Javadoc `@` clauses must be in the order:
 
@@ -402,7 +402,7 @@ Javadoc `@` clauses must be in the order:
  */
 ````
 
-#### [AvoidEscapedUnicodeCharacters](http://checkstyle.sourceforge.net/config_misc.html#AvoidEscapedUnicodeCharacters)
+#### [AvoidEscapedUnicodeCharacters](http://checkstyle.sourceforge.net/config_misc.html#AvoidEscapedUnicodeCharacters) (TWEAKS)
 
 Prevents use of obscure escape codes (e.g. `\u221e`). However, non-printable/control characters are still permitted.
 
@@ -417,11 +417,11 @@ Invalid:
 String unitAbbrev = "\u03bcs";
 ````
 
-#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals)
+#### [AvoidInlineConditionals](http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals) (COMPLEXITY)
 
 Prevents use of the `?:` operators.
 
-#### [AvoidNestedBlocks](http://checkstyle.sourceforge.net/config_blocks.html#AvoidNestedBlocks)
+#### [AvoidNestedBlocks](http://checkstyle.sourceforge.net/config_blocks.html#AvoidNestedBlocks) (COMPLEXITY)
 
 Avoid unnecessary blocks.
 
@@ -440,7 +440,7 @@ Invalid:
 }
 ````
 
-#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
+#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport) (LAYOUT)
 
 Prevents the use of the star import.
 
@@ -452,7 +452,7 @@ import javax.swing.*;
 import javax.swing.event.*;
 ````
 
-#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
+#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport) (COMPLEXITY)
 
 Prevents importing static members, unless they are one of the following:
 
@@ -473,7 +473,7 @@ Invalid:
 import static java.nio.charset.StandardCharsets.UTF_8;
 ````
 
-#### [BooleanExpressionComplexity](http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity)
+#### [BooleanExpressionComplexity](http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity) (COMPLEXITY)
 
 Restrict the number of number of &&, ||, &, | and ^ in an expression to 2.
 
@@ -487,7 +487,7 @@ Invalid:
 if (a > b || b > c || c == a || d > a) {}
 ````
 
-#### [CatchParameterName](http://checkstyle.sourceforge.net/config_naming.html#CatchParameterName)
+#### [CatchParameterName](http://checkstyle.sourceforge.net/config_naming.html#CatchParameterName) (NAMING)
 
 Checks that catch parameter names conform to the following characteristic:
 
@@ -518,7 +518,7 @@ catch(Exception gh) {}
 catch(Exception e_x) {}
 ````
 
-#### [ClassDataAbstractionCoupling](http://checkstyle.sourceforge.net/config_metrics.html#ClassDataAbstractionCoupling)
+#### [ClassDataAbstractionCoupling](http://checkstyle.sourceforge.net/config_metrics.html#ClassDataAbstractionCoupling) (COMPLEXITY)
 
 Restricts to 7 the number of different classes instantiated within a class when that class is instantiated.
 
@@ -550,13 +550,13 @@ class Invalid {
 }
 ````
 
-#### [ClassFanOutComplexity](http://checkstyle.sourceforge.net/config_metrics.html#ClassFanOutComplexity)
+#### [ClassFanOutComplexity](http://checkstyle.sourceforge.net/config_metrics.html#ClassFanOutComplexity) (COMPLEXITY)
 
 Restricts the number of other classes that a class can rely on to 20.
 
 While `ClassDataAbstractionCoupling` limits the number of classes that are instantiated when the class is, this check counts all fields whether they are assigned a value or not.
 
-#### [ClassTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#ClassTypeParameterName)
+#### [ClassTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#ClassTypeParameterName) (NAMING)
 
 Restricts class generics parameters to be a single uppercase letter.
 
@@ -572,7 +572,7 @@ class Invalidator <BB> {}
 class Invalidator <C3> {}
 ````
 
-#### [CommentsIndentation](http://checkstyle.sourceforge.net/config_misc.html#CommentsIndentation)
+#### [CommentsIndentation](http://checkstyle.sourceforge.net/config_misc.html#CommentsIndentation) (LAYOUT)
 
 Requires the indentation of comments to match the surrounding code.
 
@@ -619,7 +619,7 @@ public void foo11() {
 }
 ````
 
-#### [ConstantName](http://checkstyle.sourceforge.net/config_naming.html#ConstantName)
+#### [ConstantName](http://checkstyle.sourceforge.net/config_naming.html#ConstantName) (NAMING)
 
 > This check cannot be suppressed.
 
@@ -636,7 +636,7 @@ private static final int ace_card = 1;
 private static final int 12_CARD = 12;
 ````
 
-#### [CovariantEquals](http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals)
+#### [CovariantEquals](http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals) (COMPLEXITY)
 
 > This check cannot be suppressed.
 
@@ -664,7 +664,7 @@ class Test {
 }
 ````
 
-#### [CyclomaticComplexity](http://checkstyle.sourceforge.net/config_metrics.html#CyclomaticComplexity)
+#### [CyclomaticComplexity](http://checkstyle.sourceforge.net/config_metrics.html#CyclomaticComplexity) (COMPLEXITY)
 
 Restricts the cyclomatic complexity of a method to 5. The cyclomatic complexity is a measure of the number of decision points in a method.
 
@@ -702,7 +702,7 @@ void isInvalid(int a, int b, int c) {
 }
 ````
 
-#### [DeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#DeclarationOrder)
+#### [DeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#DeclarationOrder) (LAYOUT)
 
 Ensure class elements appear in the correct order.
 
@@ -749,7 +749,7 @@ class Invalid {
 }
 ````
 
-#### [DefaultComesLast](http://checkstyle.sourceforge.net/config_coding.html#DefaultComesLast)
+#### [DefaultComesLast](http://checkstyle.sourceforge.net/config_coding.html#DefaultComesLast) (TWEAKS)
 
 Check that the `default` is after all the `case`s in a `switch` statement.
 
@@ -777,7 +777,7 @@ switch (a) {
 }
 ````
 
-#### [DesignForExtension](http://checkstyle.sourceforge.net/config_design.html#DesignForExtension)
+#### [DesignForExtension](http://checkstyle.sourceforge.net/config_design.html#DesignForExtension) (COMPLEXITY)
 
 Judicous use of `@SuppressWarnings("designdorextension")` is recommended for this check.
 
@@ -790,7 +790,7 @@ Classes that are deemed by their designer to be 'designed for extension', must t
 
 > See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_design.html#DesignForExtension) for more details and [Effective Java], 2nd Edition by Josh Bloch: Item 17: Design and document for inheritance or else prohibit it.
 
-#### [EmptyBlock](http://checkstyle.sourceforge.net/config_blocks.html#EmptyBlock)
+#### [EmptyBlock](http://checkstyle.sourceforge.net/config_blocks.html#EmptyBlock) (TWEAKS)
 
 Checks for empty blocks.
 
@@ -807,7 +807,7 @@ if (a > b) {
 }
 ````
 
-#### [EmptyCatchBlock](http://checkstyle.sourceforge.net/config_blocks.html#EmptyCatchBlock)
+#### [EmptyCatchBlock](http://checkstyle.sourceforge.net/config_blocks.html#EmptyCatchBlock) (TWEAKS)
 
 Checks that `catch` blocks are not empty, or are commented with the word `expected` or `ignore`.
 
@@ -829,7 +829,7 @@ try {
 }
 ````
 
-#### [EmptyForInitializerPad](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForInitializerPad)
+#### [EmptyForInitializerPad](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForInitializerPad) (LAYOUT)
 
 Checks that there is no padding in an empty `for` loop **initialiser**.
 
@@ -843,7 +843,7 @@ Invalid:
 for ( ; i < j ; i++) {}
 ````
 
-#### [EmptyForIteratorPad](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForIteratorPad)
+#### [EmptyForIteratorPad](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyForIteratorPad) (LAYOUT)
 
 Checks that there is no padding in an empty `for` loop **iterator**.
 
@@ -857,7 +857,7 @@ Invalid:
 for (Iterator i = list.getIterator(); i.hasNext() ; ) {}
 ````
 
-#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator)
+#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator) (LAYOUT)
 
 Checks that there are blank lines between header, package, import blocks, field, constructors, methods, nested classes, static initialisers and instance initialisers.
 
@@ -911,7 +911,7 @@ class Foo {
 }
 ````
 
-#### [EmptyStatement](http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement)
+#### [EmptyStatement](http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement) (LAYOUT)
 
 Checks for empty statements. An empty statement is a standalone semicolon (;).
 
@@ -925,7 +925,7 @@ Invalid:
 doSomething();;
 ````
 
-#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull)
+#### [EqualsAvoidNull](http://checkstyle.sourceforge.net/config_coding.html#EqualsAvoidNull) (TWEAKS)
 
 Checks that string literals are on the left side in an `equals()` comparison.
 
@@ -941,17 +941,17 @@ String nullString = null;
 nullString.equals("value");
 ````
 
-#### [EqualsHashCode](http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode)
+#### [EqualsHashCode](http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode) (COMPLEXITY)
 
 > This check cannot be suppressed.
 
 Checks that when a class overrides the `equals()` method, that it also overrides the `hashCode()` method.
 
-#### [ExecutableStatementCount](http://checkstyle.sourceforge.net/config_sizes.html#ExecutableStatementCount)
+#### [ExecutableStatementCount](http://checkstyle.sourceforge.net/config_sizes.html#ExecutableStatementCount) (COMPLEXITY)
 
 Limits the number of executable statements in a method to 30.
 
-#### [ExplicitInitialization](http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization)
+#### [ExplicitInitialization](http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization) (TWEAKS)
 
 Checks that fields are not being explicitly initialised to their already default value.
 
@@ -975,7 +975,7 @@ class Invalid {
 }
 ````
 
-#### [FallThrough](http://checkstyle.sourceforge.net/config_coding.html#FallThrough)
+#### [FallThrough](http://checkstyle.sourceforge.net/config_coding.html#FallThrough) (JAVADOC)
 
 Checks that when a `case` in a `switch` statement falls through (i.e. doesn't end with `break;`) that the fall through is documented with a comment.
 
@@ -1019,15 +1019,15 @@ switch (i) {
 }
 ````
 
-#### [FileLength](http://checkstyle.sourceforge.net/config_sizes.html#FileLength)
+#### [FileLength](http://checkstyle.sourceforge.net/config_sizes.html#FileLength) (COMPLEXITY)
 
 Checks that each file has no more than 2000 lines.
 
-#### [FileTabCharacter](http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter)
+#### [FileTabCharacter](http://checkstyle.sourceforge.net/config_whitespace.html#FileTabCharacter) (LAYOUT)
 
 Checks that there are no tab characters in the source files.
 
-#### [FinalClass](http://checkstyle.sourceforge.net/config_design.html#FinalClass)
+#### [FinalClass](http://checkstyle.sourceforge.net/config_design.html#FinalClass) (COMPLEXITY)
 
 Checks that classes which have only private constructors are also declared as `final`. These classes can't be extended by a subclass as they can't call `super()` from their constructors.
 
@@ -1047,7 +1047,7 @@ class Invalid {
 }
 ````
 
-#### [FinalParameters](http://checkstyle.sourceforge.net/config_misc.html#FinalParameters)
+#### [FinalParameters](http://checkstyle.sourceforge.net/config_misc.html#FinalParameters) (TWEAKS)
 
 Parameters to a method must be `final`.
 
@@ -1061,7 +1061,7 @@ Invalid:
 void foo(int a) {}
 ````
 
-#### [GenericWhitespace](http://checkstyle.sourceforge.net/config_whitespace.html#GenericWhitespace)
+#### [GenericWhitespace](http://checkstyle.sourceforge.net/config_whitespace.html#GenericWhitespace) (LAYOUT)
 
 Checks that the angle brackets around Generics parameters have the correct whitespace padding:
 
@@ -1076,11 +1076,11 @@ List<T> list = ImmutableList.Builder<T>::new;
 sort(list, Comparable::<String>compareTo);
 ````
 
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header) (LAYOUT)
 
 Checks that all `*.java` source files begin with the contents of the `LICENSE.txt` file.
 
-#### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField)
+#### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField) (TWEAKS)
 
 Checks that a local variable or parameter in a method doesn't have the same name as a field. Doesn't apply in constructors or setters.
 
@@ -1112,7 +1112,7 @@ class Bar {
 }
 ````
 
-#### [HideUtilityClassConstructor](http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor)
+#### [HideUtilityClassConstructor](http://checkstyle.sourceforge.net/config_design.html#HideUtilityClassConstructor) (TWEAKS)
 
 Classes that only have static fields or methods should not have a public constructor. This includes the default constructor.
 
@@ -1143,7 +1143,7 @@ class StringUtils {
 }
 ````
 
-#### [IllegalCatch](http://checkstyle.sourceforge.net/config_coding.html#IllegalCatch)
+#### [IllegalCatch](http://checkstyle.sourceforge.net/config_coding.html#IllegalCatch) (TWEAKS)
 
 Prevent the following types from being in a `catch` statement:
 
@@ -1169,7 +1169,7 @@ try {
 }
 ````
 
-#### [IllegalImport](http://checkstyle.sourceforge.net/config_imports.html#IllegalImport)
+#### [IllegalImport](http://checkstyle.sourceforge.net/config_imports.html#IllegalImport) (TWEAKS)
 
 Prevent `import`ing from the `sun.*` packages.
 
@@ -1178,7 +1178,7 @@ Invalid:
 import sun.security.provider.Sun;
 ````
 
-#### [IllegalThrows](http://checkstyle.sourceforge.net/config_coding.html#IllegalThrows)
+#### [IllegalThrows](http://checkstyle.sourceforge.net/config_coding.html#IllegalThrows) (TWEAKS)
 
 Prevent the following types from being `throw`n:
 
@@ -1196,11 +1196,11 @@ Invalid:
 throw new RuntimeException("boom!");
 ````
 
-#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken)
+#### [IllegalToken](http://checkstyle.sourceforge.net/config_coding.html#IllegalToken) (TWEAKS)
 
 Checks that labels are not used.
 
-#### [IllegalType](http://checkstyle.sourceforge.net/config_coding.html#IllegalType)
+#### [IllegalType](http://checkstyle.sourceforge.net/config_coding.html#IllegalType) (TWEAKS)
 
 Prevents use of implementation classes as variables, parameters or method returns. Use the interfaces instead.
 
@@ -1230,7 +1230,7 @@ Invalid:
 HashSet<String> getNames();
 ````
 
-#### [InnerAssignment](http://checkstyle.sourceforge.net/config_coding.html#InnerAssignment)
+#### [InnerAssignment](http://checkstyle.sourceforge.net/config_coding.html#InnerAssignment) (TWEAKS)
 
 Checks for assignments within an expressions. However, it still allows assignment in a while loop clause.
 
@@ -1245,11 +1245,11 @@ Invalid:
 String s = Integer.toString(i = 2);
 ````
 
-#### [InnerTypeLast](http://checkstyle.sourceforge.net/config_design.html#InnerTypeLast)
+#### [InnerTypeLast](http://checkstyle.sourceforge.net/config_design.html#InnerTypeLast) (TWEAKS)
 
 Inner classes must appear at the bottom of a class, below fields and methods.
 
-#### [InterfaceIsType](http://checkstyle.sourceforge.net/config_design.html#InterfaceIsType)
+#### [InterfaceIsType](http://checkstyle.sourceforge.net/config_design.html#InterfaceIsType) (COMPLEXITY)
 
 An `interface` must define methods, not just constants.
 
@@ -1271,7 +1271,7 @@ interface Foo {
 }
 ````
 
-#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
+#### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName) (NAMING)
 
 Checks that the type parameters for an interface are a single uppercase letter.
 
@@ -1285,33 +1285,33 @@ Invalid:
 interface <Type> Portable {}
 ````
 
-#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
+#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod) (JAVADOC)
 
 Checks that all public, protected and package methods have a Javadoc block, that all `@throws` tags are used. Basic setters and getters do not require javadoc.
 
-#### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
+#### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage) (JAVADOC)
 
 Checks that each package has a `package-info.java` file.
 
-#### [JavadocParagraph](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocParagraph)
+#### [JavadocParagraph](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocParagraph) (JAVADOC)
 
 Checks that paragraphs in Javadoc blocks are wrapped in `<p>` elements and have blank lines between paragraphs. This first paragraph does not need the `<p>` elements.
 
-#### [JavadocStyle](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle)
+#### [JavadocStyle](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle) (JAVADOC)
 
 Checks the formatting of the Javadoc blocks. See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle) for all the checks that are applied.
 
-#### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType)
+#### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType) (JAVADOC)
 
 Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags. The `@author` tag must have a name and, in brackets, an email address.
 
-#### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
+#### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS) (COMPLEXITY)
 
 Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
 
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
 
-#### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly)
+#### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly) (LAYOUT)
 
 Checks that the left curly brace ('{') is placed at the end of the line. Does not check enums.
 
@@ -1329,25 +1329,25 @@ class Bar
 }
 ````
 
-#### [LineLength](http://checkstyle.sourceforge.net/config_sizes.html#LineLength)
+#### [LineLength](http://checkstyle.sourceforge.net/config_sizes.html#LineLength) (LAYOUT)
 
 Limits the line length to 120 characters.
 
 Doesn't check package or import lines.
 
-#### [LocalFinalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalFinalVariableName)
+#### [LocalFinalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalFinalVariableName) (NAMING)
 
 Checks the format of local, `final` variable names, including `catch` parameters.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [LocalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalVariableName)
+#### [LocalVariableName](http://checkstyle.sourceforge.net/config_naming.html#LocalVariableName) (NAMING)
 
 Checks the format of local, non-`final` variable names.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [MagicNumber](http://checkstyle.sourceforge.net/config_coding.html#MagicNumber)
+#### [MagicNumber](http://checkstyle.sourceforge.net/config_coding.html#MagicNumber) (NAMING)
 
 Checks that numeric literals are defined as constants. Being constants they then have a name that aids in making them non-magical.
 
@@ -1364,27 +1364,27 @@ Invalid
 String item = getItem(200);
 ````
 
-#### [MemberName](http://checkstyle.sourceforge.net/config_naming.html#MemberName)
+#### [MemberName](http://checkstyle.sourceforge.net/config_naming.html#MemberName) (NAMING)
 
 Checks the format of non-static field names.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [MethodCount](http://checkstyle.sourceforge.net/config_sizes.html#MethodCount)
+#### [MethodCount](http://checkstyle.sourceforge.net/config_sizes.html#MethodCount) (COMPLEXITY)
 
 Restricts the number of methods in a type to 30.
 
-#### [MethodLength](http://checkstyle.sourceforge.net/config_sizes.html#MethodLength)
+#### [MethodLength](http://checkstyle.sourceforge.net/config_sizes.html#MethodLength) (COMPLEXITY)
 
 Restricts the number of lines in a method to 60. Include blank lines and single line comments. You should be able to see an entire method without needing to scroll.
 
-#### [MethodName](http://checkstyle.sourceforge.net/config_naming.html#MethodName)
+#### [MethodName](http://checkstyle.sourceforge.net/config_naming.html#MethodName) (NAMING)
 
 Checks the format of method names.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [MethodParamPad](http://checkstyle.sourceforge.net/config_whitespace.html#MethodParamPad)
+#### [MethodParamPad](http://checkstyle.sourceforge.net/config_whitespace.html#MethodParamPad) (LAYOUT)
 
 Checks that the padding between the method identifier and the left parenthesis is on the same line and doesn't have a space in-between.
 
@@ -1401,7 +1401,7 @@ void getValue
     ();
 ````
 
-#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName)
+#### [MethodTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#MethodTypeParameterName) (NAMING)
 
 Restricts method generics parameters to be a single uppercase letter.
 
@@ -1417,7 +1417,7 @@ List<BB> getItems() {}
 List<C3> getItems() {}
 ````
 
-#### [MissingDeprecated](http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated)
+#### [MissingDeprecated](http://checkstyle.sourceforge.net/config_annotation.html#MissingDeprecated) (JAVADOC)
 
 Both the `@Deprecated` annotation and the Javadoc tag `@deprecated` must be used in pairs.
 
@@ -1448,7 +1448,7 @@ void foo() {}
 void bar() {}
 ````
 
-#### [MissingSwitchDefault](http://checkstyle.sourceforge.net/config_coding.html#MissingSwitchDefault)
+#### [MissingSwitchDefault](http://checkstyle.sourceforge.net/config_coding.html#MissingSwitchDefault) (TWEAKS)
 
 Checks that `switch` statement has a `default` case.
 
@@ -1478,7 +1478,7 @@ switch (foo) {
 }
 ````
 
-#### [ModifiedControlVariable](http://checkstyle.sourceforge.net/config_coding.html#ModifiedControlVariable)
+#### [ModifiedControlVariable](http://checkstyle.sourceforge.net/config_coding.html#ModifiedControlVariable) (TWEAKS)
 
 Checks that the control variable in a `for` loop is not modified inside the loop.
 
@@ -1489,7 +1489,7 @@ for (int i = 0; i < 1; i++) {
 }
 ````
 
-#### [ModifierOrder](http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder)
+#### [ModifierOrder](http://checkstyle.sourceforge.net/config_modifier.html#ModifierOrder) (NAMING)
 
 Check that modifiers are in the following order:
 
@@ -1507,7 +1507,7 @@ Check that modifiers are in the following order:
 
 Type annotations are ignored.
 
-#### [MultipleStringLiterals](http://checkstyle.sourceforge.net/config_coding.html#MultipleStringLiterals)
+#### [MultipleStringLiterals](http://checkstyle.sourceforge.net/config_coding.html#MultipleStringLiterals) (NAMING)
 
 Checks for multiple occurrences of the same string literal within a single file. Does not apply to empty strings ("").
 
@@ -1516,7 +1516,7 @@ Invalid:
 String fooFoo = "foo" + "foo";
 ````
 
-#### [MultipleVariableDeclarations](http://checkstyle.sourceforge.net/config_coding.html#MultipleVariableDeclarations)
+#### [MultipleVariableDeclarations](http://checkstyle.sourceforge.net/config_coding.html#MultipleVariableDeclarations) (NAMING)
 
 Checks that each variable is declared in its own statement and line.
 
@@ -1531,7 +1531,7 @@ Invalid:
 int a, b;
 ````
 
-#### [MutableException](http://checkstyle.sourceforge.net/config_design.html#MutableException)
+#### [MutableException](http://checkstyle.sourceforge.net/config_design.html#MutableException) (TWEAKS)
 
 Checks that `Exception` classes are immutable. However, you can still call `setStackTrace`.
 
@@ -1541,7 +1541,7 @@ Classes checked are those whose name ends with the following. Or that the class 
 * `Error`
 * `Throwable`
 
-#### [NeedBraces](http://checkstyle.sourceforge.net/config_blocks.html#NeedBraces)
+#### [NeedBraces](http://checkstyle.sourceforge.net/config_blocks.html#NeedBraces) (NAMING)
 
 Check that code blocks are surrounded by braces.
 
@@ -1575,7 +1575,7 @@ do this.notify(); while (o != null);
 for (int i = 0; ;) this.notify();
 ````
 
-#### [NestedForDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedForDepth)
+#### [NestedForDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedForDepth) (COMPLEXITY)
 
 Checks that `for` loops are not nested more than 1 deep.
 
@@ -1599,7 +1599,7 @@ for (int i = 0; i < 1; i++) { // depth 0
 }
 ````
 
-#### [NestedIfDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedIfDepth)
+#### [NestedIfDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedIfDepth) (COMPLEXITY)
 
 Checks that `if` blocks are not nested more than 1 deep.
 
@@ -1623,7 +1623,7 @@ if (isValid()) { // depth 0
 }
 ````
 
-#### [NestedTryDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedTryDepth)
+#### [NestedTryDepth](http://checkstyle.sourceforge.net/config_coding.html#NestedTryDepth) (COMPLEXITY)
 
 Checks that `try` blocks are not nested.
 
@@ -1653,11 +1653,11 @@ try {
 }
 ````
 
-#### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile)
+#### [NewlineAtEndOfFile](http://checkstyle.sourceforge.net/config_misc.html#NewlineAtEndOfFile) (LAYOUT)
 
 Checks that files end with a line-feed character, (i.e. unix-style line ending).
 
-#### [NoClone](http://checkstyle.sourceforge.net/config_coding.html#NoClone)
+#### [NoClone](http://checkstyle.sourceforge.net/config_coding.html#NoClone) (TWEAKS)
 
 > This check cannot be suppressed.
 
@@ -1665,17 +1665,17 @@ Checks that the `clone()` method from `Object` has not been overridden.  Use a c
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 11: Override clone judiciously.
 
-#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
+#### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer) (TWEAKS)
 
 Checks that the `finalize()` method from `Object` has not been overridden.
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 7: Avoid finalizers.
 
-#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap)
+#### [NoLineWrap](http://checkstyle.sourceforge.net/config_whitespace.html#NoLineWrap) (LAYOUT)
 
 Prevents wrapping of `package` and `import` statements.
 
-#### [NonEmptyAtclauseDescription](http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription)
+#### [NonEmptyAtclauseDescription](http://checkstyle.sourceforge.net/config_javadoc.html#NonEmptyAtclauseDescription) (JAVADOC)
 
 Checks that the Javadoc clauses `@param`, `@return`, `@throws` and `@deprecated` all have descriptions.
 
@@ -1697,7 +1697,7 @@ Invalid:
  */
 ````
 
-#### [NoWhitespaceAfter](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceAfter)
+#### [NoWhitespaceAfter](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceAfter) (LAYOUT)
 
 Checks that there is no whitespace after the array init ('{'), prefix increment ('++'), prefix decrement ('--'), bitwise complement ('~'), logical complement ('!'), array declaration ('[' in `int[] a;`) or array index operator ('[' in `a[2]`).
 
@@ -1729,7 +1729,7 @@ int[ ] a;
 int d = a[ 2];
 ````
 
-#### [NoWhitespaceBefore](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceBefore)
+#### [NoWhitespaceBefore](http://checkstyle.sourceforge.net/config_whitespace.html#NoWhitespaceBefore) (LAYOUT)
 
 Checks that there is no whitespace before the comma operator (','), statement terminator (';'), postfix increment ('++') or postfix decrement ('--').
 
@@ -1749,11 +1749,11 @@ i ++;
 i --;
 ````
 
-#### [NPathComplexity](http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity)
+#### [NPathComplexity](http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity) (COMPLEXITY)
 
 Checks that the NPATH score (number of paths) through a method is no more than 5. This is similar to [Cyclomatic Complexity](#cyclomaticcomplexity).
 
-#### [OneStatementPerLine](http://checkstyle.sourceforge.net/config_coding.html#OneStatementPerLine)
+#### [OneStatementPerLine](http://checkstyle.sourceforge.net/config_coding.html#OneStatementPerLine) (LAYOUT)
 
 Checks that there is only one statement per line.
 
@@ -1768,13 +1768,13 @@ Invalid:
 doSomething(); doSomethingElse();
 ````
 
-#### [OneTopLevelClass](http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass)
+#### [OneTopLevelClass](http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass) (TWEAKS)
 
 > This check cannot be suppressed.
 
 Checks that each source file contains only one top-level class, interface or enum.
 
-#### [OperatorWrap](http://checkstyle.sourceforge.net/config_whitespace.html#OperatorWrap)
+#### [OperatorWrap](http://checkstyle.sourceforge.net/config_whitespace.html#OperatorWrap) (LAYOUT)
 
 Checks that when wrapping a line on an operator that the operator appears on the new line.
 
@@ -1790,43 +1790,43 @@ int answer = getTheAnswerToLife() + getTheAnswerToTheUniverse() +
     getTheAnswerToEverything();
 ````
 
-#### [OuterTypeFilename](http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename)
+#### [OuterTypeFilename](http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename) (TWEAKS)
 
 > This check cannot be suppressed.
 
 Checks that the source filename matches the name of the top-level class.  e.g. `class Foo {}` is in file `Foo.java`.
 
-#### [OverloadMethodsDeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#OverloadMethodsDeclarationOrder)
+#### [OverloadMethodsDeclarationOrder](http://checkstyle.sourceforge.net/config_coding.html#OverloadMethodsDeclarationOrder) (LAYOUT)
 
 Checks that overload methods are grouped together in the source file.
 
-#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation)
+#### [PackageAnnotation](http://checkstyle.sourceforge.net/config_annotation.html#PackageAnnotation) (TWEAKS)
 
 Checks that package level annotations are in the `package-info.java` file.
 
-#### [PackageDeclaration](http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration)
+#### [PackageDeclaration](http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration) (JAVADOC)
 
 > This check cannot be suppressed.
 
 Checks that the class has a `package` definition.
 
-#### [PackageName](http://checkstyle.sourceforge.net/config_naming.html#PackageName)
+#### [PackageName](http://checkstyle.sourceforge.net/config_naming.html#PackageName) (NAMING)
 
 Checks the format of package names. Only lowercase letters, no initial numbers or any underscores.
 
 Identifiers must match `^[a-z]+(\.[a-z][a-z0-9]+)*$`.
 
-#### [ParameterName](http://checkstyle.sourceforge.net/config_naming.html#ParameterName)
+#### [ParameterName](http://checkstyle.sourceforge.net/config_naming.html#ParameterName) (NAMING)
 
 Checks the format of method parameter names, including `catch` parameters.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [ParameterNumber](http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber)
+#### [ParameterNumber](http://checkstyle.sourceforge.net/config_sizes.html#ParameterNumber) (COMPLEXITY)
 
 Restricts the number of parameters in a method or constructor to 7. Overridden methods are not checked as there may be no access to change the super method.
 
-#### [ParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#ParenPad)
+#### [ParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#ParenPad) (LAYOUT)
 
 Checks that there are no spaces padding parentheses.
 
@@ -1843,7 +1843,7 @@ doSomethingElse( 5);
 doSomethingElse(5 );
 ````
 
-#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
+#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier) (TWEAKS)
 
 Checks for redundant modifiers. Checks for:
 
@@ -1853,11 +1853,11 @@ Checks for redundant modifiers. Checks for:
 * Class constructors.
 * Nested enum definitions that are declared as static.
 
-#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
+#### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis) (TWEAKS)
 
 Checks that references to instance fields where a parameter name overlaps are qualified by `this.`.
 
-#### [ReturnCount](http://checkstyle.sourceforge.net/config_coding.html#ReturnCount)
+#### [ReturnCount](http://checkstyle.sourceforge.net/config_coding.html#ReturnCount) (COMPLEXITY)
 
 Restricts methods to have at most 2 `return` statements in non-void methods, and at most 1 in void methods.
 
@@ -1899,7 +1899,7 @@ void getName(int a) {
 }
 ````
 
-#### [RightCurly](http://checkstyle.sourceforge.net/config_blocks.html#RightCurly)
+#### [RightCurly](http://checkstyle.sourceforge.net/config_blocks.html#RightCurly) (LAYOUT)
 
 Checks that the right curly brace ('}') is placed on the same line as the next part of a multi-block statement (e.g. try-catch-finally, if-then-else).
 
@@ -1946,7 +1946,7 @@ if (a > 0) {
 public long getId() {return id;}
 ````
 
-#### [SeparatorWrap](http://checkstyle.sourceforge.net/config_whitespace.html#SeparatorWrap)
+#### [SeparatorWrap](http://checkstyle.sourceforge.net/config_whitespace.html#SeparatorWrap) (LAYOUT)
 
 Checks the line wrapping around separators.
 
@@ -1969,7 +1969,7 @@ doSomethingElse().stream().
                   forEach(System.out::println);
 ````
 
-#### [SimplifyBooleanExpression](http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanExpression)
+#### [SimplifyBooleanExpression](http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanExpression) (COMPLEXITY)
 
 Checks for overly complicated boolean expressions. Checks for code like `b == true`, `b || true`, `!false`, etc.
 
@@ -1986,7 +1986,7 @@ if (b || true) {}
 if (!false) {}
 ````
 
-#### [SimplifyBooleanReturn](http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanReturn)
+#### [SimplifyBooleanReturn](http://checkstyle.sourceforge.net/config_coding.html#SimplifyBooleanReturn) (COMPLEXITY)
 
 Checks for overly complicated boolean `return` statements.
 
@@ -2004,7 +2004,7 @@ if (valid()) {
 }
 ````
 
-#### [SingleSpaceSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#SingleSpaceSeparator)
+#### [SingleSpaceSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#SingleSpaceSeparator) (LAYOUT)
 
 Checks that non-whitespace characters on the same line are separated by no more than one whitespace.
 
@@ -2020,13 +2020,13 @@ if  (a < 0) {}
 public long toNanos(long d)  { return d;             };
 ````
 
-#### [StaticVariableName](http://checkstyle.sourceforge.net/config_naming.html#StaticVariableName)
+#### [StaticVariableName](http://checkstyle.sourceforge.net/config_naming.html#StaticVariableName) (NAMING)
 
 Checks the format of `static`, non-`final` variable names.
 
 Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 
-#### [StringLiteralEquality](http://checkstyle.sourceforge.net/config_coding.html#StringLiteralEquality)
+#### [StringLiteralEquality](http://checkstyle.sourceforge.net/config_coding.html#StringLiteralEquality) (TWEAKS)
 
 Checks that string literals are not used with `==` or `!=`.
 
@@ -2040,7 +2040,7 @@ Invalid:
 if (x == "something") {}
 ````
 
-#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings)
+#### [SuppressWarnings](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarnings) (NAMING)
 
 Prevents the use of `@SuppressWarnings` for the following checks:
 
@@ -2054,11 +2054,11 @@ Prevents the use of `@SuppressWarnings` for the following checks:
 * [TypeName](#typename)
 * [VisibilityModifier](#visibilitymodifier)
 
-#### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
+#### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder) (NAMING)
 
 Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
 
-#### [ThrowsCount](http://checkstyle.sourceforge.net/config_design.html#ThrowsCount)
+#### [ThrowsCount](http://checkstyle.sourceforge.net/config_design.html#ThrowsCount) (COMPLEXITY)
 
 Restricts non-private methods to only `throws` 4 distinct Exception types. Exceptions should be hierarchical to allow catching suitable root Exceptions.
 
@@ -2077,11 +2077,11 @@ void doSomething() throws IllegalStateException,
     BalancedBudgetException, ManagementInterferanceException {}
 ````
 
-#### [TodoComment](http://checkstyle.sourceforge.net/config_misc.html#TodoComment)
+#### [TodoComment](http://checkstyle.sourceforge.net/config_misc.html#TodoComment) (JAVADOC)
 
 Checks for remaining `TODO` and `FIXME` comments left in code. Their presence indicates that the program isn't finished yet.
 
-#### [TrailingComment](http://checkstyle.sourceforge.net/config_misc.html#TrailingComment)
+#### [TrailingComment](http://checkstyle.sourceforge.net/config_misc.html#TrailingComment) (LAYOUT)
 
 Checks for comments at the end of lines.
 
@@ -2109,11 +2109,11 @@ int[] a = new int[2](
 );
 ````
 
-#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation)
+#### [Translation](http://checkstyle.sourceforge.net/config_misc.html#Translation) (JAVADOC)
 
 Checks that all `messages*.properties` files all have the same set of keys.
 
-#### [TypecastParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad)
+#### [TypecastParenPad](http://checkstyle.sourceforge.net/config_whitespace.html#TypecastParenPad) (LAYOUT)
 
 Checks that there are no spaces within the typecasting parentheses.
 
@@ -2129,7 +2129,7 @@ String s = ( String) list.get(2);
 String s = ( String ) list.get(2);
 ````
 
-#### [TypeName](http://checkstyle.sourceforge.net/config_naming.html#TypeName)
+#### [TypeName](http://checkstyle.sourceforge.net/config_naming.html#TypeName) (NAMING)
 
 > This check cannot be suppressed.
 
@@ -2137,15 +2137,15 @@ Checks the format of `class`, `interface`, `enum` identifiers, including annotat
 
 Identifiers must match `^[A-Z][a-zA-Z0-9]*$`.
 
-#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain)
+#### [UncommentedMain](http://checkstyle.sourceforge.net/config_misc.html#UncommentedMain) (JAVADOC)
 
 Checks for `public static void main()` methods that may have been left over from testing. Allowed in classes whose names end in `Main` or `Application`.
 
-#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties)
+#### [UniqueProperties](http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties) (JAVADOC)
 
 Checks `*.properties` files for duplicate property keys.
 
-#### [UnnecessaryParentheses](http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses)
+#### [UnnecessaryParentheses](http://checkstyle.sourceforge.net/config_coding.html#UnnecessaryParentheses) (LAYOUT)
 
 Checks for the use of unnecessary parentheses.
 
@@ -2159,7 +2159,7 @@ Invalid:
 if ((a < 1)) {}
 ````
 
-#### [UnusedImports](http://checkstyle.sourceforge.net/config_imports.html#UnusedImports)
+#### [UnusedImports](http://checkstyle.sourceforge.net/config_imports.html#UnusedImports) (LAYOUT)
 
 Checks for unused imports. Does not inspect wildcard imports, which should be blocked by [AvoidStarImport](#avoidstarimport) anyway.
 
@@ -2171,7 +2171,7 @@ Imports are unused if:
 * It imports a class from the same package.
 * It is only references from the Javadoc.
 
-#### [UpperEll](http://checkstyle.sourceforge.net/config_misc.html#UpperEll)
+#### [UpperEll](http://checkstyle.sourceforge.net/config_misc.html#UpperEll) (LAYOUT)
 
 Checks that `long` numeric literal values are marked by an upper-case ell ('L'). The lower-case ell ('l') can be mistaken for the numeral one ('1').
 
@@ -2185,13 +2185,13 @@ Invalid:
 long id = 12345l;
 ````
 
-#### [VariableDeclarationUsageDistance](http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance)
+#### [VariableDeclarationUsageDistance](http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance) (TWEAKS)
 
 Checks that a variable declaration and its first usage are not more than 3 lines. Blocks of initialisation methods don't count toward this total.
 
 See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_coding.html#VariableDeclarationUsageDistance) for examples.
 
-#### [VisibilityModifier](http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier)
+#### [VisibilityModifier](http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier) (TWEAKS)
 
 > This check cannot be suppressed.
 
@@ -2265,7 +2265,7 @@ class Foo {
 }
 ````
 
-#### [WhitespaceAfter](http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAfter)
+#### [WhitespaceAfter](http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAfter) (LAYOUT)
 
 Checks that commas (','), statement terminators (';') and typecasts are all followed by a space.
 
@@ -2283,14 +2283,14 @@ if (a > 1) { return true;}
 String name = (String)list.get(9);
 ````
 
-#### [WhitespaceAround](http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAround)
+#### [WhitespaceAround](http://checkstyle.sourceforge.net/config_whitespace.html#WhitespaceAround) (LAYOUT)
 
 Checks that tokens are surrounded by whitespace.
 
 ### Sevntu
 
 
-#### [AvoidConstantAsFirstOperandInCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html)
+#### [AvoidConstantAsFirstOperandInCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html) (TWEAKS)
 
 Checks that condition expressions don't become less readable by attempting to use a constant on the left-hand-side of a comparison.
 
@@ -2304,7 +2304,7 @@ Invalid:
 if (12 == a) {}
 ````
 
-#### [AvoidHidingCauseException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html)
+#### [AvoidHidingCauseException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html) (TWEAKS)
 
 Ensures that an exception is re-thrown properly and is not swallowed by a `catch` block.
 
@@ -2326,7 +2326,7 @@ try {
 }
 ````
 
-#### [AvoidNotShortCircuitOperatorsForBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidNotShortCircuitOperatorsForBooleanCheck.html)
+#### [AvoidNotShortCircuitOperatorsForBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidNotShortCircuitOperatorsForBooleanCheck.html) (TWEAKS)
 
 Prevents the use of boolean operators that don't allow short-circuiting the expression. (e.g. '|', '&', '|=' and '&=')
 
@@ -2340,7 +2340,7 @@ Invalid:
 if ((a < b) | (b > getExpensiveValue())) {}
 ````
 
-#### [ConfusingCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ConfusingConditionCheck.html)
+#### [ConfusingCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ConfusingConditionCheck.html) (COMPLEXITY)
 
 Checks that the expression with the `if` condition in an `if-then-else` statement is not negated.
 
@@ -2362,11 +2362,11 @@ if (!isValid()) {
 }
 ````
 
-#### [ConstructorWithoutParams](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ConstructorWithoutParamsCheck.html)
+#### [ConstructorWithoutParams](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ConstructorWithoutParamsCheck.html) (COMPLEXITY)
 
 Exception class constructors must accept parameters for message and/or cause. This check is applied to classes whose name ends with `Exception`.
 
-#### [DiamondOperatorForVariableDefinition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/DiamondOperatorForVariableDefinitionCheck.html)
+#### [DiamondOperatorForVariableDefinition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/DiamondOperatorForVariableDefinitionCheck.html) (TWEAKS)
 
 Checks that the diamond operator is used where possible.
 
@@ -2380,13 +2380,13 @@ Invalid:
 Map<Long, String> idTable = new HashMap<Long, String>();
 ````
 
-#### [EitherLogOrThrow](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EitherLogOrThrowCheck.html)
+#### [EitherLogOrThrow](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EitherLogOrThrowCheck.html) (TWEAKS)
 
 Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
 
 Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 
-#### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
+#### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html) (NAMING)
 
 Enums are considered to be of two distinct types: 'Class' or 'Value' enumerations. The distinction being that Class Enumerations have methods (other than `toString()`) defined.
 
@@ -2437,7 +2437,7 @@ enum InvalidClassLike {
 }
 ````
 
-#### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
+#### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html) (LAYOUT)
 
 Prevents the use of `/* C-style */` comments inside methods.
 
@@ -2455,7 +2455,7 @@ void doSomething() {
 }
 ````
 
-#### [ForbidReturnInFinallyBlock](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html)
+#### [ForbidReturnInFinallyBlock](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html) (COMPLEXITY)
 
 Prevent the use of a `return` statement in the `finally` block.
 
@@ -2470,7 +2470,7 @@ try {
 }
 ````
 
-#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html) (COMPLEXITY)
 
 Prevents declaring a method from returning a wildcard type as its return value.
 
@@ -2484,7 +2484,7 @@ Invalid:
 <E> List<? extends E> getList() {}
 ````
 
-#### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
+#### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html) (TWEAKS)
 
 Prevent the placement of variables or fields after methods in an expression.
 
@@ -2498,17 +2498,17 @@ Invalid:
 if (getProperty() && property) {}
 ````
 
-#### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html)
+#### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html) (COMPLEXITY)
 
 Checks for unoptimised iterations over `Map`s. Check use of `map.values()`, `map.keySet()` and `map.entrySet()` against the use of the iterator produced to verify if another could be better.
 
-#### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html)
+#### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html) (NAMING)
 
 Checks the names of JUnit test classes. Classes checked are those that have at least one method annotated with `Test` or `org.junit.Test`.
 
 Test class names must match: `.+Test\\d*|.+Tests\\d*|Test.+|Tests.+|.+IT|.+ITs|.+TestCase\\d*|.+TestCases\\d*`
 
-#### [NestedSwitch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NestedSwitchCheck.html)
+#### [NestedSwitch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NestedSwitchCheck.html) (COMPLEXITY)
 
 Checks that `switch` statements are not nested within one another.
 
@@ -2557,11 +2557,11 @@ void doSomething(int a, int b) {
 }
 ````
 
-#### [NoMainMethodInAbstractClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NoMainMethodInAbstractClassCheck.html)
+#### [NoMainMethodInAbstractClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/NoMainMethodInAbstractClassCheck.html) (TWEAKS)
 
 Prevents a `main` method from existing in an `abstract` class.
 
-#### [NumericLiteralNeedsUnderscore](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NumericLiteralNeedsUnderscoreCheck.html)
+#### [NumericLiteralNeedsUnderscore](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NumericLiteralNeedsUnderscoreCheck.html) (NAMING)
 
 Checks that numeric literals use underscores ('_') if over a certain length.
 
@@ -2580,7 +2580,7 @@ Checks that numeric literals use underscores ('_') if over a certain length.
     * 9 or more digits must use the underscore
     * No more than 8 digits between underscores
 
-#### [OverridableMethodInConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/OverridableMethodInConstructorCheck.html)
+#### [OverridableMethodInConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/OverridableMethodInConstructorCheck.html) (TWEAKS)
 
 Prevents calls to overridable methods from constuctors including other methods that perform the same functions. (i.e. `Cloneable.clone()` and `Serializable.readObject()`)
 
@@ -2603,7 +2603,7 @@ class Child extends Base {
 new Child(42); // prints "0"
 ````
 
-#### [PublicReferenceToPrivateType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/PublicReferenceToPrivateTypeCheck.html)
+#### [PublicReferenceToPrivateType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/PublicReferenceToPrivateTypeCheck.html) (TWEAKS)
 
 Checks that a type is not exposed outside its declared scope.
 
@@ -2619,7 +2619,7 @@ public class OuterClass {
 class SiblingClass {}
 ````
 
-#### [RedundantReturn](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/RedundantReturnCheck.html)
+#### [RedundantReturn](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/RedundantReturnCheck.html) (TWEAKS)
 
 Checks for redundant return statements.
 
@@ -2635,7 +2635,7 @@ void doStuff() {
 }
 ````
 
-#### [ReturnBooleanFromTernary](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html)
+#### [ReturnBooleanFromTernary](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html) (TWEAKS)
 
 Ternary statements shouldn't have `Boolean` values as results.
 
@@ -2651,7 +2651,7 @@ Boolean set = isSet();
 Boolean notReady = !isReady();
 ````
 
-#### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html)
+#### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html) (TWEAKS)
 
 The `Boolean` type is meant to only represent a binary state: TRUE or FALSE. It is not a ternary value: TRUE, FALSE, null.
 
@@ -2668,15 +2668,15 @@ Boolean isEnabled() {
 }
 ````
 
-#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html) (NAMING)
 
 Checks that setters and getters follow the normal setField(), getField() and isField() pattern, where 'Field' is the name of the field being accessed.
 
-#### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
+#### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html) (TWEAKS)
 
 Checks that there is at most one `continue` or `break` statement within a looping block (e.g. `for`, `while`, ...)
 
-#### [TernaryPerExpressionCount](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html)
+#### [TernaryPerExpressionCount](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html) (TWEAKS)
 
 Checks that there is at most one ternary statments (`?:`) within an expression.
 
@@ -2685,7 +2685,7 @@ Invalid:
 String x = value != null ? "A" : "B" + value == null ? "C" : "D"
 ````
 
-#### [UniformEnumConstantName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/UniformEnumConstantNameCheck.html)
+#### [UniformEnumConstantName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/UniformEnumConstantNameCheck.html) (NAMING)
 
 Checks that all the values of an `enum` follow the same naming pattern.
 
@@ -2707,7 +2707,7 @@ public enum EnumThree {
 }
 ````
 
-#### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html)
+#### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html) (TWEAKS)
 
 Checks for catch blocks that are useless. i.e. that catch al exceptions and then just rethrow them.
 
@@ -2720,7 +2720,7 @@ try {
 }
 ````
 
-#### [UselessSuperCtorCall](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html)
+#### [UselessSuperCtorCall](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html) (TWEAKS)
 
 Checks for useless calls the the `super()` method in constructors.
 
@@ -2745,103 +2745,103 @@ These checks are not enabled. Notes are included for each explaining why.
 ### Checkstyle
 
 
-#### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
+#### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma) (UNSPECIFIED)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
 
-#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
+#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable) (UNSPECIFIED)
 
 Doesn't recognise Lombok's `val` as being `final`.
 
-#### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
+#### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation) (UNSPECIFIED)
 
 Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
 
-#### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
+#### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl)
+#### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder)
+#### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder) (LAYOUT)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
+#### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation) (LAYOUT)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
 
-#### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
+#### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation) (LAYOUT)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
 
-#### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
+#### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable) (JAVADOC)
 
 Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
 
-#### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
+#### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor) (TWEAKS)
 
 Would not see constructors created using Lombok's `@NoArgsConstructor`.
 
-#### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
+#### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride) (TWEAKS)
 
 The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
 
-#### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
+#### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber) (TWEAKS)
 
 Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 
-#### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
+#### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment) (TWEAKS)
 
 [FinalParameters](#finalparameters) already protects against assigning values to parameters.
 
-#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
+#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport) (LAYOUT)
 
 [UnusedImports](#unusedimports) performs all the same checks and more.
 
-#### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
+#### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader)
+#### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline)
+#### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline)
+#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpSinglelineJava](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava)
+#### [RegexpSinglelineJava](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
+#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc) (JAVADOC)
 
 I don't use single line javadoc blocks.
 
-#### [SummaryJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc)
+#### [SummaryJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc) (JAVADOC)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone)
+#### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone) (TWEAKS)
 
 Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check.
 
-#### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
+#### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize) (TWEAKS)
 
 [NoFinalizer](#nofinalizer) prevents use of `finalize()`.
 
-#### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
+#### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
@@ -2850,63 +2850,63 @@ Generic rule; doesn't embody a 'quality' check.
 As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
 
 
-#### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
+#### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html) (COMPLEXITY)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
 
-#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
+#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html) (COMPLEXITY)
 
 TODO: enable
 
-#### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
+#### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [CauseParameterInException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html)
+#### [CauseParameterInException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html) (TWEAKS)
 
 Should already be covered by [AvoidHidingCauseException](#avoidhidingcauseexception).
 
-#### [ChildBlockLength](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html)
+#### [ChildBlockLength](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html) (COMPLEXITY)
 
 Appears to be broken as of `1.21.0`.
 
-#### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
+#### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html) (LAYOUT)
 
 The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
 
-#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
+#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html) (TWEAKS)
 
 TODO: enable
 
-#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
+#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html) (UNSPECIFIED)
 
 TODO: enable
 
-#### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
+#### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html)
+#### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
+#### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
+#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html) (TWEAKS)
 
 [IllegalThrows](#illegalthrows) performs a similar check.
 
-#### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
+#### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html) (UNSPECIFIED)
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
+#### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html) (UNSPECIFIED)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
 
-#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
+#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html) (LAYOUT)
 
 TODO: enable
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -38,6 +39,7 @@ class DefaultRuleReadmeLoader implements RuleReadmeLoader {
     }
 
     private String formatRuleHeader(final Rule rule) {
-        return String.format("%n#### [%s](%s)", rule.getName(), rule.getUri());
+        return String.format("%n#### [%s](%s) (%s)", rule.getName(), rule.getUri(), Optional.ofNullable(rule.getLevel())
+                                                                                            .orElse(RuleLevel.UNSPECIFIED));
     }
 }
