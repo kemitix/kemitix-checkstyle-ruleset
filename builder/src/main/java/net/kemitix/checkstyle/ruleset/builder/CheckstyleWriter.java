@@ -51,6 +51,8 @@ class CheckstyleWriter implements CommandLineRunner {
 
     private final OutputProperties outputProperties;
 
+    private final TemplateProperties templateProperties;
+
     private final RulesProperties rulesProperties;
 
     @Override
@@ -80,7 +82,7 @@ class CheckstyleWriter implements CommandLineRunner {
 
 
         try {
-            val checkstyleXmlTemplate = outputProperties.getCheckstyleXmlTemplate();
+            val checkstyleXmlTemplate = templateProperties.getCheckstyleXml();
             if (!checkstyleXmlTemplate.toFile()
                                       .exists()) {
                 throw new IOException(checkstyleXmlTemplate.toString());
