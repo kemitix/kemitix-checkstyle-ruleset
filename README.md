@@ -156,11 +156,9 @@ from the previous.
 * [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - sevntu - disabled
 * [ForbidWildcardAsReturnType](#forbidwildcardasreturntype) - sevntu - enabled
 * [GenericWhitespace](#genericwhitespace) - checkstyle - enabled
-* [Header](#header) - checkstyle - disabled
+* [Header](#header) - checkstyle - enabled
 * [HiddenField](#hiddenfield) - checkstyle - enabled
 * [HideUtilityClassConstructor](#hideutilityclassconstructor) - checkstyle - enabled
-* [HideUtilityClassConstructor](#hideutilityclassconstructor-1) - sevntu - disabled
-* [IllegalCatchExtended](#illegalcatchextended) - sevntu - disabled
 * [IllegalCatch](#illegalcatch) - checkstyle - enabled
 * [IllegalImport](#illegalimport) - checkstyle - enabled
 * [IllegalInstantiation](#illegalinstantiation) - checkstyle - disabled
@@ -172,11 +170,9 @@ from the previous.
 * [ImportOrder](#importorder) - checkstyle - disabled
 * [Indentation](#indentation) - checkstyle - disabled
 * [InnerAssignment](#innerassignment) - checkstyle - enabled
-* [InnerClass](#innerclass) - sevntu - disabled
 * [InnerTypeLast](#innertypelast) - checkstyle - enabled
 * [InterfaceIsType](#interfaceistype) - checkstyle - enabled
 * [InterfaceTypeParameterName](#interfacetypeparametername) - checkstyle - enabled
-* [InterfaceTypeParameterName](#interfacetypeparametername-1) - sevntu - disabled
 * [JavadocMethod](#javadocmethod) - checkstyle - enabled
 * [JavadocPackage](#javadocpackage) - checkstyle - enabled
 * [JavadocParagraph](#javadocparagraph) - checkstyle - enabled
@@ -186,7 +182,6 @@ from the previous.
 * [JavadocVariable](#javadocvariable) - checkstyle - disabled
 * [JavaNCSS](#javancss) - checkstyle - enabled
 * [LeftCurly](#leftcurly) - checkstyle - enabled
-* [LineLengthExtended](#linelengthextended) - sevntu - disabled
 * [LineLength](#linelength) - checkstyle - enabled
 * [LocalFinalVariableName](#localfinalvariablename) - checkstyle - enabled
 * [LocalVariableName](#localvariablename) - checkstyle - enabled
@@ -206,9 +201,7 @@ from the previous.
 * [ModifiedControlVariable](#modifiedcontrolvariable) - checkstyle - enabled
 * [ModifierOrder](#modifierorder) - checkstyle - enabled
 * [MultipleStringLiterals](#multiplestringliterals) - checkstyle - enabled
-* [MultipleStringLiteralsExtended](#multiplestringliteralsextended) - sevntu - disabled
 * [MultipleVariableDeclarations](#multiplevariabledeclarations) - checkstyle - enabled
-* [MultipleVariableDeclarationsExtended](#multiplevariabledeclarationsextended) - sevntu - disabled
 * [MutableException](#mutableexception) - checkstyle - enabled
 * [NameConventionForJunit4TestClasses](#nameconventionforjunit4testclasses) - sevntu - enabled
 * [NeedBraces](#needbraces) - checkstyle - enabled
@@ -254,7 +247,6 @@ from the previous.
 * [RequireThis](#requirethis) - checkstyle - enabled
 * [ReturnBooleanFromTernary](#returnbooleanfromternary) - sevntu - enabled
 * [ReturnCount](#returncount) - checkstyle - enabled
-* [ReturnCountExtended](#returncountextended) - sevntu - disabled
 * [ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean) - sevntu - enabled
 * [RightCurly](#rightcurly) - checkstyle - enabled
 * [SeparatorWrap](#separatorwrap) - checkstyle - enabled
@@ -283,7 +275,6 @@ from the previous.
 * [UniformEnumConstantName](#uniformenumconstantname) - sevntu - enabled
 * [UniqueProperties](#uniqueproperties) - checkstyle - enabled
 * [UnnecessaryParentheses](#unnecessaryparentheses) - checkstyle - enabled
-* [UnnecessaryParenthesesExtended](#unnecessaryparenthesesextended) - sevntu - disabled
 * [UnusedImports](#unusedimports) - checkstyle - enabled
 * [UpperEll](#upperell) - checkstyle - enabled
 * [UselessSingleCatch](#uselesssinglecatch) - sevntu - enabled
@@ -302,6 +293,7 @@ The following is a list of each of the checks and the expectations each has on y
 ### Checkstyle
 
 Rules are listed in alphabetical order.
+
 
 #### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
 
@@ -2297,6 +2289,7 @@ Checks that tokens are surrounded by whitespace.
 
 ### Sevntu
 
+
 #### [AvoidConstantAsFirstOperandInCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html)
 
 Checks that condition expressions don't become less readable by attempting to use a constant on the left-hand-side of a comparison.
@@ -2674,6 +2667,7 @@ Boolean isEnabled() {
     return null;
 }
 ````
+
 #### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
 
 Checks that setters and getters follow the normal setField(), getField() and isField() pattern, where 'Field' is the name of the field being accessed.
@@ -2750,6 +2744,7 @@ These checks are not enabled. Notes are included for each explaining why.
 
 ### Checkstyle
 
+
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
@@ -2757,8 +2752,6 @@ Couldn't get my IDE's (IntelliJ) code style to match.
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.
-
-Checks that local variables are `final` if they are never modified after declaration.
 
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 
@@ -2808,8 +2801,6 @@ Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 
 [UnusedImports](#unusedimports) performs all the same checks and more.
 
-Checks for redundant `import`s. Checks for duplicates, imports from the `java.lang` package or from the current package.
-
 #### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
 
 Generic rule; doesn't embody a 'quality' check.
@@ -2830,7 +2821,7 @@ Generic rule; doesn't embody a 'quality' check.
 
 Generic rule; doesn't embody a 'quality' check.
 
-#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#c)
+#### [RegexpSinglelineJava](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava)
 
 Generic rule; doesn't embody a 'quality' check.
 
@@ -2858,13 +2849,14 @@ Generic rule; doesn't embody a 'quality' check.
 
 As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
 
+
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
 
 #### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
 
-> TODO: enable
+TODO: enable
 
 #### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
 
@@ -2884,11 +2876,11 @@ The [DeclarationOrder](#declarationorder) check already imposes an order for cla
 
 #### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
 
-> TODO: enable
+TODO: enable
 
 #### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
 
-> TODO: enable
+TODO: enable
 
 #### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
 
@@ -2906,52 +2898,16 @@ Generic rule; doesn't embody a 'quality' check.
 
 [IllegalThrows](#illegalthrows) performs a similar check.
 
-#### [HideUtilityClassConstructor](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/HideUtilityClassConstructorCheck.html)
-
-See [HideUtilityClassConstructor](#hideutilityclassconstructor).
-
-#### [IllegalCatchExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/IllegalCatchExtendedCheck.html)
-
-See [IllegalCatch](#illegalcatch).
-
-#### [InnerClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/InnerClassCheck.html)
-
-See [InnerTypeLast](#innertypelast).
-
-#### [InterfaceTypeParameterName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/InterfaceTypeParameterNameCheck.html)
-
-See [InterfaceTypeParameterName](#interfacetypeparametername).
-
-#### [LineLengthExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/sizes/LineLengthExtendedCheck.html)
-
-See [LineLength](#linelength)
-
-#### [MultipleStringLiteralsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleStringLiteralsExtendedCheck.html)
-
-See [MultipleStringLiteralsExtended](#multiplestringliteralsextended).
-
-#### [MultipleVariableDeclarationsExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MultipleVariableDeclarationsExtendedCheck.html)
-
-See [MultipleVariableDeclarations](#multiplevariabledeclarations).
-
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
-
-#### [ReturnCountExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnCountExtendedCheck.html)
-
-See [ReturnCount](#returncount).
 
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
 
-#### [UnnecessaryParenthesesExtended](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UnnecessaryParenthesesExtendedCheck.html)
-
-See [UnnecessaryParentheses](#unnecessaryparentheses).
-
 #### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
 
-> TODO: enable
+TODO: enable
 
 [Effective Java]: http://amzn.to/2aSz6GE
