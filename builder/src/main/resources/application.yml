@@ -1161,3 +1161,323 @@ rules:
         enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html
+    -
+        name: ArrayTrailingComma
+        parent: TREEWALKER
+        level: TWEAK
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma
+        reason: Couldn't get my IDE's (IntelliJ) code style to match.
+    -
+        name: FinalLocalVariable
+        parent: TREEWALKER
+        level: TWEAK
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable
+        reason: Doesn't recognise Lombok's `val` as being `final`.
+    -
+        name: IllegalInstantiation
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation
+        reason: Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
+    -
+        name: IllegalTokenText
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: ImportControl
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#ImportControl
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: ImportOrder
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#ImportOrder
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: Indentation
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_misc.html#Indentation
+        reason: Couldn't get my IDE's (IntelliJ) code style to match.
+    -
+        name: JavadocTagContinuationIndentation
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation
+        reason: Couldn't get my IDE's (IntelliJ) code style to match.
+    -
+        name: JavadocVariable
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable
+        reason: Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
+    -
+        name: MissingCtor
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#MissingCtor
+        reason: Would not see constructors created using Lombok's `@NoArgsConstructor`.
+    -
+        name: MissingOverride
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride
+        reason: The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
+    -
+        name: OuterTypeNumber
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber
+        reason: Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
+    -
+        name: ParameterAssignment
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment
+        reason: "[FinalParameters](#finalparameters) already protects against assigning values to parameters."
+    -
+        name: RedundantImport
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_imports.html#RedundantImport
+        reason: "[UnusedImports](#unusedimports) performs all the same checks and more."
+    -
+        name: Regexp
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#Regexp
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: RegexpHeader
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_header.html#RegexpHeader
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: RegexpMultiline
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: RegexpOnFilename
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: RegexpSingleline
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: RegexpSinglelineJava
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: SingleLineJavadoc
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc
+        reason: I don't use single line javadoc blocks.
+    -
+        name: SummaryJavadoc
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: SuperClone
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#SuperClone
+        reason: Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check.
+    -
+        name: SuperFinalize
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize
+        reason: "[NoFinalizer](#nofinalizer) prevents use of `finalize()`."
+    -
+        name: WriteTag
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: AvoidConditionInversion
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html
+        reason: Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
+    -
+        name: AvoidDefaultSerializableInInnerClasses
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html
+        reason: "TODO: enable"
+    -
+        name: AvoidModifiersForTypes
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: CauseParameterInException
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html
+        reason: Should already be covered by [AvoidHidingCauseException](#avoidhidingcauseexception).
+    -
+        name: ChildBlockLength
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html
+        reason: Appears to be broken as of `1.21.0`.
+    -
+        name: CustomDeclarationOrder
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html
+        reason: The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
+    -
+        name: EmptyPublicCtorInClass
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html
+        reason: "TODO: enable"
+    -
+        name: FinalizeImplementation
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html
+        reason: "TODO: enable"
+    -
+        name: ForbidAnnotation
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: ForbidCertainImports
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: ForbidInstantiation
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: ForbidThrowAnonymousExceptions
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html
+        reason: "[IllegalThrows](#illegalthrows) performs a similar check."
+    -
+        name: RequiredParameterForAnnotation
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html
+        reason: Generic rule; doesn't embody a 'quality' check.
+    -
+        name: StaticMethodCandidate
+        parent: TREEWALKER
+        level:
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html
+        reason: Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
+    -
+        name: WhitespaceBeforeArrayInitializer
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: false
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html
+        reason: "TODO: enable"

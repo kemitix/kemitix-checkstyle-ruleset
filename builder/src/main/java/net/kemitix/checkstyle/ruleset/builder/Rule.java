@@ -54,6 +54,11 @@ public class Rule {
     private boolean insuppressible;
 
     /**
+     * The reason a rule has been disabled.
+     */
+    private String reason;
+
+    /**
      * Configuration properties.
      */
     private Map<String, String> properties = new HashMap<>();
