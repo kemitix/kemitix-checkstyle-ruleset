@@ -152,6 +152,7 @@ rules:
         level: NAMING
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_naming.html#ConstantName
     -
         name: CovariantEquals
@@ -159,6 +160,7 @@ rules:
         level: COMPLEXITY
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_coding.html#CovariantEquals
     -
         name: CyclomaticComplexity
@@ -247,6 +249,7 @@ rules:
         level: COMPLEXITY
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_coding.html#EqualsHashCode
     -
         name: ExecutableStatementCount
@@ -627,6 +630,7 @@ rules:
         level: TWEAKS
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_coding.html#NoClone
     -
         name: NoFinalizer
@@ -688,6 +692,7 @@ rules:
         level: TWEAKS
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_design.html#OneTopLevelClass
     -
         name: OperatorWrap
@@ -702,6 +707,7 @@ rules:
         level: TWEAKS
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_misc.html#OuterTypeFilename
     -
         name: OverloadMethodsDeclarationOrder
@@ -723,6 +729,7 @@ rules:
         level: JAVADOC
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_coding.html#PackageDeclaration
     -
         name: PackageName
@@ -890,6 +897,7 @@ rules:
         level: NAMING
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_naming.html#TypeName
     -
         name: UncommentedMain
@@ -941,6 +949,7 @@ rules:
         level: TWEAKS
         enabled: true
         source: CHECKSTYLE
+        insuppressible: true
         uri: http://checkstyle.sourceforge.net/config_design.html#VisibilityModifier
     -
         name: WhitespaceAfter

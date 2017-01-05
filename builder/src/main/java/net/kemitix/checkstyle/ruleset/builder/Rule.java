@@ -49,6 +49,11 @@ public class Rule {
     private URI uri;
 
     /**
+     * Flag to indicate rules that can not be suppressed (via {@code @SuppressWarnings}.
+     */
+    private boolean insuppressible;
+
+    /**
      * Configuration properties.
      */
     private Map<String, String> properties = new HashMap<>();
