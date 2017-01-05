@@ -30,5 +30,7 @@ class OutputProperties {
     private Map<RuleLevel, String> rulesetFiles;
 
     /**
+     * The README.md file.
      */
+    private Path readme;
 }

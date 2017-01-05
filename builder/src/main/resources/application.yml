@@ -6,6 +6,7 @@ output:
         JAVADOC: checkstyle-3-javadoc.xml
         TWEAKS: checkstyle-4-tweaks.xml
         COMPLEXITY: checkstyle-5-complexity.xml
+    readme: README.md
 template:
     checkstyle-xml: builder/src/main/resources/checkstyle-template.xml
     readme-template: builder/src/main/resources/README-template.md
