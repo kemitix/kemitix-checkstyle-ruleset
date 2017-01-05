@@ -39,9 +39,9 @@ from the previous.
 
 ````
 <properties>
-    <checkstyle.version>7.0</checkstyle.version>
-    <sevntu-checkstyle-maven-plugin.version>1.21.0</sevntu-checkstyle-maven-plugin.version>
-    <kemitix-checkstyle-ruleset.version>0.1.1</kemitix-checkstyle-ruleset.version>
+    <checkstyle.version>7.3</checkstyle.version>
+    <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
+    <kemitix-checkstyle-ruleset.version>0.2.0</kemitix-checkstyle-ruleset.version>
 </properties>
 <pluginManagement>
     <plugins>
