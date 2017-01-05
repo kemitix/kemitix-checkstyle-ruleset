@@ -1,10 +1,12 @@
 output:
-    directory: src/main/resources/net/kemitix
-    level1: checkstyle-1-layout.xml
-    level2: checkstyle-2-naming.xml
-    level3: checkstyle-3-javadoc.xml
-    level4: checkstyle-4-tweaks.xml
-    level5: checkstyle-5-complexity.xml
+    directory: ruleset/src/main/resources/net/kemitix
+    ruleset-files:
+        LAYOUT: checkstyle-1-layout.xml
+        NAMING: checkstyle-2-naming.xml
+        JAVADOC: checkstyle-3-javadoc.xml
+        TWEAKS: checkstyle-4-tweaks.xml
+        COMPLEXITY: checkstyle-5-complexity.xml
+    checkstyle-xml-template: builder/src/main/resources/checkstyle-template.xml
 rules:
     -
         name: AbbreviationAsWordInName
