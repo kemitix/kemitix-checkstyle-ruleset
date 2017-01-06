@@ -49,6 +49,8 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 class CheckstyleWriter implements CommandLineRunner {
 
+    private static final String NEWLINE = "\n";
+
     private final OutputProperties outputProperties;
 
     private final TemplateProperties templateProperties;
@@ -72,14 +74,14 @@ class CheckstyleWriter implements CommandLineRunner {
                                           .filter(rule -> RuleParent.CHECKER.equals(rule.getParent()))
                                           .filter(rule -> ruleLevel.compareTo(rule.getLevel()) >= 0)
                                           .map(this::formatRuleAsModule)
-                                          .collect(Collectors.joining("\n"));
+                                          .collect(Collectors.joining(NEWLINE));
         val treeWalkerRules = rulesProperties.getRules()
                                              .stream()
                                              .filter(Rule::isEnabled)
                                              .filter(rule -> RuleParent.TREEWALKER.equals(rule.getParent()))
                                              .filter(rule -> ruleLevel.compareTo(rule.getLevel()) >= 0)
                                              .map(this::formatRuleAsModule)
-                                             .collect(Collectors.joining("\n"));
+                                             .collect(Collectors.joining(NEWLINE));
 
 
         try {
@@ -91,7 +93,7 @@ class CheckstyleWriter implements CommandLineRunner {
             val bytes = Files.readAllBytes(checkstyleXmlTemplate);
             val template = new String(bytes);
             val output = Arrays.asList(String.format(template, checkerRules, treeWalkerRules)
-                                             .split("\n"));
+                                             .split(NEWLINE));
             Files.write(xmlFile, output, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -111,6 +113,6 @@ class CheckstyleWriter implements CommandLineRunner {
     private String formatProperties(final Map<String, String> properties) {
         return MapStream.of(properties)
                         .map((k, v) -> String.format("<property name=\"%s\" value=\"%s\"/>", k, v))
-                        .collect(Collectors.joining("\n"));
+                        .collect(Collectors.joining(NEWLINE));
     }
 }
