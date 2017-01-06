@@ -53,7 +53,7 @@ public class DefaultReadmeIndexBuilder implements ReadmeIndexBuilder {
     private final RulesProperties rulesProperties;
 
     @Override
-    public String build() {
+    public final String build() {
         return HEADERROW + SEPARATOR + rulesProperties.getRules()
                                                       .stream()
                                                       .sorted(Comparator.comparing(lowerCaseRuleName()))
@@ -76,11 +76,17 @@ public class DefaultReadmeIndexBuilder implements ReadmeIndexBuilder {
     }
 
     private String suppressible(final Rule rule) {
-        return rule.isInsuppressible() ? "No" : "";
+        if (rule.isInsuppressible()) {
+            return "No";
+        }
+        return "";
     }
 
     private String enabled(final Rule rule) {
-        return rule.isEnabled() ? "Yes" : "";
+        if (rule.isEnabled()) {
+            return "Yes";
+        }
+        return "";
     }
 
     private String source(final Rule rule) {
