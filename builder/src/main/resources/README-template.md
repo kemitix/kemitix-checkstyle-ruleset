@@ -39,54 +39,65 @@ from the previous.
 
 ````
 <properties>
+    <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
     <checkstyle.version>7.3</checkstyle.version>
     <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
     <kemitix-checkstyle-ruleset.version>0.2.0</kemitix-checkstyle-ruleset.version>
 </properties>
-<pluginManagement>
+<build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.github.sevntu.checkstyle</groupId>
+                        <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
+                        <version>${sevntu-checkstyle-maven-plugin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.kemitix</groupId>
+                        <artifactId>kemitix-checkstyle-ruleset</artifactId>
+                        <version>${kemitix-checkstyle-ruleset.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>net/kemitix/checkstyle-5-complexity.xml</configLocation>
+                </configuration>
+            </plugin><!-- maven-checkstyle-plugin -->
+        </plugins>
+    </pluginManagement>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
-            <dependencies>
-                <dependency>
-                    <groupId>com.puppycrawl.tools</groupId>
-                    <artifactId>checkstyle</artifactId>
-                    <version>${checkstyle.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.github.sevntu.checkstyle</groupId>
-                    <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                    <version>${sevntu-checkstyle-maven-plugin.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>net.kemitix</groupId>
-                    <artifactId>kemitix-checkstyle-ruleset</artifactId>
-                    <version>${kemitix-checkstyle-ruleset.version}</version>
-                </dependency>
-            </dependencies>
-            <configuration>
-                <configLocation>net/kemitix/checkstyle-5-complexity.xml</configLocation>
-            </configuration>
+            <executions>
+                <execution>
+                    <id>validate</id>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                        <goal>checkstyle</goal>
+                    </goals>
+                </execution>
+            </executions>
         </plugin><!-- maven-checkstyle-plugin -->
     </plugins>
-</pluginManagement>
-<plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <executions>
-            <execution>
-                <id>validate</id>
-                <phase>validate</phase>
-                <goals>
-                    <goal>check</goal>
-                    <goal>checkstyle</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin><!-- maven-checkstyle-plugin -->
-</plugins>
+</build>
+<pluginRepositories>
+    <pluginRepository>
+        <id>sevntu-maven</id>
+        <name>sevntu-maven</name>
+        <url>http://sevntu-checkstyle.github.io/sevntu.checkstyle/maven2</url>
+    </pluginRepository>
+</pluginRepositories>
 ````
 
 ## All Checks
