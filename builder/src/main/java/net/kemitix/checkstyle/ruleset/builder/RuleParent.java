@@ -27,7 +27,7 @@ package net.kemitix.checkstyle.ruleset.builder;
 /**
  * .
  *
- * @author Paul Campbell (paul.campbell@hubio.com)
+ * @author Paul Campbell (pcampbell@kemitix.net)
  */
 public enum RuleParent {
 

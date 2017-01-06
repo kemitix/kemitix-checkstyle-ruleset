@@ -36,7 +36,7 @@ import java.util.stream.Collectors;
 /**
  * Default Rule Index Builder.
  *
- * @author Paul Campbell (paul.campbell@hubio.com)
+ * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Component
 @RequiredArgsConstructor

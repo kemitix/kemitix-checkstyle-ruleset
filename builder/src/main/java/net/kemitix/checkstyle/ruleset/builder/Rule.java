@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * A single Checkstyle Check.
  *
- * @author Paul Campbell (paul.campbell@hubio.com)
+ * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @ToString
 @Setter

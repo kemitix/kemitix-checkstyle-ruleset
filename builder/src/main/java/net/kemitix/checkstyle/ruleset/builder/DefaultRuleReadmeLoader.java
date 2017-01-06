@@ -36,7 +36,7 @@ import java.util.stream.Stream;
 /**
  * Default README fragment loader.
  *
- * @author Paul Campbell (paul.campbell@hubio.com)
+ * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Slf4j
 @Component
