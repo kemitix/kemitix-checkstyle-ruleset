@@ -27,6 +27,7 @@ package net.kemitix.checkstyle.ruleset.builder;
 import com.speedment.common.mapstream.MapStream;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,6 +45,7 @@ import java.util.stream.Stream;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 class CheckstyleWriter implements CommandLineRunner {
@@ -82,19 +83,18 @@ class CheckstyleWriter implements CommandLineRunner {
                                              .filter(rule -> ruleLevel.compareTo(rule.getLevel()) >= 0)
                                              .map(this::formatRuleAsModule)
                                              .collect(Collectors.joining(NEWLINE));
-
-
         try {
             val checkstyleXmlTemplate = templateProperties.getCheckstyleXml();
-            if (!checkstyleXmlTemplate.toFile()
-                                      .exists()) {
-                throw new IOException(checkstyleXmlTemplate.toString());
+            if (checkstyleXmlTemplate.toFile()
+                                     .exists()) {
+                val template = new String(Files.readAllBytes(checkstyleXmlTemplate));
+                val output = Arrays.asList(String.format(template, checkerRules, treeWalkerRules)
+                                                 .split(NEWLINE));
+                log.info("Writing xmlFile: {}", xmlFile);
+                Files.write(xmlFile, output, StandardCharsets.UTF_8);
+            } else {
+                throw new IOException("Missing template: " + checkstyleXmlTemplate.toString());
             }
-            val bytes = Files.readAllBytes(checkstyleXmlTemplate);
-            val template = new String(bytes);
-            val output = Arrays.asList(String.format(template, checkerRules, treeWalkerRules)
-                                             .split(NEWLINE));
-            Files.write(xmlFile, output, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
