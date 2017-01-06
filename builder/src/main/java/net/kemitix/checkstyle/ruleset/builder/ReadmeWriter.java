@@ -33,9 +33,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -58,46 +55,21 @@ class ReadmeWriter implements CommandLineRunner {
 
     private final RuleReadmeLoader ruleReadmeLoader;
 
+    private final ReadmeIndexBuilder indexBuilder;
+
     @Override
     public void run(final String... args) throws Exception {
         final String readmeTemplate = readFile(templateProperties.getReadmeTemplate());
-        final String indexHeader =
-                "Rule|Level|Source|Enabled|Suppressable\n" + "----|-----|------|-------|------------\n";
-        final String index = ruleIndex();
         final String enabledCheckstyle = readmeRules(this::isEnabledCheckstyleRule);
         final String enabledSevntu = readmeRules(this::isEnabledSevntuRule);
         final String disabledCheckstyle = readmeRules(this::isDisabledCheckstyleRule);
         final String disabledSevntu = readmeRules(this::isDisabledSevntuRule);
         final byte[] readme =
-                String.format(readmeTemplate, indexHeader + index, enabledCheckstyle, enabledSevntu, disabledCheckstyle,
+                String.format(readmeTemplate, indexBuilder.build(), enabledCheckstyle, enabledSevntu, disabledCheckstyle,
                               disabledSevntu
                              )
                       .getBytes(StandardCharsets.UTF_8);
         Files.write(outputProperties.getReadme(), readme, StandardOpenOption.TRUNCATE_EXISTING);
-    }
-
-    private String ruleIndex() {
-        return rulesProperties.getRules()
-                              .stream()
-                              .sorted(Comparator.comparing(rule -> rule.getName()
-                                                                       .toLowerCase(Locale.ENGLISH)))
-                              .map(this::formatRuleIndex)
-                              .collect(Collectors.joining(NEWLINE));
-    }
-
-    private String formatRuleIndex(final Rule rule) {
-        final String ruleLink = rule.getName()
-                                    .toLowerCase(Locale.ENGLISH);
-        final String level = Optional.ofNullable(rule.getLevel())
-                                     .orElse(RuleLevel.UNSPECIFIED)
-                                     .toString()
-                                     .toLowerCase(Locale.ENGLISH);
-        final String source = rule.getSource()
-                                  .toString()
-                                  .toLowerCase(Locale.ENGLISH);
-        final String enabled = rule.isEnabled() ? "Yes" : "";
-        final String insuppressible = rule.isInsuppressible() ? "No" : "";
-        return String.format("[%s](#%s)|%s|%s|%s|%s", rule.getName(), ruleLink, level, source, enabled, insuppressible);
     }
 
     private boolean isEnabledSevntuRule(final Rule rule) {
