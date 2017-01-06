@@ -276,6 +276,7 @@ Rule|Level|Source|Enabled|Suppressable
 [SuperClone](#superclone)|tweaks|checkstyle||
 [SuperFinalize](#superfinalize)|tweaks|checkstyle||
 [SuppressWarnings](#suppresswarnings)|naming|checkstyle|Yes|
+[SuppressWarningsFilter](#suppresswarningsfilter)|naming|checkstyle|Yes|
 [SuppressWarningsHolder](#suppresswarningsholder)|naming|checkstyle|Yes|
 [TernaryPerExpressionCount](#ternaryperexpressioncount)|tweaks|sevntu|Yes|
 [ThrowsCount](#throwscount)|complexity|checkstyle|Yes|
@@ -2070,6 +2071,10 @@ Prevents the use of `@SuppressWarnings` for the following checks:
 #### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
 
 Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
+
+#### [SuppressWarningsFilter](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsFilter)
+
+Allows the use of the `@SuppressWarnings` annotation.
 
 #### [ThrowsCount](http://checkstyle.sourceforge.net/config_design.html#ThrowsCount)
 

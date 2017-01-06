@@ -855,6 +855,13 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder
     -
+        name: SuppressWarningsFilter
+        parent: CHECKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsFilter
+    -
         name: ThrowsCount
         parent: TREEWALKER
         level: COMPLEXITY

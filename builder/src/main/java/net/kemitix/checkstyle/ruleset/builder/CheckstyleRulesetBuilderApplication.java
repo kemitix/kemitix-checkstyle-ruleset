@@ -38,6 +38,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  */
 @EnableConfigurationProperties({RulesProperties.class, OutputProperties.class})
 @SpringBootApplication
+@SuppressWarnings("hideutilityclassconstructor")
 public class CheckstyleRulesetBuilderApplication {
 
     /**
