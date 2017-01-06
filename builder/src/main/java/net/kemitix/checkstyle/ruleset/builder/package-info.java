@@ -22,15 +22,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package net.kemitix.checkstyle.ruleset.builder;
-
 /**
- * The origin of the rule.
+ * Ruleset Builder.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleSource {
 
-    CHECKSTYLE,
-    SEVNTU;
-}
+package net.kemitix.checkstyle.ruleset.builder;

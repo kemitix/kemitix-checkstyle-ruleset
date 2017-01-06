@@ -25,7 +25,7 @@
         <checkstyle.version>7.3</checkstyle.version>
         <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
         <kemitix-checkstyle-ruleset.version>2.0.0-SNAPSHOT</kemitix-checkstyle-ruleset.version>
-        <kemitix-checkstyle-ruleset.level>2-naming</kemitix-checkstyle-ruleset.level>
+        <kemitix-checkstyle-ruleset.level>3-javadoc</kemitix-checkstyle-ruleset.level>
     </properties>
 
     <dependencyManagement>

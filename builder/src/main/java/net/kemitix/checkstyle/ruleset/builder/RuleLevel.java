@@ -25,7 +25,7 @@ SOFTWARE.
 package net.kemitix.checkstyle.ruleset.builder;
 
 /**
- * .
+ * Ruleset levels.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */

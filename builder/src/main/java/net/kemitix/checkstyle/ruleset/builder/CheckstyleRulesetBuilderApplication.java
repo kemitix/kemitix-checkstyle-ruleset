@@ -40,6 +40,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @SpringBootApplication
 public class CheckstyleRulesetBuilderApplication {
 
+    /**
+     * Main methods.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(final String[] args) {
         SpringApplication.run(CheckstyleRulesetBuilderApplication.class, args);
     }
