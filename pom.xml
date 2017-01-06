@@ -51,12 +51,4 @@
             <organizationUrl>https://github.com/kemitix/</organizationUrl>
         </developer>
     </developers>
-
-    <properties>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <mapstream.version>2.3.4</mapstream.version>
-    </properties>
 </project>
