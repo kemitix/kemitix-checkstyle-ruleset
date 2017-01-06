@@ -91,200 +91,202 @@ from the previous.
 
 ## All Checks
 
-* [AbbreviationAsWordInName](#abbreviationaswordinname) - naming - checkstyle - enabled
-* [AbstractClassName](#abstractclassname) - naming - checkstyle - enabled
-* [AnnotationLocation](#annotationlocation) - layout - checkstyle - enabled
-* [AnnotationUseStyle](#annotationusestyle) - layout - checkstyle - enabled
-* [AnonInnerLength](#anoninnerlength) - complexity - checkstyle - enabled
-* [ArrayTrailingComma](#arraytrailingcomma) - unspecified - checkstyle - disabled
-* [ArrayTypeStyle](#arraytypestyle) - layout - checkstyle - enabled
-* [AtclauseOrder](#atclauseorder) - javadoc - checkstyle - enabled
-* [AvoidConditionInversion](#avoidconditioninversion) - complexity - sevntu - disabled
-* [AvoidConstantAsFirstOperandInCondition](#avoidconstantasfirstoperandincondition) - tweaks - sevntu - enabled
-* [AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses) - complexity - sevntu - disabled
-* [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters) - tweaks - checkstyle - enabled
-* [AvoidHidingCauseException](#avoidhidingcauseexception) - tweaks - sevntu - enabled
-* [AvoidInlineConditionals](#avoidinlineconditionals) - complexity - checkstyle - enabled
-* [AvoidModifiersForTypes](#avoidmodifiersfortypes) - unspecified - sevntu - disabled
-* [AvoidNestedBlocks](#avoidnestedblocks) - complexity - checkstyle - enabled
-* [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean) - tweaks - sevntu - enabled
-* [AvoidStarImport](#avoidstarimport) - layout - checkstyle - enabled
-* [AvoidStaticImport](#avoidstaticimport) - complexity - checkstyle - enabled
-* [BooleanExpressionComplexity](#booleanexpressioncomplexity) - complexity - checkstyle - enabled
-* [CatchParameterName](#catchparametername) - naming - checkstyle - enabled
-* [CauseParameterInException](#causeparameterinexception) - tweaks - sevntu - disabled
-* [ChildBlockLength](#childblocklength) - complexity - sevntu - disabled
-* [ClassDataAbstractionCoupling](#classdataabstractioncoupling) - complexity - checkstyle - enabled
-* [ClassFanOutComplexity](#classfanoutcomplexity) - complexity - checkstyle - enabled
-* [ClassTypeParameterName](#classtypeparametername) - naming - checkstyle - enabled
-* [CommentsIndentation](#commentsindentation) - layout - checkstyle - enabled
-* [ConfusingCondition](#confusingcondition) - complexity - sevntu - enabled
-* [ConstantName](#constantname) - naming - checkstyle - enabled - insuppressible
-* [ConstructorWithoutParams](#constructorwithoutparams) - complexity - sevntu - enabled
-* [CovariantEquals](#covariantequals) - complexity - checkstyle - enabled - insuppressible
-* [CustomDeclarationOrder](#customdeclarationorder) - layout - sevntu - disabled
-* [CyclomaticComplexity](#cyclomaticcomplexity) - complexity - checkstyle - enabled
-* [DeclarationOrder](#declarationorder) - layout - checkstyle - enabled
-* [DefaultComesLast](#defaultcomeslast) - tweaks - checkstyle - enabled
-* [DesignForExtension](#designforextension) - complexity - checkstyle - enabled
-* [DiamondOperatorForVariableDefinition](#diamondoperatorforvariabledefinition) - tweaks - sevntu - enabled
-* [EitherLogOrThrow](#eitherlogorthrow) - tweaks - sevntu - enabled
-* [EmptyBlock](#emptyblock) - tweaks - checkstyle - enabled
-* [EmptyCatchBlock](#emptycatchblock) - tweaks - checkstyle - enabled
-* [EmptyForInitializerPad](#emptyforinitializerpad) - layout - checkstyle - enabled
-* [EmptyForIteratorPad](#emptyforiteratorpad) - layout - checkstyle - enabled
-* [EmptyLineSeparator](#emptylineseparator) - layout - checkstyle - enabled
-* [EmptyPublicCtorInClass](#emptypublicctorinclass) - tweaks - sevntu - disabled
-* [EmptyStatement](#emptystatement) - layout - checkstyle - enabled
-* [EnumValueName](#enumvaluename) - naming - sevntu - enabled
-* [EqualsAvoidNull](#equalsavoidnull) - tweaks - checkstyle - enabled
-* [EqualsHashCode](#equalshashcode) - complexity - checkstyle - enabled - insuppressible
-* [ExecutableStatementCount](#executablestatementcount) - complexity - checkstyle - enabled
-* [ExplicitInitialization](#explicitinitialization) - tweaks - checkstyle - enabled
-* [FallThrough](#fallthrough) - javadoc - checkstyle - enabled
-* [FileLength](#filelength) - complexity - checkstyle - enabled
-* [FileTabCharacter](#filetabcharacter) - layout - checkstyle - enabled
-* [FinalClass](#finalclass) - complexity - checkstyle - enabled
-* [FinalizeImplementation](#finalizeimplementation) - unspecified - sevntu - disabled
-* [FinalLocalVariable](#finallocalvariable) - unspecified - checkstyle - disabled
-* [FinalParameters](#finalparameters) - tweaks - checkstyle - enabled
-* [ForbidAnnotation](#forbidannotation) - unspecified - sevntu - disabled
-* [ForbidCCommentsInMethods](#forbidccommentsinmethods) - layout - sevntu - enabled
-* [ForbidCertainImports](#forbidcertainimports) - unspecified - sevntu - disabled
-* [ForbidInstantiation](#forbidinstantiation) - unspecified - sevntu - disabled
-* [ForbidReturnInFinallyBlock](#forbidreturninfinallyblock) - complexity - sevntu - enabled
-* [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions) - tweaks - sevntu - disabled
-* [ForbidWildcardAsReturnType](#forbidwildcardasreturntype) - complexity - sevntu - enabled
-* [GenericWhitespace](#genericwhitespace) - layout - checkstyle - enabled
-* [Header](#header) - layout - checkstyle - enabled
-* [HiddenField](#hiddenfield) - tweaks - checkstyle - enabled
-* [HideUtilityClassConstructor](#hideutilityclassconstructor) - tweaks - checkstyle - enabled
-* [IllegalCatch](#illegalcatch) - tweaks - checkstyle - enabled
-* [IllegalImport](#illegalimport) - tweaks - checkstyle - enabled
-* [IllegalInstantiation](#illegalinstantiation) - unspecified - checkstyle - disabled
-* [IllegalThrows](#illegalthrows) - tweaks - checkstyle - enabled
-* [IllegalToken](#illegaltoken) - tweaks - checkstyle - enabled
-* [IllegalTokenText](#illegaltokentext) - unspecified - checkstyle - disabled
-* [IllegalType](#illegaltype) - tweaks - checkstyle - enabled
-* [ImportControl](#importcontrol) - unspecified - checkstyle - disabled
-* [ImportOrder](#importorder) - layout - checkstyle - disabled
-* [Indentation](#indentation) - layout - checkstyle - disabled
-* [InnerAssignment](#innerassignment) - tweaks - checkstyle - enabled
-* [InnerTypeLast](#innertypelast) - tweaks - checkstyle - enabled
-* [InterfaceIsType](#interfaceistype) - complexity - checkstyle - enabled
-* [InterfaceTypeParameterName](#interfacetypeparametername) - naming - checkstyle - enabled
-* [JavadocMethod](#javadocmethod) - javadoc - checkstyle - enabled
-* [JavadocPackage](#javadocpackage) - javadoc - checkstyle - enabled
-* [JavadocParagraph](#javadocparagraph) - javadoc - checkstyle - enabled
-* [JavadocStyle](#javadocstyle) - javadoc - checkstyle - enabled
-* [JavadocTagContinuationIndentation](#javadoctagcontinuationindentation) - layout - checkstyle - disabled
-* [JavadocType](#javadoctype) - javadoc - checkstyle - enabled
-* [JavadocVariable](#javadocvariable) - javadoc - checkstyle - disabled
-* [JavaNCSS](#javancss) - complexity - checkstyle - enabled
-* [LeftCurly](#leftcurly) - layout - checkstyle - enabled
-* [LineLength](#linelength) - layout - checkstyle - enabled
-* [LocalFinalVariableName](#localfinalvariablename) - naming - checkstyle - enabled
-* [LocalVariableName](#localvariablename) - naming - checkstyle - enabled
-* [LogicConditionNeedOptimization](#logicconditionneedoptimization) - tweaks - sevntu - enabled
-* [MagicNumber](#magicnumber) - naming - checkstyle - enabled
-* [MapIterationInForEachLoop](#mapiterationinforeachloop) - complexity - sevntu - enabled
-* [MemberName](#membername) - naming - checkstyle - enabled
-* [MethodCount](#methodcount) - complexity - checkstyle - enabled
-* [MethodLength](#methodlength) - complexity - checkstyle - enabled
-* [MethodName](#methodname) - naming - checkstyle - enabled
-* [MethodParamPad](#methodparampad) - layout - checkstyle - enabled
-* [MethodTypeParameterName](#methodtypeparametername) - naming - checkstyle - enabled
-* [MissingCtor](#missingctor) - tweaks - checkstyle - disabled
-* [MissingDeprecated](#missingdeprecated) - javadoc - checkstyle - enabled
-* [MissingOverride](#missingoverride) - tweaks - checkstyle - disabled
-* [MissingSwitchDefault](#missingswitchdefault) - tweaks - checkstyle - enabled
-* [ModifiedControlVariable](#modifiedcontrolvariable) - tweaks - checkstyle - enabled
-* [ModifierOrder](#modifierorder) - naming - checkstyle - enabled
-* [MultipleStringLiterals](#multiplestringliterals) - naming - checkstyle - enabled
-* [MultipleVariableDeclarations](#multiplevariabledeclarations) - naming - checkstyle - enabled
-* [MutableException](#mutableexception) - tweaks - checkstyle - enabled
-* [NameConventionForJunit4TestClasses](#nameconventionforjunit4testclasses) - naming - sevntu - enabled
-* [NeedBraces](#needbraces) - naming - checkstyle - enabled
-* [NestedForDepth](#nestedfordepth) - complexity - checkstyle - enabled
-* [NestedIfDepth](#nestedifdepth) - complexity - checkstyle - enabled
-* [NestedSwitch](#nestedswitch) - complexity - sevntu - enabled
-* [NestedTryDepth](#nestedtrydepth) - complexity - checkstyle - enabled
-* [NewlineAtEndOfFile](#newlineatendoffile) - layout - checkstyle - enabled
-* [NoClone](#noclone) - tweaks - checkstyle - enabled - insuppressible
-* [NoFinalizer](#nofinalizer) - tweaks - checkstyle - enabled
-* [NoLineWrap](#nolinewrap) - layout - checkstyle - enabled
-* [NoMainMethodInAbstractClass](#nomainmethodinabstractclass) - tweaks - sevntu - enabled
-* [NonEmptyAtclauseDescription](#nonemptyatclausedescription) - javadoc - checkstyle - enabled
-* [NoWhitespaceAfter](#nowhitespaceafter) - layout - checkstyle - enabled
-* [NoWhitespaceBefore](#nowhitespacebefore) - layout - checkstyle - enabled
-* [NPathComplexity](#npathcomplexity) - complexity - checkstyle - enabled
-* [NumericLiteralNeedsUnderscore](#numericliteralneedsunderscore) - naming - sevntu - enabled
-* [OneStatementPerLine](#onestatementperline) - layout - checkstyle - enabled
-* [OneTopLevelClass](#onetoplevelclass) - tweaks - checkstyle - enabled - insuppressible
-* [OperatorWrap](#operatorwrap) - layout - checkstyle - enabled
-* [OuterTypeFilename](#outertypefilename) - tweaks - checkstyle - enabled - insuppressible
-* [OuterTypeNumber](#outertypenumber) - tweaks - checkstyle - disabled
-* [OverloadMethodsDeclarationOrder](#overloadmethodsdeclarationorder) - layout - checkstyle - enabled
-* [OverridableMethodInConstructor](#overridablemethodinconstructor) - tweaks - sevntu - enabled
-* [PackageAnnotation](#packageannotation) - tweaks - checkstyle - enabled
-* [PackageDeclaration](#packagedeclaration) - javadoc - checkstyle - enabled - insuppressible
-* [PackageName](#packagename) - naming - checkstyle - enabled
-* [ParameterAssignment](#parameterassignment) - tweaks - checkstyle - disabled
-* [ParameterName](#parametername) - naming - checkstyle - enabled
-* [ParameterNumber](#parameternumber) - complexity - checkstyle - enabled
-* [ParenPad](#parenpad) - layout - checkstyle - enabled
-* [PublicReferenceToPrivateType](#publicreferencetoprivatetype) - tweaks - sevntu - enabled
-* [RedundantImport](#redundantimport) - layout - checkstyle - disabled
-* [RedundantModifier](#redundantmodifier) - tweaks - checkstyle - enabled
-* [RedundantReturn](#redundantreturn) - tweaks - sevntu - enabled
-* [Regexp](#regexp) - unspecified - checkstyle - disabled
-* [RegexpHeader](#regexpheader) - unspecified - checkstyle - disabled
-* [RegexpMultiline](#regexpmultiline) - unspecified - checkstyle - disabled
-* [RegexpOnFilename](#regexponfilename) - unspecified - checkstyle - disabled
-* [RegexpSingleline](#regexpsingleline) - unspecified - checkstyle - disabled
-* [RegexpSinglelineJava](#regexpsinglelinejava) - unspecified - checkstyle - disabled
-* [RequiredParameterForAnnotation](#requiredparameterforannotation) - unspecified - sevntu - disabled
-* [RequireThis](#requirethis) - tweaks - checkstyle - enabled
-* [ReturnBooleanFromTernary](#returnbooleanfromternary) - tweaks - sevntu - enabled
-* [ReturnCount](#returncount) - complexity - checkstyle - enabled
-* [ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean) - tweaks - sevntu - enabled
-* [RightCurly](#rightcurly) - layout - checkstyle - enabled
-* [SeparatorWrap](#separatorwrap) - layout - checkstyle - enabled
-* [SimpleAccessorNameNotation](#simpleaccessornamenotation) - naming - sevntu - enabled
-* [SimplifyBooleanExpression](#simplifybooleanexpression) - complexity - checkstyle - enabled
-* [SimplifyBooleanReturn](#simplifybooleanreturn) - complexity - checkstyle - enabled
-* [SingleBreakOrContinue](#singlebreakorcontinue) - tweaks - sevntu - enabled
-* [SingleLineJavadoc](#singlelinejavadoc) - javadoc - checkstyle - disabled
-* [SingleSpaceSeparator](#singlespaceseparator) - layout - checkstyle - enabled
-* [StaticMethodCandidate](#staticmethodcandidate) - unspecified - sevntu - disabled
-* [StaticVariableName](#staticvariablename) - naming - checkstyle - enabled
-* [StringLiteralEquality](#stringliteralequality) - tweaks - checkstyle - enabled
-* [SummaryJavadoc](#summaryjavadoc) - javadoc - checkstyle - disabled
-* [SuperClone](#superclone) - tweaks - checkstyle - disabled
-* [SuperFinalize](#superfinalize) - tweaks - checkstyle - disabled
-* [SuppressWarnings](#suppresswarnings) - naming - checkstyle - enabled
-* [SuppressWarningsHolder](#suppresswarningsholder) - naming - checkstyle - enabled
-* [TernaryPerExpressionCount](#ternaryperexpressioncount) - tweaks - sevntu - enabled
-* [ThrowsCount](#throwscount) - complexity - checkstyle - enabled
-* [TodoComment](#todocomment) - javadoc - checkstyle - enabled
-* [TrailingComment](#trailingcomment) - layout - checkstyle - enabled
-* [Translation](#translation) - javadoc - checkstyle - enabled
-* [TypecastParenPad](#typecastparenpad) - layout - checkstyle - enabled
-* [TypeName](#typename) - naming - checkstyle - enabled - insuppressible
-* [UncommentedMain](#uncommentedmain) - javadoc - checkstyle - enabled
-* [UniformEnumConstantName](#uniformenumconstantname) - naming - sevntu - enabled
-* [UniqueProperties](#uniqueproperties) - javadoc - checkstyle - enabled
-* [UnnecessaryParentheses](#unnecessaryparentheses) - layout - checkstyle - enabled
-* [UnusedImports](#unusedimports) - layout - checkstyle - enabled
-* [UpperEll](#upperell) - layout - checkstyle - enabled
-* [UselessSingleCatch](#uselesssinglecatch) - tweaks - sevntu - enabled
-* [UselessSuperCtorCall](#uselesssuperctorcall) - tweaks - sevntu - enabled
-* [VariableDeclarationUsageDistance](#variabledeclarationusagedistance) - tweaks - checkstyle - enabled
-* [VisibilityModifier](#visibilitymodifier) - tweaks - checkstyle - enabled - insuppressible
-* [WhitespaceAfter](#whitespaceafter) - layout - checkstyle - enabled
-* [WhitespaceAround](#whitespacearound) - layout - checkstyle - enabled
-* [WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer) - layout - sevntu - disabled
-* [WriteTag](#writetag) - unspecified - checkstyle - disabled
+Rule|Level|Source|Enabled|Suppressable
+----|-----|------|-------|------------
+[AbbreviationAsWordInName](#abbreviationaswordinname)|naming|checkstyle|Yes|
+[AbstractClassName](#abstractclassname)|naming|checkstyle|Yes|
+[AnnotationLocation](#annotationlocation)|layout|checkstyle|Yes|
+[AnnotationUseStyle](#annotationusestyle)|layout|checkstyle|Yes|
+[AnonInnerLength](#anoninnerlength)|complexity|checkstyle|Yes|
+[ArrayTrailingComma](#arraytrailingcomma)|unspecified|checkstyle||
+[ArrayTypeStyle](#arraytypestyle)|layout|checkstyle|Yes|
+[AtclauseOrder](#atclauseorder)|javadoc|checkstyle|Yes|
+[AvoidConditionInversion](#avoidconditioninversion)|complexity|sevntu||
+[AvoidConstantAsFirstOperandInCondition](#avoidconstantasfirstoperandincondition)|tweaks|sevntu|Yes|
+[AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|complexity|sevntu||
+[AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters)|tweaks|checkstyle|Yes|
+[AvoidHidingCauseException](#avoidhidingcauseexception)|tweaks|sevntu|Yes|
+[AvoidInlineConditionals](#avoidinlineconditionals)|complexity|checkstyle|Yes|
+[AvoidModifiersForTypes](#avoidmodifiersfortypes)|unspecified|sevntu||
+[AvoidNestedBlocks](#avoidnestedblocks)|complexity|checkstyle|Yes|
+[AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean)|tweaks|sevntu|Yes|
+[AvoidStarImport](#avoidstarimport)|layout|checkstyle|Yes|
+[AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle|Yes|
+[BooleanExpressionComplexity](#booleanexpressioncomplexity)|complexity|checkstyle|Yes|
+[CatchParameterName](#catchparametername)|naming|checkstyle|Yes|
+[CauseParameterInException](#causeparameterinexception)|tweaks|sevntu||
+[ChildBlockLength](#childblocklength)|complexity|sevntu||
+[ClassDataAbstractionCoupling](#classdataabstractioncoupling)|complexity|checkstyle|Yes|
+[ClassFanOutComplexity](#classfanoutcomplexity)|complexity|checkstyle|Yes|
+[ClassTypeParameterName](#classtypeparametername)|naming|checkstyle|Yes|
+[CommentsIndentation](#commentsindentation)|layout|checkstyle|Yes|
+[ConfusingCondition](#confusingcondition)|complexity|sevntu|Yes|
+[ConstantName](#constantname)|naming|checkstyle|Yes|No
+[ConstructorWithoutParams](#constructorwithoutparams)|complexity|sevntu|Yes|
+[CovariantEquals](#covariantequals)|complexity|checkstyle|Yes|No
+[CustomDeclarationOrder](#customdeclarationorder)|layout|sevntu||
+[CyclomaticComplexity](#cyclomaticcomplexity)|complexity|checkstyle|Yes|
+[DeclarationOrder](#declarationorder)|layout|checkstyle|Yes|
+[DefaultComesLast](#defaultcomeslast)|tweaks|checkstyle|Yes|
+[DesignForExtension](#designforextension)|complexity|checkstyle|Yes|
+[DiamondOperatorForVariableDefinition](#diamondoperatorforvariabledefinition)|tweaks|sevntu|Yes|
+[EitherLogOrThrow](#eitherlogorthrow)|tweaks|sevntu|Yes|
+[EmptyBlock](#emptyblock)|tweaks|checkstyle|Yes|
+[EmptyCatchBlock](#emptycatchblock)|tweaks|checkstyle|Yes|
+[EmptyForInitializerPad](#emptyforinitializerpad)|layout|checkstyle|Yes|
+[EmptyForIteratorPad](#emptyforiteratorpad)|layout|checkstyle|Yes|
+[EmptyLineSeparator](#emptylineseparator)|layout|checkstyle|Yes|
+[EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu||
+[EmptyStatement](#emptystatement)|layout|checkstyle|Yes|
+[EnumValueName](#enumvaluename)|naming|sevntu|Yes|
+[EqualsAvoidNull](#equalsavoidnull)|tweaks|checkstyle|Yes|
+[EqualsHashCode](#equalshashcode)|complexity|checkstyle|Yes|No
+[ExecutableStatementCount](#executablestatementcount)|complexity|checkstyle|Yes|
+[ExplicitInitialization](#explicitinitialization)|tweaks|checkstyle|Yes|
+[FallThrough](#fallthrough)|javadoc|checkstyle|Yes|
+[FileLength](#filelength)|complexity|checkstyle|Yes|
+[FileTabCharacter](#filetabcharacter)|layout|checkstyle|Yes|
+[FinalClass](#finalclass)|complexity|checkstyle|Yes|
+[FinalizeImplementation](#finalizeimplementation)|unspecified|sevntu||
+[FinalLocalVariable](#finallocalvariable)|unspecified|checkstyle||
+[FinalParameters](#finalparameters)|tweaks|checkstyle|Yes|
+[ForbidAnnotation](#forbidannotation)|unspecified|sevntu||
+[ForbidCCommentsInMethods](#forbidccommentsinmethods)|layout|sevntu|Yes|
+[ForbidCertainImports](#forbidcertainimports)|unspecified|sevntu||
+[ForbidInstantiation](#forbidinstantiation)|unspecified|sevntu||
+[ForbidReturnInFinallyBlock](#forbidreturninfinallyblock)|complexity|sevntu|Yes|
+[ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions)|tweaks|sevntu||
+[ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu|Yes|
+[GenericWhitespace](#genericwhitespace)|layout|checkstyle|Yes|
+[Header](#header)|layout|checkstyle|Yes|
+[HiddenField](#hiddenfield)|tweaks|checkstyle|Yes|
+[HideUtilityClassConstructor](#hideutilityclassconstructor)|tweaks|checkstyle|Yes|
+[IllegalCatch](#illegalcatch)|tweaks|checkstyle|Yes|
+[IllegalImport](#illegalimport)|tweaks|checkstyle|Yes|
+[IllegalInstantiation](#illegalinstantiation)|unspecified|checkstyle||
+[IllegalThrows](#illegalthrows)|tweaks|checkstyle|Yes|
+[IllegalToken](#illegaltoken)|tweaks|checkstyle|Yes|
+[IllegalTokenText](#illegaltokentext)|unspecified|checkstyle||
+[IllegalType](#illegaltype)|tweaks|checkstyle|Yes|
+[ImportControl](#importcontrol)|unspecified|checkstyle||
+[ImportOrder](#importorder)|layout|checkstyle||
+[Indentation](#indentation)|layout|checkstyle||
+[InnerAssignment](#innerassignment)|tweaks|checkstyle|Yes|
+[InnerTypeLast](#innertypelast)|tweaks|checkstyle|Yes|
+[InterfaceIsType](#interfaceistype)|complexity|checkstyle|Yes|
+[InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
+[JavadocMethod](#javadocmethod)|javadoc|checkstyle|Yes|
+[JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
+[JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
+[JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
+[JavadocTagContinuationIndentation](#javadoctagcontinuationindentation)|layout|checkstyle||
+[JavadocType](#javadoctype)|javadoc|checkstyle|Yes|
+[JavadocVariable](#javadocvariable)|javadoc|checkstyle||
+[JavaNCSS](#javancss)|complexity|checkstyle|Yes|
+[LeftCurly](#leftcurly)|layout|checkstyle|Yes|
+[LineLength](#linelength)|layout|checkstyle|Yes|
+[LocalFinalVariableName](#localfinalvariablename)|naming|checkstyle|Yes|
+[LocalVariableName](#localvariablename)|naming|checkstyle|Yes|
+[LogicConditionNeedOptimization](#logicconditionneedoptimization)|tweaks|sevntu|Yes|
+[MagicNumber](#magicnumber)|naming|checkstyle|Yes|
+[MapIterationInForEachLoop](#mapiterationinforeachloop)|complexity|sevntu|Yes|
+[MemberName](#membername)|naming|checkstyle|Yes|
+[MethodCount](#methodcount)|complexity|checkstyle|Yes|
+[MethodLength](#methodlength)|complexity|checkstyle|Yes|
+[MethodName](#methodname)|naming|checkstyle|Yes|
+[MethodParamPad](#methodparampad)|layout|checkstyle|Yes|
+[MethodTypeParameterName](#methodtypeparametername)|naming|checkstyle|Yes|
+[MissingCtor](#missingctor)|tweaks|checkstyle||
+[MissingDeprecated](#missingdeprecated)|javadoc|checkstyle|Yes|
+[MissingOverride](#missingoverride)|tweaks|checkstyle||
+[MissingSwitchDefault](#missingswitchdefault)|tweaks|checkstyle|Yes|
+[ModifiedControlVariable](#modifiedcontrolvariable)|tweaks|checkstyle|Yes|
+[ModifierOrder](#modifierorder)|naming|checkstyle|Yes|
+[MultipleStringLiterals](#multiplestringliterals)|naming|checkstyle|Yes|
+[MultipleVariableDeclarations](#multiplevariabledeclarations)|naming|checkstyle|Yes|
+[MutableException](#mutableexception)|tweaks|checkstyle|Yes|
+[NameConventionForJunit4TestClasses](#nameconventionforjunit4testclasses)|naming|sevntu|Yes|
+[NeedBraces](#needbraces)|naming|checkstyle|Yes|
+[NestedForDepth](#nestedfordepth)|complexity|checkstyle|Yes|
+[NestedIfDepth](#nestedifdepth)|complexity|checkstyle|Yes|
+[NestedSwitch](#nestedswitch)|complexity|sevntu|Yes|
+[NestedTryDepth](#nestedtrydepth)|complexity|checkstyle|Yes|
+[NewlineAtEndOfFile](#newlineatendoffile)|layout|checkstyle|Yes|
+[NoClone](#noclone)|tweaks|checkstyle|Yes|No
+[NoFinalizer](#nofinalizer)|tweaks|checkstyle|Yes|
+[NoLineWrap](#nolinewrap)|layout|checkstyle|Yes|
+[NoMainMethodInAbstractClass](#nomainmethodinabstractclass)|tweaks|sevntu|Yes|
+[NonEmptyAtclauseDescription](#nonemptyatclausedescription)|javadoc|checkstyle|Yes|
+[NoWhitespaceAfter](#nowhitespaceafter)|layout|checkstyle|Yes|
+[NoWhitespaceBefore](#nowhitespacebefore)|layout|checkstyle|Yes|
+[NPathComplexity](#npathcomplexity)|complexity|checkstyle|Yes|
+[NumericLiteralNeedsUnderscore](#numericliteralneedsunderscore)|naming|sevntu|Yes|
+[OneStatementPerLine](#onestatementperline)|layout|checkstyle|Yes|
+[OneTopLevelClass](#onetoplevelclass)|tweaks|checkstyle|Yes|No
+[OperatorWrap](#operatorwrap)|layout|checkstyle|Yes|
+[OuterTypeFilename](#outertypefilename)|tweaks|checkstyle|Yes|No
+[OuterTypeNumber](#outertypenumber)|tweaks|checkstyle||
+[OverloadMethodsDeclarationOrder](#overloadmethodsdeclarationorder)|layout|checkstyle|Yes|
+[OverridableMethodInConstructor](#overridablemethodinconstructor)|tweaks|sevntu|Yes|
+[PackageAnnotation](#packageannotation)|tweaks|checkstyle|Yes|
+[PackageDeclaration](#packagedeclaration)|javadoc|checkstyle|Yes|No
+[PackageName](#packagename)|naming|checkstyle|Yes|
+[ParameterAssignment](#parameterassignment)|tweaks|checkstyle||
+[ParameterName](#parametername)|naming|checkstyle|Yes|
+[ParameterNumber](#parameternumber)|complexity|checkstyle|Yes|
+[ParenPad](#parenpad)|layout|checkstyle|Yes|
+[PublicReferenceToPrivateType](#publicreferencetoprivatetype)|tweaks|sevntu|Yes|
+[RedundantImport](#redundantimport)|layout|checkstyle||
+[RedundantModifier](#redundantmodifier)|tweaks|checkstyle|Yes|
+[RedundantReturn](#redundantreturn)|tweaks|sevntu|Yes|
+[Regexp](#regexp)|unspecified|checkstyle||
+[RegexpHeader](#regexpheader)|unspecified|checkstyle||
+[RegexpMultiline](#regexpmultiline)|unspecified|checkstyle||
+[RegexpOnFilename](#regexponfilename)|unspecified|checkstyle||
+[RegexpSingleline](#regexpsingleline)|unspecified|checkstyle||
+[RegexpSinglelineJava](#regexpsinglelinejava)|unspecified|checkstyle||
+[RequiredParameterForAnnotation](#requiredparameterforannotation)|unspecified|sevntu||
+[RequireThis](#requirethis)|tweaks|checkstyle|Yes|
+[ReturnBooleanFromTernary](#returnbooleanfromternary)|tweaks|sevntu|Yes|
+[ReturnCount](#returncount)|complexity|checkstyle|Yes|
+[ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean)|tweaks|sevntu|Yes|
+[RightCurly](#rightcurly)|layout|checkstyle|Yes|
+[SeparatorWrap](#separatorwrap)|layout|checkstyle|Yes|
+[SimpleAccessorNameNotation](#simpleaccessornamenotation)|naming|sevntu|Yes|
+[SimplifyBooleanExpression](#simplifybooleanexpression)|complexity|checkstyle|Yes|
+[SimplifyBooleanReturn](#simplifybooleanreturn)|complexity|checkstyle|Yes|
+[SingleBreakOrContinue](#singlebreakorcontinue)|tweaks|sevntu|Yes|
+[SingleLineJavadoc](#singlelinejavadoc)|javadoc|checkstyle||
+[SingleSpaceSeparator](#singlespaceseparator)|layout|checkstyle|Yes|
+[StaticMethodCandidate](#staticmethodcandidate)|unspecified|sevntu||
+[StaticVariableName](#staticvariablename)|naming|checkstyle|Yes|
+[StringLiteralEquality](#stringliteralequality)|tweaks|checkstyle|Yes|
+[SummaryJavadoc](#summaryjavadoc)|javadoc|checkstyle||
+[SuperClone](#superclone)|tweaks|checkstyle||
+[SuperFinalize](#superfinalize)|tweaks|checkstyle||
+[SuppressWarnings](#suppresswarnings)|naming|checkstyle|Yes|
+[SuppressWarningsHolder](#suppresswarningsholder)|naming|checkstyle|Yes|
+[TernaryPerExpressionCount](#ternaryperexpressioncount)|tweaks|sevntu|Yes|
+[ThrowsCount](#throwscount)|complexity|checkstyle|Yes|
+[TodoComment](#todocomment)|javadoc|checkstyle|Yes|
+[TrailingComment](#trailingcomment)|layout|checkstyle|Yes|
+[Translation](#translation)|javadoc|checkstyle|Yes|
+[TypecastParenPad](#typecastparenpad)|layout|checkstyle|Yes|
+[TypeName](#typename)|naming|checkstyle|Yes|No
+[UncommentedMain](#uncommentedmain)|javadoc|checkstyle|Yes|
+[UniformEnumConstantName](#uniformenumconstantname)|naming|sevntu|Yes|
+[UniqueProperties](#uniqueproperties)|javadoc|checkstyle|Yes|
+[UnnecessaryParentheses](#unnecessaryparentheses)|layout|checkstyle|Yes|
+[UnusedImports](#unusedimports)|layout|checkstyle|Yes|
+[UpperEll](#upperell)|layout|checkstyle|Yes|
+[UselessSingleCatch](#uselesssinglecatch)|tweaks|sevntu|Yes|
+[UselessSuperCtorCall](#uselesssuperctorcall)|tweaks|sevntu|Yes|
+[VariableDeclarationUsageDistance](#variabledeclarationusagedistance)|tweaks|checkstyle|Yes|
+[VisibilityModifier](#visibilitymodifier)|tweaks|checkstyle|Yes|No
+[WhitespaceAfter](#whitespaceafter)|layout|checkstyle|Yes|
+[WhitespaceAround](#whitespacearound)|layout|checkstyle|Yes|
+[WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer)|layout|sevntu||
+[WriteTag](#writetag)|unspecified|checkstyle||
 
 ## Enabled Checks
 

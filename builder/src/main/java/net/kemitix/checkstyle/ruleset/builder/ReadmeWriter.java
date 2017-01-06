@@ -61,15 +61,18 @@ class ReadmeWriter implements CommandLineRunner {
     @Override
     public void run(final String... args) throws Exception {
         final String readmeTemplate = readFile(templateProperties.getReadmeTemplate());
+        final String indexHeader =
+                "Rule|Level|Source|Enabled|Suppressable\n" + "----|-----|------|-------|------------\n";
         final String index = ruleIndex();
         final String enabledCheckstyle = readmeRules(this::isEnabledCheckstyleRule);
         final String enabledSevntu = readmeRules(this::isEnabledSevntuRule);
         final String disabledCheckstyle = readmeRules(this::isDisabledCheckstyleRule);
         final String disabledSevntu = readmeRules(this::isDisabledSevntuRule);
-        final byte[] readme = String.format(readmeTemplate, index, enabledCheckstyle, enabledSevntu, disabledCheckstyle,
-                                            disabledSevntu
-                                           )
-                                    .getBytes(StandardCharsets.UTF_8);
+        final byte[] readme =
+                String.format(readmeTemplate, indexHeader + index, enabledCheckstyle, enabledSevntu, disabledCheckstyle,
+                              disabledSevntu
+                             )
+                      .getBytes(StandardCharsets.UTF_8);
         Files.write(outputProperties.getReadme(), readme, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
@@ -92,10 +95,9 @@ class ReadmeWriter implements CommandLineRunner {
         final String source = rule.getSource()
                                   .toString()
                                   .toLowerCase(Locale.ENGLISH);
-        final String enabled = rule.isEnabled() ? "enabled" : "disabled";
-        final String insuppressible = rule.isInsuppressible() ? " - insuppressible" : "";
-        return String.format(
-                "* [%s](#%s) - %s - %s - %s%s", rule.getName(), ruleLink, level, source, enabled, insuppressible);
+        final String enabled = rule.isEnabled() ? "Yes" : "";
+        final String insuppressible = rule.isInsuppressible() ? "No" : "";
+        return String.format("[%s](#%s)|%s|%s|%s|%s", rule.getName(), ruleLink, level, source, enabled, insuppressible);
     }
 
     private boolean isEnabledSevntuRule(final Rule rule) {
