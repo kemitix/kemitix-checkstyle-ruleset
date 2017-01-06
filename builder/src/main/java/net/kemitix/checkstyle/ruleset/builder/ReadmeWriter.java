@@ -64,11 +64,10 @@ class ReadmeWriter implements CommandLineRunner {
         final String enabledSevntu = readmeRules(this::isEnabledSevntuRule);
         final String disabledCheckstyle = readmeRules(this::isDisabledCheckstyleRule);
         final String disabledSevntu = readmeRules(this::isDisabledSevntuRule);
-        final byte[] readme =
-                String.format(readmeTemplate, indexBuilder.build(), enabledCheckstyle, enabledSevntu, disabledCheckstyle,
-                              disabledSevntu
-                             )
-                      .getBytes(StandardCharsets.UTF_8);
+        final byte[] readme = String.format(readmeTemplate, indexBuilder.build(), enabledCheckstyle, enabledSevntu,
+                                            disabledCheckstyle, disabledSevntu
+                                           )
+                                    .getBytes(StandardCharsets.UTF_8);
         Files.write(outputProperties.getReadme(), readme, StandardOpenOption.TRUNCATE_EXISTING);
     }
 
