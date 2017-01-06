@@ -87,7 +87,8 @@ class CheckstyleWriter implements CommandLineRunner {
             val checkstyleXmlTemplate = templateProperties.getCheckstyleXml();
             if (checkstyleXmlTemplate.toFile()
                                      .exists()) {
-                val template = new String(Files.readAllBytes(checkstyleXmlTemplate));
+                val bytes = Files.readAllBytes(checkstyleXmlTemplate);
+                val template = new String(bytes, StandardCharsets.UTF_8);
                 val output = Arrays.asList(String.format(template, checkerRules, treeWalkerRules)
                                                  .split(NEWLINE));
                 log.info("Writing xmlFile: {}", xmlFile);
