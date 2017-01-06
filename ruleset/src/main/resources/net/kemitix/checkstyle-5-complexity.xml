@@ -17,7 +17,7 @@
 <module name="Translation"/>
 <module name="UniqueProperties"/>
 
-    <module name="Treewalker">
+    <module name="TreeWalker">
 
         <module name="AbbreviationAsWordInName"/>
 <module name="AbstractClassName"/>
@@ -224,6 +224,6 @@
 <module name="UselessSingleCatch"/>
 <module name="UselessSuperCtorCall"/>
 
-    </module><!-- /Treewalker -->
+    </module><!-- /TreeWalker -->
 
 </module><!-- /Checker -->

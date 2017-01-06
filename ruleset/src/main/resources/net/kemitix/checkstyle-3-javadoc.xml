@@ -16,7 +16,7 @@
 <module name="Translation"/>
 <module name="UniqueProperties"/>
 
-    <module name="Treewalker">
+    <module name="TreeWalker">
 
         <module name="AbbreviationAsWordInName"/>
 <module name="AbstractClassName"/>
@@ -113,6 +113,6 @@
 <module name="SimpleAccessorNameNotation"/>
 <module name="UniformEnumConstantName"/>
 
-    </module><!-- /Treewalker -->
+    </module><!-- /TreeWalker -->
 
 </module><!-- /Checker -->
