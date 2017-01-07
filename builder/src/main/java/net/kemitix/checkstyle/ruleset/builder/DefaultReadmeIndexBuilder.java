@@ -44,21 +44,17 @@ public class DefaultReadmeIndexBuilder implements ReadmeIndexBuilder {
 
     private static final String NEWLINE = "\n";
 
-    private static final String HEADERROW = "Rule|Level|Source|Enabled|Suppressable\n";
-
-    private static final String SEPARATOR = "----|-----|------|-------|------------\n";
-
     private static final Locale LOCALE = Locale.ENGLISH;
 
     private final RulesProperties rulesProperties;
 
     @Override
     public final String build() {
-        return HEADERROW + SEPARATOR + rulesProperties.getRules()
-                                                      .stream()
-                                                      .sorted(Comparator.comparing(lowerCaseRuleName()))
-                                                      .map(this::formatRuleRow)
-                                                      .collect(Collectors.joining(NEWLINE));
+        return rulesProperties.getRules()
+                              .stream()
+                              .sorted(Comparator.comparing(lowerCaseRuleName()))
+                              .map(this::formatRuleRow)
+                              .collect(Collectors.joining(NEWLINE));
     }
 
     private Function<Rule, String> lowerCaseRuleName() {

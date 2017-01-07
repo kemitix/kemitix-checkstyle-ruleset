@@ -102,6 +102,8 @@ from the previous.
 
 ## All Checks
 
+Rule|Level|Source|Enabled|Suppressable
+----|-----|------|-------|------------
 %s
 
 ## Enabled Checks
