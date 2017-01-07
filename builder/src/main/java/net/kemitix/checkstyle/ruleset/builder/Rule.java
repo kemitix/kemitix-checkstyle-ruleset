@@ -26,7 +26,6 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -37,7 +36,6 @@ import java.util.Map;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-@ToString
 @Setter
 @Getter
 public class Rule {
@@ -85,5 +83,5 @@ public class Rule {
     /**
      * Configuration properties.
      */
-    private Map<String, String> properties = new HashMap<>();
+    private final Map<String, String> properties = new HashMap<>();
 }
