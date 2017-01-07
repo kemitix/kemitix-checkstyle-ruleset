@@ -32,5 +32,5 @@ package net.kemitix.checkstyle.ruleset.builder;
 public enum RuleSource {
 
     CHECKSTYLE,
-    SEVNTU;
+    SEVNTU,
 }
