@@ -42,7 +42,8 @@ from the previous.
     <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
     <checkstyle.version>7.3</checkstyle.version>
     <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
-    <kemitix-checkstyle-ruleset.version>0.2.0</kemitix-checkstyle-ruleset.version>
+    <kemitix-checkstyle-ruleset.version>2.0.0</kemitix-checkstyle-ruleset.version>
+    <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
 </properties>
 <build>
     <pluginManagement>
@@ -69,7 +70,7 @@ from the previous.
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <configLocation>net/kemitix/checkstyle-5-complexity.xml</configLocation>
+                    <configLocation>net/kemitix/checkstyle-${kemitix-checkstyle-ruleset.level}.xml</configLocation>
                 </configuration>
             </plugin><!-- maven-checkstyle-plugin -->
         </plugins>
