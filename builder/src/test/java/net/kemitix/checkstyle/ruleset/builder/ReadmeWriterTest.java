@@ -3,6 +3,7 @@ package net.kemitix.checkstyle.ruleset.builder;
 import lombok.val;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -42,13 +43,19 @@ public class ReadmeWriterTest {
 
     private Path readme;
 
+    @org.junit.Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        template = Files.createTempFile("README", ".md");
+        template = folder.newFile("README-template.md")
+                         .toPath();
         Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "cd:%s", "sd:%s"));
-        fragments = Files.createTempDirectory("fragments");
-        readme = Files.createTempFile("README", ".md");
+        fragments = folder.newFolder("fragments")
+                          .toPath();
+        readme = folder.newFile("README.md")
+                       .toPath();
         templateProperties = new TemplateProperties();
         templateProperties.setReadmeTemplate(template);
         templateProperties.setReadmeFragments(fragments);

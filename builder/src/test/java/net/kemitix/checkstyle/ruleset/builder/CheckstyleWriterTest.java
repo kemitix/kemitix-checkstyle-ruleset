@@ -5,6 +5,7 @@ import me.andrz.builder.map.MapBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.rules.TemporaryFolder;
 import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
@@ -48,6 +49,9 @@ public class CheckstyleWriterTest {
     @org.junit.Rule
     public ExpectedException exception = ExpectedException.none();
 
+    @org.junit.Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -61,10 +65,12 @@ public class CheckstyleWriterTest {
                                                          .put(getOutputFile(RuleLevel.COMPLEXITY))
                                                          .build();
         outputProperties.setRulesetFiles(outputFiles);
-        outputDirectory = Files.createTempDirectory("test");
+        outputDirectory = folder.newFolder()
+                                .toPath();
         outputProperties.setDirectory(outputDirectory);
         templateProperties = new TemplateProperties();
-        checkstyleTemplate = Files.createTempFile("checkstyle-template", ".xml");
+        checkstyleTemplate = folder.newFile("checkstyle-template.xml")
+                                   .toPath();
         Files.write(
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);
