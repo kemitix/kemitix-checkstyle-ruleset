@@ -88,7 +88,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.LAYOUT);
+        val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleName));
     }
 
@@ -102,7 +102,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.NAMING);
+        val lines = loadOutputFile(RuleLevel.NAMING);
         assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleName));
     }
 
@@ -116,7 +116,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.LAYOUT);
+        val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly(String.format("C:<module name=\"%s\"/>", ruleName), "TW:");
     }
 
@@ -132,7 +132,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.LAYOUT);
+        val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\">", ruleName),
                                           "    <property name=\"key\" value=\"value\"/>", "</module>"
                                          );
@@ -148,7 +148,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.LAYOUT);
+        val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", "TW:");
     }
 
@@ -162,7 +162,7 @@ public class CheckstyleWriterTest {
         //when
         checkstyleWriter.run();
         //then
-        final List<String> lines = loadOutputFile(RuleLevel.LAYOUT);
+        val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", "TW:");
     }
 
@@ -194,10 +194,10 @@ public class CheckstyleWriterTest {
     }
 
     private List<String> loadOutputFile(final RuleLevel level) throws IOException {
-        final Path file = outputDirectory.resolve(outputFiles.get(level));
-        assertThat(file).as("Output file exists")
+        val path = outputDirectory.resolve(outputFiles.get(level));
+        assertThat(path).as("Output path exists")
                         .exists();
-        return Files.readAllLines(file, StandardCharsets.UTF_8);
+        return Files.readAllLines(path, StandardCharsets.UTF_8);
     }
 
     private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
