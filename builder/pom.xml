@@ -40,6 +40,7 @@
         <assertj.version>3.6.1</assertj.version>
         <mapstream.version>2.3.4</mapstream.version>
         <mapbuilder.version>1.0.0</mapbuilder.version>
+        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -118,6 +119,11 @@
                         <!--</goals>-->
                     <!--</execution>-->
                 <!--</executions>-->
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
