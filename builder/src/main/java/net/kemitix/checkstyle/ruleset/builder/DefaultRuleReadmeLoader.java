@@ -64,6 +64,6 @@ class DefaultRuleReadmeLoader implements RuleReadmeLoader {
     }
 
     private String formatRuleHeader(final Rule rule) {
-        return String.format("%n#### [%s](%s)", rule.getName(), rule.getUri());
+        return String.format("#### [%s](%s)", rule.getName(), rule.getUri());
     }
 }
