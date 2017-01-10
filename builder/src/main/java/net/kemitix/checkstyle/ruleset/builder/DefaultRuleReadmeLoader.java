@@ -51,13 +51,11 @@ class DefaultRuleReadmeLoader implements RuleReadmeLoader {
             final Path resolve = templateProperties.getReadmeFragments()
                                                    .resolve(rule.getName() + ".md");
             log.info("Loading fragment: {}", resolve);
-            Stream<String> result = Stream.empty();
             try {
-                result = Stream.concat(Stream.of(formatRuleHeader(rule)), Files.lines(resolve));
+                return Stream.concat(Stream.of(formatRuleHeader(rule)), Files.lines(resolve));
             } catch (IOException e) {
-                log.error("Failed to load fragment: {}", resolve);
+                throw new ReadmeFragmentNotFoundException(rule.getName(), e);
             }
-            return result;
         } else {
             return Stream.of(formatRuleHeader(rule), "", rule.getReason());
         }
