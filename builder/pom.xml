@@ -34,9 +34,12 @@
     <inceptionYear>2016</inceptionYear>
 
     <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
         <kemitix-checkstyle-ruleset.version>2.0.0-SNAPSHOT</kemitix-checkstyle-ruleset.version>
-        <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
+        <lombok.version>1.16.12</lombok.version>
         <assertj.version>3.6.1</assertj.version>
         <mapstream.version>2.3.4</mapstream.version>
         <mapbuilder.version>1.0.0</mapbuilder.version>
@@ -66,6 +69,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.speedment.common</groupId>
@@ -81,6 +86,7 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>me.andrz</groupId>
@@ -90,35 +96,28 @@
         </dependency>
     </dependencies>
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${maven.checkstyle.plugin.version}</version>
-                    <configuration>
-                        <configLocation>net/kemitix/checkstyle-${kemitix-checkstyle-ruleset.level}.xml</configLocation>
-                    </configuration>
-                </plugin><!-- maven-checkstyle-plugin -->
-            </plugins>
-        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>net.kemitix</groupId>
+                <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
+                <version>${kemitix-checkstyle-ruleset.version}</version>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
-                <!--<configuration>-->
-                    <!--<executable>true</executable>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>-->
-                                <!--repackage-->
-                            <!--</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>
+                                repackage
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
