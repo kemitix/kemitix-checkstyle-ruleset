@@ -20,6 +20,7 @@
     <modules>
         <module>builder</module>
         <module>ruleset</module>
+        <module>plugin</module>
     </modules>
 
     <issueManagement>

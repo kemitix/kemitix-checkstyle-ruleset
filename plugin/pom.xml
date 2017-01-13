@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.kemitix</groupId>
+        <artifactId>kemitix-parent</artifactId>
+        <version>2.2.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
+
+    <packaging>maven-plugin</packaging>
+    <name>Kemitix Checkstyle Ruleset Maven Plugin</name>
+    <description>Checkstyle configuration using the Kemitix Checkstyle Ruleset</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.version>3.3.9</maven.version>
+        <maven-plugin-plugin.version>3.5</maven-plugin-plugin.version>
+        <maven-plugin-annotations.version>3.5</maven-plugin-annotations.version>
+        <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
+        <checkstyle.version>7.3</checkstyle.version>
+        <sevntu-checkstyle-maven-plugin.version>1.23.0</sevntu-checkstyle-maven-plugin.version>
+        <kemitix-checkstyle-ruleset.version>2.0.0-SNAPSHOT</kemitix-checkstyle-ruleset.version>
+        <mojo-executor.version>2.2.0</mojo-executor.version>
+        <lombok.version>1.16.12</lombok.version>
+        <map-builder.version>1.0.0</map-builder.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>${maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>${maven-plugin-annotations.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.twdata.maven</groupId>
+            <artifactId>mojo-executor</artifactId>
+            <version>${mojo-executor.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.andrz</groupId>
+            <artifactId>map-builder</artifactId>
+            <version>${map-builder.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>${maven-plugin-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>help-goal</id>
+                        <goals>
+                            <goal>helpmojo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sevntu-maven</id>
+            <name>sevntu-maven</name>
+            <url>http://sevntu-checkstyle.github.io/sevntu.checkstyle/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

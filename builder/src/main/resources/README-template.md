@@ -22,76 +22,45 @@ The ruleset includes checks from both the core Checkstyle library and from the S
 
 ## Usage
 
-To use this ruleset in your `maven-checkstyle-plugin` configuration add `checkstyle`, `sevntu-checkstyle-maven-plugin` and `kemitix-checktyle-ruleset` as dependencies of the `maven-checkstyle-plugin`.
+To use this ruleset add the plugin `kemitix-checktyle-ruleset-maven-plugin`.
+The `maven-checkstyle-plugin` will be included automatically.
 
-You need to include `checkstyle` as the version bundled with the `maven-checkstyle-plugin` is not up-to-date enough.
+Select the level 1-5 of strictness required:
 
-Select the `configLocation` for the level of strictness required:
-
-* checkstyle-1-layout.xml
-* checkstyle-2-naming.xml
-* checkstyle-3-javadoc.xml
-* checkstyle-4-tweaks.xml
-* checkstyle-5-complexity.xml
-
-Only specify a single `configLocation` as each increasing level includes all the rules
-from the previous.
+1. layout
+2. naming
+3. javadoc
+4. tweaks
+5. complexity
 
 ````
 <properties>
-    <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
-    <checkstyle.version>7.3</checkstyle.version>
-    <sevntu-checkstyle-maven-plugin.version>1.22.0</sevntu-checkstyle-maven-plugin.version>
-    <kemitix-checkstyle-ruleset.version>2.0.0</kemitix-checkstyle-ruleset.version>
-    <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
+    <kemitix-checkstyle-ruleset.level>2</kemitix-checkstyle-ruleset.level>
 </properties>
+
 <build>
-    <pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven.checkstyle.plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>${checkstyle.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.github.sevntu.checkstyle</groupId>
-                        <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                        <version>${sevntu-checkstyle-maven-plugin.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>net.kemitix</groupId>
-                        <artifactId>kemitix-checkstyle-ruleset</artifactId>
-                        <version>${kemitix-checkstyle-ruleset.version}</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <configLocation>net/kemitix/checkstyle-${kemitix-checkstyle-ruleset.level}.xml</configLocation>
-                </configuration>
-            </plugin><!-- maven-checkstyle-plugin -->
-        </plugins>
-    </pluginManagement>
     <plugins>
         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
+            <groupId>net.kemitix</groupId>
+            <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
+            <version>2.0.0</version>
+            <configuration>
+                <level>${kemitix-checkstyle-ruleset.level}</level>
+            </configuration>
             <executions>
                 <execution>
-                    <id>validate</id>
                     <phase>validate</phase>
                     <goals>
-                        <goal>check</goal>
-                        <goal>checkstyle</goal>
+                        <goal>
+                            check
+                        </goal>
                     </goals>
                 </execution>
             </executions>
-        </plugin><!-- maven-checkstyle-plugin -->
+        </plugin>
     </plugins>
 </build>
+
 <pluginRepositories>
     <pluginRepository>
         <id>sevntu-maven</id>
