@@ -7,11 +7,11 @@
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-        <version>2.0.0</version>
+        <version>2.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Kemitix Checkstyle Ruleset</name>
