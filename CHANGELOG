@@ -1,11 +1,26 @@
 CHANGELOG
 =========
 
+2.0.3
+-----
+
+* plugin-sample: Add distributionManagement
+
+2.0.2
+-----
+
+* Add distributionManagement to parent
+
+2.0.1
+-----
+
+* ruleset: restore properties used in release profile
+
 2.0.0
 ------
 
-* * Split ruleset into 5 levels
-* * Provide plugin to simplify use
+* Split ruleset into 5 levels
+* Provide plugin to simplify use
 
 0.1.0
 ------
