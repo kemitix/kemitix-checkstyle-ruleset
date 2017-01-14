@@ -17,6 +17,13 @@
     <name>Kemitix Checkstyle Ruleset</name>
     <description>Checkstyle Ruleset for use by packages derived from kemitix-parent</description>
 
+    <properties>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+    </properties>
+
     <profiles>
         <profile>
             <id>release</id>
