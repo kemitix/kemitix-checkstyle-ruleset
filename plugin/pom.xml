@@ -23,10 +23,6 @@
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-plugin-plugin.version>3.5</maven-plugin-plugin.version>
         <maven-plugin-annotations.version>3.5</maven-plugin-annotations.version>
-        <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
-        <checkstyle.version>7.3</checkstyle.version>
-        <sevntu-checkstyle-maven-plugin.version>1.23.0</sevntu-checkstyle-maven-plugin.version>
-        <kemitix-checkstyle-ruleset.version>2.0.0-SNAPSHOT</kemitix-checkstyle-ruleset.version>
         <mojo-executor.version>2.2.0</mojo-executor.version>
         <lombok.version>1.16.12</lombok.version>
         <map-builder.version>1.0.0</map-builder.version>
