@@ -12,9 +12,16 @@
     <name>Kemitix Checkstyle Ruleset (Parent)</name>
     <description>Parent POM for the Kemitix Checkstyle Ruleset and it's Builder</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <modules>
         <module>builder</module>
         <module>ruleset</module>
+        <module>plugin</module>
+        <module>plugin-sample</module>
     </modules>
 
     <issueManagement>

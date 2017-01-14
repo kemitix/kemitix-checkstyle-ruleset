@@ -22,27 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package net.kemitix.checkstyle.ruleset.builder;
-
-import lombok.Getter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-import java.util.ArrayList;
-import java.util.List;
+package net.kemitix.checkstyle.sample;
 
 /**
- * Properties defining the enabled rules for each level.
+ * Sample class to test the Kemitix Checkstyle Ruleset Maven Plugin against.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (paul.campbell@hubio.com)
  */
-@Getter
-@Configuration
-@ConfigurationProperties
-class RulesProperties {
+public class Sample {
 
-    /**
-     * The Checkstyle checks.
-     */
-    private List<Rule> rules = new ArrayList<>();
+
+    public static void main(String[] args) {
+        System.out.println("Sample!");
+    }
 }

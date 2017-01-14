@@ -22,27 +22,23 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.ruleset.plugin;
 
-import lombok.Getter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
 
 /**
- * Properties defining the enabled rules for each level.
+ * Runs the Checkstyle Maven Plugin with the Kemitix Checkstyle Ruleset: COMPLEXITY, TWEAKS, JAVADOC, NAMING and LAYOUT.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-@Getter
-@Configuration
-@ConfigurationProperties
-class RulesProperties {
+@Mojo(name = "5-complexity", defaultPhase = LifecyclePhase.VALIDATE)
+public class ComplexityCheckMojo extends AbstractCheckMojo {
 
-    /**
-     * The Checkstyle checks.
-     */
-    private List<Rule> rules = new ArrayList<>();
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        performCheck("5-complexity");
+    }
 }
