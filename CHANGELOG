@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.0.0
+------
+
+* * Split ruleset into 5 levels
+* * Provide plugin to simplify use
+
 0.1.0
 ------
 
