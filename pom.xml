@@ -6,7 +6,7 @@
 
     <groupId>net.kemitix</groupId>
     <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>2.0.3</version>
+    <version>2.0.4</version>
     <packaging>pom</packaging>
 
     <name>Kemitix Checkstyle Ruleset (Parent)</name>
@@ -15,6 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
     </properties>
 
     <modules>
@@ -58,6 +59,28 @@
             <organizationUrl>https://github.com/kemitix/</organizationUrl>
         </developer>
     </developers>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <configuration>
+                    <passphrase>${gpg.passphrase}</passphrase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin><!-- maven-gpg-plugin -->
+        </plugins>
+    </build>
 
     <distributionManagement>
         <snapshotRepository>
