@@ -66,7 +66,7 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
     private String mavenCheckstylePluginVersion;
 
     @Setter
-    @Parameter(defaultValue = "7.3")
+    @Parameter(defaultValue = "7.4")
     private String checkstyleVersion;
 
     @Setter
