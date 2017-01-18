@@ -10,7 +10,7 @@
     <artifactId>kemitix-checkstyle-ruleset-plugin-sample</artifactId>
     <version>2.1.0-SNAPSHOT</version>
 
-    <name>plugin-sample</name>
+    <name>Kemitix Checkstyle Ruleset Plugin Sample</name>
     <description>Sample usage of the Kemitix Checkstyle Ruleset Plugin</description>
     <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
     <licenses>
