@@ -101,34 +101,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin><!-- maven-compiler-plugin -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>${properties-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>maven-checkstyle-plugin.version</name>
-                                    <value>${maven-checkstyle-plugin.version}</value>
-                                </property>
-                                <property>
-                                    <name>checkstyle.version</name>
-                                    <value>${checkstyle.version}</value>
-                                </property>
-                                <property>
-                                    <name>sevntu.version</name>
-                                    <value>${sevntu.version}</value>
-                                </property>
-                            </properties>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin><!-- properties-maven-plugin -->
         </plugins>
     </build>
     <profiles>
