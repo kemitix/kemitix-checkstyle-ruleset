@@ -107,8 +107,9 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
         val configLocation =
                 MojoExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level));
 
-        getLog().info(
-                String.format("Running Checkstyle %s (sevntu: %s) with %s", checkstyleVersion, sevntuVersion, level));
+        getLog().info(String.format("Running Checkstyle %s (sevntu: %s) with ruleset %s (%s)", checkstyleVersion,
+                                    sevntuVersion, level, rulesetVersion
+                                   ));
         MojoExecutor.executeMojo(checkstylePlugin, "check", MojoExecutor.configuration(configLocation),
                                  MojoExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager)
                                 );
