@@ -35,7 +35,7 @@ The following goals implement increasingly strict rulesets:
 
 ````
 <properties>
-    <kemitix-checkstyle-ruleset.version>2.0.0</kemitix-checkstyle-ruleset.version>
+    <kemitix-checkstyle-ruleset.version>2.1.0</kemitix-checkstyle-ruleset.version>
     <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
 </properties>
 

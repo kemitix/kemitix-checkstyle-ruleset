@@ -27,6 +27,9 @@ package net.kemitix.checkstyle.sample;
 /**
  * Sample class to test the Kemitix Checkstyle Ruleset Maven Plugin against.
  *
+ * <p>This sample is deliberately only valid for level 1-layout and 2-naming. The plugin should report errors for levels
+ * 3-javadoc and above.</p>
+ *
  * @author Paul Campbell (paul.campbell@hubio.com)
  */
 public class Sample {

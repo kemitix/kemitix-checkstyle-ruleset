@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-builder</artifactId>
-    <version>2.0.4</version>
+    <version>2.1.0</version>
     <packaging>jar</packaging>
 
     <name>Kemitix Checkstyle Ruleset Builder</name>
@@ -37,10 +37,10 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
+        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <lombok.version>1.16.12</lombok.version>
-        <assertj.version>3.6.1</assertj.version>
-        <mapstream.version>2.3.4</mapstream.version>
+        <assertj.version>3.6.2</assertj.version>
+        <mapstream.version>2.3.5</mapstream.version>
         <mapbuilder.version>1.0.0</mapbuilder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
     </properties>

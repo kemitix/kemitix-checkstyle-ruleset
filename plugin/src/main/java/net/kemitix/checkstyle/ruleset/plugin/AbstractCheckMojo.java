@@ -62,19 +62,7 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
     private static final String CONFIG_LOCATION = "configLocation";
 
     @Setter
-    @Parameter(defaultValue = "2.17")
-    private String mavenCheckstylePluginVersion;
-
-    @Setter
-    @Parameter(defaultValue = "7.3")
-    private String checkstyleVersion;
-
-    @Setter
-    @Parameter(defaultValue = "1.23.0")
-    private String sevntuVersion;
-
-    @Setter
-    @Parameter(defaultValue = "2.0.4")
+    @Parameter(defaultValue = "${project.version}")
     private String rulesetVersion;
 
     @Setter
@@ -97,6 +85,12 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
      * @throws MojoFailureException   on execution failure
      */
     protected final void performCheck(final String level) throws MojoExecutionException, MojoFailureException {
+        // load versions from plugin's pom.xml
+        val properties = System.getProperties();
+        val mavenCheckstylePluginVersion = properties.getProperty("maven-checkstyle-plugin.version");
+        val checkstyleVersion = properties.getProperty("checkstyle.version");
+        val sevntuVersion = properties.getProperty("sevntu.version");
+
         val checkstyle = MojoExecutor.dependency(CHECKSTYLE_GROUPID, CHECKSTYLE_ARTIFACTID, checkstyleVersion);
         val sevntu = MojoExecutor.dependency(SEVNTU_GROUPID, SEVNTU_ARTIFACTID, sevntuVersion);
         val ruleset = MojoExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
@@ -107,8 +101,9 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
         val configLocation =
                 MojoExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level));
 
-        getLog().info(
-                String.format("Running Checkstyle %s (sevntu: %s) with %s", checkstyleVersion, sevntuVersion, level));
+        getLog().info(String.format("Running Checkstyle %s (sevntu: %s) with ruleset %s (%s)", checkstyleVersion,
+                                    sevntuVersion, level, rulesetVersion
+                                   ));
         MojoExecutor.executeMojo(checkstylePlugin, "check", MojoExecutor.configuration(configLocation),
                                  MojoExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager)
                                 );
