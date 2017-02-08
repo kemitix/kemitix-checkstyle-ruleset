@@ -74,7 +74,7 @@ public abstract class AbstractCheckMojo extends AbstractMojo {
     private String sevntuVersion;
 
     @Setter
-    @Parameter(defaultValue = "2.1.0-SNAPSHOT")
+    @Parameter(defaultValue = "${project.version}")
     private String rulesetVersion;
 
     @Setter
