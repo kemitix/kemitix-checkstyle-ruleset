@@ -50,7 +50,7 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 class CheckstyleWriter implements CommandLineRunner {
 
-    private static final String NEWLINE = "\n";
+    private static final String NEWLINE = System.getProperty("line.separator");
 
     private final OutputProperties outputProperties;
 
