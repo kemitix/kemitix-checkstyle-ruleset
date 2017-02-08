@@ -30,6 +30,8 @@ public class CheckstyleWriterTest {
 
     private static final String TEMPLATE = "C:%s\nTW:%s";
 
+    private static final String FILE_SEPARATOR = System.getProperty("file.separator");
+
     private CheckstyleWriter checkstyleWriter;
 
     private OutputProperties outputProperties;
@@ -181,9 +183,11 @@ public class CheckstyleWriterTest {
     @Test
     public void throwRteIfErrorWritingFile() throws Exception {
         //given
-        outputProperties.setDirectory(Paths.get("/../imaginary"));
+        final String imaginary = String.join(FILE_SEPARATOR, "", "..", "imaginary");
+        outputProperties.setDirectory(Paths.get(imaginary));
         exception.expect(RuntimeException.class);
-        exception.expectMessage("java.nio.file.NoSuchFileException: /../imaginary/checkstyle-LAYOUT.xml");
+        exception.expectMessage(
+                "java.nio.file.NoSuchFileException: " + imaginary + FILE_SEPARATOR + "checkstyle-LAYOUT.xml");
         //when
         checkstyleWriter.run();
     }
