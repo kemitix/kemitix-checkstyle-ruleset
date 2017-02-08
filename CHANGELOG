@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+2.1.0
+-----
+
+* Upgrade dependencies, including checkstyle to 7.5.1
+
 2.0.3
 -----
 
