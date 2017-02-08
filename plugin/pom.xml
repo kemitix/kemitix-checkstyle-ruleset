@@ -30,6 +30,11 @@
         <mojo-executor.version>2.2.0</mojo-executor.version>
         <lombok.version>1.16.12</lombok.version>
         <map-builder.version>1.0.0</map-builder.version>
+
+        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
+        <checkstyle.version>7.5.1</checkstyle.version>
+        <sevntu.version>1.23.0</sevntu.version>
     </properties>
 
     <dependencies>
@@ -96,6 +101,34 @@
                     <target>1.8</target>
                 </configuration>
             </plugin><!-- maven-compiler-plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>${properties-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-system-properties</goal>
+                        </goals>
+                        <configuration>
+                            <properties>
+                                <property>
+                                    <name>maven-checkstyle-plugin.version</name>
+                                    <value>${maven-checkstyle-plugin.version}</value>
+                                </property>
+                                <property>
+                                    <name>checkstyle.version</name>
+                                    <value>${checkstyle.version}</value>
+                                </property>
+                                <property>
+                                    <name>sevntu.version</name>
+                                    <value>${sevntu.version}</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin><!-- properties-maven-plugin -->
         </plugins>
     </build>
     <profiles>
