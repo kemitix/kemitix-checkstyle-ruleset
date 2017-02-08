@@ -8,7 +8,7 @@
     <!-- don't use parent to avoid using grandparent's checkstyle configuration -->
     <groupId>net.kemitix</groupId>
     <artifactId>kemitix-checkstyle-ruleset-plugin-sample</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.0-SNAPSHOT</version>
 
     <name>Kemitix Checkstyle Ruleset Plugin Sample</name>
     <description>Sample usage of the Kemitix Checkstyle Ruleset Plugin</description>
