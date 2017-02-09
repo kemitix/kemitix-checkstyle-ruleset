@@ -71,8 +71,6 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     private static final String CONFIG_LOCATION = "configLocation";
 
-    @Setter
-    @Parameter(defaultValue = "${project.version}")
     private String rulesetVersion;
 
     @Setter
@@ -98,6 +96,9 @@ abstract class AbstractCheckMojo extends AbstractMojo {
      * @throws MojoFailureException   on execution failure
      */
     final void performCheck(final String level) throws MojoExecutionException, MojoFailureException {
+        rulesetVersion = mavenProject.getPlugin(KEMITIX_GROUPID + ":" + KEMITIX_ARTIFACTID + "-maven-plugin")
+                                     .getVersion();
+        debug("rulesetVersion: %s", rulesetVersion);
         val properties = getProperties();
         debug("properties: %s", properties);
 
