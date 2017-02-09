@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.1.1
+-----
+
+* Load plugin dependency versions from the plugin's own pom
+* Cross-platform build
+
 2.1.0
 -----
 
