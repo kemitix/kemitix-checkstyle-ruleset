@@ -1,6 +1,14 @@
 CHANGELOG
 =========
 
+2.1.3
+-----
+
+* Change required pom dependency
+* Only apply checks to code in: src/main/java
+* Replace parent pom with kemitix-parent:2.4.0
+* Remove dependency on kemitix-checkstyle-ruleset-maven-plugin for builder module
+
 2.1.2
 -----
 
