@@ -139,7 +139,7 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     private Properties getProperties() throws MojoFailureException {
         // load properties from the plugin pom.xml
-        val pluginArtifactId = KEMITIX_ARTIFACTID + "-maven-plugin";
+        val pluginArtifactId = KEMITIX_ARTIFACTID + "-parent";
         val pluginArtifact = new DefaultArtifact(KEMITIX_GROUPID, pluginArtifactId, rulesetVersion, null, "", null,
                                                  new DefaultArtifactHandler("pom")
         );
