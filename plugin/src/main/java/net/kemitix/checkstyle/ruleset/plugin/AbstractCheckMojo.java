@@ -71,6 +71,8 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     private static final String CONFIG_LOCATION = "configLocation";
 
+    private static final String SOURCE_DIR = "sourceDirectory";
+
     private String rulesetVersion;
 
     @Setter
@@ -110,7 +112,9 @@ abstract class AbstractCheckMojo extends AbstractMojo {
         // configure
         val checkstylePlugin = getPlugin(pluginVersion, checkstyleVersion, sevntuVersion);
         val configuration = MojoExecutor.configuration(
-                MojoExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)));
+                MojoExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)),
+                MojoExecutor.element(SOURCE_DIR, mavenProject.getBuild().getSourceDirectory())
+                                                      );
         val environment = MojoExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
 
         // run
