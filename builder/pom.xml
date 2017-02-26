@@ -97,11 +97,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>net.kemitix</groupId>
-                <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
-                <version>${project.version}</version>
-            </plugin>
-            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
