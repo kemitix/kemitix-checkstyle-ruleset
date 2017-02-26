@@ -6,8 +6,8 @@
 
     <parent>
         <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-spring-parent</artifactId>
-        <version>2.2.0</version>
+        <artifactId>kemitix-parent</artifactId>
+        <version>2.4.0</version>
         <relativePath/>
     </parent>
 
