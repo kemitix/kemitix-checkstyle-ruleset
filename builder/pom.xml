@@ -41,7 +41,7 @@
         <lombok.version>1.16.12</lombok.version>
         <assertj.version>3.6.2</assertj.version>
         <mapstream.version>2.3.5</mapstream.version>
-        <mapbuilder.version>1.0.0</mapbuilder.version>
+        <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
     </properties>
 
@@ -90,7 +90,7 @@
         <dependency>
             <groupId>me.andrz</groupId>
             <artifactId>map-builder</artifactId>
-            <version>${mapbuilder.version}</version>
+            <version>${map-builder.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
