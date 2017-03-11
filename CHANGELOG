@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+2.2.0
+-----
+
+* Upgrade sevntu to 1.23.1
+* Upgrade checkstyle to 7.6
+* Detect sync conflicts
+
 2.1.3
 -----
 
