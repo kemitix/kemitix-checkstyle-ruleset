@@ -4,7 +4,11 @@
         "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
 
-    <module name="FileLength"/>
+    <module name="RegexpOnFilename">
+    <property name="fileNamePattern" value="(.sync-conflict-| conflicted copy )"/>
+<property name="match" value="true"/>
+</module>
+<module name="FileLength"/>
 <module name="FileTabCharacter"/>
 <module name="Header">
     <property name="fileExtensions" value="java"/>

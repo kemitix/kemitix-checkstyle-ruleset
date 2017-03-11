@@ -6,7 +6,7 @@
 
     <groupId>net.kemitix</groupId>
     <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>2.1.3</version>
+    <version>2.2.0</version>
     <packaging>pom</packaging>
 
     <name>Kemitix Checkstyle Ruleset (Parent)</name>
@@ -21,8 +21,8 @@
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>7.5.1</checkstyle.version>
-        <sevntu.version>1.23.0</sevntu.version>
+        <checkstyle.version>7.6</checkstyle.version>
+        <sevntu.version>1.23.1</sevntu.version>
     </properties>
 
     <modules>
