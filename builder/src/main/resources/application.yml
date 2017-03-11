@@ -13,6 +13,16 @@ template:
     readme-fragments: builder/src/main/resources/rules
 rules:
     -
+        name: RegexpOnFilename
+        parent: CHECKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename
+        properties:
+            fileNamePattern: "(.sync-conflict-| conflicted copy )"
+            match: true
+    -
         name: AbbreviationAsWordInName
         parent: TREEWALKER
         level: NAMING
