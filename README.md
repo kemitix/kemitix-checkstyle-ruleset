@@ -219,6 +219,7 @@ Rule|Level|Source|Enabled|Suppressable
 [Regexp](#regexp)|unspecified|checkstyle||
 [RegexpHeader](#regexpheader)|unspecified|checkstyle||
 [RegexpMultiline](#regexpmultiline)|unspecified|checkstyle||
+[RegexpOnFilename](#regexponfilename)|layout|checkstyle|Yes|
 [RegexpOnFilename](#regexponfilename)|unspecified|checkstyle||
 [RegexpSingleline](#regexpsingleline)|unspecified|checkstyle||
 [RegexpSinglelineJava](#regexpsinglelinejava)|unspecified|checkstyle||
@@ -273,6 +274,22 @@ The following is a list of each of the checks and the expectations each has on y
 ### Checkstyle
 
 Rules are listed in alphabetical order.
+
+#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+
+Checks for the existence of forbidden java file names.
+
+File names are forbidden if they match the pattern `(.sync-conflict-| conflicted copy )`.
+
+N.B. only `*.java` files are checked.
+
+This check is intended to detect Syncthing and Dropbox conflict files.
+
+e.g.
+````
+DataClass (Bob's conflicted copy 2017-03-11).java
+DataClass.sync-conflict-20170311-1648.java
+````
 
 #### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
 
