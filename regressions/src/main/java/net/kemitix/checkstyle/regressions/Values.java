@@ -31,6 +31,11 @@ import org.immutables.value.Value;
 @Value.Immutable
 public interface Values {
 
+    /**
+     * Gets the ID.
+     *
+     * @return the id
+     */
     @Value.Parameter
     long getId();
 
