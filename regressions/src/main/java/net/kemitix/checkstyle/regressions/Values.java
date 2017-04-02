@@ -19,19 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.regressions;
+
+import org.immutables.value.Value;
 
 /**
- * Creates the Rule Index for README.md in Markdown Format.
+ * Regression subject for org.immutables.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public interface ReadmeIndexBuilder {
+@Value.Immutable
+public interface Values {
 
     /**
-     * Builds the Rule Index in Markdown Format.
+     * Gets the ID.
      *
-     * @return The rule index.
+     * @return the id
      */
-    String build();
+    @Value.Parameter
+    long getId();
+
 }

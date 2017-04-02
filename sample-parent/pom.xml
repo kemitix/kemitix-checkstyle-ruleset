@@ -5,61 +5,37 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix</groupId>
-    <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>2.3.0</version>
+    <artifactId>kemitix-checkstyle-ruleset-sample-parent</artifactId>
     <packaging>pom</packaging>
 
-    <name>Kemitix Checkstyle Ruleset (Parent)</name>
-    <description>Parent POM for the Kemitix Checkstyle Ruleset and it's Builder</description>
+    <version>2.3.0</version>
+
+    <name>Kemitix Checkstyle Ruleset Sample Parent</name>
+    <description>Sample parent for modules that use kemitix-checkstyle-ruleset-maven-plugin</description>
 
     <properties>
+        <kemitix-checkstyle-ruleset-level>2-naming</kemitix-checkstyle-ruleset-level>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-
-        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>7.6.1</checkstyle.version>
-        <sevntu.version>1.23.1</sevntu.version>
     </properties>
 
-    <modules>
-        <module>builder</module>
-        <module>ruleset</module>
-        <module>plugin</module>
-        <module>plugin-sample</module>
-        <module>regressions</module>
-        <module>sample-parent</module>
-    </modules>
-
-    <issueManagement>
-        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-
-    <scm>
-        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
-        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
-        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
-    </scm>
-
     <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
-
-    <inceptionYear>2016</inceptionYear>
-
-    <prerequisites>
-        <maven>3.0.4</maven>
-    </prerequisites>
-
     <licenses>
         <license>
             <name>The MIT License (MIT)</name>
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-
+    <scm>
+        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
+        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
+        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
+    </scm>
     <developers>
         <developer>
             <name>Paul Campbell</name>
@@ -69,6 +45,23 @@
         </developer>
     </developers>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>net.kemitix</groupId>
+                <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
+                <version>${project.version}</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>${kemitix-checkstyle-ruleset-level}</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <profiles>
         <profile>
             <id>release</id>
@@ -133,6 +126,14 @@
         </profile><!-- release -->
     </profiles>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sevntu-maven</id>
+            <name>sevntu-maven</name>
+            <url>http://sevntu-checkstyle.github.io/sevntu.checkstyle/maven2</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus-snapshots</id>
@@ -145,4 +146,5 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
 </project>
