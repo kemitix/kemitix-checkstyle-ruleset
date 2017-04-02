@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-builder</artifactId>
-    <version>2.3.0-SNAPSHOT</version>
+    <version>2.3.0</version>
     <packaging>jar</packaging>
 
     <name>Kemitix Checkstyle Ruleset Builder</name>
