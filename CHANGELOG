@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+2.3.0
+-----
+
+* Add org.immutables:value compatibility for level 5-complexity (disable ForbidWildcardAsReturn)
+* Upgrade checkstyle to 7.6.1
+
 2.2.0
 -----
 
