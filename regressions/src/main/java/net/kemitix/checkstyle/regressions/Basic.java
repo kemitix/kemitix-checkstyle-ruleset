@@ -19,19 +19,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.regressions;
 
 /**
- * Creates the Rule Index for README.md in Markdown Format.
+ * Sample class.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public interface ReadmeIndexBuilder {
+class Basic {
 
-    /**
-     * Builds the Rule Index in Markdown Format.
-     *
-     * @return The rule index.
-     */
-    String build();
 }

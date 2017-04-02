@@ -133,7 +133,7 @@ Rule|Level|Source|Enabled|Suppressable
 [ForbidInstantiation](#forbidinstantiation)|unspecified|sevntu||
 [ForbidReturnInFinallyBlock](#forbidreturninfinallyblock)|complexity|sevntu|Yes|
 [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions)|tweaks|sevntu||
-[ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu|Yes|
+[ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu||
 [GenericWhitespace](#genericwhitespace)|layout|checkstyle|Yes|
 [Header](#header)|layout|checkstyle|Yes|
 [HiddenField](#hiddenfield)|tweaks|checkstyle|Yes|
@@ -2333,19 +2333,6 @@ try {
     return true; // invalid
 }
 ````
-#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
-
-Prevents declaring a method from returning a wildcard type as its return value.
-
-Valid:
-````
-<E> List<E> getList() {}
-````
-
-Invalid:
-````
-<E> List<? extends E> getList() {}
-````
 #### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
 
 Prevent the placement of variables or fields after methods in an expression.
@@ -2670,6 +2657,9 @@ Generic rule; doesn't embody a 'quality' check.
 
 As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
 
+#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+
+Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
