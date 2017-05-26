@@ -48,6 +48,8 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     private static final String KEMITIX_ARTIFACTID = "kemitix-checkstyle-ruleset";
 
+    private final CheckstyleExecutor checkstyleExecutor;
+
     @Setter
     @Parameter(defaultValue = "${project}", readonly = true)
     private MavenProject mavenProject;
@@ -58,14 +60,17 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     @Setter
     @Parameter(defaultValue = "${localRepository}", readonly = true, required = true)
-    private ArtifactRepository artifactRepository = null;
+    private ArtifactRepository artifactRepository;
 
     @Setter
     @Component
-    private BuildPluginManager pluginManager = null;
+    private BuildPluginManager pluginManager;
 
-    private final CheckstyleExecutor checkstyleExecutor;
-
+    /**
+     * Create a check mojo.
+     *
+     * @param checkstyleExecutor the executor to invoke the checkstyle plugin
+     */
     AbstractCheckMojo(final CheckstyleExecutor checkstyleExecutor) {
         this.checkstyleExecutor = checkstyleExecutor;
         checkstyleExecutor.setLog(getLog());
