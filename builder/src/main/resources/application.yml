@@ -1182,7 +1182,7 @@ rules:
     -
         name: ArrayTrailingComma
         parent: TREEWALKER
-        level: TWEAK
+        level: TWEAKS
         enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma
@@ -1190,7 +1190,7 @@ rules:
     -
         name: FinalLocalVariable
         parent: TREEWALKER
-        level: TWEAK
+        level: TWEAKS
         enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable

@@ -75,7 +75,7 @@ Rule|Level|Source|Enabled|Suppressable
 [AnnotationLocation](#annotationlocation)|layout|checkstyle|Yes|
 [AnnotationUseStyle](#annotationusestyle)|layout|checkstyle|Yes|
 [AnonInnerLength](#anoninnerlength)|complexity|checkstyle|Yes|
-[ArrayTrailingComma](#arraytrailingcomma)|unspecified|checkstyle||
+[ArrayTrailingComma](#arraytrailingcomma)|tweaks|checkstyle||
 [ArrayTypeStyle](#arraytypestyle)|layout|checkstyle|Yes|
 [AtclauseOrder](#atclauseorder)|javadoc|checkstyle|Yes|
 [AvoidConditionInversion](#avoidconditioninversion)|complexity|sevntu||
@@ -125,7 +125,7 @@ Rule|Level|Source|Enabled|Suppressable
 [FileTabCharacter](#filetabcharacter)|layout|checkstyle|Yes|
 [FinalClass](#finalclass)|complexity|checkstyle|Yes|
 [FinalizeImplementation](#finalizeimplementation)|unspecified|sevntu||
-[FinalLocalVariable](#finallocalvariable)|unspecified|checkstyle||
+[FinalLocalVariable](#finallocalvariable)|tweaks|checkstyle||
 [FinalParameters](#finalparameters)|tweaks|checkstyle|Yes|
 [ForbidAnnotation](#forbidannotation)|unspecified|sevntu||
 [ForbidCCommentsInMethods](#forbidccommentsinmethods)|layout|sevntu|Yes|
