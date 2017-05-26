@@ -94,6 +94,13 @@ abstract class AbstractCheckMojo extends AbstractMojo {
         this.pluginExecutor = pluginExecutor;
     }
 
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        performCheck(getLevel());
+    }
+
+    abstract String getLevel();
+
     /**
      * Execute Checkstyle Check.
      *
@@ -118,8 +125,9 @@ abstract class AbstractCheckMojo extends AbstractMojo {
         val checkstylePlugin = getPlugin(pluginVersion, checkstyleVersion, sevntuVersion);
         val configuration = pluginExecutor.configuration(
                 pluginExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)),
-                pluginExecutor.element(SOURCE_DIR, mavenProject.getBuild().getSourceDirectory())
-                                                      );
+                pluginExecutor.element(SOURCE_DIR, mavenProject.getBuild()
+                                                               .getSourceDirectory())
+                                                        );
         val environment = pluginExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
 
         // run

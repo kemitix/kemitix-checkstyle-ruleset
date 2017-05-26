@@ -24,8 +24,6 @@ SOFTWARE.
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
@@ -37,15 +35,17 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo(name = "2-naming", defaultPhase = LifecyclePhase.VALIDATE)
 public final class NamingCheckMojo extends AbstractCheckMojo {
 
+    private static final String LEVEL = "2-naming";
+
     /**
      * Create the Mojo.
      */
-    NamingCheckMojo() {
+    public NamingCheckMojo() {
         super(new DefaultPluginExecutor());
     }
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        performCheck("2-naming");
+    String getLevel() {
+        return LEVEL;
     }
 }

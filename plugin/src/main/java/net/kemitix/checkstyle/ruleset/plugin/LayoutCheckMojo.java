@@ -24,8 +24,6 @@ SOFTWARE.
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
@@ -37,15 +35,17 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo(name = "1-layout", defaultPhase = LifecyclePhase.VALIDATE)
 public final class LayoutCheckMojo extends AbstractCheckMojo {
 
+    private static final String LEVEL = "1-layout";
+
     /**
      * Create the Mojo.
      */
-    LayoutCheckMojo() {
+    public LayoutCheckMojo() {
         super(new DefaultPluginExecutor());
     }
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        performCheck("1-layout");
+    String getLevel() {
+        return LEVEL;
     }
 }

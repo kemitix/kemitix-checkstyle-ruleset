@@ -24,8 +24,6 @@ SOFTWARE.
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
@@ -37,15 +35,17 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo(name = "3-javadoc", defaultPhase = LifecyclePhase.VALIDATE)
 public final class JavadocCheckMojo extends AbstractCheckMojo {
 
+    private static final String LEVEL = "3-javadoc";
+
     /**
      * Create the Mojo.
      */
-    JavadocCheckMojo() {
+    public JavadocCheckMojo() {
         super(new DefaultPluginExecutor());
     }
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
-        performCheck("3-javadoc");
+    String getLevel() {
+        return LEVEL;
     }
 }
