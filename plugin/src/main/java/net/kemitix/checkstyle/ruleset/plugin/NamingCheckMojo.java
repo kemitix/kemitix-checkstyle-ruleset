@@ -35,7 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Mojo(name = "2-naming", defaultPhase = LifecyclePhase.VALIDATE)
-public class NamingCheckMojo extends AbstractCheckMojo {
+public final class NamingCheckMojo extends AbstractCheckMojo {
+
+    /**
+     * Create the Mojo.
+     */
+    NamingCheckMojo() {
+        super(new DefaultPluginExecutor());
+    }
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

@@ -35,7 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Mojo(name = "4-tweaks", defaultPhase = LifecyclePhase.VALIDATE)
-public class TweaksCheckMojo extends AbstractCheckMojo {
+public final class TweaksCheckMojo extends AbstractCheckMojo {
+
+    /**
+     * Create the Mojo.
+     */
+    TweaksCheckMojo() {
+        super(new DefaultPluginExecutor());
+    }
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

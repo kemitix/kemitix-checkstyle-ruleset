@@ -40,7 +40,6 @@ import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
-import org.twdata.maven.mojoexecutor.MojoExecutor;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -89,6 +88,12 @@ abstract class AbstractCheckMojo extends AbstractMojo {
     @Component
     private BuildPluginManager pluginManager = null;
 
+    private final PluginExecutor pluginExecutor;
+
+    AbstractCheckMojo(final PluginExecutor pluginExecutor) {
+        this.pluginExecutor = pluginExecutor;
+    }
+
     /**
      * Execute Checkstyle Check.
      *
@@ -111,17 +116,17 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
         // configure
         val checkstylePlugin = getPlugin(pluginVersion, checkstyleVersion, sevntuVersion);
-        val configuration = MojoExecutor.configuration(
-                MojoExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)),
-                MojoExecutor.element(SOURCE_DIR, mavenProject.getBuild().getSourceDirectory())
+        val configuration = pluginExecutor.configuration(
+                pluginExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)),
+                pluginExecutor.element(SOURCE_DIR, mavenProject.getBuild().getSourceDirectory())
                                                       );
-        val environment = MojoExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
+        val environment = pluginExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
 
         // run
         info("Running Checkstyle %s (sevntu: %s) with ruleset %s (%s)", checkstyleVersion, sevntuVersion, level,
              rulesetVersion
             );
-        MojoExecutor.executeMojo(checkstylePlugin, "check", configuration, environment);
+        pluginExecutor.executeMojo(checkstylePlugin, "check", configuration, environment);
         info("Checkstyle complete");
     }
 
@@ -133,12 +138,12 @@ abstract class AbstractCheckMojo extends AbstractMojo {
 
     private Plugin getPlugin(final String pluginVersion, final String checkstyleVersion, final String sevntuVersion) {
         // create checkstyle dependencies
-        val checkstyle = MojoExecutor.dependency(CHECKSTYLE_GROUPID, CHECKSTYLE_ARTIFACTID, checkstyleVersion);
-        val sevntu = MojoExecutor.dependency(SEVNTU_GROUPID, SEVNTU_ARTIFACTID, sevntuVersion);
-        val ruleset = MojoExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
-        val dependencies = MojoExecutor.dependencies(checkstyle, sevntu, ruleset);
+        val checkstyle = pluginExecutor.dependency(CHECKSTYLE_GROUPID, CHECKSTYLE_ARTIFACTID, checkstyleVersion);
+        val sevntu = pluginExecutor.dependency(SEVNTU_GROUPID, SEVNTU_ARTIFACTID, sevntuVersion);
+        val ruleset = pluginExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
+        val dependencies = pluginExecutor.dependencies(checkstyle, sevntu, ruleset);
 
-        return MojoExecutor.plugin(APACHE_PLUGIN_GROUPID, APACHE_PLUGIN_ARTIFACTID, pluginVersion, dependencies);
+        return pluginExecutor.plugin(APACHE_PLUGIN_GROUPID, APACHE_PLUGIN_ARTIFACTID, pluginVersion, dependencies);
     }
 
     private Properties getProperties() throws MojoFailureException {

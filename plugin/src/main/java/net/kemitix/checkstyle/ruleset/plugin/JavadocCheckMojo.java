@@ -35,7 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Mojo(name = "3-javadoc", defaultPhase = LifecyclePhase.VALIDATE)
-public class JavadocCheckMojo extends AbstractCheckMojo {
+public final class JavadocCheckMojo extends AbstractCheckMojo {
+
+    /**
+     * Create the Mojo.
+     */
+    JavadocCheckMojo() {
+        super(new DefaultPluginExecutor());
+    }
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

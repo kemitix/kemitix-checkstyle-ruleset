@@ -35,7 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Mojo(name = "1-layout", defaultPhase = LifecyclePhase.VALIDATE)
-public class LayoutCheckMojo extends AbstractCheckMojo {
+public final class LayoutCheckMojo extends AbstractCheckMojo {
+
+    /**
+     * Create the Mojo.
+     */
+    LayoutCheckMojo() {
+        super(new DefaultPluginExecutor());
+    }
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {

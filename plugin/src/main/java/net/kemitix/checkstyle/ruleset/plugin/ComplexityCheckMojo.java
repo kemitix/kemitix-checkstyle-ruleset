@@ -35,7 +35,14 @@ import org.apache.maven.plugins.annotations.Mojo;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Mojo(name = "5-complexity", defaultPhase = LifecyclePhase.VALIDATE)
-public class ComplexityCheckMojo extends AbstractCheckMojo {
+public final class ComplexityCheckMojo extends AbstractCheckMojo {
+
+    /**
+     * Create the Mojo.
+     */
+    ComplexityCheckMojo() {
+        super(new DefaultPluginExecutor());
+    }
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
