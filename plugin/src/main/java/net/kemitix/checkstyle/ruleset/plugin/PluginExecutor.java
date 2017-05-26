@@ -21,12 +21,9 @@
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
-import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
 
@@ -61,15 +58,11 @@ public interface PluginExecutor {
     /**
      * Constructs the {@link MojoExecutor.ExecutionEnvironment} instance fluently.
      *
-     * @param mavenProject  The current Maven project
-     * @param mavenSession  The current Maven session
-     * @param pluginManager The Build plugin manager
+     * @param configuration The Configuration
      *
      * @return The execution environment
      */
-    MojoExecutor.ExecutionEnvironment executionEnvironment(
-            MavenProject mavenProject, MavenSession mavenSession, BuildPluginManager pluginManager
-                                                          );
+    MojoExecutor.ExecutionEnvironment executionEnvironment(CheckConfiguration configuration);
 
     /**
      * Entry point for executing a mojo.

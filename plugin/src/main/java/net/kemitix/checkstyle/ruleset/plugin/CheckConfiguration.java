@@ -21,26 +21,31 @@
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugin.logging.Log;
+import lombok.Builder;
+import lombok.Getter;
+import org.apache.maven.artifact.repository.ArtifactRepository;
+import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugin.BuildPluginManager;
+import org.apache.maven.project.MavenProject;
 
 /**
- * Executes the Checkstyle plugin.
+ * Configuration for performing a Checkstyle Check.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-interface CheckstyleExecutor {
+@Getter
+@Builder
+class CheckConfiguration {
 
-    /**
-     * Execute Checkstyle Check.
-     *
-     * @param configuration The Configuration
-     *
-     * @throws MojoExecutionException on execution error
-     * @throws MojoFailureException   on execution failure
-     */
-    void performCheck(CheckConfiguration configuration) throws MojoExecutionException, MojoFailureException;
+    private MavenProject mavenProject;
 
-    void setLog(Log log);
+    private MavenSession mavenSession;
+
+    private ArtifactRepository artifactRepository;
+
+    private BuildPluginManager pluginManager;
+
+    private String rulesetVersion;
+
+    private String sourceDirectory;
 }

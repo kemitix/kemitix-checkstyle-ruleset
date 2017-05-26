@@ -23,22 +23,26 @@ package net.kemitix.checkstyle.ruleset.plugin;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.val;
+import org.apache.maven.artifact.Artifact;
 import org.apache.maven.artifact.DefaultArtifact;
+import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.artifact.handler.DefaultArtifactHandler;
 import org.apache.maven.artifact.repository.ArtifactRepository;
-import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Dependency;
+import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
-import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Properties;
 
 /**
@@ -69,78 +73,103 @@ class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 
     private static final String SOURCE_DIR = "sourceDirectory";
 
-    @Getter
-    private final Log log;
+    private static final ArtifactHandler POM_ARTIFACT_HANDLER = new DefaultArtifactHandler("pom");
+
+    private static final String PLUGIN_ARTIFACT_ID = KEMITIX_ARTIFACTID + "-parent";
 
     private final String level;
 
     private final PluginExecutor pluginExecutor;
 
+    private final MavenXpp3Reader mavenXpp3Reader;
+
+    @Setter
+    @Getter
+    private Log log;
+
     private String rulesetVersion;
 
     @Override
-    public final void performCheck(
-            final MavenProject mavenProject, final MavenSession mavenSession,
-            final ArtifactRepository artifactRepository, final BuildPluginManager pluginManager
-                                  ) throws MojoExecutionException, MojoFailureException {
-        rulesetVersion = mavenProject.getPlugin(KEMITIX_GROUPID + ":" + KEMITIX_ARTIFACTID + "-maven-plugin")
-                                     .getVersion();
-        debug("rulesetVersion: %s", rulesetVersion);
-        val properties = getProperties(artifactRepository);
-        debug("properties: %s", properties);
-
-        // get versions from pom.xml properties
-        val pluginVersion = getProperty(properties, "maven-checkstyle-plugin.version");
-        val checkstyleVersion = getProperty(properties, "checkstyle.version");
-        val sevntuVersion = getProperty(properties, "sevntu.version");
+    public final void performCheck(final CheckConfiguration config)
+            throws MojoExecutionException, MojoFailureException {
+        rulesetVersion = config.getRulesetVersion();
+        val properties = getProperties(config.getArtifactRepository());
 
         // configure
-        val checkstylePlugin = getPlugin(pluginVersion, checkstyleVersion, sevntuVersion);
-        val configuration = pluginExecutor.configuration(
-                pluginExecutor.element(CONFIG_LOCATION, String.format("net/kemitix/checkstyle-%s.xml", level)),
-                pluginExecutor.element(SOURCE_DIR, mavenProject.getBuild()
-                                                               .getSourceDirectory())
+        val checkstylePlugin = getPlugin(properties);
+        final String sourceDirectory = config.getSourceDirectory();
+        final String configFile = String.format("net/kemitix/checkstyle-%s.xml", level);
+        val configuration = pluginExecutor.configuration(pluginExecutor.element(CONFIG_LOCATION, configFile),
+                                                         pluginExecutor.element(SOURCE_DIR, sourceDirectory)
                                                         );
-        val environment = pluginExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
+        val environment = pluginExecutor.executionEnvironment(config);
 
         // run
-        info("Running Checkstyle %s (sevntu: %s) with ruleset %s (%s)", checkstyleVersion, sevntuVersion, level,
-             rulesetVersion
-            );
         pluginExecutor.executeMojo(checkstylePlugin, "check", configuration, environment);
         info("Checkstyle complete");
     }
 
     private String getProperty(final Properties properties, final String key) {
         val property = properties.getProperty(key);
-        debug(key + ": %s", property);
+        debug("%s: %s", key, property);
         return property;
     }
 
-    private Plugin getPlugin(final String pluginVersion, final String checkstyleVersion, final String sevntuVersion) {
+    private Plugin getPlugin(final Properties properties) {
+        // get versions from pom.xml properties
+        val pluginVersion = getProperty(properties, "maven-checkstyle-plugin.version");
+        val checkstyleVersion = getProperty(properties, "checkstyle.version");
+        val sevntuVersion = getProperty(properties, "sevntu.version");
+        info("Checkstyle %s (plugin: %s, sevntu: %s) with ruleset %s (%s)", checkstyleVersion, pluginVersion,
+             sevntuVersion, level, rulesetVersion
+            );
+
         // create checkstyle dependencies
-        val checkstyle = pluginExecutor.dependency(CHECKSTYLE_GROUPID, CHECKSTYLE_ARTIFACTID, checkstyleVersion);
-        val sevntu = pluginExecutor.dependency(SEVNTU_GROUPID, SEVNTU_ARTIFACTID, sevntuVersion);
-        val ruleset = pluginExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
+        val checkstyle = getCheckstyleDependency(checkstyleVersion);
+        val sevntu = getSevntuDependency(sevntuVersion);
+        val ruleset = getRulesetDependency();
         val dependencies = pluginExecutor.dependencies(checkstyle, sevntu, ruleset);
 
         return pluginExecutor.plugin(APACHE_PLUGIN_GROUPID, APACHE_PLUGIN_ARTIFACTID, pluginVersion, dependencies);
     }
 
+    private Dependency getRulesetDependency() {
+        return pluginExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
+    }
+
+    private Dependency getSevntuDependency(final String sevntuVersion) {
+        return pluginExecutor.dependency(SEVNTU_GROUPID, SEVNTU_ARTIFACTID, sevntuVersion);
+    }
+
+    private Dependency getCheckstyleDependency(final String checkstyleVersion) {
+        return pluginExecutor.dependency(CHECKSTYLE_GROUPID, CHECKSTYLE_ARTIFACTID, checkstyleVersion);
+    }
+
     private Properties getProperties(final ArtifactRepository artifactRepository) throws MojoFailureException {
         // load properties from the plugin pom.xml
-        val pluginArtifactId = KEMITIX_ARTIFACTID + "-parent";
-        val pluginArtifact = new DefaultArtifact(KEMITIX_GROUPID, pluginArtifactId, rulesetVersion, null, "", null,
-                                                 new DefaultArtifactHandler("pom")
-        );
+        final Artifact pluginArtifact = getPluginArtifact(artifactRepository);
         try {
-            val pomReader = new FileReader(artifactRepository.find(pluginArtifact)
-                                                             .getFile());
-            return new MavenXpp3Reader().read(pomReader)
-                                        .getProperties();
+            final File pomFile = pluginArtifact.getFile();
+            return parsePomFile(pomFile).getProperties();
         } catch (XmlPullParserException | IOException e) {
             throw new MojoFailureException("Can't load properties from plugin's pom.xml", e);
         }
+    }
+
+    private Model parsePomFile(final File pomFile) throws IOException, XmlPullParserException {
+        final Reader pomReader = new FileReader(pomFile);
+        return mavenXpp3Reader.read(pomReader);
+    }
+
+    private Artifact getPluginArtifact(final ArtifactRepository artifactRepository) {
+        final Artifact templateArtifact = getRulesetArtifactTemplate();
+        return artifactRepository.find(templateArtifact);
+    }
+
+    private DefaultArtifact getRulesetArtifactTemplate() {
+        return new DefaultArtifact(KEMITIX_GROUPID, PLUGIN_ARTIFACT_ID, rulesetVersion, null, "", null,
+                                   POM_ARTIFACT_HANDLER
+        );
     }
 
     private void info(final String format, final Object... args) {

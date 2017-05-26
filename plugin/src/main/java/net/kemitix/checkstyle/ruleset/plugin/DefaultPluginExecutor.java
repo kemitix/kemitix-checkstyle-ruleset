@@ -21,12 +21,9 @@
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Dependency;
 import org.apache.maven.model.Plugin;
-import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
 
@@ -50,10 +47,9 @@ public final class DefaultPluginExecutor implements PluginExecutor {
     }
 
     @Override
-    public MojoExecutor.ExecutionEnvironment executionEnvironment(
-            final MavenProject mavenProject, final MavenSession mavenSession, final BuildPluginManager pluginManager
-                                                                 ) {
-        return MojoExecutor.executionEnvironment(mavenProject, mavenSession, pluginManager);
+    public MojoExecutor.ExecutionEnvironment executionEnvironment(final CheckConfiguration config) {
+        return MojoExecutor.executionEnvironment(
+                config.getMavenProject(), config.getMavenSession(), config.getPluginManager());
     }
 
     @Override

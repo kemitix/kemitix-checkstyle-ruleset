@@ -24,6 +24,7 @@ SOFTWARE.
 
 package net.kemitix.checkstyle.ruleset.plugin;
 
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
@@ -41,11 +42,6 @@ public final class ComplexityCheckMojo extends AbstractCheckMojo {
      * Create the Mojo.
      */
     public ComplexityCheckMojo() {
-        super(new DefaultPluginExecutor());
-    }
-
-    @Override
-    String getLevel() {
-        return LEVEL;
+        super(new DefaultCheckstyleExecutor(LEVEL, new DefaultPluginExecutor(), new MavenXpp3Reader()));
     }
 }

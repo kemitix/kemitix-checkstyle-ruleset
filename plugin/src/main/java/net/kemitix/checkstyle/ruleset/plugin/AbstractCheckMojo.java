@@ -27,6 +27,8 @@ package net.kemitix.checkstyle.ruleset.plugin;
 import lombok.Setter;
 import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.model.Build;
+import org.apache.maven.model.Plugin;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -42,6 +44,10 @@ import org.apache.maven.project.MavenProject;
  */
 abstract class AbstractCheckMojo extends AbstractMojo {
 
+    private static final String KEMITIX_GROUPID = "net.kemitix";
+
+    private static final String KEMITIX_ARTIFACTID = "kemitix-checkstyle-ruleset";
+
     @Setter
     @Parameter(defaultValue = "${project}", readonly = true)
     private MavenProject mavenProject;
@@ -50,22 +56,41 @@ abstract class AbstractCheckMojo extends AbstractMojo {
     @Parameter(defaultValue = "${session}", readonly = true)
     private MavenSession mavenSession;
 
+    @Setter
     @Parameter(defaultValue = "${localRepository}", readonly = true, required = true)
     private ArtifactRepository artifactRepository = null;
 
+    @Setter
     @Component
     private BuildPluginManager pluginManager = null;
 
     private final CheckstyleExecutor checkstyleExecutor;
 
-    AbstractCheckMojo(final PluginExecutor pluginExecutor) {
-        checkstyleExecutor = new DefaultCheckstyleExecutor(getLog(), getLevel(), pluginExecutor);
+    AbstractCheckMojo(final CheckstyleExecutor checkstyleExecutor) {
+        this.checkstyleExecutor = checkstyleExecutor;
+        checkstyleExecutor.setLog(getLog());
     }
-
-    abstract String getLevel();
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        checkstyleExecutor.performCheck(mavenProject, mavenSession, artifactRepository, pluginManager);
+        CheckConfiguration config = getCheckConfiguration();
+        checkstyleExecutor.performCheck(config);
+    }
+
+    private CheckConfiguration getCheckConfiguration() {
+        final Plugin rulesetPlugin = getRulesetPlugin();
+        final Build build = mavenProject.getBuild();
+        return CheckConfiguration.builder()
+                                 .mavenProject(mavenProject)
+                                 .mavenSession(mavenSession)
+                                 .artifactRepository(artifactRepository)
+                                 .pluginManager(pluginManager)
+                                 .rulesetVersion(rulesetPlugin.getVersion())
+                                 .sourceDirectory(build.getSourceDirectory())
+                                 .build();
+    }
+
+    private Plugin getRulesetPlugin() {
+        return mavenProject.getPlugin(KEMITIX_GROUPID + ":" + KEMITIX_ARTIFACTID + "-maven-plugin");
     }
 }
