@@ -8,7 +8,7 @@
     <artifactId>kemitix-checkstyle-ruleset-sample-parent</artifactId>
     <packaging>pom</packaging>
 
-    <version>2.4.0-SNAPSHOT</version>
+    <version>3.0.0-SNAPSHOT</version>
 
     <name>Kemitix Checkstyle Ruleset Sample Parent</name>
     <description>Sample parent for modules that use kemitix-checkstyle-ruleset-maven-plugin</description>
@@ -51,11 +51,14 @@
                 <groupId>net.kemitix</groupId>
                 <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
                 <version>${project.version}</version>
+                <configuration>
+                    <level>${kemitix-checkstyle-ruleset-level}</level>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>validate</phase>
                         <goals>
-                            <goal>${kemitix-checkstyle-ruleset-level}</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
