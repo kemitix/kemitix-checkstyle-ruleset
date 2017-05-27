@@ -5,7 +5,7 @@
     <parent>
         <artifactId>kemitix-checkstyle-ruleset-sample-parent</artifactId>
         <groupId>net.kemitix</groupId>
-        <version>3.0.0</version>
+        <version>3.0.1</version>
         <relativePath>../sample-parent</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>

@@ -1,5 +1,14 @@
 language: java
 jdk:
-    - oraclejdk8
+- oraclejdk8
+cache:
+  directories:
+  - "$HOME/.m2"
+install: true
+script: "./mvnw clean install"
 after_success:
-  - mvn --projects builder clean test jacoco:report coveralls:report
+- "./travis-coveralls-report.sh"
+- '[[ $TRAVIS_BRANCH == "master" ]] && ./travis-deploy.sh'
+env:
+  global:
+    secure: jKTenQ9C2eoL+kchzdekj375h4naZ0776hVkuZxcejT2m/dMIKP4X4WXYzIY1U1cPcCgHRk5IgZ3qUCQ74+pGDGjut7uYKmZOu1rZ8m1jvt0jbrmDs4N5mL0EiXKkju6jPKcEK5kgM2QEN0y2aEnDVwNTfdIQaAGcpA0Ib1M15Vlizvso5COnBhRzK7ZXs4DRGIvDbEOHW715pM+xHvNGQPaBxCaT+ofHRROQ+O+g9SGkSM5aHtRFhq3Mw0k1OIxRkF/m8D0O6O8gg7HlRZAMY7SXfccvz+egMPzFam4GjfYzdPfHzMBY46BOB1Mn0Y4V2nS6hYrl4EQRgdlibPbynRZzl4xZIWciOW9jXWC/7sbDApAov7UQzLmdxxvQbE6M9O8YfMnB4GDNjnpa9eqqVPOLr5/beQJ6YRfOz+KT50CiHm7eWPJb9Ye6jbMAXBknl3CqIwkK+z4/gENwH2aPoTnYqWlSdCoSNOVlKz18HcIGVDBMf2N27nSUOdqxPQE7XSlu5GhEG2FSRg0mzvs8n2fqf/qszaHn1b+1pKshgomBU2KyyF/OEXvSXaZxj2GpybwxDTcTKLDkfuWT1nWNXg5ftDWX4e+iPQAbj/l/m2pmbQ0zLsg6MzffYG7vFPkA1rvL9qBbaIDJEEnest8cFe//76B7jSE/1jT/9zc7vE=
