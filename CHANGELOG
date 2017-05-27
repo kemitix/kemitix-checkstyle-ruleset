@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+3.0.0
+-----
+
+* BREAKING: Replace goals for plugin: use 'check' and configuration/level (see README.md)
+* Rules are properly listed in README.md alphabetically
+* Add unit tests for plugin
+
 2.3.0
 -----
 
