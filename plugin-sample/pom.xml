@@ -8,12 +8,12 @@
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-checkstyle-ruleset-sample-parent</artifactId>
-        <version>2.3.0</version>
+        <version>3.0.0</version>
         <relativePath>../sample-parent</relativePath>
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-plugin-sample</artifactId>
-    <version>2.3.0</version>
+    <version>3.0.0</version>
 
     <name>Kemitix Checkstyle Ruleset Plugin Sample</name>
     <description>Sample usage of the Kemitix Checkstyle Ruleset Plugin</description>
