@@ -29,11 +29,14 @@ import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.model.Build;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
@@ -42,13 +45,16 @@ import org.apache.maven.project.MavenProject;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-abstract class AbstractCheckMojo extends AbstractMojo {
+@Mojo(name = "check", defaultPhase = LifecyclePhase.VALIDATE)
+public class CheckMojo extends AbstractMojo {
 
     private static final String KEMITIX_GROUPID = "net.kemitix";
 
     private static final String KEMITIX_ARTIFACTID = "kemitix-checkstyle-ruleset";
 
-    private final CheckstyleExecutor checkstyleExecutor;
+    @Setter
+    private CheckstyleExecutor checkstyleExecutor =
+            new DefaultCheckstyleExecutor(new DefaultPluginExecutor(), new MavenXpp3Reader());
 
     @Setter
     @Parameter(defaultValue = "${project}", readonly = true)
@@ -62,22 +68,16 @@ abstract class AbstractCheckMojo extends AbstractMojo {
     @Parameter(defaultValue = "${localRepository}", readonly = true, required = true)
     private ArtifactRepository artifactRepository;
 
+    @Parameter(defaultValue = "5-complexity", readonly = true)
+    private String level = "5-complexity";
+
     @Setter
     @Component
     private BuildPluginManager pluginManager;
 
-    /**
-     * Create a check mojo.
-     *
-     * @param checkstyleExecutor the executor to invoke the checkstyle plugin
-     */
-    AbstractCheckMojo(final CheckstyleExecutor checkstyleExecutor) {
-        this.checkstyleExecutor = checkstyleExecutor;
-        checkstyleExecutor.setLog(getLog());
-    }
-
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public final void execute() throws MojoExecutionException, MojoFailureException {
+        checkstyleExecutor.setLog(getLog());
         CheckConfiguration config = getCheckConfiguration();
         checkstyleExecutor.performCheck(config);
     }
@@ -92,6 +92,7 @@ abstract class AbstractCheckMojo extends AbstractMojo {
                                  .pluginManager(pluginManager)
                                  .rulesetVersion(rulesetPlugin.getVersion())
                                  .sourceDirectory(build.getSourceDirectory())
+                                 .level(level)
                                  .build();
     }
 

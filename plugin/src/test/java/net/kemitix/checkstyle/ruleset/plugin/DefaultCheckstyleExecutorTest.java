@@ -41,6 +41,9 @@ import static org.mockito.Matchers.eq;
  */
 public class DefaultCheckstyleExecutorTest {
 
+    @Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     @Mock
     private PluginExecutor pluginExecutor;
 
@@ -70,9 +73,6 @@ public class DefaultCheckstyleExecutorTest {
     private Artifact artifact;
 
     private File artifactFile;
-
-    @Rule
-    public TemporaryFolder folder = new TemporaryFolder();
 
     @Mock
     private MavenXpp3Reader mavenXpp3Reader;
@@ -105,7 +105,7 @@ public class DefaultCheckstyleExecutorTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         level = "test level";
-        checkstyleExecutor = new DefaultCheckstyleExecutor(level, pluginExecutor, mavenXpp3Reader);
+        checkstyleExecutor = new DefaultCheckstyleExecutor(pluginExecutor, mavenXpp3Reader);
         checkstyleExecutor.setLog(log);
     }
 
@@ -119,6 +119,7 @@ public class DefaultCheckstyleExecutorTest {
                                                                    .artifactRepository(artifactRepository)
                                                                    .pluginManager(pluginManager)
                                                                    .rulesetVersion("ruleset version")
+                                                                   .level(level)
                                                                    .build();
 
         artifactFile = folder.newFile("pom.xml");

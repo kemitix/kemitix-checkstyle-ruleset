@@ -48,4 +48,6 @@ class CheckConfiguration {
     private String rulesetVersion;
 
     private String sourceDirectory;
+
+    private String level;
 }

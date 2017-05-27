@@ -21,11 +21,11 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.any;
 
 /**
- * Tests for {@link AbstractCheckMojo}.
+ * Tests for {@link CheckMojo}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public class AbstractCheckMojoTest {
+public class CheckMojoTest {
 
     @Mock
     private CheckstyleExecutor checkstyleExecutor;
@@ -59,8 +59,8 @@ public class AbstractCheckMojoTest {
     @Test
     public void canExecute() throws MojoFailureException, MojoExecutionException {
         //given
-        final AbstractCheckMojo mojo = new AbstractCheckMojo(checkstyleExecutor) {
-        };
+        final CheckMojo mojo = new CheckMojo();
+        mojo.setCheckstyleExecutor(checkstyleExecutor);
         mojo.setMavenProject(mavenProject);
         mojo.setMavenSession(mavenSession);
         mojo.setArtifactRepository(artifactRepository);

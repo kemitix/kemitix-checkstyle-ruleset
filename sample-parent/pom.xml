@@ -51,11 +51,14 @@
                 <groupId>net.kemitix</groupId>
                 <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
                 <version>${project.version}</version>
+                <configuration>
+                    <level>${kemitix-checkstyle-ruleset-level}</level>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>validate</phase>
                         <goals>
-                            <goal>${kemitix-checkstyle-ruleset-level}</goal>
+                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>

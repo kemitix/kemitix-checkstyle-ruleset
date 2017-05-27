@@ -37,12 +37,15 @@ import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
+import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+import org.twdata.maven.mojoexecutor.MojoExecutor;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -51,7 +54,7 @@ import java.util.Properties;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @RequiredArgsConstructor
-class DefaultCheckstyleExecutor implements CheckstyleExecutor {
+public class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 
     private static final String CHECKSTYLE_GROUPID = "com.puppycrawl.tools";
 
@@ -77,8 +80,6 @@ class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 
     private static final String PLUGIN_ARTIFACT_ID = KEMITIX_ARTIFACTID + "-parent";
 
-    private final String level;
-
     private final PluginExecutor pluginExecutor;
 
     private final MavenXpp3Reader mavenXpp3Reader;
@@ -98,11 +99,13 @@ class DefaultCheckstyleExecutor implements CheckstyleExecutor {
         // configure
         val checkstylePlugin = getPlugin(properties);
         final String sourceDirectory = config.getSourceDirectory();
+        final String level = config.getLevel();
+        info("Ruleset: %s", level);
         final String configFile = String.format("net/kemitix/checkstyle-%s.xml", level);
-        val configuration = pluginExecutor.configuration(pluginExecutor.element(CONFIG_LOCATION, configFile),
-                                                         pluginExecutor.element(SOURCE_DIR, sourceDirectory)
-                                                        );
-        val environment = pluginExecutor.executionEnvironment(config);
+        final Xpp3Dom configuration = pluginExecutor.configuration(pluginExecutor.element(CONFIG_LOCATION, configFile),
+                                                                   pluginExecutor.element(SOURCE_DIR, sourceDirectory)
+                                                                  );
+        final MojoExecutor.ExecutionEnvironment environment = pluginExecutor.executionEnvironment(config);
 
         // run
         pluginExecutor.executeMojo(checkstylePlugin, "check", configuration, environment);
@@ -120,15 +123,15 @@ class DefaultCheckstyleExecutor implements CheckstyleExecutor {
         val pluginVersion = getProperty(properties, "maven-checkstyle-plugin.version");
         val checkstyleVersion = getProperty(properties, "checkstyle.version");
         val sevntuVersion = getProperty(properties, "sevntu.version");
-        info("Checkstyle %s (plugin: %s, sevntu: %s) with ruleset %s (%s)", checkstyleVersion, pluginVersion,
-             sevntuVersion, level, rulesetVersion
+        info("Checkstyle %s (plugin: %s, sevntu: %s, ruleset: %s)", checkstyleVersion,
+             pluginVersion, sevntuVersion, rulesetVersion
             );
 
         // create checkstyle dependencies
         val checkstyle = getCheckstyleDependency(checkstyleVersion);
         val sevntu = getSevntuDependency(sevntuVersion);
         val ruleset = getRulesetDependency();
-        val dependencies = pluginExecutor.dependencies(checkstyle, sevntu, ruleset);
+        final List<Dependency> dependencies = pluginExecutor.dependencies(checkstyle, sevntu, ruleset);
 
         return pluginExecutor.plugin(APACHE_PLUGIN_GROUPID, APACHE_PLUGIN_ARTIFACTID, pluginVersion, dependencies);
     }

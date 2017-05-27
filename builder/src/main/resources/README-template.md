@@ -25,13 +25,20 @@ The ruleset includes checks from both the core Checkstyle library and from the S
 To use this ruleset add the plugin `kemitix-checktyle-ruleset-maven-plugin`.
 The `maven-checkstyle-plugin` will be included automatically.
 
-The following goals implement increasingly strict rulesets:
+The following levels implement increasingly strict rulesets:
 
 * 1-layout
 * 2-naming
 * 3-javadoc
 * 4-tweaks
 * 5-complexity
+
+### Change from 2.x
+
+In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal.
+The level is now specified as a configuration parameter. See the example below.
+
+### Example
 
 ````
 <properties>
@@ -45,11 +52,14 @@ The following goals implement increasingly strict rulesets:
             <groupId>net.kemitix</groupId>
             <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
             <version>${kemitix-checkstyle-ruleset.version}</version>
+            <configuration>
+                <level>${kemitix-checkstyle-ruleset.level}</level>
+            </configuration>
             <executions>
                 <execution>
                     <phase>validate</phase>
                     <goals>
-                        <goal>${kemitix-checkstyle-ruleset.level}</goal>
+                        <goal>check</goal>
                     </goals>
                 </execution>
             </executions>
