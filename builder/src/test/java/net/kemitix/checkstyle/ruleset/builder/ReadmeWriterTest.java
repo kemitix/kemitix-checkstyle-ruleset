@@ -73,10 +73,10 @@ public class ReadmeWriterTest {
                                      "sd:sevntu-disabled"
                                     );
         val rules = rulesProperties.getRules();
-        final Rule checkstyleEnabled = rule(RuleSource.CHECKSTYLE, true);
-        final Rule checkstyleDisabled = rule(RuleSource.CHECKSTYLE, false);
-        final Rule sevntuEnabled = rule(RuleSource.SEVNTU, true);
-        final Rule sevntuDisabled = rule(RuleSource.SEVNTU, false);
+        final Rule checkstyleEnabled = rule(RuleSource.CHECKSTYLE, true, "checkstyle enabled");
+        final Rule checkstyleDisabled = rule(RuleSource.CHECKSTYLE, false, "checkstyle disabled");
+        final Rule sevntuEnabled = rule(RuleSource.SEVNTU, true, "sevntu enabled");
+        final Rule sevntuDisabled = rule(RuleSource.SEVNTU, false, "sevntu disabled");
         rules.add(checkstyleEnabled);
         rules.add(checkstyleDisabled);
         rules.add(sevntuEnabled);
@@ -93,10 +93,33 @@ public class ReadmeWriterTest {
         assertThat(lines).containsExactlyElementsOf(expected);
     }
 
-    private Rule rule(final RuleSource source, final boolean enabled) {
+    private Rule rule(final RuleSource source, final boolean enabled, final String name) {
         val rule = new Rule();
+        rule.setName(name);
         rule.setSource(source);
         rule.setEnabled(enabled);
         return rule;
+    }
+
+    @Test
+    public void rulesAreAlphabetical() throws Exception {
+        //given
+        val expected = Arrays.asList("ce:alpha", "beta", "delta");
+        val rules = rulesProperties.getRules();
+        final Rule alpha = rule(RuleSource.CHECKSTYLE, true, "alpha");
+        final Rule beta = rule(RuleSource.CHECKSTYLE, true, "beta");
+        final Rule delta = rule(RuleSource.CHECKSTYLE, true, "delta");
+        rules.add(alpha);
+        rules.add(delta);
+        rules.add(beta);
+        given(indexBuilder.build()).willReturn("index");
+        given(ruleReadmeLoader.load(alpha)).willReturn(Stream.of(alpha.getName()));
+        given(ruleReadmeLoader.load(beta)).willReturn(Stream.of(beta.getName()));
+        given(ruleReadmeLoader.load(delta)).willReturn(Stream.of(delta.getName()));
+        //when
+        readmeWriter.run();
+        //then
+        final Stream<String> lines = Files.lines(readme, StandardCharsets.UTF_8);
+        assertThat(lines).containsSequence(expected);
     }
 }

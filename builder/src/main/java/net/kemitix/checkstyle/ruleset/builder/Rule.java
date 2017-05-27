@@ -26,6 +26,7 @@ import lombok.Setter;
 
 import java.net.URI;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -36,6 +37,8 @@ import java.util.Map;
 @Setter
 @Getter
 public class Rule {
+
+    private static final Locale LOCALE = Locale.ENGLISH;
 
     /**
      * The name of the rule's Check class.
@@ -81,4 +84,24 @@ public class Rule {
      * Configuration properties.
      */
     private final Map<String, String> properties = new HashMap<>();
+
+    /**
+     * Compare two Rules lexicographically for sorting by rule name, ignoring case.
+     *
+     * @param left  the first rule
+     * @param right the second rule
+     *
+     * @return the value 0 if the rules are equal; a value less than 0 if the left string is lexicographically less than
+     * the right string; and a value greater than 0 if the left string is lexicographically greater than the right
+     * string.
+     */
+    static int sortByName(final Rule left, final Rule right) {
+        return left.getLowerCaseRuleName()
+                   .compareTo(right.getLowerCaseRuleName());
+    }
+
+    private String getLowerCaseRuleName() {
+        return getName().toLowerCase(LOCALE);
+    }
+
 }
