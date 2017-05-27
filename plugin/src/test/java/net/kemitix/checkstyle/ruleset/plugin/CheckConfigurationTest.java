@@ -20,7 +20,6 @@ public class CheckConfigurationTest {
                                                 .sourceDirectory(sourceDirectory)
                                                 .toString();
         //then
-        System.out.println("result = " + result);
         assertThat(result).contains("rulesetVersion=ruleset version")
                           .contains("sourceDirectory=source directory");
     }

@@ -285,22 +285,6 @@ The following is a list of each of the checks and the expectations each has on y
 
 Rules are listed in alphabetical order.
 
-#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
-
-Checks for the existence of forbidden java file names.
-
-File names are forbidden if they match the pattern `(.sync-conflict-| conflicted copy )`.
-
-N.B. only `*.java` files are checked.
-
-This check is intended to detect Syncthing and Dropbox conflict files.
-
-e.g.
-````
-DataClass (Bob's conflicted copy 2017-03-11).java
-DataClass.sync-conflict-20170311-1648.java
-````
-
 #### [AbbreviationAsWordInName](http://checkstyle.sourceforge.net/config_naming.html#AbbreviationAsWordInName)
 
 Enforces proper `CamelCase` and avoids sequences of consecutive uppercase characters in identifiers. Does not apply to @Overridden methods.
@@ -1759,6 +1743,22 @@ Checks for redundant modifiers. Checks for:
 * Inner interface declarations that are declared as static.
 * Class constructors.
 * Nested enum definitions that are declared as static.
+#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+
+Checks for the existence of forbidden java file names.
+
+File names are forbidden if they match the pattern `(.sync-conflict-| conflicted copy )`.
+
+N.B. only `*.java` files are checked.
+
+This check is intended to detect Syncthing and Dropbox conflict files.
+
+e.g.
+````
+DataClass (Bob's conflicted copy 2017-03-11).java
+DataClass.sync-conflict-20170311-1648.java
+````
+
 #### [RequireThis](http://checkstyle.sourceforge.net/config_coding.html#RequireThis)
 
 Checks that references to instance fields where a parameter name overlaps are qualified by `this.`.
@@ -1950,12 +1950,12 @@ Prevents the use of `@SuppressWarnings` for the following checks:
 * [PackageDeclaration](#packagedeclaration)
 * [TypeName](#typename)
 * [VisibilityModifier](#visibilitymodifier)
-#### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
-
-Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
 #### [SuppressWarningsFilter](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsFilter)
 
 Allows the use of the `@SuppressWarnings` annotation.
+#### [SuppressWarningsHolder](http://checkstyle.sourceforge.net/config_annotation.html#SuppressWarningsHolder)
+
+Used by Checkstyle to hold the checks to be suppressed from `@SuppressWarnings(...)` annotations.
 #### [ThrowsCount](http://checkstyle.sourceforge.net/config_design.html#ThrowsCount)
 
 Restricts non-private methods to only `throws` 4 distinct Exception types. Exceptions should be hierarchical to allow catching suitable root Exceptions.
@@ -2667,9 +2667,6 @@ Generic rule; doesn't embody a 'quality' check.
 
 As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
 
-#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
-
-Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
@@ -2706,6 +2703,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
 
 [IllegalThrows](#illegalthrows) performs a similar check.
+#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+
+Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.

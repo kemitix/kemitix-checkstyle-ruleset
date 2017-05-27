@@ -24,10 +24,8 @@ package net.kemitix.checkstyle.ruleset.builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Comparator;
 import java.util.Locale;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -49,13 +47,9 @@ public class DefaultReadmeIndexBuilder implements ReadmeIndexBuilder {
     public final String build() {
         return rulesProperties.getRules()
                               .stream()
-                              .sorted(Comparator.comparing(lowerCaseRuleName()))
+                              .sorted(Rule::sortByName)
                               .map(this::formatRuleRow)
                               .collect(Collectors.joining(NEWLINE));
-    }
-
-    private Function<Rule, String> lowerCaseRuleName() {
-        return this::getLowerCaseRuleName;
     }
 
     private String getLowerCaseRuleName(final Rule rule) {

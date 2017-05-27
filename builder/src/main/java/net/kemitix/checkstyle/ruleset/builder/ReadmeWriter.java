@@ -88,6 +88,7 @@ class ReadmeWriter implements CommandLineRunner {
         return rulesProperties.getRules()
                               .stream()
                               .filter(predicate)
+                              .sorted(Rule::sortByName)
                               .flatMap(ruleReadmeLoader::load)
                               .collect(Collectors.joining(NEWLINE));
     }
