@@ -1498,3 +1498,10 @@ rules:
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html
         reason: "TODO: enable"
+    -
+        name: MoveVariableInsideIfCheck
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MoveVariableInsideIfCheck.html

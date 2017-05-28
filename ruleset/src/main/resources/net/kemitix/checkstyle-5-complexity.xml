@@ -228,6 +228,7 @@
 <module name="UniformEnumConstantName"/>
 <module name="UselessSingleCatch"/>
 <module name="UselessSuperCtorCall"/>
+<module name="MoveVariableInsideIfCheck"/>
 
     </module><!-- /TreeWalker -->
 

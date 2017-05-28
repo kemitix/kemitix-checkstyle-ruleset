@@ -181,6 +181,7 @@ Rule|Level|Source|Enabled|Suppressible
 [MissingSwitchDefault](#missingswitchdefault)|tweaks|checkstyle|Yes|
 [ModifiedControlVariable](#modifiedcontrolvariable)|tweaks|checkstyle|Yes|
 [ModifierOrder](#modifierorder)|naming|checkstyle|Yes|
+[MoveVariableInsideIfCheck](#movevariableinsideifcheck)|tweaks|sevntu|Yes|
 [MultipleStringLiterals](#multiplestringliterals)|naming|checkstyle|Yes|
 [MultipleVariableDeclarations](#multiplevariabledeclarations)|naming|checkstyle|Yes|
 [MutableException](#mutableexception)|tweaks|checkstyle|Yes|
@@ -2333,6 +2334,29 @@ if (getProperty() && property) {}
 #### [MapIterationInForEachLoop](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MapIterationInForEachLoopCheck.html)
 
 Checks for unoptimised iterations over `Map`s. Check use of `map.values()`, `map.keySet()` and `map.entrySet()` against the use of the iterator produced to verify if another could be better.
+#### [MoveVariableInsideIfCheck](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MoveVariableInsideIfCheck.html)
+
+Checks if a variable is declared outside an `if` block that is only used within that block.
+
+Valid:
+````
+if (condition) {
+    String variable = input.substring(1);
+    return method(variable);
+}
+return "";
+````
+
+Invalid:
+````
+String variable = input.substring(1);
+if (condition) {
+    return method(variable);
+}
+return "";
+````
+
+Example: [MoveVariableInsideIf.java](https://github.com/kemitix/kemitix-checkstyle-ruleset/blob/master/regressions/src/main/java/net/kemitix/checkstyle/regressions/MoveVariableInsideIf.java)
 #### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html)
 
 Checks the names of JUnit test classes. Classes checked are those that have at least one method annotated with `Test` or `org.junit.Test`.
