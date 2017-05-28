@@ -24,9 +24,9 @@
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
+        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
+        <connection>scm:git:git://github.com/kemitix/kemitix-checkstyle-ruleset.git</connection>
         <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
-        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
     </scm>
 
     <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>

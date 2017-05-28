@@ -12,4 +12,17 @@
             <password>${env.CI_DEPLOY_PASSWORD}</password>
         </server>
     </servers>
+    <profiles>
+        <profile>
+            <id>gpg-sign</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.keyname>${env.CI_DEPLOY_GPG_KEYNAME}</gpg.keyname>
+                <gpg.passphrase>${env.CI_DEPLOY_GPG_PASSPHRASE}</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
 </settings>
