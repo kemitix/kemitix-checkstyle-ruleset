@@ -66,19 +66,11 @@ The level is now specified as a configuration parameter. See the example below.
         </plugin>
     </plugins>
 </build>
-
-<pluginRepositories>
-    <pluginRepository>
-        <id>sevntu-maven</id>
-        <name>sevntu-maven</name>
-        <url>http://sevntu-checkstyle.github.io/sevntu.checkstyle/maven2</url>
-    </pluginRepository>
-</pluginRepositories>
 ````
 
 ## All Checks
 
-Rule|Level|Source|Enabled|Suppressable
+Rule|Level|Source|Enabled|Suppressible
 ----|-----|------|-------|------------
 [AbbreviationAsWordInName](#abbreviationaswordinname)|naming|checkstyle|Yes|
 [AbstractClassName](#abstractclassname)|naming|checkstyle|Yes|
@@ -143,7 +135,7 @@ Rule|Level|Source|Enabled|Suppressable
 [ForbidInstantiation](#forbidinstantiation)|unspecified|sevntu||
 [ForbidReturnInFinallyBlock](#forbidreturninfinallyblock)|complexity|sevntu|Yes|
 [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions)|tweaks|sevntu||
-[ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu||
+[ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu|Yes|
 [GenericWhitespace](#genericwhitespace)|layout|checkstyle|Yes|
 [Header](#header)|layout|checkstyle|Yes|
 [HiddenField](#hiddenfield)|tweaks|checkstyle|Yes|
@@ -2264,32 +2256,13 @@ Checks that when an exception is caught, that if it is logged then it is not als
 Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 
-Enums are considered to be of two distinct types: 'Class' or 'Value' enumerations. The distinction being that Class Enumerations have methods (other than `toString()`) defined.
-
-The values defined in the `enum` must match the appropriate pattern:
-
-* Class: `^[A-Z][a-zA-Z0-9]*$`
-* Value: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
-
-The difference being that Class enumerations can't contain underscores but can include lowercase letters (after the first initial capital). Value enumerations can include underscores, but not as the first or second character.
+Checks that Enum Values match the pattern: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
 
 Valid:
 ````
-enum ValidConstants {
+enum Valid {
 
-    ALPHA, BETA;
-}
-
-enum ValidClassLike {
-
-    Alpha("a"),
-    Beta("b");
-
-    private String name;
-
-    ValidClassLike(String name) {
-        this.name = name;
-    }
+    ALPHA, BETA, GAMMA_RAY;
 }
 ````
 
@@ -2297,19 +2270,7 @@ Invalid:
 ````
 enum InvalidConstants {
 
-    alpha, Beta, GAMMA_RAY;
-}
-
-enum InvalidClassLike {
-
-    alpha("a"),
-    beta("b");
-
-    private String name;
-
-    InvalidClassLike(String name) {
-        this.name = name;
-    }
+    alpha, Beta;
 }
 ````
 #### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
@@ -2342,6 +2303,19 @@ try {
 } finally (
     return true; // invalid
 }
+````
+#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
+
+Prevents declaring a method from returning a wildcard type as its return value.
+
+Valid:
+````
+<E> List<E> getList() {}
+````
+
+Invalid:
+````
+<E> List<? extends E> getList() {}
 ````
 #### [LogicConditionNeedOptimization](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/LogicConditionNeedOptimizationCheck.html)
 
@@ -2703,9 +2677,6 @@ Generic rule; doesn't embody a 'quality' check.
 #### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
 
 [IllegalThrows](#illegalthrows) performs a similar check.
-#### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
-
-Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.

@@ -60,7 +60,7 @@ public class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 
     private static final String CHECKSTYLE_ARTIFACTID = "checkstyle";
 
-    private static final String SEVNTU_GROUPID = "com.github.sevntu.checkstyle";
+    private static final String SEVNTU_GROUPID = "com.github.sevntu-checkstyle";
 
     private static final String SEVNTU_ARTIFACTID = "sevntu-checkstyle-maven-plugin";
 

@@ -1056,10 +1056,9 @@ rules:
         name: ForbidWildcardAsReturnType
         parent: TREEWALKER
         level: COMPLEXITY
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html
-        reason: Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
     -
         name: LogicConditionNeedOptimization
         parent: TREEWALKER

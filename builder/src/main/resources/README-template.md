@@ -66,19 +66,11 @@ The level is now specified as a configuration parameter. See the example below.
         </plugin>
     </plugins>
 </build>
-
-<pluginRepositories>
-    <pluginRepository>
-        <id>sevntu-maven</id>
-        <name>sevntu-maven</name>
-        <url>http://sevntu-checkstyle.github.io/sevntu.checkstyle/maven2</url>
-    </pluginRepository>
-</pluginRepositories>
 ````
 
 ## All Checks
 
-Rule|Level|Source|Enabled|Suppressable
+Rule|Level|Source|Enabled|Suppressible
 ----|-----|------|-------|------------
 %s
 
