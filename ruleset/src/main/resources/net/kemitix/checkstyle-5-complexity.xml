@@ -210,6 +210,7 @@
 <module name="EnumValueName"/>
 <module name="ForbidCCommentsInMethods"/>
 <module name="ForbidReturnInFinallyBlock"/>
+<module name="ForbidWildcardAsReturnType"/>
 <module name="LogicConditionNeedOptimization"/>
 <module name="MapIterationInForEachLoop"/>
 <module name="NameConventionForJunit4TestClasses"/>
@@ -227,6 +228,7 @@
 <module name="UniformEnumConstantName"/>
 <module name="UselessSingleCatch"/>
 <module name="UselessSuperCtorCall"/>
+<module name="MoveVariableInsideIfCheck"/>
 
     </module><!-- /TreeWalker -->
 
