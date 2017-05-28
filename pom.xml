@@ -21,8 +21,8 @@
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
 
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>7.6.1</checkstyle.version>
         <sevntu.version>1.23.1</sevntu.version>
+        <checkstyle.version>7.7</checkstyle.version>
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.8.0</assertj.version>
     </properties>
