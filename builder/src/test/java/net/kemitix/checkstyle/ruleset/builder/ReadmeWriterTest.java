@@ -25,8 +25,6 @@ public class ReadmeWriterTest {
 
     private ReadmeWriter readmeWriter;
 
-    private TemplateProperties templateProperties;
-
     private RulesProperties rulesProperties;
 
     @Mock
@@ -46,7 +44,7 @@ public class ReadmeWriterTest {
         final Path template = folder.newFile("README-template.md")
                                     .toPath();
         Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "cd:%s", "sd:%s"));
-        templateProperties = new TemplateProperties();
+        final TemplateProperties templateProperties = new TemplateProperties();
         templateProperties.setReadmeTemplate(template);
         final Path fragments = folder.newFolder("fragments")
                                      .toPath();
