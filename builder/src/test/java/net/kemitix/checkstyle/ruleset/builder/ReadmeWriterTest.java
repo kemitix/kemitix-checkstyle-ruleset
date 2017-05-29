@@ -35,8 +35,6 @@ public class ReadmeWriterTest {
     @Mock
     private ReadmeIndexBuilder indexBuilder;
 
-    private Path template;
-
     private Path fragments;
 
     private Path readme;
@@ -47,8 +45,8 @@ public class ReadmeWriterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        template = folder.newFile("README-template.md")
-                         .toPath();
+        final Path template = folder.newFile("README-template.md")
+                                    .toPath();
         Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "cd:%s", "sd:%s"));
         fragments = folder.newFolder("fragments")
                           .toPath();
