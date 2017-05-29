@@ -95,7 +95,7 @@ public class Rule {
      * the right string; and a value greater than 0 if the left string is lexicographically greater than the right
      * string.
      */
-    static int sortByName(final Rule left, final Rule right) {
+    protected static int sortByName(final Rule left, final Rule right) {
         return left.getLowerCaseRuleName()
                    .compareTo(right.getLowerCaseRuleName());
     }
