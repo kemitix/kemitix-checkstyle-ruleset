@@ -41,6 +41,11 @@ public class Rule {
     private static final Locale LOCALE = Locale.ENGLISH;
 
     /**
+     * Configuration properties.
+     */
+    private final Map<String, String> properties = new HashMap<>();
+
+    /**
      * The name of the rule's Check class.
      */
     private String name;
@@ -81,11 +86,6 @@ public class Rule {
     private String reason;
 
     /**
-     * Configuration properties.
-     */
-    private final Map<String, String> properties = new HashMap<>();
-
-    /**
      * Compare two Rules lexicographically for sorting by rule name, ignoring case.
      *
      * @param left  the first rule
@@ -102,6 +102,23 @@ public class Rule {
 
     private String getLowerCaseRuleName() {
         return getName().toLowerCase(LOCALE);
+    }
+
+    /**
+     * Returns the canonical name of the class that implements this rule.
+     *
+     * @return the canonical name of the implementing class
+     */
+    public String getCanonicalClassName() {
+        return source.getCheckClasses()
+                     .filter(this::byRuleName)
+                     .findFirst()
+                     .orElseThrow(() -> new CheckstyleClassNotFoundException(name));
+    }
+
+    private boolean byRuleName(final String classname) {
+        final String classNameWithDelimiter = "." + name;
+        return classname.endsWith(classNameWithDelimiter) || classname.endsWith(classNameWithDelimiter + "Check");
     }
 
 }
