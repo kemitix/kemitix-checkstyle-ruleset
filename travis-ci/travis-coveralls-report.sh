@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-./mvnw --projects builder,plugin test jacoco:report coveralls:report
+if [ "$TRAVIS" = "true" ];then
+    ./mvnw --projects builder,plugin test jacoco:report coveralls:report
+fi
