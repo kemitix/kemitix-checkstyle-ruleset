@@ -27,8 +27,6 @@ public class ReadmeWriterTest {
 
     private TemplateProperties templateProperties;
 
-    private OutputProperties outputProperties;
-
     private RulesProperties rulesProperties;
 
     @Mock
@@ -59,7 +57,7 @@ public class ReadmeWriterTest {
         templateProperties = new TemplateProperties();
         templateProperties.setReadmeTemplate(template);
         templateProperties.setReadmeFragments(fragments);
-        outputProperties = new OutputProperties();
+        final OutputProperties outputProperties = new OutputProperties();
         outputProperties.setReadme(readme);
         rulesProperties = new RulesProperties();
         readmeWriter =
