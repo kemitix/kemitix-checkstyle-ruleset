@@ -33,7 +33,7 @@ class MoveVariableInsideIf {
     private boolean condition;
 
     private String method(final String variable) {
-        return "value";
+        return "value: " + variable;
     }
 
     /**
