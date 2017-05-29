@@ -2,9 +2,9 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
 import me.andrz.builder.map.MapBuilder;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
 import org.mockito.MockitoAnnotations;
 
@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Tests for {@link CheckstyleWriter}.
@@ -47,9 +48,6 @@ public class CheckstyleWriterTest {
     private Path outputDirectory;
 
     private Path checkstyleTemplate;
-
-    @org.junit.Rule
-    public ExpectedException exception = ExpectedException.none();
 
     @org.junit.Rule
     public TemporaryFolder folder = new TemporaryFolder();
@@ -173,10 +171,11 @@ public class CheckstyleWriterTest {
     public void throwRteIfTemplateNotFound() throws Exception {
         //given
         templateProperties.setCheckstyleXml(Paths.get("garbage"));
-        exception.expect(RuntimeException.class);
-        exception.expectMessage("Missing template: garbage");
         //when
-        checkstyleWriter.run();
+        final ThrowableAssert.ThrowingCallable action = () -> checkstyleWriter.run();
+        //then
+        assertThatThrownBy(action).isInstanceOf(TemplateNotFoundException.class)
+                                  .hasMessage("Missing template: garbage");
     }
 
     // throw RTE if error writing file
@@ -185,11 +184,14 @@ public class CheckstyleWriterTest {
         //given
         final String imaginary = String.join(FILE_SEPARATOR, "", "..", "imaginary");
         outputProperties.setDirectory(Paths.get(imaginary));
-        exception.expect(RuntimeException.class);
-        exception.expectMessage(
-                "java.nio.file.NoSuchFileException: " + imaginary + FILE_SEPARATOR + "checkstyle-LAYOUT.xml");
         //when
-        checkstyleWriter.run();
+        final ThrowableAssert.ThrowingCallable action = () -> checkstyleWriter.run();
+        //then
+        assertThatThrownBy(action).isInstanceOf(CheckstyleWriterException.class)
+                                  .hasMessage(
+                                          String.format("java.nio.file.NoSuchFileException: %scheckstyle-LAYOUT.xml",
+                                                        imaginary + FILE_SEPARATOR
+                                                       ));
     }
 
     private Map.Entry<RuleLevel, String> getOutputFile(final RuleLevel level) throws IOException {
