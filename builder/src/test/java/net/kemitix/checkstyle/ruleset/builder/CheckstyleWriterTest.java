@@ -47,8 +47,6 @@ public class CheckstyleWriterTest {
 
     private Path outputDirectory;
 
-    private Path checkstyleTemplate;
-
     @org.junit.Rule
     public TemporaryFolder folder = new TemporaryFolder();
 
@@ -69,8 +67,8 @@ public class CheckstyleWriterTest {
                                 .toPath();
         outputProperties.setDirectory(outputDirectory);
         templateProperties = new TemplateProperties();
-        checkstyleTemplate = folder.newFile("checkstyle-template.xml")
-                                   .toPath();
+        val checkstyleTemplate = folder.newFile("checkstyle-template.xml")
+                                       .toPath();
         Files.write(
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);
