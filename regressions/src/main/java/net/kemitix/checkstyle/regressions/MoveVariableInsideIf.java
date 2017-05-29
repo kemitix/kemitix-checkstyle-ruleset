@@ -55,7 +55,7 @@ class MoveVariableInsideIf {
      *
      * @return value
      */
-    String valid() {
+    private String valid() {
         if (condition) {
             String variable = input.substring(1);
             return method(variable);
