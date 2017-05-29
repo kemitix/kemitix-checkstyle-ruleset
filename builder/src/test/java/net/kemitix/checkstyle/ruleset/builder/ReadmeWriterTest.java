@@ -35,8 +35,6 @@ public class ReadmeWriterTest {
     @Mock
     private ReadmeIndexBuilder indexBuilder;
 
-    private Path fragments;
-
     private Path readme;
 
     @org.junit.Rule
@@ -48,14 +46,14 @@ public class ReadmeWriterTest {
         final Path template = folder.newFile("README-template.md")
                                     .toPath();
         Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "cd:%s", "sd:%s"));
-        fragments = folder.newFolder("fragments")
-                          .toPath();
-        readme = folder.newFile("README.md")
-                       .toPath();
         templateProperties = new TemplateProperties();
         templateProperties.setReadmeTemplate(template);
+        final Path fragments = folder.newFolder("fragments")
+                                     .toPath();
         templateProperties.setReadmeFragments(fragments);
         final OutputProperties outputProperties = new OutputProperties();
+        readme = folder.newFile("README.md")
+                       .toPath();
         outputProperties.setReadme(readme);
         rulesProperties = new RulesProperties();
         readmeWriter =
