@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; then
+if [ "$TRAVIS_BRANCH" = 'master' ]; then
 	echo "Preparing to deploy to nexus..."
 	openssl aes-256-cbc -K $encrypted_efec3258f55d_key -iv $encrypted_efec3258f55d_iv \
 		-in travis-ci/codesigning.asc.enc -out travis-ci/codesigning.asc -d

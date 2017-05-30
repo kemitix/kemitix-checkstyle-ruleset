@@ -903,13 +903,15 @@ Checks that when a class overrides the `equals()` method, that it also overrides
 Limits the number of executable statements in a method to 30.
 #### [ExplicitInitialization](http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization)
 
-Checks that fields are not being explicitly initialised to their already default value.
+Checks that object fields are not being explicitly initialised to their already default value.
+
+Does not check primitive field types.
 
 Valid:
 ````
 class Valid {
 
-    private int foo;
+    private int foo = 0;
 
     private Object bar;
 }
@@ -919,7 +921,7 @@ Invalid:
 ````
 class Invalid {
 
-    private int foo = 0;
+    private Integer foo = 0;
 
     private Object bar = null;
 }
