@@ -2,6 +2,7 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
 import me.andrz.builder.map.MapBuilder;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 
@@ -56,8 +58,6 @@ public class CheckstyleWriterTest {
 
     private Path outputDirectory;
 
-    private Path checkstyleTemplate;
-
     @Mock
     private RuleClassLocator ruleClassLocator;
 
@@ -78,8 +78,8 @@ public class CheckstyleWriterTest {
                                 .toPath();
         outputProperties.setDirectory(outputDirectory);
         templateProperties = new TemplateProperties();
-        checkstyleTemplate = folder.newFile("checkstyle-template.xml")
-                                   .toPath();
+        val checkstyleTemplate = folder.newFile("checkstyle-template.xml")
+                                       .toPath();
         Files.write(
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);
@@ -204,10 +204,11 @@ public class CheckstyleWriterTest {
     public void throwRteIfTemplateNotFound() throws Exception {
         //given
         templateProperties.setCheckstyleXml(Paths.get("garbage"));
-        exception.expect(RuntimeException.class);
-        exception.expectMessage("Missing template: garbage");
         //when
-        checkstyleWriter.run();
+        final ThrowableAssert.ThrowingCallable action = () -> checkstyleWriter.run();
+        //then
+        assertThatThrownBy(action).isInstanceOf(TemplateNotFoundException.class)
+                                  .hasMessage("Missing template: garbage");
     }
 
     // throw RTE if error writing file
@@ -216,10 +217,13 @@ public class CheckstyleWriterTest {
         //given
         final String imaginary = String.join(FILE_SEPARATOR, "", "..", "imaginary");
         outputProperties.setDirectory(Paths.get(imaginary));
-        exception.expect(RuntimeException.class);
-        exception.expectMessage(
-                "java.nio.file.NoSuchFileException: " + imaginary + FILE_SEPARATOR + "checkstyle-LAYOUT.xml");
         //when
-        checkstyleWriter.run();
+        final ThrowableAssert.ThrowingCallable action = () -> checkstyleWriter.run();
+        //then
+        assertThatThrownBy(action).isInstanceOf(CheckstyleWriterException.class)
+                                  .hasMessage(
+                                          String.format("java.nio.file.NoSuchFileException: %scheckstyle-LAYOUT.xml",
+                                                        imaginary + FILE_SEPARATOR
+                                                       ));
     }
 }

@@ -19,47 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.regressions;
+package net.kemitix.checkstyle.ruleset.builder;
+
+import java.nio.file.Path;
 
 /**
- * Regression demo for {@code MoveVariableInsideIfCheck}.
+ * Raised when a rule template is not found.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-class MoveVariableInsideIf {
-
-    private String input = "1";
-
-    private boolean condition;
-
-    private String method(final String variable) {
-        return "value: " + variable;
-    }
+class TemplateNotFoundException extends RuntimeException {
 
     /**
-     * Fails if not suppressed.
+     * Constructor.
      *
-     * @return value
+     * @param template the missing template
      */
-    @SuppressWarnings("movevariableinsideif")
-    protected String invalid() {
-        String variable = input.substring(1);
-        if (condition) {
-            return method(variable);
-        }
-        return "";
-    }
-
-    /**
-     * Rewrite {@link #invalid()} as this to pass.
-     *
-     * @return value
-     */
-    protected String valid() {
-        if (condition) {
-            String variable = input.substring(1);
-            return method(variable);
-        }
-        return "";
+    TemplateNotFoundException(final Path template) {
+        super("Missing template: " + template.toString());
     }
 }

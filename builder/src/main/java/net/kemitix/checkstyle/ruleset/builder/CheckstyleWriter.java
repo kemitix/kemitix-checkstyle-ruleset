@@ -93,10 +93,10 @@ class CheckstyleWriter implements CommandLineRunner {
                 log.info("Writing xmlFile: {}", xmlFile);
                 Files.write(xmlFile, output, StandardCharsets.UTF_8);
             } else {
-                throw new IOException("Missing template: " + checkstyleXmlTemplate.toString());
+                throw new TemplateNotFoundException(checkstyleXmlTemplate);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new CheckstyleWriterException(e);
         }
     }
 

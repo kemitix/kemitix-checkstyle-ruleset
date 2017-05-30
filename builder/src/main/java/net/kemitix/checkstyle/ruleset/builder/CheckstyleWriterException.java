@@ -19,47 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.regressions;
+package net.kemitix.checkstyle.ruleset.builder;
 
 /**
- * Regression demo for {@code MoveVariableInsideIfCheck}.
+ * Raised when there was an error writing a Checkstyle ruleset.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-class MoveVariableInsideIf {
-
-    private String input = "1";
-
-    private boolean condition;
-
-    private String method(final String variable) {
-        return "value: " + variable;
-    }
+class CheckstyleWriterException extends RuntimeException {
 
     /**
-     * Fails if not suppressed.
+     * Constructor.
      *
-     * @return value
+     * @param cause the cause
      */
-    @SuppressWarnings("movevariableinsideif")
-    protected String invalid() {
-        String variable = input.substring(1);
-        if (condition) {
-            return method(variable);
-        }
-        return "";
-    }
-
-    /**
-     * Rewrite {@link #invalid()} as this to pass.
-     *
-     * @return value
-     */
-    protected String valid() {
-        if (condition) {
-            String variable = input.substring(1);
-            return method(variable);
-        }
-        return "";
+    CheckstyleWriterException(final Throwable cause) {
+        super(cause);
     }
 }

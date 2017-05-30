@@ -23,11 +23,7 @@ public class DefaultRuleReadmeLoaderTest {
 
     private RuleReadmeLoader loader;
 
-    private TemplateProperties templateProperties;
-
     private Rule rule;
-
-    private Path fragment;
 
     private Path fragments;
 
@@ -39,7 +35,7 @@ public class DefaultRuleReadmeLoaderTest {
 
     @Before
     public void setUp() throws Exception {
-        templateProperties = new TemplateProperties();
+        final TemplateProperties templateProperties = new TemplateProperties();
         fragments = folder.newFolder("fragments")
                           .toPath();
         templateProperties.setReadmeFragments(fragments);
@@ -53,8 +49,8 @@ public class DefaultRuleReadmeLoaderTest {
     public void loadEnabledOkay() throws IOException {
         //given
         rule.setEnabled(true);
-        fragment = fragments.resolve("name.md");
-        Files.write(fragment, Arrays.asList("", "body"));
+        final Path fragment1 = fragments.resolve("name.md");
+        Files.write(fragment1, Arrays.asList("", "body"));
         //when
         val fragment = loader.load(rule);
         //then
