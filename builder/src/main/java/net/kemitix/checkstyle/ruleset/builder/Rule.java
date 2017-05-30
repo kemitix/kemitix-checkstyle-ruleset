@@ -103,22 +103,4 @@ public class Rule {
     private String getLowerCaseRuleName() {
         return getName().toLowerCase(LOCALE);
     }
-
-    /**
-     * Returns the canonical name of the class that implements this rule.
-     *
-     * @return the canonical name of the implementing class
-     */
-    public String getCanonicalClassName() {
-        return source.getCheckClasses()
-                     .filter(this::byRuleName)
-                     .findFirst()
-                     .orElseThrow(() -> new CheckstyleClassNotFoundException(name));
-    }
-
-    private boolean byRuleName(final String classname) {
-        final String classNameWithDelimiter = "." + name;
-        return classname.endsWith(classNameWithDelimiter) || classname.endsWith(classNameWithDelimiter + "Check");
-    }
-
 }

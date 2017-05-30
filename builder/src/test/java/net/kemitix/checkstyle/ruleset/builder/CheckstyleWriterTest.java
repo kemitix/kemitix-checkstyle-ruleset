@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
@@ -19,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
 
 /**
  * Tests for {@link CheckstyleWriter}.
@@ -30,6 +33,12 @@ public class CheckstyleWriterTest {
     private static final String TEMPLATE = "C:%s\nTW:%s";
 
     private static final String FILE_SEPARATOR = System.getProperty("file.separator");
+
+    @org.junit.Rule
+    public ExpectedException exception = ExpectedException.none();
+
+    @org.junit.Rule
+    public TemporaryFolder folder = new TemporaryFolder();
 
     private CheckstyleWriter checkstyleWriter;
 
@@ -49,11 +58,8 @@ public class CheckstyleWriterTest {
 
     private Path checkstyleTemplate;
 
-    @org.junit.Rule
-    public ExpectedException exception = ExpectedException.none();
-
-    @org.junit.Rule
-    public TemporaryFolder folder = new TemporaryFolder();
+    @Mock
+    private RuleClassLocator ruleClassLocator;
 
     @Before
     public void setUp() throws Exception {
@@ -78,7 +84,14 @@ public class CheckstyleWriterTest {
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);
         rulesProperties = new RulesProperties();
-        checkstyleWriter = new CheckstyleWriter(outputProperties, templateProperties, rulesProperties);
+        checkstyleWriter =
+                new CheckstyleWriter(outputProperties, templateProperties, rulesProperties, ruleClassLocator);
+        given(ruleClassLocator.apply(any())).willReturn(ruleClassname);
+    }
+
+    private Map.Entry<RuleLevel, String> getOutputFile(final RuleLevel level) throws IOException {
+        final String xmlFile = String.format("checkstyle-%s.xml", level.toString());
+        return new AbstractMap.SimpleImmutableEntry<>(level, xmlFile);
     }
 
     // write rule that matches current level
@@ -93,6 +106,23 @@ public class CheckstyleWriterTest {
         //then
         val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleClassname));
+    }
+
+    private List<String> loadOutputFile(final RuleLevel level) throws IOException {
+        val path = outputDirectory.resolve(outputFiles.get(level));
+        assertThat(path).as("Output path exists")
+                        .exists();
+        return Files.readAllLines(path, StandardCharsets.UTF_8);
+    }
+
+    private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
+        val rule = new Rule();
+        rule.setName(ruleName);
+        rule.setSource(RuleSource.CHECKSTYLE);
+        rule.setEnabled(true);
+        rule.setLevel(level);
+        rule.setParent(parent);
+        return rule;
     }
 
     // write rule that is below current level
@@ -191,27 +221,5 @@ public class CheckstyleWriterTest {
                 "java.nio.file.NoSuchFileException: " + imaginary + FILE_SEPARATOR + "checkstyle-LAYOUT.xml");
         //when
         checkstyleWriter.run();
-    }
-
-    private Map.Entry<RuleLevel, String> getOutputFile(final RuleLevel level) throws IOException {
-        final String xmlFile = String.format("checkstyle-%s.xml", level.toString());
-        return new AbstractMap.SimpleImmutableEntry<>(level, xmlFile);
-    }
-
-    private List<String> loadOutputFile(final RuleLevel level) throws IOException {
-        val path = outputDirectory.resolve(outputFiles.get(level));
-        assertThat(path).as("Output path exists")
-                        .exists();
-        return Files.readAllLines(path, StandardCharsets.UTF_8);
-    }
-
-    private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
-        val rule = new Rule();
-        rule.setName(ruleName);
-        rule.setSource(RuleSource.CHECKSTYLE);
-        rule.setEnabled(true);
-        rule.setLevel(level);
-        rule.setParent(parent);
-        return rule;
     }
 }

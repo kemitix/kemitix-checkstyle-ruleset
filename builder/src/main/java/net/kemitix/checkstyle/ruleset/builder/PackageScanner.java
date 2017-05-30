@@ -21,28 +21,14 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 /**
- * The origin of the rule.
+ * Scans a package for all classes.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
+interface PackageScanner extends Function<RuleSource, Stream<String>> {
 
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
-
-    /**
-     * Constructor.
-     *
-     * @param basePackage the base package that contains all checks from this source
-     */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
-    }
 }

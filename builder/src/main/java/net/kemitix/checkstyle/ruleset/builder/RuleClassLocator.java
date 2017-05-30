@@ -21,28 +21,13 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import java.util.function.Function;
 
 /**
- * The origin of the rule.
+ * Returns the canonical name of the class that implements a {@link Rule}.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
+interface RuleClassLocator extends Function<Rule, String> {
 
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
-
-    /**
-     * Constructor.
-     *
-     * @param basePackage the base package that contains all checks from this source
-     */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
-    }
 }
