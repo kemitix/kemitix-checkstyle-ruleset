@@ -21,49 +21,22 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import com.google.common.reflect.ClassPath;
-import lombok.Getter;
-
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
- * The origin of the rule.
+ * Raised when there is an error scanning for check classes.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
-    private final List<String> checkClasses;
+public class CheckstyleSourceLoadException extends RuntimeException {
 
     /**
      * Constructor.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @param basePackage the base package classes were being loaded from
+     * @param cause       the cause
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
-        try {
-            checkClasses = ClassPath.from(getClass().getClassLoader())
-                                    .getTopLevelClassesRecursive(basePackage)
-                                    .stream()
-                                    .map(ClassPath.ClassInfo::getName)
-                                    .collect(Collectors.toList());
-        } catch (IOException e) {
-            throw new CheckstyleSourceLoadException(basePackage, e);
-        }
-    }
-
-    public Stream<String> getCheckClasses() {
-        return checkClasses.stream()
-                           .sorted();
+    public CheckstyleSourceLoadException(final String basePackage, final IOException cause) {
+        super("Error loading checkstyle rules from package: " + basePackage, cause);
     }
 }

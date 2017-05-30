@@ -101,9 +101,9 @@ class CheckstyleWriter implements CommandLineRunner {
     private String formatRuleAsModule(final Rule rule) {
         if (rule.getProperties()
                 .isEmpty()) {
-            return String.format("<module name=\"%s\"/>", rule.getName());
+            return String.format("<module name=\"%s\"/>", rule.getCanonicalClassName());
         }
-        return String.format("<module name=\"%s\">%n    %s%n</module>", rule.getName(),
+        return String.format("<module name=\"%s\">%n    %s%n</module>", rule.getCanonicalClassName(),
                              formatProperties(rule.getProperties())
                             );
     }

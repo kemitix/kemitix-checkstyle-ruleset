@@ -17,7 +17,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,6 +41,8 @@ public class CheckstyleWriterTest {
 
     private String ruleName;
 
+    private String ruleClassname;
+
     private Map<RuleLevel, String> outputFiles;
 
     private Path outputDirectory;
@@ -57,8 +58,8 @@ public class CheckstyleWriterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        ruleName = UUID.randomUUID()
-                       .toString();
+        ruleName = "RegexpOnFilename";
+        ruleClassname = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
         outputProperties = new OutputProperties();
         outputFiles = new MapBuilder<RuleLevel, String>().put(getOutputFile(RuleLevel.LAYOUT))
                                                          .put(getOutputFile(RuleLevel.NAMING))
@@ -91,7 +92,7 @@ public class CheckstyleWriterTest {
         checkstyleWriter.run();
         //then
         val lines = loadOutputFile(RuleLevel.LAYOUT);
-        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleName));
+        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleClassname));
     }
 
     // write rule that is below current level
@@ -105,7 +106,7 @@ public class CheckstyleWriterTest {
         checkstyleWriter.run();
         //then
         val lines = loadOutputFile(RuleLevel.NAMING);
-        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleName));
+        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\"/>", ruleClassname));
     }
 
     // write rule with checker parent
@@ -119,7 +120,7 @@ public class CheckstyleWriterTest {
         checkstyleWriter.run();
         //then
         val lines = loadOutputFile(RuleLevel.LAYOUT);
-        assertThat(lines).containsExactly(String.format("C:<module name=\"%s\"/>", ruleName), "TW:");
+        assertThat(lines).containsExactly(String.format("C:<module name=\"%s\"/>", ruleClassname), "TW:");
     }
 
     // write rule with properties
@@ -135,7 +136,7 @@ public class CheckstyleWriterTest {
         checkstyleWriter.run();
         //then
         val lines = loadOutputFile(RuleLevel.LAYOUT);
-        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\">", ruleName),
+        assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\">", ruleClassname),
                                           "    <property name=\"key\" value=\"value\"/>", "</module>"
                                          );
     }
@@ -207,6 +208,7 @@ public class CheckstyleWriterTest {
     private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
         val rule = new Rule();
         rule.setName(ruleName);
+        rule.setSource(RuleSource.CHECKSTYLE);
         rule.setEnabled(true);
         rule.setLevel(level);
         rule.setParent(parent);
