@@ -275,6 +275,8 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization
+        properties:
+          onlyObjectReferences: true
     -
         name: FallThrough
         parent: TREEWALKER

@@ -8,6 +8,7 @@ CHANGELOG
 * Upgrade sevntu to 1.24.0
 * Add Rule: MoveVariableInsideIf
 * Add Rule: ForbidWildcardAsReturnType
+* Modify Rule: ExplicitInitialization only applies to objects
 * Add Wercker CI
 * Add Shippable CI
 

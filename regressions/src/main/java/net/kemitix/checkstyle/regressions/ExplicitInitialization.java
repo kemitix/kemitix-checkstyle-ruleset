@@ -29,16 +29,8 @@ package net.kemitix.checkstyle.regressions;
 @SuppressWarnings("hideutilityclassconstructor")
 class ExplicitInitialization {
 
-    /**
-     * This will become valid in next release.
-     */
-    @SuppressWarnings("explicitinitialization")
     private boolean validBoolean = false;
 
-    /**
-     * This will become valid in next release.
-     */
-    @SuppressWarnings("explicitinitialization")
     private int validInt = 0;
 
     private String validString = "";

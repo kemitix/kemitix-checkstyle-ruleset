@@ -50,7 +50,9 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EmptyStatementCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EqualsAvoidNullCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.coding.ExplicitInitializationCheck">
+    <property name="onlyObjectReferences" value="true"/>
+</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.FallThroughCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"/>
