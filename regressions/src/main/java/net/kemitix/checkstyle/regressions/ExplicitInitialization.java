@@ -19,30 +19,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
-
-import lombok.Getter;
+package net.kemitix.checkstyle.regressions;
 
 /**
- * The origin of the rule.
+ * Regression demo for {@code ExplicitInitializationCheck}.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
+@SuppressWarnings("hideutilityclassconstructor")
+class ExplicitInitialization {
 
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
+    private boolean validBoolean = false;
 
-    @Getter
-    private final String basePackage;
+    private int validInt = 0;
 
+    private String validString = "";
 
-    /**
-     * Constructor.
-     *
-     * @param basePackage the base package that contains all checks from this source
-     */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
-    }
+    private Object validObject = new Object();
+
+    @SuppressWarnings("explicitinitialization")
+    private Boolean invalidBoolean = null;
+
+    @SuppressWarnings("explicitinitialization")
+    private Integer invalidInteger = null;
+
+    @SuppressWarnings("explicitinitialization")
+    private String invalidString = null;
+
+    @SuppressWarnings("explicitinitialization")
+    private Object invalidObject = null;
+
 }

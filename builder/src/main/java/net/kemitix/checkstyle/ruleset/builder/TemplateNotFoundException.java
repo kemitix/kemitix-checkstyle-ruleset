@@ -21,28 +21,21 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import java.nio.file.Path;
 
 /**
- * The origin of the rule.
+ * Raised when a rule template is not found.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
+class TemplateNotFoundException extends RuntimeException {
 
     /**
      * Constructor.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @param template the missing template
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    TemplateNotFoundException(final Path template) {
+        super("Missing template: " + template.toString());
     }
 }

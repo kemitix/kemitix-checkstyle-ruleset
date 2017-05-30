@@ -21,28 +21,22 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import java.io.IOException;
 
 /**
- * The origin of the rule.
+ * Raised when there is an error scanning for check classes.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
+public class CheckstyleSourceLoadException extends RuntimeException {
 
     /**
      * Constructor.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @param basePackage the base package classes were being loaded from
+     * @param cause       the cause
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    public CheckstyleSourceLoadException(final String basePackage, final IOException cause) {
+        super("Error loading checkstyle rules from package: " + basePackage, cause);
     }
 }

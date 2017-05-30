@@ -72,8 +72,6 @@ public class DefaultCheckstyleExecutorTest {
     @Mock
     private Artifact artifact;
 
-    private File artifactFile;
-
     @Mock
     private MavenXpp3Reader mavenXpp3Reader;
 
@@ -122,8 +120,8 @@ public class DefaultCheckstyleExecutorTest {
                                                                    .level(level)
                                                                    .build();
 
-        artifactFile = folder.newFile("pom.xml");
         given(artifactRepository.find(any())).willReturn(artifact);
+        final File artifactFile = folder.newFile("pom.xml");
         given(artifact.getFile()).willReturn(artifactFile);
         given(mavenXpp3Reader.read(any(FileReader.class))).willReturn(pomModel);
         final Properties properties = new Properties();

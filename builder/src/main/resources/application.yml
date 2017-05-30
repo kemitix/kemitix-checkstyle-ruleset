@@ -275,6 +275,8 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_coding.html#ExplicitInitialization
+        properties:
+          onlyObjectReferences: true
     -
         name: FallThrough
         parent: TREEWALKER
@@ -1056,10 +1058,9 @@ rules:
         name: ForbidWildcardAsReturnType
         parent: TREEWALKER
         level: COMPLEXITY
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html
-        reason: Causes `NullPointerException` when used with `@Value.Immutables` from `org.immutables:value`
     -
         name: LogicConditionNeedOptimization
         parent: TREEWALKER
@@ -1499,3 +1500,10 @@ rules:
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html
         reason: "TODO: enable"
+    -
+        name: MoveVariableInsideIfCheck
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: SEVNTU
+        uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MoveVariableInsideIfCheck.html

@@ -21,28 +21,19 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
-
 /**
- * The origin of the rule.
+ * Raised when there was an error writing a Checkstyle ruleset.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
+class CheckstyleWriterException extends RuntimeException {
 
     /**
      * Constructor.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @param cause the cause
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    CheckstyleWriterException(final Throwable cause) {
+        super(cause);
     }
 }

@@ -55,6 +55,8 @@ class CheckstyleWriter implements CommandLineRunner {
 
     private final RulesProperties rulesProperties;
 
+    private final RuleClassLocator ruleClassLocator;
+
     @Override
     public void run(final String... args) throws Exception {
         Stream.of(RuleLevel.values())
@@ -91,19 +93,19 @@ class CheckstyleWriter implements CommandLineRunner {
                 log.info("Writing xmlFile: {}", xmlFile);
                 Files.write(xmlFile, output, StandardCharsets.UTF_8);
             } else {
-                throw new IOException("Missing template: " + checkstyleXmlTemplate.toString());
+                throw new TemplateNotFoundException(checkstyleXmlTemplate);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new CheckstyleWriterException(e);
         }
     }
 
     private String formatRuleAsModule(final Rule rule) {
         if (rule.getProperties()
                 .isEmpty()) {
-            return String.format("<module name=\"%s\"/>", rule.getName());
+            return String.format("<module name=\"%s\"/>", ruleClassLocator.apply(rule));
         }
-        return String.format("<module name=\"%s\">%n    %s%n</module>", rule.getName(),
+        return String.format("<module name=\"%s\">%n    %s%n</module>", ruleClassLocator.apply(rule),
                              formatProperties(rule.getProperties())
                             );
     }

@@ -21,28 +21,19 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
-
 /**
- * The origin of the rule.
+ * Raised when a Class to implement a Rule is not found.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
+public class CheckstyleClassNotFoundException extends RuntimeException {
 
     /**
      * Constructor.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @param name the name of the unimplemented rule
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    public CheckstyleClassNotFoundException(final String name) {
+        super("No class found to implement " + name);
     }
 }

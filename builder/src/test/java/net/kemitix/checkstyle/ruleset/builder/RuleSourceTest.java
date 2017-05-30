@@ -30,4 +30,16 @@ public class RuleSourceTest {
         //then
         assertThat(values).containsExactlyElementsOf(expected);
     }
+
+    @Test
+    public void basePackages() {
+        //given
+        final String puppycrawl = "puppycrawl";
+        final String sevntu = "sevntu";
+        //then
+        assertThat(RuleSource.CHECKSTYLE.getBasePackage()).contains(puppycrawl)
+                                                          .doesNotContain(sevntu);
+        assertThat(RuleSource.SEVNTU.getBasePackage()).contains(sevntu)
+                                                      .doesNotContain(puppycrawl);
+    }
 }

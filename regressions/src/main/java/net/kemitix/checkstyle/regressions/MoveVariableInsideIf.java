@@ -19,30 +19,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
-
-import lombok.Getter;
+package net.kemitix.checkstyle.regressions;
 
 /**
- * The origin of the rule.
+ * Regression demo for {@code MoveVariableInsideIfCheck}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleSource {
+class MoveVariableInsideIf {
 
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
+    private String input = "1";
 
-    @Getter
-    private final String basePackage;
+    private boolean condition;
 
+    private String method(final String variable) {
+        return "value: " + variable;
+    }
 
     /**
-     * Constructor.
+     * Fails if not suppressed.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @return value
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    @SuppressWarnings("movevariableinsideif")
+    protected String invalid() {
+        String variable = input.substring(1);
+        if (condition) {
+            return method(variable);
+        }
+        return "";
+    }
+
+    /**
+     * Rewrite {@link #invalid()} as this to pass.
+     *
+     * @return value
+     */
+    protected String valid() {
+        if (condition) {
+            String variable = input.substring(1);
+            return method(variable);
+        }
+        return "";
     }
 }

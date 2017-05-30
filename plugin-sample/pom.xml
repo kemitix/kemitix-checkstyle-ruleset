@@ -2,18 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+    <properties>
+        <kemitix-checkstyle-ruleset.level>2-naming</kemitix-checkstyle-ruleset.level>
+    </properties>
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-checkstyle-ruleset-sample-parent</artifactId>
-        <version>3.0.1</version>
+        <version>3.1.0</version>
         <relativePath>../sample-parent</relativePath>
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-plugin-sample</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
 
     <name>Kemitix Checkstyle Ruleset Plugin Sample</name>
     <description>Sample usage of the Kemitix Checkstyle Ruleset Plugin</description>

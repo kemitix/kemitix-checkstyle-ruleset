@@ -41,6 +41,11 @@ public class Rule {
     private static final Locale LOCALE = Locale.ENGLISH;
 
     /**
+     * Configuration properties.
+     */
+    private final Map<String, String> properties = new HashMap<>();
+
+    /**
      * The name of the rule's Check class.
      */
     private String name;
@@ -81,11 +86,6 @@ public class Rule {
     private String reason;
 
     /**
-     * Configuration properties.
-     */
-    private final Map<String, String> properties = new HashMap<>();
-
-    /**
      * Compare two Rules lexicographically for sorting by rule name, ignoring case.
      *
      * @param left  the first rule
@@ -95,7 +95,7 @@ public class Rule {
      * the right string; and a value greater than 0 if the left string is lexicographically greater than the right
      * string.
      */
-    static int sortByName(final Rule left, final Rule right) {
+    protected static int sortByName(final Rule left, final Rule right) {
         return left.getLowerCaseRuleName()
                    .compareTo(right.getLowerCaseRuleName());
     }
@@ -103,5 +103,4 @@ public class Rule {
     private String getLowerCaseRuleName() {
         return getName().toLowerCase(LOCALE);
     }
-
 }
