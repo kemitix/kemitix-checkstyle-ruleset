@@ -16,13 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DefaultPackageScannerTest {
 
-    private ClassPath classPath;
-
     private DefaultPackageScanner scanner;
 
     @Before
     public void setUp() throws Exception {
-        classPath = ClassPath.from(getClass().getClassLoader());
+        final ClassPath classPath = ClassPath.from(getClass().getClassLoader());
         scanner = new DefaultPackageScanner(classPath);
     }
 
