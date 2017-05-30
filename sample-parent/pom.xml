@@ -14,7 +14,8 @@
     <description>Sample parent for modules that use kemitix-checkstyle-ruleset-maven-plugin</description>
 
     <properties>
-        <kemitix-checkstyle-ruleset-level>2-naming</kemitix-checkstyle-ruleset-level>
+        <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
+        <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -50,9 +51,9 @@
             <plugin>
                 <groupId>net.kemitix</groupId>
                 <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
-                <version>${project.version}</version>
+                <version>${kemitix-checkstyle-ruleset.version}</version>
                 <configuration>
-                    <level>${kemitix-checkstyle-ruleset-level}</level>
+                    <level>${kemitix-checkstyle-ruleset.level}</level>
                 </configuration>
                 <executions>
                     <execution>

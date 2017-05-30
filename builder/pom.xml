@@ -42,6 +42,8 @@
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <checkstyle.version>7.8</checkstyle.version>
+        <sevntu.version>1.24.0</sevntu.version>
     </properties>
 
     <dependencies>
@@ -92,6 +94,19 @@
             <version>${map-builder.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sevntu-checkstyle</groupId>
+            <artifactId>sevntu-checks</artifactId>
+            <version>${sevntu.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

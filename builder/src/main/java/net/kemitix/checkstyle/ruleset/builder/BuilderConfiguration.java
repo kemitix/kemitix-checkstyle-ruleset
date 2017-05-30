@@ -21,28 +21,29 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import com.google.common.reflect.ClassPath;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
 
 /**
- * The origin of the rule.
+ * Configuration for Builder.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
-
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
-
-    @Getter
-    private final String basePackage;
-
+@Configuration
+public class BuilderConfiguration {
 
     /**
-     * Constructor.
+     * Create the ClassPath used to scan packages.
      *
-     * @param basePackage the base package that contains all checks from this source
+     * @return the ClassPath
+     *
+     * @throws IOException if there is an error
      */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    @Bean
+    public ClassPath classPath() throws IOException {
+        return ClassPath.from(getClass().getClassLoader());
     }
 }

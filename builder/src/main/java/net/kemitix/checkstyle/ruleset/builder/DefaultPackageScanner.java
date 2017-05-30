@@ -21,28 +21,27 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.Getter;
+import com.google.common.reflect.ClassPath;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.stream.Stream;
 
 /**
- * The origin of the rule.
+ * Default implementation of {@link PackageScanner}.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public enum RuleSource {
+@Service
+@RequiredArgsConstructor
+public class DefaultPackageScanner implements PackageScanner {
 
-    CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
+    private final ClassPath classPath;
 
-    @Getter
-    private final String basePackage;
-
-
-    /**
-     * Constructor.
-     *
-     * @param basePackage the base package that contains all checks from this source
-     */
-    RuleSource(final String basePackage) {
-        this.basePackage = basePackage;
+    @Override
+    public final Stream<String> apply(final RuleSource ruleSource) {
+        return classPath.getTopLevelClassesRecursive(ruleSource.getBasePackage())
+                        .stream()
+                        .map(ClassPath.ClassInfo::getName);
     }
 }
