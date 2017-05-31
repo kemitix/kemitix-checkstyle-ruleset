@@ -1,6 +1,7 @@
 output:
     directory: ruleset/src/main/resources/net/kemitix
     ruleset-files:
+        DISABLED: checkstyle-0-disabled.xml
         LAYOUT: checkstyle-1-layout.xml
         NAMING: checkstyle-2-naming.xml
         JAVADOC: checkstyle-3-javadoc.xml

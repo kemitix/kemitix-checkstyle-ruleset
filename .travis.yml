@@ -8,6 +8,7 @@ install: true
 script: "./mvnw clean install"
 after_success:
 - "./travis-ci/travis-coveralls-report.sh"
+- bash <(curl -s https://codecov.io/bash)
 - "./travis-ci/travis-deploy.sh"
 env:
   global:

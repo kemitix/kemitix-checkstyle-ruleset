@@ -28,6 +28,7 @@ package net.kemitix.checkstyle.ruleset.builder;
  */
 public enum RuleLevel {
 
+    DISABLED,
     LAYOUT,
     NAMING,
     JAVADOC,

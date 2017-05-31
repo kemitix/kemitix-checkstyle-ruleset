@@ -67,7 +67,8 @@ public class CheckstyleWriterTest {
         ruleName = "RegexpOnFilename";
         ruleClassname = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
         outputProperties = new OutputProperties();
-        outputFiles = new MapBuilder<RuleLevel, String>().put(getOutputFile(RuleLevel.LAYOUT))
+        outputFiles = new MapBuilder<RuleLevel, String>().put(getOutputFile(RuleLevel.DISABLED))
+                                                         .put(getOutputFile(RuleLevel.LAYOUT))
                                                          .put(getOutputFile(RuleLevel.NAMING))
                                                          .put(getOutputFile(RuleLevel.JAVADOC))
                                                          .put(getOutputFile(RuleLevel.TWEAKS))
@@ -221,8 +222,8 @@ public class CheckstyleWriterTest {
         final ThrowableAssert.ThrowingCallable action = () -> checkstyleWriter.run();
         //then
         assertThatThrownBy(action).isInstanceOf(CheckstyleWriterException.class)
-                                  .hasMessage(
-                                          String.format("java.nio.file.NoSuchFileException: %scheckstyle-LAYOUT.xml",
+                                  .hasMessageStartingWith(
+                                          String.format("java.nio.file.NoSuchFileException: %scheckstyle-",
                                                         imaginary + FILE_SEPARATOR
                                                        ));
     }
