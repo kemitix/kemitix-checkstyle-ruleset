@@ -13,4 +13,10 @@
     <name>Kemitix Checkstyle :: Checks</name>
     <description>Custom Checks for use with Checkstyle</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+        </dependency>
+    </dependencies>
 </project>
