@@ -1,5 +1,7 @@
 package net.kemitix.checkstyle.checks;
 
+import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
+
 /**
  * Checkstyle Check to ensure appropriate cohesion within a class of its methods and fields.
  *
@@ -12,6 +14,9 @@ package net.kemitix.checkstyle.checks;
  *
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public class CohesionCheck {
+public class CohesionCheck extends AbstractCheck {
 
+    public int[] getDefaultTokens() {
+        return new int[0];
+    }
 }
