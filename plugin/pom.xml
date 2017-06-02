@@ -12,7 +12,7 @@
 
     <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
-    <name>Kemitix Checkstyle Ruleset Maven Plugin</name>
+    <name>Kemitix Checkstyle :: Ruleset :: Plugin</name>
     <description>Checkstyle configuration using the Kemitix Checkstyle Ruleset</description>
 
     <properties>
