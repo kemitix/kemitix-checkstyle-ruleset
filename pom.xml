@@ -24,6 +24,7 @@
 
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.8.0</assertj.version>
+        <qdox.version>2.0-M5</qdox.version>
     </properties>
 
     <modules>
@@ -55,6 +56,11 @@
                 <groupId>com.puppycrawl.tools</groupId>
                 <artifactId>checkstyle</artifactId>
                 <version>${checkstyle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.qdox</groupId>
+                <artifactId>qdox</artifactId>
+                <version>${qdox.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
