@@ -94,4 +94,19 @@ public class CohesionCheckTest {
                                                   .getFile());
         return Collections.singletonList(classFile);
     }
+
+    @Test
+    public void shouldAuditPartitionedClassWithError() throws CheckstyleException {
+        //given
+        final String className = "PartitionedClass.java";
+        final List<File> files = fileListForClass(className);
+        //when
+        checker.process(files);
+        //then
+        startFileAudit(className);
+
+        // TODO: report class as partitioned
+
+        finishFileAudit(className);
+    }
 }
