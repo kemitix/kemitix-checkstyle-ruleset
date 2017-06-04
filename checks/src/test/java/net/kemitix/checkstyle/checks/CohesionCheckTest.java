@@ -98,14 +98,18 @@ public class CohesionCheckTest {
     @Test
     public void shouldAuditPartitionedClassWithError() throws CheckstyleException {
         //given
-        final String className = "PartitionedClass.java";
+        final String className = "SimplePartitionedClass.java";
         final List<File> files = fileListForClass(className);
         //when
         checker.process(files);
         //then
         startFileAudit(className);
 
-        // TODO: report class as partitioned
+        then(listener).should()
+                      .addError(auditEvent.capture());
+        final AuditEvent event = auditEvent.getValue();
+        assertThat(event).returns(CohesionCheck.class.getName(), AuditEvent::getSourceName)
+                         .returns("Class is partitioned by fields: [left], [right]", AuditEvent::getMessage);
 
         finishFileAudit(className);
     }

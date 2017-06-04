@@ -1,6 +1,6 @@
 package net.kemitix.checkstyle.checks;
 
-class PartitionedClass {
+class SimplePartitionedClass {
 
     // partition: left
 
