@@ -2,6 +2,11 @@ package net.kemitix.checkstyle.checks;
 
 import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+import spoon.Launcher;
+import spoon.SpoonAPI;
+import spoon.reflect.code.CtFieldAccess;
+import spoon.reflect.code.CtInvocation;
+import spoon.reflect.visitor.Filter;
 
 import java.io.File;
 import java.util.List;
@@ -20,7 +25,24 @@ import java.util.List;
  */
 public class CohesionCheck extends AbstractFileSetCheck {
 
+    private final Filter<CtFieldAccess> fieldsAccessed = new FieldsAccessedFilter();
+
+    private final Filter<CtInvocation> methodsInvoked = new MethodsInvokedFilter();
+
+    private final PartitionedProcessor partitionedProcessor =
+            new PartitionedProcessor(this::partitionedLogger, fieldsAccessed, methodsInvoked);
+
     @Override
     protected void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
+        SpoonAPI spoon = new Launcher();
+        spoon.addInputResource(file.getAbsolutePath());
+        spoon.buildModel();
+        spoon.getFactory()
+             .getModel()
+             .processWith(partitionedProcessor);
+    }
+
+    private void partitionedLogger(final String fields) {
+        log(1, "cohesion.partitioned", fields);
     }
 }
