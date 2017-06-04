@@ -101,13 +101,15 @@ public class CohesionCheckTest {
         checker.process(files);
         //then
         startFileAudit(className);
+        hasErrorMessage("Class is partitioned by fields: [counter], [message]");
+        finishFileAudit(className);
+    }
 
+    private void hasErrorMessage(final String expectedMessage) {
         then(listener).should()
                       .addError(auditEvent.capture());
         final AuditEvent event = auditEvent.getValue();
         assertThat(event).returns(CohesionCheck.class.getName(), AuditEvent::getSourceName)
-                         .returns("Class is partitioned by fields: [left], [right]", AuditEvent::getMessage);
-
-        finishFileAudit(className);
+                         .returns(expectedMessage, AuditEvent::getMessage);
     }
 }
