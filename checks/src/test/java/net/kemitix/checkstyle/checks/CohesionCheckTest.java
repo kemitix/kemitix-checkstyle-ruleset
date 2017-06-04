@@ -2,7 +2,6 @@ package net.kemitix.checkstyle.checks;
 
 import com.puppycrawl.tools.checkstyle.Checker;
 import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
-import com.puppycrawl.tools.checkstyle.TreeWalker;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
@@ -42,9 +41,7 @@ public class CohesionCheckTest {
         MockitoAnnotations.initMocks(this);
         final DefaultConfiguration configuration = new DefaultConfiguration("configuration");
         configuration.addAttribute("charset", "UTF-8");
-        final DefaultConfiguration treeConfiguration = new DefaultConfiguration(TreeWalker.class.getName());
-        configuration.addChild(treeConfiguration);
-        treeConfiguration.addChild(new DefaultConfiguration(CohesionCheck.class.getName()));
+        configuration.addChild(new DefaultConfiguration(CohesionCheck.class.getName()));
         checker = new Checker();
         checker.setModuleClassLoader(Thread.currentThread()
                                            .getContextClassLoader());

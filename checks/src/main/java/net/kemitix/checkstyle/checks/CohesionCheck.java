@@ -1,7 +1,10 @@
 package net.kemitix.checkstyle.checks;
 
-import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
-import com.puppycrawl.tools.checkstyle.api.TokenTypes;
+import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
+import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * Checkstyle Check to ensure appropriate cohesion within a class of its methods and fields.
@@ -15,9 +18,9 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  *
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public class CohesionCheck extends AbstractCheck {
+public class CohesionCheck extends AbstractFileSetCheck {
 
-    public int[] getDefaultTokens() {
-        return new int[]{TokenTypes.CLASS_DEF};
+    @Override
+    protected void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
     }
 }
