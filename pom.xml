@@ -26,6 +26,7 @@
         <assertj.version>3.8.0</assertj.version>
         <qdox.version>2.0-M5</qdox.version>
         <junit.version>4.12</junit.version>
+        <spoon.version>5.7.0</spoon.version>
     </properties>
 
     <modules>
@@ -62,6 +63,11 @@
                 <groupId>com.thoughtworks.qdox</groupId>
                 <artifactId>qdox</artifactId>
                 <version>${qdox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.inria.gforge.spoon</groupId>
+                <artifactId>spoon-core</artifactId>
+                <version>${spoon.version}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
