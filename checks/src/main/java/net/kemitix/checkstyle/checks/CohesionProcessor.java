@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class CohesionProcessor extends AbstractProcessor<CtClass> {
 
-    private final Consumer<String> logger;
+    private final Consumer<CohesionAnalysisResult> resultConsumer;
 
     private final Filter<CtFieldAccess> fieldsAccessedFilter;
 
@@ -45,7 +45,7 @@ public class CohesionProcessor extends AbstractProcessor<CtClass> {
             methodsInvoked.put(signature, getMethodsInvoked(method));
         });
         final Set<String> nonPrivateMethods = getNonPrivateMethods(theClass);
-        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods, logger);
+        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods, resultConsumer);
     }
 
     private Set<String> getNonPrivateMethods(final CtClass element) {

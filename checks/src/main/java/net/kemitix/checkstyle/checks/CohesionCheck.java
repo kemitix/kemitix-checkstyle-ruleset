@@ -10,6 +10,7 @@ import spoon.reflect.visitor.Filter;
 
 import java.io.File;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Checkstyle Check to ensure appropriate cohesion within a class of its methods and fields.
@@ -32,7 +33,7 @@ public class CohesionCheck extends AbstractFileSetCheck {
     private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
 
     private final CohesionProcessor cohesionProcessor =
-            new CohesionProcessor(this::logger, fieldsAccessedFilter, methodsInvokedFilter, cohesionAnalyser);
+            new CohesionProcessor(resultConsumer(), fieldsAccessedFilter, methodsInvokedFilter, cohesionAnalyser);
 
     @Override
     protected void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
@@ -44,7 +45,10 @@ public class CohesionCheck extends AbstractFileSetCheck {
              .processWith(cohesionProcessor);
     }
 
-    private void logger(final String fields) {
-        log(1, "cohesion.partitioned", fields);
+    private Consumer<CohesionAnalysisResult> resultConsumer() {
+        return result -> {
+            //log any errors:
+            //log(1, "cohesion.partitioned", ...);
+        };
     }
 }

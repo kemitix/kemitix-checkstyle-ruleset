@@ -37,7 +37,7 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
     @Override
     public void analyse(
             final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
-            final Set<String> nonPrivateMethods, final Consumer<String> logger
+            final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
         // collate usage results
         methodsInvoked.entrySet()
@@ -54,7 +54,7 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
         // detect partion
         // TODO: should see format and counter as being partitioned, while ignoring left and right
 
-        //TODO log violations
+        //TODO log violations via resultConsumer
     }
 
     private void mergeFieldsInInvokedMethods(
