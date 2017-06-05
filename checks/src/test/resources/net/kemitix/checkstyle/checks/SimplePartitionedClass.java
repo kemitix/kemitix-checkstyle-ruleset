@@ -8,7 +8,7 @@ class SimplePartitionedClass {
 
     private int counter = 0;
 
-    private String format = "%s Hello, %s! %s";
+    private String format = "Hello, %s!";
 
     public String getLeft() {
         return left;
@@ -26,8 +26,12 @@ class SimplePartitionedClass {
         counter += 1;
     }
 
+    public String getFullFormat() {
+        return left + format + right;
+    }
+
     public String sayHello(final String name) {
-        return String.format(format, getLeft(), name, getRight());
+        return String.format(getFullFormat(), name);
     }
 
 }

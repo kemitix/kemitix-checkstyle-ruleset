@@ -6,6 +6,7 @@ import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -93,6 +94,7 @@ public class CohesionCheckTest {
     }
 
     @Test
+    @Ignore("not implemented yet")
     public void shouldAuditPartitionedClassWithError() throws CheckstyleException {
         //given
         final String className = "SimplePartitionedClass.java";

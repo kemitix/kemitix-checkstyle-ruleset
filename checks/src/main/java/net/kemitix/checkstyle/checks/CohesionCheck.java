@@ -25,12 +25,14 @@ import java.util.List;
  */
 public class CohesionCheck extends AbstractFileSetCheck {
 
-    private final Filter<CtFieldAccess> fieldsAccessed = new FieldsAccessedFilter();
+    private final Filter<CtFieldAccess> fieldsAccessedFilter = new FieldsAccessedFilter();
 
-    private final Filter<CtInvocation> methodsInvoked = new MethodsInvokedFilter();
+    private final Filter<CtInvocation> methodsInvokedFilter = new MethodsInvokedFilter();
 
-    private final PartitionedProcessor partitionedProcessor =
-            new PartitionedProcessor(this::partitionedLogger, fieldsAccessed, methodsInvoked);
+    private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
+
+    private final CohesionProcessor cohesionProcessor =
+            new CohesionProcessor(this::logger, fieldsAccessedFilter, methodsInvokedFilter, cohesionAnalyser);
 
     @Override
     protected void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
@@ -39,10 +41,10 @@ public class CohesionCheck extends AbstractFileSetCheck {
         spoon.buildModel();
         spoon.getFactory()
              .getModel()
-             .processWith(partitionedProcessor);
+             .processWith(cohesionProcessor);
     }
 
-    private void partitionedLogger(final String fields) {
+    private void logger(final String fields) {
         log(1, "cohesion.partitioned", fields);
     }
 }
