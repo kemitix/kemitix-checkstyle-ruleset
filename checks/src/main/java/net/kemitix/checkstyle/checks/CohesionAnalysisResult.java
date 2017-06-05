@@ -21,11 +21,19 @@
 
 package net.kemitix.checkstyle.checks;
 
+import lombok.Getter;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * .
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 class CohesionAnalysisResult {
+
+    @Getter
+    private Set<String> nonBeanMethods = new HashSet<>();
 
 }

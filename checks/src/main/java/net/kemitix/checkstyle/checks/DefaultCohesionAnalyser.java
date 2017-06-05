@@ -39,22 +39,18 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
             final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
             final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
-        // collate usage results
         methodsInvoked.entrySet()
                       .stream()
                       .filter(ignoreBeanMethods(fieldsAccessed))
                       .forEach(e -> mergeFieldsInInvokedMethods(e.getKey(), e.getValue(), fieldsAccessed,
                                                                 methodsInvoked
                                                                ));
-
-        System.out.println("fieldsAccessed = " + fieldsAccessed.entrySet()
-                                                               .stream()
-                                                               .filter(ignoreBeanMethods(fieldsAccessed))
-                                                               .collect(Collectors.toSet()));
-        // detect partion
-        // TODO: should see format and counter as being partitioned, while ignoring left and right
-
-        //TODO log violations via resultConsumer
+        final CohesionAnalysisResult result = new CohesionAnalysisResult();
+        result.getNonBeanMethods()
+              .addAll(nonPrivateMethods.stream()
+                                       .filter(m -> isNotBeanMethod(m, fieldsAccessed.get(m)))
+                                       .collect(Collectors.toSet()));
+        resultConsumer.accept(result);
     }
 
     private void mergeFieldsInInvokedMethods(
@@ -73,21 +69,29 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
         return f -> {
             final String method = f.getKey();
             final Set<String> fields = fieldsAccessed.get(method);
-            final String methodName = method.toLowerCase();
-            if (fields.size() == 1) {
-                final String fieldAccessed = fields.toArray(new String[1])[0];
-                if (isSetterOfGetter(methodName, fieldAccessed)) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } else {
-                return true;
-            }
+            return isNotBeanMethod(method, fields);
         };
     }
 
-    private boolean isSetterOfGetter(final String method, final String field) {
+    private boolean isNotBeanMethod(final String method, final Set<String> fields) {
+        return !isBeanMethod(method, fields);
+    }
+
+    private boolean isBeanMethod(final String method, final Set<String> fields) {
+        final String methodName = method.toLowerCase();
+        if (fields.size() == 1) {
+            final String fieldAccessed = fields.toArray(new String[1])[0];
+            if (isBeanMethod(methodName, fieldAccessed)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isBeanMethod(final String method, final String field) {
         return isSetter(method, field) || isGetter(method, field);
     }
 
