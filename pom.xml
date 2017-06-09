@@ -32,7 +32,6 @@
         <module>plugin</module>
         <module>plugin-sample</module>
         <module>regressions</module>
-        <module>sample-parent</module>
     </modules>
 
     <issueManagement>
