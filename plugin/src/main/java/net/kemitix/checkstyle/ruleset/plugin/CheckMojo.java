@@ -68,7 +68,7 @@ public class CheckMojo extends AbstractMojo {
     @Parameter(defaultValue = "${localRepository}", readonly = true, required = true)
     private ArtifactRepository artifactRepository;
 
-    @Parameter(defaultValue = "5-complexity", readonly = true)
+    @Parameter(name = "level", defaultValue = "5-complexity", readonly = true)
     private String level = "5-complexity";
 
     @Setter
