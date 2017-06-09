@@ -6,16 +6,15 @@
 
     <parent>
         <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-parent</artifactId>
-        <version>2.8.0</version>
-        <relativePath/>
+        <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
+        <version>3.2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-builder</artifactId>
     <version>3.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Kemitix Checkstyle Ruleset Builder</name>
+    <name>Kemitix Checkstyle :: Ruleset :: Builder</name>
     <description>Builder for the Kemitix Checkstyle Ruleset</description>
 
     <issueManagement>
@@ -34,17 +33,24 @@
     <inceptionYear>2016</inceptionYear>
 
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-platform.version>Brussels-SR2</spring-platform.version>
         <spring-boot.version>1.5.3.RELEASE</spring-boot.version>
-        <assertj.version>3.8.0</assertj.version>
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <checkstyle.version>7.8</checkstyle.version>
-        <sevntu.version>1.24.0</sevntu.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -65,12 +71,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.speedment.common</groupId>
