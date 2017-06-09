@@ -19,21 +19,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
 
-import java.util.Map;
+import lombok.Getter;
+
+import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Consumer;
 
 /**
- * Analyses the method invocations of a class to determine the cohesiveness of a class.
+ * Represents the results of performing a Cohesive Analysis on a class.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-interface CohesionAnalyser {
+public class CohesionAnalysisResult {
 
-    void analyse(
-            Map<String, Set<String>> fieldsAccessedByMethod, Map<String, Set<String>> methodsInvokedByMethod,
-            final Set<String> nonPrivateMethods, Consumer<CohesionAnalysisResult> resultConsumer
-                );
+    @Getter
+    private Set<String> nonBeanMethods = new HashSet<>();
+
 }

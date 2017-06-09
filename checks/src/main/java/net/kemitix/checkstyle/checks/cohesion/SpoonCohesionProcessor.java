@@ -1,4 +1,4 @@
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
 
 import lombok.RequiredArgsConstructor;
 import spoon.processing.AbstractProcessor;
@@ -15,7 +15,6 @@ import spoon.reflect.visitor.Filter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,11 +24,7 @@ import java.util.stream.Stream;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @RequiredArgsConstructor
-public class CohesionProcessor extends AbstractProcessor<CtClass> {
-
-    private final Consumer<CohesionAnalysisResult> resultConsumer;
-
-    private final Filter<CtFieldAccess> fieldsAccessedFilter;
+class SpoonCohesionProcessor extends AbstractProcessor<CtClass> {
 
     private final Filter<CtInvocation> methodsInvokedFilter;
 
@@ -45,7 +40,7 @@ public class CohesionProcessor extends AbstractProcessor<CtClass> {
             methodsInvoked.put(signature, getMethodsInvoked(method));
         });
         final Set<String> nonPrivateMethods = getNonPrivateMethods(theClass);
-        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods, resultConsumer);
+        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods);
     }
 
     private Set<String> getNonPrivateMethods(final CtClass element) {
@@ -71,7 +66,7 @@ public class CohesionProcessor extends AbstractProcessor<CtClass> {
     }
 
     private Set<String> getFieldsAccessed(final CtMethod<?> method) {
-        return method.filterChildren(fieldsAccessedFilter)
+        return method.filterChildren(element -> true)
                      .list(CtFieldAccess.class)
                      .stream()
                      .map(CtFieldAccess::getVariable)

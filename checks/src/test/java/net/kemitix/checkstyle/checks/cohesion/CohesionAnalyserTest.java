@@ -1,4 +1,4 @@
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
 
 import com.google.common.collect.Sets;
 import org.junit.Before;
@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class CohesionAnalyserTest {
 
-    private final CohesionAnalyser analyser = new DefaultCohesionAnalyser();
+    private CohesionAnalyser analyser;
 
     private Map<String, Set<String>> fieldsAccessByMethod;
 
@@ -27,16 +26,14 @@ public class CohesionAnalyserTest {
 
     private Set<String> nonPrivateMethods;
 
-    private Consumer<CohesionAnalysisResult> resultConsumer;
-
-    private CohesionAnalysisResult result;
+    private CohesionAnalysisResult analysisResult;
 
     @Before
     public void setUp() {
         fieldsAccessByMethod = new HashMap<>();
         methodsInvokedByMethod = new HashMap<>();
         nonPrivateMethods = new HashSet<>();
-        resultConsumer = cohesionAnalysisResult -> result = cohesionAnalysisResult;
+        analyser = new DefaultCohesionAnalyser(r -> analysisResult = r);
     }
 
     @Test
@@ -49,9 +46,9 @@ public class CohesionAnalyserTest {
         fieldsAccessByMethod.put(beanMethod, Sets.newHashSet("value"));
         fieldsAccessByMethod.put(nonBeanMethod, Sets.newHashSet("other"));
         //when
-        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, resultConsumer);
+        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods);
         //then
-        assertThat(result.getNonBeanMethods()).containsExactly(nonBeanMethod);
+        assertThat(analysisResult.getNonBeanMethods()).containsExactly(nonBeanMethod);
     }
 
 }

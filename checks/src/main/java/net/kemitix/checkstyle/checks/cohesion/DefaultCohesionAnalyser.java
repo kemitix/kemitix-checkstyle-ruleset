@@ -19,7 +19,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
+
+import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
 import java.util.Set;
@@ -32,12 +34,15 @@ import java.util.stream.Collectors;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
+@RequiredArgsConstructor
 class DefaultCohesionAnalyser implements CohesionAnalyser {
+
+    private final Consumer<CohesionAnalysisResult> resultConsumer;
 
     @Override
     public void analyse(
             final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
-            final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
+            final Set<String> nonPrivateMethods
                        ) {
         methodsInvoked.entrySet()
                       .stream()

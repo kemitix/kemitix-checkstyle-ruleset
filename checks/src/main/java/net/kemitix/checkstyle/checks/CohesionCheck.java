@@ -2,15 +2,11 @@ package net.kemitix.checkstyle.checks;
 
 import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
-import spoon.Launcher;
-import spoon.SpoonAPI;
-import spoon.reflect.code.CtFieldAccess;
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.visitor.Filter;
+import net.kemitix.checkstyle.checks.cohesion.CohesionAnalysisResult;
+import net.kemitix.checkstyle.checks.cohesion.CohesionCheckService;
 
 import java.io.File;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * Checkstyle Check to ensure appropriate cohesion within a class of its methods and fields.
@@ -26,29 +22,15 @@ import java.util.function.Consumer;
  */
 public class CohesionCheck extends AbstractFileSetCheck {
 
-    private final Filter<CtFieldAccess> fieldsAccessedFilter = new FieldsAccessedFilter();
-
-    private final Filter<CtInvocation> methodsInvokedFilter = new MethodsInvokedFilter();
-
-    private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
-
-    private final CohesionProcessor cohesionProcessor =
-            new CohesionProcessor(resultConsumer(), fieldsAccessedFilter, methodsInvokedFilter, cohesionAnalyser);
+    private final CohesionCheckService cohesionCheckService = CohesionCheckService.create();
 
     @Override
     protected void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
-        SpoonAPI spoon = new Launcher();
-        spoon.addInputResource(file.getAbsolutePath());
-        spoon.buildModel();
-        spoon.getFactory()
-             .getModel()
-             .processWith(cohesionProcessor);
+        cohesionCheckService.check(file, this::resultConsumer);
     }
 
-    private Consumer<CohesionAnalysisResult> resultConsumer() {
-        return result -> {
-            //log any errors:
-            //log(1, "cohesion.partitioned", ...);
-        };
+    private void resultConsumer(final CohesionAnalysisResult result) {
+        //log any errors:
+        //log(1, "cohesion.partitioned", ...);
     }
 }

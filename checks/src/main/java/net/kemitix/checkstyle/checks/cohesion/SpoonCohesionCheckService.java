@@ -19,21 +19,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
 
-import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import spoon.Launcher;
+import spoon.SpoonAPI;
+import spoon.reflect.code.CtInvocation;
+import spoon.reflect.visitor.Filter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.File;
+import java.util.function.Consumer;
 
 /**
- * .
+ * Spoon implementation of the {@link CohesionCheckService}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-class CohesionAnalysisResult {
+@RequiredArgsConstructor
+class SpoonCohesionCheckService implements CohesionCheckService {
 
-    @Getter
-    private Set<String> nonBeanMethods = new HashSet<>();
-
+    @Override
+    public void check(
+            final File file, final Consumer<CohesionAnalysisResult> resultConsumer
+                     ) {
+        final SpoonAPI spoon = new Launcher();
+        spoon.addInputResource(file.getAbsolutePath());
+        spoon.buildModel();
+        final Filter<CtInvocation> invocationFilter = new SpoonInvocationFilter();
+        final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser(resultConsumer);
+        final SpoonCohesionProcessor cohesionProcessor = new SpoonCohesionProcessor(invocationFilter, cohesionAnalyser);
+        spoon.getFactory()
+             .getModel()
+             .processWith(cohesionProcessor);
+    }
 }

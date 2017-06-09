@@ -19,27 +19,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.checks;
+package net.kemitix.checkstyle.checks.cohesion;
 
-import spoon.reflect.code.CtInvocation;
-import spoon.reflect.declaration.CtClass;
-import spoon.reflect.reference.CtExecutableReference;
-import spoon.reflect.reference.CtTypeReference;
-import spoon.reflect.visitor.Filter;
+import java.io.File;
+import java.util.function.Consumer;
 
 /**
- * .
+ * Service for performing the {@link net.kemitix.checkstyle.checks.CohesionCheck}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-class MethodsInvokedFilter implements Filter<CtInvocation> {
+public interface CohesionCheckService {
 
-    @Override
-    public boolean matches(final CtInvocation element) {
-        final CtExecutableReference executable = element.getExecutable();
-        final CtTypeReference declaringType = executable.getDeclaringType();
-        final CtClass aClass = element.getParent(CtClass.class);
-        final String qualifiedName = aClass.getQualifiedName();
-        return qualifiedName.equals(declaringType.toString());
+    /**
+     * Creates a new instance of the {@code CohesionCheckService}.
+     *
+     * @return a new CohesionCheckService instance
+     */
+    static CohesionCheckService create() {
+        return new SpoonCohesionCheckService();
     }
+
+    /**
+     * Performs the cohesion check on the given file, passing results to the consumer.
+     *
+     * @param file           the file to check
+     * @param resultConsumer the consumer of the results
+     */
+    void check(File file, Consumer<CohesionAnalysisResult> resultConsumer);
 }
