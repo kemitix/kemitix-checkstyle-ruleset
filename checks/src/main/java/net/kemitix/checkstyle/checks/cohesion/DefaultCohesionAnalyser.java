@@ -37,12 +37,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class DefaultCohesionAnalyser implements CohesionAnalyser {
 
-    private final Consumer<CohesionAnalysisResult> resultConsumer;
 
     @Override
     public void analyse(
             final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
-            final Set<String> nonPrivateMethods
+            final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
         methodsInvoked.entrySet()
                       .stream()

@@ -24,7 +24,10 @@ package net.kemitix.checkstyle.checks.cohesion;
 import lombok.RequiredArgsConstructor;
 import spoon.Launcher;
 import spoon.SpoonAPI;
+import spoon.processing.Processor;
+import spoon.reflect.CtModel;
 import spoon.reflect.code.CtInvocation;
+import spoon.reflect.declaration.CtClass;
 import spoon.reflect.visitor.Filter;
 
 import java.io.File;
@@ -38,18 +41,26 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 class SpoonCohesionCheckService implements CohesionCheckService {
 
+    private final Filter<CtInvocation> invocationFilter = new SpoonInvocationFilter();
+
+    private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
+
     @Override
-    public void check(
-            final File file, final Consumer<CohesionAnalysisResult> resultConsumer
-                     ) {
+    public void check(final File file, final Consumer<CohesionAnalysisResult> resultConsumer) {
+        final CtModel model = modelForFile(file);
+        final Processor<CtClass> cohesionProcessor = cohesionProcessor(resultConsumer);
+        model.processWith(cohesionProcessor);
+    }
+
+    private CtModel modelForFile(final File file) {
         final SpoonAPI spoon = new Launcher();
         spoon.addInputResource(file.getAbsolutePath());
         spoon.buildModel();
-        final Filter<CtInvocation> invocationFilter = new SpoonInvocationFilter();
-        final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser(resultConsumer);
-        final SpoonCohesionProcessor cohesionProcessor = new SpoonCohesionProcessor(invocationFilter, cohesionAnalyser);
-        spoon.getFactory()
-             .getModel()
-             .processWith(cohesionProcessor);
+        return spoon.getFactory()
+                    .getModel();
+    }
+
+    private Processor<CtClass> cohesionProcessor(final Consumer<CohesionAnalysisResult> resultConsumer) {
+        return SpoonCohesionProcessor.create(invocationFilter, cohesionAnalyser, resultConsumer);
     }
 }

@@ -23,6 +23,7 @@ package net.kemitix.checkstyle.checks.cohesion;
 
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 /**
  * Analyses the method invocations of a class to determine the cohesiveness of a class.
@@ -33,6 +34,6 @@ interface CohesionAnalyser {
 
     void analyse(
             Map<String, Set<String>> fieldsAccessedByMethod, Map<String, Set<String>> methodsInvokedByMethod,
-            Set<String> nonPrivateMethods
+            Set<String> nonPrivateMethods, Consumer<CohesionAnalysisResult> resultConsumer
                 );
 }

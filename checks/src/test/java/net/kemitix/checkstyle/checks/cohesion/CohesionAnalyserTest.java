@@ -33,7 +33,7 @@ public class CohesionAnalyserTest {
         fieldsAccessByMethod = new HashMap<>();
         methodsInvokedByMethod = new HashMap<>();
         nonPrivateMethods = new HashSet<>();
-        analyser = new DefaultCohesionAnalyser(r -> analysisResult = r);
+        analyser = new DefaultCohesionAnalyser();
     }
 
     @Test
@@ -46,7 +46,7 @@ public class CohesionAnalyserTest {
         fieldsAccessByMethod.put(beanMethod, Sets.newHashSet("value"));
         fieldsAccessByMethod.put(nonBeanMethod, Sets.newHashSet("other"));
         //when
-        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods);
+        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, r -> analysisResult = r);
         //then
         assertThat(analysisResult.getNonBeanMethods()).containsExactly(nonBeanMethod);
     }

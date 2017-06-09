@@ -1,7 +1,9 @@
 package net.kemitix.checkstyle.checks.cohesion;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import spoon.processing.AbstractProcessor;
+import spoon.processing.Processor;
 import spoon.reflect.code.CtFieldAccess;
 import spoon.reflect.code.CtInvocation;
 import spoon.reflect.declaration.CtClass;
@@ -15,6 +17,7 @@ import spoon.reflect.visitor.Filter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,12 +26,30 @@ import java.util.stream.Stream;
  *
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 class SpoonCohesionProcessor extends AbstractProcessor<CtClass> {
 
     private final Filter<CtInvocation> methodsInvokedFilter;
 
     private final CohesionAnalyser cohesionAnalyser;
+
+    private final Consumer<CohesionAnalysisResult> resultConsumer;
+
+    /**
+     * Create a new instance of SpoonCohesionProcessor.
+     *
+     * @param invocationFilter filter to select methods that are invoked
+     * @param cohesionAnalyser analyser to examine field usage by each method
+     * @param resultConsumer   consumer to process the results
+     *
+     * @return a Spoon Processor for processing each class file
+     */
+    static Processor<CtClass> create(
+            final Filter<CtInvocation> invocationFilter, final CohesionAnalyser cohesionAnalyser,
+            final Consumer<CohesionAnalysisResult> resultConsumer
+                                    ) {
+        return new SpoonCohesionProcessor(invocationFilter, cohesionAnalyser, resultConsumer);
+    }
 
     @Override
     public void process(final CtClass theClass) {
@@ -40,7 +61,7 @@ class SpoonCohesionProcessor extends AbstractProcessor<CtClass> {
             methodsInvoked.put(signature, getMethodsInvoked(method));
         });
         final Set<String> nonPrivateMethods = getNonPrivateMethods(theClass);
-        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods);
+        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods, resultConsumer);
     }
 
     private Set<String> getNonPrivateMethods(final CtClass element) {
