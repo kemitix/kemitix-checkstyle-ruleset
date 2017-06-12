@@ -42,5 +42,10 @@ interface CheckstyleExecutor {
      */
     void performCheck(CheckConfiguration configuration) throws MojoExecutionException, MojoFailureException;
 
+    /**
+     * Set the logger to use.
+     *
+     * @param log the logger.
+     */
     void setLog(Log log);
 }

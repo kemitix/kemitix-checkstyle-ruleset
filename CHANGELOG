@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+3.2.0
+-----
+
+* Restructure module parent poms
+* Upgrade kemitix-parent to 3.0.0
+* CheckMojo: provide name for parameter 'level'
+* Normalise maven pom names
+* circle.yml: added
+* travis-ci: publish code coverate to codecov
+* Add level 0 Disabled
+
 3.1.0
 -----
 

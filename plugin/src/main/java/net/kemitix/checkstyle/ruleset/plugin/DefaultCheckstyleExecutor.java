@@ -53,6 +53,7 @@ import java.util.Properties;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
+@SuppressWarnings("classfanoutcomplexity")
 @RequiredArgsConstructor
 public class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 

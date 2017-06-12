@@ -3,26 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.kemitix</groupId>
+        <artifactId>kemitix-parent</artifactId>
+        <version>3.0.0</version>
+        <relativePath/>
+    </parent>
 
-    <groupId>net.kemitix</groupId>
     <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>3.1.0</version>
+    <version>3.2.0</version>
     <packaging>pom</packaging>
 
-    <name>Kemitix Checkstyle Ruleset (Parent)</name>
+    <name>Kemitix Checkstyle :: Ruleset :: Parent</name>
     <description>Parent POM for the Kemitix Checkstyle Ruleset and it's Builder</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
         <checkstyle.version>7.8</checkstyle.version>
         <sevntu.version>1.24.0</sevntu.version>
+
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.8.0</assertj.version>
     </properties>
@@ -31,9 +30,7 @@
         <module>builder</module>
         <module>ruleset</module>
         <module>plugin</module>
-        <module>plugin-sample</module>
         <module>regressions</module>
-        <module>sample-parent</module>
     </modules>
 
     <issueManagement>
@@ -51,90 +48,6 @@
 
     <inceptionYear>2016</inceptionYear>
 
-    <prerequisites>
-        <maven>3.0.4</maven>
-    </prerequisites>
-
-    <licenses>
-        <license>
-            <name>The MIT License (MIT)</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>Paul Campbell</name>
-            <email>pcampbell@kemitix.net</email>
-            <organization>Kemitix</organization>
-            <organizationUrl>https://github.com/kemitix/</organizationUrl>
-        </developer>
-    </developers>
-
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <!-- plugin sequence: javadoc, sources, gpg, deploy -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-javadoc-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-javadoc-plugin -->
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-source-plugin -->
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-                        <configuration>
-                            <passphrase>${gpg.passphrase}</passphrase>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-gpg-plugin -->
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <version>${maven-deploy-plugin.version}</version>
-                    </plugin><!-- maven deploy-plugin -->
-                </plugins>
-            </build>
-        </profile><!-- release -->
-    </profiles>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -150,16 +63,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>

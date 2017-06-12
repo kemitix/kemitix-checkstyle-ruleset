@@ -27,6 +27,7 @@ The `maven-checkstyle-plugin` will be included automatically.
 
 The following levels implement increasingly strict rulesets:
 
+* 0-disabled
 * 1-layout
 * 2-naming
 * 3-javadoc
