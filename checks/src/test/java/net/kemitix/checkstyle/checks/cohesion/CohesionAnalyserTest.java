@@ -43,8 +43,14 @@ public class CohesionAnalyserTest {
         nonPrivateMethods.add(beanMethod);
         final String nonBeanMethod = "java.lang.String nonBean()";
         nonPrivateMethods.add(nonBeanMethod);
+        final String booleanBeanMethod = "java.lang.Boolean isEnabled()";
+        nonPrivateMethods.add(booleanBeanMethod);
+        final String primitiveBooleanBeanMethod = "boolean isValid()";
+        nonPrivateMethods.add(primitiveBooleanBeanMethod);
         fieldsAccessByMethod.put(beanMethod, Sets.newHashSet("value"));
         fieldsAccessByMethod.put(nonBeanMethod, Sets.newHashSet("other"));
+        fieldsAccessByMethod.put(booleanBeanMethod, Sets.newHashSet("enabled"));
+        fieldsAccessByMethod.put(primitiveBooleanBeanMethod, Sets.newHashSet("valid"));
         //when
         analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, r -> analysisResult = r);
         //then
