@@ -26,7 +26,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -43,37 +42,11 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
             final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
             final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
-        methodsInvoked.entrySet()
-                      .stream()
-                      .filter(ignoreBeanMethods(fieldsAccessed))
-                      .forEach(e -> mergeFieldsInInvokedMethods(e.getKey(), e.getValue(), fieldsAccessed,
-                                                                methodsInvoked
-                                                               ));
         final CohesionAnalysisResult result = new CohesionAnalysisResult();
         result.addNonBeanMethods(nonPrivateMethods.stream()
-                                       .filter(m -> isNotBeanMethod(m, fieldsAccessed.get(m)))
-                                       .collect(Collectors.toSet()));
+                                                  .filter(m -> isNotBeanMethod(m, fieldsAccessed.get(m)))
+                                                  .collect(Collectors.toSet()));
         resultConsumer.accept(result);
-    }
-
-    private void mergeFieldsInInvokedMethods(
-            final String method, final Set<String> invocations, final Map<String, Set<String>> fieldsAccessed,
-            final Map<String, Set<String>> methodsInvoked
-                                            ) {
-        invocations.forEach(i -> fieldsAccessed.get(method)
-                                               .addAll(fieldsAccessed.get(i)));
-        invocations.forEach(
-                i -> mergeFieldsInInvokedMethods(method, methodsInvoked.get(i), fieldsAccessed, methodsInvoked));
-    }
-
-    private Predicate<? super Map.Entry<String, Set<String>>> ignoreBeanMethods(
-            final Map<String, Set<String>> fieldsAccessed
-                                                                               ) {
-        return f -> {
-            final String method = f.getKey();
-            final Set<String> fields = fieldsAccessed.get(method);
-            return isNotBeanMethod(method, fields);
-        };
     }
 
     private boolean isNotBeanMethod(final String method, final Set<String> fields) {
