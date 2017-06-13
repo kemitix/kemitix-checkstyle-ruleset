@@ -41,7 +41,11 @@ import java.util.function.Consumer;
 @RequiredArgsConstructor
 class SpoonCohesionCheckService implements CohesionCheckService {
 
-    private final Filter<CtInvocation> invocationFilter = new SpoonInvocationFilter();
+    private final Filter<CtInvocation> invocationFilter = element -> element.getParent(CtClass.class)
+                                                                            .getQualifiedName()
+                                                                            .equals(element.getExecutable()
+                                                                                           .getDeclaringType()
+                                                                                           .toString());
 
     private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
 
