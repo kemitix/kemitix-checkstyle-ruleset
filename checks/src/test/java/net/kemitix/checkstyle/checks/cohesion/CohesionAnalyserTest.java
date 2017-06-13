@@ -1,11 +1,13 @@
 package net.kemitix.checkstyle.checks.cohesion;
 
-import com.google.common.collect.Sets;
+import org.assertj.core.util.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,14 +49,22 @@ public class CohesionAnalyserTest {
         nonPrivateMethods.add(booleanBeanMethod);
         final String primitiveBooleanBeanMethod = "boolean isValid()";
         nonPrivateMethods.add(primitiveBooleanBeanMethod);
-        fieldsAccessByMethod.put(beanMethod, Sets.newHashSet("value"));
-        fieldsAccessByMethod.put(nonBeanMethod, Sets.newHashSet("other"));
-        fieldsAccessByMethod.put(booleanBeanMethod, Sets.newHashSet("enabled"));
-        fieldsAccessByMethod.put(primitiveBooleanBeanMethod, Sets.newHashSet("valid"));
+        fieldsAccessByMethod.put(beanMethod, setOf("value"));
+        fieldsAccessByMethod.put(nonBeanMethod, setOf("other"));
+        fieldsAccessByMethod.put(booleanBeanMethod, setOf("enabled"));
+        fieldsAccessByMethod.put(primitiveBooleanBeanMethod, setOf("valid"));
         //when
-        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, r -> analysisResult = r);
+        performAnalysis();
         //then
         assertThat(analysisResult.getNonBeanMethods()).containsExactly(nonBeanMethod);
+    }
+
+    private HashSet<String> setOf(final String... values) {
+        return Sets.newHashSet(Arrays.asList(values));
+    }
+
+    private void performAnalysis() {
+        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, r -> analysisResult = r);
     }
 
 }
