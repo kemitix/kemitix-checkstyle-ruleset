@@ -63,4 +63,20 @@ public class CohesionAnalyserTest {
         analyser.analyse(usedByMethod, nonPrivateMethods, r -> analysisResult = r);
     }
 
+    @Test
+    public void canDetectASingleComponentFromASingleMethodAndField() {
+        //given
+        final String method = "java.lang.String getValue()";
+        nonPrivateMethods.add(method);
+        final String fieldName = "fieldName";
+        usedByMethod.put(method, setOf(fieldName));
+        //when
+        performAnalysis();
+        //then
+        final Set<Component> components = analysisResult.getComponents();
+        assertThat(components).hasSize(1);
+        final Component component = components.toArray(new Component[]{})[0];
+        assertThat(component.getMembers()).containsExactlyInAnyOrder(method, fieldName);
+    }
+
 }

@@ -32,7 +32,15 @@ import java.util.function.Consumer;
  */
 interface CohesionAnalyser {
 
+    /**
+     * Analyse the cohesion of a class from the items used by each method.
+     *
+     * @param usedByMethod      a map of fields and methods used grouped by each method
+     * @param nonPrivateMethods a list of methods
+     * @param resultConsumer    the consumer to give results to
+     */
     void analyse(
-            Map<String, Set<String>> usedByMethod, Set<String> nonPrivateMethods, Consumer<CohesionAnalysisResult> resultConsumer
+            Map<String, Set<String>> usedByMethod, Set<String> nonPrivateMethods,
+            Consumer<CohesionAnalysisResult> resultConsumer
                 );
 }

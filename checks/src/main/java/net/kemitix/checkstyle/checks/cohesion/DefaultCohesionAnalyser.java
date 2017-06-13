@@ -21,9 +21,12 @@
 
 package net.kemitix.checkstyle.checks.cohesion;
 
+import com.google.common.collect.Sets;
 import lombok.RequiredArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -42,10 +45,59 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
             final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
         final CohesionAnalysisResult result = new CohesionAnalysisResult();
-        result.addNonBeanMethods(nonPrivateMethods.stream()
-                                                  .filter(m -> isNotBeanMethod(m, usedByMethod.get(m)))
-                                                  .collect(Collectors.toSet()));
+        result.addNonBeanMethods(getNonBeanNonPrivateMethods(usedByMethod, nonPrivateMethods));
+        result.addComponents(findComponents(usedByMethod));
         resultConsumer.accept(result);
+    }
+
+    private Set<String> getNonBeanNonPrivateMethods(
+            final Map<String, Set<String>> usedByMethod, final Set<String> nonPrivateMethods
+                                                   ) {
+        return nonPrivateMethods.stream()
+                                .filter(m -> isNotBeanMethod(m, usedByMethod.get(m)))
+                                .collect(Collectors.toSet());
+    }
+
+    private Set<Component> findComponents(final Map<String, Set<String>> usedByMethod) {
+        final Set<Component> components = usedByMethodAsComponents(usedByMethod);
+        return mergeComponents(components);
+    }
+
+    private Set<Component> usedByMethodAsComponents(final Map<String, Set<String>> usedByMethod) {
+        return usedByMethod.entrySet()
+                           .stream()
+                           .map(this::componentFromEntry)
+                           .collect(Collectors.toSet());
+    }
+
+    private Set<Component> mergeComponents(final Set<Component> components) {
+        final Set<Component> merged = new HashSet<>();
+        components.forEach(component -> {
+            final Optional<Component> existing = merged.stream()
+                                                       .filter(target -> overlap(component, target))
+                                                       .findFirst();
+            if (existing.isPresent()) {
+                existing.get()
+                        .merge(component);
+            } else {
+                merged.add(component);
+            }
+        });
+        return merged;
+    }
+
+    private boolean overlap(final Component a, final Component b) {
+        final Set<String> aMembers = a.getMembers();
+        final Set<String> bMembers = b.getMembers();
+        final boolean hasCommonMembers = Sets.intersection(aMembers, bMembers)
+                                             .isEmpty();
+        return !hasCommonMembers;
+    }
+
+    private Component componentFromEntry(final Map.Entry<String, Set<String>> entry) {
+        final Set<String> members = new HashSet<>(entry.getValue());
+        members.add(entry.getKey());
+        return Component.from(members);
     }
 
     private boolean isNotBeanMethod(final String method, final Set<String> fields) {
@@ -53,14 +105,10 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
     }
 
     private boolean isBeanMethod(final String method, final Set<String> fields) {
-        final String methodName = method.toLowerCase();
         if (fields.size() == 1) {
             final String fieldAccessed = fields.toArray(new String[1])[0];
-            if (isBeanMethod(methodName, fieldAccessed)) {
-                return true;
-            } else {
-                return false;
-            }
+            final String methodName = method.toLowerCase();
+            return isBeanMethod(methodName, fieldAccessed);
         } else {
             return false;
         }
@@ -71,9 +119,9 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
     }
 
     private boolean isGetter(final String method, final String field) {
-        final boolean isPlainGetter = method.endsWith(" get" + field + "()");
-        final boolean isBooleanGetter = method.equals("java.lang.boolean is" + field + "()");
-        final boolean isPrimitiveBooleanGetter = method.equals("boolean is" + field + "()");
+        final boolean isPlainGetter = method.endsWith(String.format(" get%s()", field));
+        final boolean isBooleanGetter = String.format("java.lang.boolean is%s()", field).equals(method);
+        final boolean isPrimitiveBooleanGetter = String.format("boolean is%s()", field).equals(method);
         return isPlainGetter || isBooleanGetter || isPrimitiveBooleanGetter;
     }
 

@@ -21,54 +21,47 @@
 
 package net.kemitix.checkstyle.checks.cohesion;
 
-import java.util.Collections;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Represents the results of performing a Cohesive Analysis on a class.
+ * Prepresents a collections of cohesive methods and fields within a class.
  *
- * @author Paul Campbell (pcampbell@kemitix.net)
+ * @author Paul Campbell (pcampbell@kemitix.net).
  */
-public final class CohesionAnalysisResult {
+class Component {
 
-    private Set<String> nonBeanMethods = new HashSet<>();
-
-    private Set<Component> components = new HashSet<>();
+    private Set<String> members = new HashSet<>();
 
     /**
-     * Gets the components found within a class.
+     * Create a new component consisting of the members.
      *
-     * @return a set of components
+     * @param members the members
+     *
+     * @return the new component
      */
-    Set<Component> getComponents() {
-        return Collections.unmodifiableSet(components);
+    public static Component from(final Collection<String> members) {
+        final Component component = new Component();
+        component.members.addAll(members);
+        return component;
     }
 
     /**
-     * Gets the non-bean methods of a class.
+     * Get the existing members of the component.
      *
-     * @return a set of method signatures
+     * @return a set of members
      */
-    Set<String> getNonBeanMethods() {
-        return Collections.unmodifiableSet(nonBeanMethods);
+    Set<String> getMembers() {
+        return new HashSet<>(members);
     }
 
     /**
-     * Add the methods.
+     * Merge the component into this.
      *
-     * @param methods the methods to add
+     * @param component the component to merge
      */
-    void addNonBeanMethods(final Set<String> methods) {
-        nonBeanMethods.addAll(methods);
-    }
-
-    /**
-     * Add the components.
-     *
-     * @param items the components to add
-     */
-    void addComponents(final Set<Component> items) {
-        components.addAll(items);
+    void merge(final Component component) {
+        members.addAll(component.getMembers());
     }
 }
