@@ -50,8 +50,7 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
                                                                 methodsInvoked
                                                                ));
         final CohesionAnalysisResult result = new CohesionAnalysisResult();
-        result.getNonBeanMethods()
-              .addAll(nonPrivateMethods.stream()
+        result.addNonBeanMethods(nonPrivateMethods.stream()
                                        .filter(m -> isNotBeanMethod(m, fieldsAccessed.get(m)))
                                        .collect(Collectors.toSet()));
         resultConsumer.accept(result);

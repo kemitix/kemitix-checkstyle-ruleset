@@ -21,8 +21,6 @@
 
 package net.kemitix.checkstyle.checks.cohesion;
 
-import lombok.Getter;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +31,13 @@ import java.util.Set;
  */
 public class CohesionAnalysisResult {
 
-    @Getter
     private Set<String> nonBeanMethods = new HashSet<>();
 
+    Set<String> getNonBeanMethods() {
+        return new HashSet<>(nonBeanMethods);
+    }
+
+    void addNonBeanMethods(final Set<String> methods) {
+        nonBeanMethods.addAll(methods);
+    }
 }
