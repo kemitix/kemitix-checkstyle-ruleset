@@ -33,7 +33,6 @@ import java.util.function.Consumer;
 interface CohesionAnalyser {
 
     void analyse(
-            Map<String, Set<String>> fieldsAccessedByMethod, Map<String, Set<String>> methodsInvokedByMethod,
-            Set<String> nonPrivateMethods, Consumer<CohesionAnalysisResult> resultConsumer
+            Map<String, Set<String>> usedByMethod, Set<String> nonPrivateMethods, Consumer<CohesionAnalysisResult> resultConsumer
                 );
 }

@@ -36,15 +36,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class DefaultCohesionAnalyser implements CohesionAnalyser {
 
-
     @Override
     public void analyse(
-            final Map<String, Set<String>> fieldsAccessed, final Map<String, Set<String>> methodsInvoked,
-            final Set<String> nonPrivateMethods, final Consumer<CohesionAnalysisResult> resultConsumer
+            final Map<String, Set<String>> usedByMethod, final Set<String> nonPrivateMethods,
+            final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
         final CohesionAnalysisResult result = new CohesionAnalysisResult();
         result.addNonBeanMethods(nonPrivateMethods.stream()
-                                                  .filter(m -> isNotBeanMethod(m, fieldsAccessed.get(m)))
+                                                  .filter(m -> isNotBeanMethod(m, usedByMethod.get(m)))
                                                   .collect(Collectors.toSet()));
         resultConsumer.accept(result);
     }

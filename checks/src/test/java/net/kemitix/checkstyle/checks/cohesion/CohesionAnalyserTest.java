@@ -7,7 +7,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,9 +21,7 @@ public class CohesionAnalyserTest {
 
     private CohesionAnalyser analyser;
 
-    private Map<String, Set<String>> fieldsAccessByMethod;
-
-    private Map<String, Set<String>> methodsInvokedByMethod;
+    private Map<String, Set<String>> usedByMethod;
 
     private Set<String> nonPrivateMethods;
 
@@ -32,8 +29,7 @@ public class CohesionAnalyserTest {
 
     @Before
     public void setUp() {
-        fieldsAccessByMethod = new HashMap<>();
-        methodsInvokedByMethod = new HashMap<>();
+        usedByMethod = new HashMap<>();
         nonPrivateMethods = new HashSet<>();
         analyser = new DefaultCohesionAnalyser();
     }
@@ -49,10 +45,10 @@ public class CohesionAnalyserTest {
         nonPrivateMethods.add(booleanBeanMethod);
         final String primitiveBooleanBeanMethod = "boolean isValid()";
         nonPrivateMethods.add(primitiveBooleanBeanMethod);
-        fieldsAccessByMethod.put(beanMethod, setOf("value"));
-        fieldsAccessByMethod.put(nonBeanMethod, setOf("other"));
-        fieldsAccessByMethod.put(booleanBeanMethod, setOf("enabled"));
-        fieldsAccessByMethod.put(primitiveBooleanBeanMethod, setOf("valid"));
+        usedByMethod.put(beanMethod, setOf("value"));
+        usedByMethod.put(nonBeanMethod, setOf("other"));
+        usedByMethod.put(booleanBeanMethod, setOf("enabled"));
+        usedByMethod.put(primitiveBooleanBeanMethod, setOf("valid"));
         //when
         performAnalysis();
         //then
@@ -64,7 +60,7 @@ public class CohesionAnalyserTest {
     }
 
     private void performAnalysis() {
-        analyser.analyse(fieldsAccessByMethod, methodsInvokedByMethod, nonPrivateMethods, r -> analysisResult = r);
+        analyser.analyse(usedByMethod, nonPrivateMethods, r -> analysisResult = r);
     }
 
 }

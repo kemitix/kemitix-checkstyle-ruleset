@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.checks.cohesion;
 
+import com.google.common.collect.Sets;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import spoon.processing.AbstractProcessor;
@@ -14,7 +15,7 @@ import spoon.reflect.reference.CtExecutableReference;
 import spoon.reflect.reference.CtReference;
 import spoon.reflect.visitor.Filter;
 
-import java.util.HashMap;
+import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -53,15 +54,22 @@ class SpoonCohesionProcessor extends AbstractProcessor<CtClass> {
 
     @Override
     public void process(final CtClass theClass) {
-        final Map<String, Set<String>> fieldsAccessed = new HashMap<>();
-        final Map<String, Set<String>> methodsInvoked = new HashMap<>();
-        getMethods(theClass).forEach(method -> {
-            final String signature = method.getSignature();
-            fieldsAccessed.put(signature, getFieldsAccessed(method));
-            methodsInvoked.put(signature, getMethodsInvoked(method));
-        });
+        final Map<String, Set<String>> usedByMethod = getItemsUsedByEachMethod(theClass);
         final Set<String> nonPrivateMethods = getNonPrivateMethods(theClass);
-        cohesionAnalyser.analyse(fieldsAccessed, methodsInvoked, nonPrivateMethods, resultConsumer);
+        cohesionAnalyser.analyse(usedByMethod, nonPrivateMethods, resultConsumer);
+    }
+
+    private Map<String, Set<String>> getItemsUsedByEachMethod(final CtClass theClass) {
+        return getMethods(theClass).map(this::getItemsUsed)
+                                   .collect(Collectors.toMap(AbstractMap.SimpleEntry::getKey,
+                                                             AbstractMap.SimpleEntry::getValue
+                                                            ));
+    }
+
+    private AbstractMap.SimpleEntry<String, Set<String>> getItemsUsed(final CtMethod<?> method) {
+        return new AbstractMap.SimpleEntry<>(method.getSignature(),
+                                             Sets.union(getFieldsAccessed(method), getMethodsInvoked(method))
+        );
     }
 
     private Set<String> getNonPrivateMethods(final CtClass element) {
