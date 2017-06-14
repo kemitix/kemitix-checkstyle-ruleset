@@ -12,4 +12,8 @@ public class SimpleClass {
         return field;
     }
 
+    private void dummy() {
+        field = "";
+    }
+
 }
