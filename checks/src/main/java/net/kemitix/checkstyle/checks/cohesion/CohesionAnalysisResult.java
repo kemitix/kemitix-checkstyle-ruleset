@@ -21,9 +21,13 @@
 
 package net.kemitix.checkstyle.checks.cohesion;
 
+import com.google.common.collect.Sets;
+
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Represents the results of performing a Cohesive Analysis on a class.
@@ -31,6 +35,8 @@ import java.util.Set;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 public final class CohesionAnalysisResult {
+
+    public static final String DELIMITER = ", ";
 
     private Set<String> nonBeanMethods = new HashSet<>();
 
@@ -41,7 +47,7 @@ public final class CohesionAnalysisResult {
      *
      * @return a set of components
      */
-    Set<Component> getComponents() {
+    public Set<Component> getComponents() {
         return Collections.unmodifiableSet(components);
     }
 
@@ -70,5 +76,23 @@ public final class CohesionAnalysisResult {
      */
     void addComponents(final Set<Component> items) {
         components.addAll(items);
+    }
+
+    /**
+     * Get the non-private methods of each found component as a formatted string.
+     *
+     * @return a string
+     */
+    public String getPartitionedNonPrivateMethods() {
+        return components.stream()
+                         .map(component -> "[" + String.join(DELIMITER, getNonPrivateMethods(component)) + "]")
+                         .collect(Collectors.joining(DELIMITER));
+    }
+
+    private List<String> getNonPrivateMethods(final Component component) {
+        return Sets.intersection(component.getMembers(), getNonBeanMethods())
+                   .stream()
+                   .sorted()
+                   .collect(Collectors.toList());
     }
 }

@@ -23,6 +23,8 @@ package net.kemitix.checkstyle.checks;
 
 import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+import com.puppycrawl.tools.checkstyle.api.Configuration;
+import lombok.SneakyThrows;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalysisResult;
 import net.kemitix.checkstyle.checks.cohesion.CohesionCheckService;
 
@@ -43,7 +45,17 @@ import java.util.List;
  */
 public class CohesionCheck extends AbstractFileSetCheck {
 
-    private final CohesionCheckService cohesionCheckService = CohesionCheckService.create();
+    private CohesionCheckService cohesionCheckService;
+
+    @Override
+    @SneakyThrows
+    protected final void setupChild(final Configuration childConf) throws CheckstyleException {
+        final String cohesionCheckServiceClass = childConf.getAttribute("cohesionCheckServiceClass");
+            cohesionCheckService = (CohesionCheckService) this.getClass()
+                                                              .getClassLoader()
+                                                              .loadClass(cohesionCheckServiceClass)
+                                                              .newInstance();
+    }
 
     @Override
     protected final void processFiltered(final File file, final List<String> lines) throws CheckstyleException {
@@ -51,7 +63,10 @@ public class CohesionCheck extends AbstractFileSetCheck {
     }
 
     private void resultConsumer(final CohesionAnalysisResult result) {
-        //log any errors:
-        //log(1, "cohesion.partitioned", ...);
+        final int size = result.getComponents()
+                               .size();
+        if (size > 1) {
+            log(1, "cohesion.partitioned", size, result.getPartitionedNonPrivateMethods());
+        }
     }
 }

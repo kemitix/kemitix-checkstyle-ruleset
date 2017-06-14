@@ -32,15 +32,6 @@ import java.util.function.Consumer;
 public interface CohesionCheckService {
 
     /**
-     * Creates a new instance of the {@code CohesionCheckService}.
-     *
-     * @return a new CohesionCheckService instance
-     */
-    static CohesionCheckService create() {
-        return new SpoonCohesionCheckService();
-    }
-
-    /**
      * Performs the cohesion check on the given file, passing results to the consumer.
      *
      * @param file           the file to check

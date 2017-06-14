@@ -66,6 +66,7 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
     private Set<Component> usedByMethodAsComponents(final Map<String, Set<String>> usedByMethod) {
         return usedByMethod.entrySet()
                            .stream()
+                           .filter(e -> isNotBeanMethod(e.getKey(), usedByMethod.get(e.getKey())))
                            .map(this::componentFromEntry)
                            .collect(Collectors.toSet());
     }

@@ -21,7 +21,6 @@
 
 package net.kemitix.checkstyle.checks.cohesion;
 
-import lombok.RequiredArgsConstructor;
 import spoon.Launcher;
 import spoon.SpoonAPI;
 import spoon.processing.Processor;
@@ -38,8 +37,7 @@ import java.util.function.Consumer;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-@RequiredArgsConstructor
-class SpoonCohesionCheckService implements CohesionCheckService {
+public class SpoonCohesionCheckService implements CohesionCheckService {
 
     private final Filter<CtInvocation> invocationFilter = element -> element.getParent(CtClass.class)
                                                                             .getQualifiedName()
@@ -50,7 +48,7 @@ class SpoonCohesionCheckService implements CohesionCheckService {
     private final CohesionAnalyser cohesionAnalyser = new DefaultCohesionAnalyser();
 
     @Override
-    public void check(final File file, final Consumer<CohesionAnalysisResult> resultConsumer) {
+    public final void check(final File file, final Consumer<CohesionAnalysisResult> resultConsumer) {
         final CtModel model = modelForFile(file);
         final Processor<CtClass> cohesionProcessor = cohesionProcessor(resultConsumer);
         model.processWith(cohesionProcessor);

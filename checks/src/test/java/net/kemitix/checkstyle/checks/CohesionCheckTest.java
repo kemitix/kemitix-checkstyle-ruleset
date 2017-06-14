@@ -5,8 +5,8 @@ import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
+import net.kemitix.checkstyle.checks.cohesion.SpoonCohesionCheckService;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -42,7 +42,11 @@ public class CohesionCheckTest {
         MockitoAnnotations.initMocks(this);
         final DefaultConfiguration configuration = new DefaultConfiguration("configuration");
         configuration.addAttribute("charset", "UTF-8");
-        configuration.addChild(new DefaultConfiguration(CohesionCheck.class.getName()));
+        final DefaultConfiguration cohesionModule = new DefaultConfiguration(CohesionCheck.class.getName());
+        final DefaultConfiguration cohesionConfiguration = new DefaultConfiguration("config");
+        cohesionConfiguration.addAttribute("cohesionCheckServiceClass", SpoonCohesionCheckService.class.getName());
+        cohesionModule.addChild(cohesionConfiguration);
+        configuration.addChild(cohesionModule);
         checker = new Checker();
         checker.setModuleClassLoader(Thread.currentThread()
                                            .getContextClassLoader());
@@ -94,8 +98,7 @@ public class CohesionCheckTest {
     }
 
     @Test
-    @Ignore("not implemented yet")
-    public void shouldAuditPartitionedClassWithError() throws CheckstyleException {
+    public void canAuditPartitionedClassGivingError() throws CheckstyleException {
         //given
         final String className = "SimplePartitionedClass.java";
         final List<File> files = fileListForClass(className);
@@ -103,7 +106,9 @@ public class CohesionCheckTest {
         checker.process(files);
         //then
         startFileAudit(className);
-        hasErrorMessage("Class is partitioned by fields: [counter], [message]");
+        hasErrorMessage("Class has 2 components composed of:");
+        hasErrorMessage("[int counter(), void increment()]");
+        hasErrorMessage("[java.lang.String getFullFormat(), java.lang.String sayHello(java.lang.String)]");
         finishFileAudit(className);
     }
 
@@ -111,7 +116,7 @@ public class CohesionCheckTest {
         then(listener).should()
                       .addError(auditEvent.capture());
         final AuditEvent event = auditEvent.getValue();
-        assertThat(event).returns(CohesionCheck.class.getName(), AuditEvent::getSourceName)
-                         .returns(expectedMessage, AuditEvent::getMessage);
+        assertThat(event).returns(CohesionCheck.class.getName(), AuditEvent::getSourceName);
+        assertThat(event.getMessage()).contains(expectedMessage);
     }
 }
