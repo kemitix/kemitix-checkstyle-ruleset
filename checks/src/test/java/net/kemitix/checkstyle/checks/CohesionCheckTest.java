@@ -5,7 +5,6 @@ import com.puppycrawl.tools.checkstyle.DefaultConfiguration;
 import com.puppycrawl.tools.checkstyle.api.AuditEvent;
 import com.puppycrawl.tools.checkstyle.api.AuditListener;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
-import net.kemitix.checkstyle.checks.cohesion.SpoonCohesionCheckService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -42,11 +41,7 @@ public class CohesionCheckTest {
         MockitoAnnotations.initMocks(this);
         final DefaultConfiguration configuration = new DefaultConfiguration("configuration");
         configuration.addAttribute("charset", "UTF-8");
-        final DefaultConfiguration cohesionModule = new DefaultConfiguration(CohesionCheck.class.getName());
-        final DefaultConfiguration cohesionConfiguration = new DefaultConfiguration("config");
-        cohesionConfiguration.addAttribute("cohesionCheckServiceClass", SpoonCohesionCheckService.class.getName());
-        cohesionModule.addChild(cohesionConfiguration);
-        configuration.addChild(cohesionModule);
+        configuration.addChild(new DefaultConfiguration(CohesionCheck.class.getName()));
         checker = new Checker();
         checker.setModuleClassLoader(Thread.currentThread()
                                            .getContextClassLoader());
