@@ -34,5 +34,6 @@ public enum RuleLevel {
     JAVADOC,
     TWEAKS,
     COMPLEXITY,
+    EXPERIMENTAL,
     UNSPECIFIED,
 }

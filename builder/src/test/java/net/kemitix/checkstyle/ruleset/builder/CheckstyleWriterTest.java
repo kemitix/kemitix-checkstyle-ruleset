@@ -73,6 +73,7 @@ public class CheckstyleWriterTest {
                                                          .put(getOutputFile(RuleLevel.JAVADOC))
                                                          .put(getOutputFile(RuleLevel.TWEAKS))
                                                          .put(getOutputFile(RuleLevel.COMPLEXITY))
+                                                         .put(getOutputFile(RuleLevel.EXPERIMENTAL))
                                                          .build();
         outputProperties.setRulesetFiles(outputFiles);
         outputDirectory = folder.newFolder()

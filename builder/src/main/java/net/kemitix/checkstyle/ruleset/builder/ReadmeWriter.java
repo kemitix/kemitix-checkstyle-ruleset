@@ -59,13 +59,33 @@ class ReadmeWriter implements CommandLineRunner {
         final String readmeTemplate = readFile(templateProperties.getReadmeTemplate());
         final String enabledCheckstyle = readmeRules(this::isEnabledCheckstyleRule);
         final String enabledSevntu = readmeRules(this::isEnabledSevntuRule);
+        final String enabledKemitix = readmeRules(this::isEnabledKemitix);
         final String disabledCheckstyle = readmeRules(this::isDisabledCheckstyleRule);
         final String disabledSevntu = readmeRules(this::isDisabledSevntuRule);
-        final byte[] readme = String.format(readmeTemplate, indexBuilder.build(), enabledCheckstyle, enabledSevntu,
-                                            disabledCheckstyle, disabledSevntu
-                                           )
-                                    .getBytes(StandardCharsets.UTF_8);
+        final byte[] readme =
+                String.format(readmeTemplate, indexBuilder.build(), enabledCheckstyle, enabledSevntu, enabledKemitix,
+                              disabledCheckstyle, disabledSevntu
+                             )
+                      .getBytes(StandardCharsets.UTF_8);
         Files.write(outputProperties.getReadme(), readme, StandardOpenOption.TRUNCATE_EXISTING);
+    }
+
+    private String readmeRules(final Predicate<Rule> predicate) {
+        return rulesProperties.getRules()
+                              .stream()
+                              .filter(predicate)
+                              .sorted(Rule::sortByName)
+                              .flatMap(ruleReadmeLoader::load)
+                              .collect(Collectors.joining(NEWLINE));
+    }
+
+    private String readFile(final Path file) throws IOException {
+        return Files.lines(file, StandardCharsets.UTF_8)
+                    .collect(Collectors.joining(NEWLINE));
+    }
+
+    private boolean isEnabledKemitix(final Rule rule) {
+        return rule.isEnabled() && RuleSource.KEMITIX.equals(rule.getSource());
     }
 
     private boolean isEnabledSevntuRule(final Rule rule) {
@@ -82,20 +102,6 @@ class ReadmeWriter implements CommandLineRunner {
 
     private boolean isDisabledCheckstyleRule(final Rule rule) {
         return !rule.isEnabled() && RuleSource.CHECKSTYLE.equals(rule.getSource());
-    }
-
-    private String readmeRules(final Predicate<Rule> predicate) {
-        return rulesProperties.getRules()
-                              .stream()
-                              .filter(predicate)
-                              .sorted(Rule::sortByName)
-                              .flatMap(ruleReadmeLoader::load)
-                              .collect(Collectors.joining(NEWLINE));
-    }
-
-    private String readFile(final Path file) throws IOException {
-        return Files.lines(file, StandardCharsets.UTF_8)
-                    .collect(Collectors.joining(NEWLINE));
     }
 
 }

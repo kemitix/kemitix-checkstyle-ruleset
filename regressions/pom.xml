@@ -14,7 +14,7 @@
 
     <properties>
         <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
-        <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
+        <kemitix-checkstyle-ruleset.level>6-experimental</kemitix-checkstyle-ruleset.level>
         <pitest.skip>true</pitest.skip>
         <immutables.version>2.4.4</immutables.version>
     </properties>

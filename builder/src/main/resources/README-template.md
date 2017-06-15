@@ -10,6 +10,7 @@ The ruleset includes checks from both the core Checkstyle library and from the S
 * [Enabled Checks](#enabled-checks)
     * [Checkstyle](#checkstyle)
     * [Sevntu](#sevntu)
+    * [Kemitix](#kemitix)
 * [Disabled Checks](#disabled-checks)
     * [Checkstyle](#checkstyle-1)
     * [Sevntu](#sevntu-1)
@@ -86,6 +87,10 @@ Rules are listed in alphabetical order.
 %s
 
 ### Sevntu
+
+%s
+
+### Kemitix
 
 %s
 

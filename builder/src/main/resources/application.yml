@@ -7,12 +7,20 @@ output:
         JAVADOC: checkstyle-3-javadoc.xml
         TWEAKS: checkstyle-4-tweaks.xml
         COMPLEXITY: checkstyle-5-complexity.xml
+        EXPERIMENTAL: checkstyle-6-experimental.xml
     readme: README.md
 template:
     checkstyle-xml: builder/src/main/resources/checkstyle-template.xml
     readme-template: builder/src/main/resources/README-template.md
     readme-fragments: builder/src/main/resources/rules
 rules:
+    -
+        name: Cohesion
+        parent: CHECKER
+        level: EXPERIMENTAL
+        enabled: true
+        source: KEMITIX
+        uri: https://github.com/kemitix/kemitix-checkstyle-ruleset/blob/develop/README.md#cohesion
     -
         name: RegexpOnFilename
         parent: CHECKER

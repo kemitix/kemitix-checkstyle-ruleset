@@ -31,11 +31,11 @@ import lombok.Getter;
 public enum RuleSource {
 
     CHECKSTYLE("com.puppycrawl.tools.checkstyle"),
-    SEVNTU("com.github.sevntu.checkstyle.checks");
+    SEVNTU("com.github.sevntu.checkstyle.checks"),
+    KEMITIX("net.kemitix.checkstyle.checks");
 
     @Getter
     private final String basePackage;
-
 
     /**
      * Constructor.
