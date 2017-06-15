@@ -118,4 +118,17 @@ public class CohesionCheckTest {
         assertThat(event).returns(CohesionCheck.class.getName(), AuditEvent::getSourceName);
         assertThat(event.getMessage()).contains(expectedMessage);
     }
+
+    @Test
+    public void canAuditImmutableValueClass() throws CheckstyleException {
+        //given
+        final String className = "Values.java";
+        final List<File> files = fileListForClass(className);
+        //when
+        checker.process(files);
+        //then
+        startFileAudit(className);
+        hasNoErrors();
+        finishFileAudit(className);
+    }
 }
