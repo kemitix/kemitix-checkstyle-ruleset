@@ -58,9 +58,13 @@ public class CohesionCheckTest {
         checker.process(files);
         //then
         startFileAudit(className);
+        hasNoErrors();
+        finishFileAudit(className);
+    }
+
+    private void hasNoErrors() {
         then(listener).should(never())
                       .addError(any());
-        finishFileAudit(className);
     }
 
     private void startFileAudit(final String className) {
