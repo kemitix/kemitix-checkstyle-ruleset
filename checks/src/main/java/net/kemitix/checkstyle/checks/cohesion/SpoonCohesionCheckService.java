@@ -58,8 +58,7 @@ public class SpoonCohesionCheckService implements CohesionCheckService {
         final SpoonAPI spoon = new Launcher();
         spoon.addInputResource(file.getAbsolutePath());
         spoon.buildModel();
-        return spoon.getFactory()
-                    .getModel();
+        return spoon.getModel();
     }
 
     private Processor<CtClass> cohesionProcessor(final Consumer<CohesionAnalysisResult> resultConsumer) {
