@@ -1,5 +1,7 @@
 package net.kemitix.checkstyle.checks;
 
+import net.kemitix.checkstyle.checks.SimpleClass;
+
 class SimplePartitionedClass {
 
     private String left;
@@ -30,7 +32,7 @@ class SimplePartitionedClass {
         return left + format + right;
     }
 
-    public String sayHello(final String name) {
+    public String sayHello(final SimpleClass name) {
         return String.format(getFullFormat(), name);
     }
 
