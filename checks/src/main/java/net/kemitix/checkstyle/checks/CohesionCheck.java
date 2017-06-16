@@ -25,7 +25,7 @@ import com.puppycrawl.tools.checkstyle.api.AbstractFileSetCheck;
 import com.puppycrawl.tools.checkstyle.api.CheckstyleException;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalysisResult;
 import net.kemitix.checkstyle.checks.cohesion.CohesionCheckService;
-import net.kemitix.checkstyle.checks.cohesion.SpoonCohesionCheckService;
+import net.kemitix.checkstyle.checks.cohesion.JavaParserCohesionCheckService;
 
 import java.io.File;
 import java.util.List;
@@ -44,7 +44,7 @@ import java.util.List;
  */
 public class CohesionCheck extends AbstractFileSetCheck {
 
-    private final CohesionCheckService cohesionCheckService = new SpoonCohesionCheckService();
+    private final CohesionCheckService cohesionCheckService = new JavaParserCohesionCheckService();
 
     @Override
     protected final void processFiltered(final File file, final List<String> lines) throws CheckstyleException {

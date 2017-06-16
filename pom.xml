@@ -36,6 +36,7 @@
         <qdox.version>2.0-M5</qdox.version>
         <junit.version>4.12</junit.version>
         <spoon.version>5.7.0</spoon.version>
+        <javaparser-core.version>3.2.7</javaparser-core.version>
     </properties>
 
     <modules>
@@ -87,6 +88,11 @@
                 <groupId>fr.inria.gforge.spoon</groupId>
                 <artifactId>spoon-core</artifactId>
                 <version>${spoon.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.javaparser</groupId>
+                <artifactId>javaparser-core</artifactId>
+                <version>${javaparser-core.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.immutables</groupId>
