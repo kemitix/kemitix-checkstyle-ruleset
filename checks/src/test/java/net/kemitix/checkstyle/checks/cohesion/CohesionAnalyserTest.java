@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.checks.cohesion;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.assertj.core.util.Sets;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +10,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
  * Tests for {@link DefaultCohesionAnalyser}.
@@ -63,7 +66,11 @@ public class CohesionAnalyserTest {
     }
 
     private void performAnalysis() {
-        analyser.analyse(usedByMethod, nonPrivateMethods, r -> analysisResult = r);
+        analyser.analyse(usedByMethod, nonPrivateMethods, captureAnalysisResult());
+    }
+
+    private Consumer<CohesionAnalysisResult> captureAnalysisResult() {
+        return r -> analysisResult = r;
     }
 
     @Test
@@ -82,4 +89,43 @@ public class CohesionAnalyserTest {
         assertThat(component.getMembers()).containsExactlyInAnyOrder(method, fieldName);
     }
 
+    @Test
+    public void requiresNonNullUseByMethod() {
+        //when
+        final ThrowableAssert.ThrowingCallable action =
+                () -> analyser.analyse(null, nonPrivateMethods, captureAnalysisResult());
+        //then
+        assertThatThrownBy(action).isInstanceOf(NullPointerException.class)
+                                  .hasMessage("usedByMethod");
+    }
+
+    @Test
+    public void requiresNonNullNonPrivateMethods() {
+        //when
+        final ThrowableAssert.ThrowingCallable action =
+                () -> analyser.analyse(usedByMethod, null, captureAnalysisResult());
+        //then
+        assertThatThrownBy(action).isInstanceOf(NullPointerException.class)
+                                  .hasMessage("nonPrivateMethods");
+    }
+
+    @Test
+    public void requiresNonNullResultConsumer() {
+        //when
+        final ThrowableAssert.ThrowingCallable action = () -> analyser.analyse(usedByMethod, nonPrivateMethods, null);
+        //then
+        assertThatThrownBy(action).isInstanceOf(NullPointerException.class)
+                                  .hasMessage("resultConsumer");
+    }
+
+    @Test
+    public void acceptWhenANonPrivateMethodsIsNotInUsedByMethod() {
+        //given
+        final String method = "java.lang.String getValue()";
+        nonPrivateMethods.add(method);
+        //when
+        performAnalysis();
+        //then
+        // no exception is thrown
+    }
 }

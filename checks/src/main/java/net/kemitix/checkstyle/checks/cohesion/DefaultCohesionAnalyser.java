@@ -22,6 +22,7 @@
 package net.kemitix.checkstyle.checks.cohesion;
 
 import com.google.common.collect.Sets;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
@@ -41,8 +42,8 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
 
     @Override
     public void analyse(
-            final Map<String, Set<String>> usedByMethod, final Set<String> nonPrivateMethods,
-            final Consumer<CohesionAnalysisResult> resultConsumer
+            @NonNull final Map<String, Set<String>> usedByMethod, @NonNull final Set<String> nonPrivateMethods,
+            @NonNull final Consumer<CohesionAnalysisResult> resultConsumer
                        ) {
         final CohesionAnalysisResult result = new CohesionAnalysisResult();
         result.addNonBeanMethods(getNonBeanNonPrivateMethods(usedByMethod, nonPrivateMethods));
@@ -106,6 +107,10 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
     }
 
     private boolean isBeanMethod(final String method, final Set<String> fields) {
+        if (fields == null) {
+            // method uses no fields, so can't be a 'bean' method
+            return false;
+        }
         if (fields.size() == 1) {
             final String fieldAccessed = fields.toArray(new String[1])[0];
             final String methodName = method.toLowerCase();
@@ -121,8 +126,10 @@ class DefaultCohesionAnalyser implements CohesionAnalyser {
 
     private boolean isGetter(final String method, final String field) {
         final boolean isPlainGetter = method.endsWith(String.format(" get%s()", field));
-        final boolean isBooleanGetter = String.format("java.lang.boolean is%s()", field).equals(method);
-        final boolean isPrimitiveBooleanGetter = String.format("boolean is%s()", field).equals(method);
+        final boolean isBooleanGetter = String.format("java.lang.boolean is%s()", field)
+                                              .equals(method);
+        final boolean isPrimitiveBooleanGetter = String.format("boolean is%s()", field)
+                                                       .equals(method);
         return isPlainGetter || isBooleanGetter || isPrimitiveBooleanGetter;
     }
 
