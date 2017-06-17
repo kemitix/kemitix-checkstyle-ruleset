@@ -31,26 +31,6 @@
 
     <inceptionYear>2016</inceptionYear>
 
-    <properties>
-        <spring-platform.version>Brussels-SR2</spring-platform.version>
-        <spring-boot.version>1.5.3.RELEASE</spring-boot.version>
-        <mapstream.version>2.3.5</mapstream.version>
-        <map-builder.version>1.0.0</map-builder.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-    </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring-platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,7 +54,6 @@
         <dependency>
             <groupId>com.speedment.common</groupId>
             <artifactId>mapstream</artifactId>
-            <version>${mapstream.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,31 +61,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>me.andrz</groupId>
             <artifactId>map-builder</artifactId>
-            <version>${map-builder.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>${checkstyle.version}</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.sevntu-checkstyle</groupId>
             <artifactId>sevntu-checks</artifactId>
-            <version>${sevntu.version}</version>
         </dependency>
-
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
