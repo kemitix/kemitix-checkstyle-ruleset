@@ -44,6 +44,7 @@
         <junit.version>4.12</junit.version>
         <spoon.version>5.7.0</spoon.version>
         <javaparser-core.version>3.2.7</javaparser-core.version>
+        <commons-logging.version>1.2</commons-logging.version>
     </properties>
 
     <modules>
@@ -169,9 +170,9 @@
                 <version>${assertj.version}</version>
             </dependency>
             <dependency>
-                <groupId>me.andrz</groupId>
-                <artifactId>map-builder</artifactId>
-                <version>${map-builder.version}</version>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
