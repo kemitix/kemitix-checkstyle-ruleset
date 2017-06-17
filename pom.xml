@@ -27,7 +27,7 @@
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <immutables-value.version>2.4.4</immutables-value.version>
+        <immutables-value.version>2.5.3</immutables-value.version>
 
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.8.0</assertj.version>
