@@ -24,7 +24,7 @@
         <maven-plugin-testing-harness.version>3.3.0</maven-plugin-testing-harness.version>
         <mojo-executor.version>2.3.0</mojo-executor.version>
         <map-builder.version>1.0.0</map-builder.version>
-        <immutables.version>2.4.4</immutables.version>
+        <immutables.version>2.5.3</immutables.version>
 
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
         <checkstyle.version>7.8.1</checkstyle.version>
@@ -36,7 +36,6 @@
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <immutables-value.version>2.5.3</immutables-value.version>
 
         <mockito.version>2.8.47</mockito.version>
         <assertj.version>3.8.0</assertj.version>
