@@ -16,14 +16,12 @@
         <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
         <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
         <pitest.skip>true</pitest.skip>
-        <immutables.version>2.4.4</immutables.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
-            <version>${immutables.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

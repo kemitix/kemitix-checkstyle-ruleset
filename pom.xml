@@ -27,6 +27,7 @@
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <immutables-value.version>2.4.4</immutables-value.version>
 
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.8.0</assertj.version>
@@ -92,6 +93,11 @@
                 <groupId>me.andrz</groupId>
                 <artifactId>map-builder</artifactId>
                 <version>${map-builder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <version>${immutables-value.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
