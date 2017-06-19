@@ -60,15 +60,13 @@ public class CohesionCheck extends AbstractCheck {
 
     private final Map<String, Set<String>> usedByMethod = new HashMap<>();
 
-    private Map<String, Set<String>> identsUsedByMethod = new HashMap<>();
-
     private final Set<String> nonPrivateMethods = new HashSet<>();
 
     private final Set<String> fieldNames = new HashSet<>();
 
     private final Set<String> methodNames = new HashSet<>();
 
-    private String currentMethodReturnType;
+    private Map<String, Set<String>> identsUsedByMethod = new HashMap<>();
 
     private String currentMethodName;
 
@@ -131,8 +129,8 @@ public class CohesionCheck extends AbstractCheck {
     private void leaveMethodDef(final DetailAST ast) {
         System.out.println("CohesionCheck.leaveMethodDef");
         final String parameters = String.join(", ", currentMethodParameterTypes);
-        currentMethodSignature = String.format("%s %s(%s)", currentMethodReturnType, currentMethodName, parameters);
         System.out.println("currentMethodSignature = " + currentMethodSignature);
+        currentMethodSignature = String.format("%s(%s)", currentMethodName, parameters);
         identsUsedByMethod.put(currentMethodSignature, new HashSet<>(currentMethodIdentsUsed));
         currentMethodIdentsUsed.clear();
     }
@@ -197,9 +195,8 @@ public class CohesionCheck extends AbstractCheck {
 
     private void visitMethodDef(final DetailAST ast) {
         System.out.println("CohesionCheck.visitMethodDef");
-        currentMethodReturnType = getType(ast);
         currentMethodName = getIdent(ast);
-        System.out.println(String.format("signature: %s %s(.?.)", currentMethodReturnType, currentMethodName));
+        System.out.println(String.format("signature: %s(.?.)", currentMethodName));
         methodNames.add(currentMethodName);
     }
 

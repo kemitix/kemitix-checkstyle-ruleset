@@ -40,15 +40,15 @@ public class CohesionAnalyserTest {
     @Test
     public void canDetectNonBeanMethods() {
         //given
-        final String beanGetMethod = "java.lang.String getValue()";
+        final String beanGetMethod = "getValue()";
         nonPrivateMethods.add(beanGetMethod);
-        final String beanSetMethod = "java.lang.String setValue(java.lang.String)";
+        final String beanSetMethod = "setValue(java.lang.String)";
         nonPrivateMethods.add(beanSetMethod);
-        final String nonBeanMethod = "java.lang.String nonBean()";
+        final String nonBeanMethod = "nonBean()";
         nonPrivateMethods.add(nonBeanMethod);
-        final String booleanBeanMethod = "java.lang.Boolean isEnabled()";
+        final String booleanBeanMethod = "isEnabled()";
         nonPrivateMethods.add(booleanBeanMethod);
-        final String primitiveBooleanBeanMethod = "boolean isValid()";
+        final String primitiveBooleanBeanMethod = "isValid()";
         nonPrivateMethods.add(primitiveBooleanBeanMethod);
         usedByMethod.put(beanGetMethod, setOf("value"));
         usedByMethod.put(beanSetMethod, setOf("value"));
@@ -76,7 +76,7 @@ public class CohesionAnalyserTest {
     @Test
     public void canDetectASingleComponentFromASingleMethodAndField() {
         //given
-        final String method = "java.lang.String getValue()";
+        final String method = "getValue()";
         nonPrivateMethods.add(method);
         final String fieldName = "fieldName";
         usedByMethod.put(method, setOf(fieldName));
@@ -121,7 +121,7 @@ public class CohesionAnalyserTest {
     @Test
     public void acceptWhenANonPrivateMethodsIsNotInUsedByMethod() {
         //given
-        final String method = "java.lang.String getValue()";
+        final String method = "getValue()";
         nonPrivateMethods.add(method);
         //when
         performAnalysis();

@@ -121,16 +121,16 @@ public class DefaultCohesionAnalyser implements CohesionAnalyser {
     }
 
     private boolean isGetter(final String method, final String field) {
-        final boolean isPlainGetter = method.endsWith(String.format(" get%s()", field));
-        final boolean isBooleanGetter = String.format("java.lang.boolean is%s()", field)
+        final boolean isPlainGetter = method.equals(String.format("get%s()", field));
+        final boolean isBooleanGetter = String.format("is%s()", field)
                                               .equals(method);
-        final boolean isPrimitiveBooleanGetter = String.format("boolean is%s()", field)
+        final boolean isPrimitiveBooleanGetter = String.format("is%s()", field)
                                                        .equals(method);
         return isPlainGetter || isBooleanGetter || isPrimitiveBooleanGetter;
     }
 
     private boolean isSetter(final String method, final String field) {
-        return method.contains(" set" + field + "(");
+        return method.startsWith("set" + field + "(");
     }
 
 }
