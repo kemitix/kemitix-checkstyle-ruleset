@@ -16,7 +16,7 @@ template:
 rules:
     -
         name: Cohesion
-        parent: CHECKER
+        parent: TREEWALKER
         level: EXPERIMENTAL
         enabled: true
         source: KEMITIX

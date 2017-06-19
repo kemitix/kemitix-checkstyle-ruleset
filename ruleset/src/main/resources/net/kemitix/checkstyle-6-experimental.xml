@@ -4,8 +4,7 @@
         "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
 
-    <module name="net.kemitix.checkstyle.checks.CohesionCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck">
+    <module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck">
     <property name="fileNamePattern" value="(.sync-conflict-| conflicted copy )"/>
 <property name="match" value="true"/>
 </module>
@@ -25,7 +24,8 @@
 
     <module name="TreeWalker">
 
-        <module name="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+        <module name="net.kemitix.checkstyle.checks.CohesionCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationUseStyleCheck"/>

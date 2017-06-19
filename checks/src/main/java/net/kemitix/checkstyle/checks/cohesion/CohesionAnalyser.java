@@ -30,7 +30,7 @@ import java.util.function.Consumer;
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-interface CohesionAnalyser {
+public interface CohesionAnalyser {
 
     /**
      * Analyse the cohesion of a class from the items used by each method.
