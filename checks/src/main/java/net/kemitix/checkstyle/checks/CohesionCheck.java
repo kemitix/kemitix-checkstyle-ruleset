@@ -173,23 +173,12 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void leaveClass(final DetailAST ast) {
-        System.out.println("identsUsedByMethod = " + identsUsedByMethod);
-        System.out.println("fieldNames = " + fieldNames);
-        System.out.println("methodNames = " + methodNames);
-        identsUsedByMethod.entrySet()
-                          .stream()
-                          .forEach(e -> {
-                              final Set<String> identsUsed = e.getValue();
-                              final Set<String> fieldsUsed = Sets.intersection(fieldNames, identsUsed);
-                              System.out.println("fieldsUsed = " + fieldsUsed);
-                              final Set<String> methodsUsed = Sets.intersection(methodNames, identsUsed);
-                              System.out.println("methodsUsed = " + methodsUsed);
-                              final Set<String> itemsUsed = Sets.union(fieldsUsed, methodsUsed);
-                              System.out.println("itemsUsed = " + itemsUsed);
-                              final String methodSignature = e.getKey();
-                              usedByMethod.put(methodSignature, itemsUsed);
-                          });
-        System.out.println("usedByMethod = " + usedByMethod);
+        identsUsedByMethod.forEach((methodSignature, identsUsed) -> {
+            final Set<String> fieldsUsed = Sets.intersection(fieldNames, identsUsed);
+            final Set<String> methodsUsed = Sets.intersection(methodNames, identsUsed);
+            final Set<String> itemsUsed = Sets.union(fieldsUsed, methodsUsed);
+            usedByMethod.put(methodSignature, itemsUsed);
+        });
         analyser.analyse(usedByMethod, nonPrivateMethods, this::resultConsumer);
     }
 
