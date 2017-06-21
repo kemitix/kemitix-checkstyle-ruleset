@@ -29,7 +29,9 @@ import net.kemitix.checkstyle.checks.cohesion.CohesionAnalyser;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalysisResult;
 import net.kemitix.checkstyle.checks.cohesion.DefaultCohesionAnalyser;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -78,6 +80,12 @@ public class CohesionCheck extends AbstractCheck {
 
     private Set<String> currentMethodIdentsUsed = new HashSet<>();
 
+    private Deque<Frame> frameStack = new ArrayDeque<>();
+
+    private Frame classFrame;
+
+    private Frame currentFrame;
+
     @Override
     public final int[] getDefaultTokens() {
         return new int[]{
@@ -121,6 +129,13 @@ public class CohesionCheck extends AbstractCheck {
 
     private void visitClassDef(final DetailAST ast) {
         System.out.println("Checking class: " + getIdent(ast));
+        openClassFrame();
+    }
+
+    private void openClassFrame() {
+        classFrame = new Frame();
+        currentFrame = classFrame;
+        frameStack.push(currentFrame);
     }
 
     private void leaveClassDef(final DetailAST ast) {
@@ -136,6 +151,7 @@ public class CohesionCheck extends AbstractCheck {
     private void visitVariableDef(final DetailAST ast) {
         final String variableName = getIdent(ast);
         fieldNames.add(variableName);
+        currentFrame.addVariable(variableName, getType(ast));
     }
 
     private void leaveVariableDef(final DetailAST ast) {
@@ -143,11 +159,17 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void visitMethodDef(final DetailAST ast) {
+        openFrame();
         currentMethodName = getIdent(ast);
         methodNames.add(currentMethodName);
         if (!isPrivate(ast)) {
             nonPrivateMethods.add(currentMethodName);
         }
+    }
+
+    private void openFrame() {
+        currentFrame = new Frame();
+        frameStack.push(currentFrame);
     }
 
     private boolean isPrivate(final DetailAST ast) {
@@ -163,6 +185,12 @@ public class CohesionCheck extends AbstractCheck {
         currentMethodSignature = String.format("%s(%s)", currentMethodName, parameters);
         identsUsedByMethod.put(currentMethodSignature, new HashSet<>(currentMethodIdentsUsed));
         currentMethodIdentsUsed.clear();
+        closeFrame();
+    }
+
+    private void closeFrame() {
+        frameStack.pop();
+        currentFrame = frameStack.getFirst();
     }
 
     private void visitParameterDef(final DetailAST ast) {
@@ -185,9 +213,16 @@ public class CohesionCheck extends AbstractCheck {
 
     private void visitIdent(final DetailAST ast) {
         if (inExpression) {
-            System.out.println("adding item to current methods: " + ast.getText());
-            currentMethodIdentsUsed.add(ast.getText());
+            final String ident = ast.getText();
+            if (isField(ident)) {
+                System.out.println("adding item to current methods: " + ident);
+                currentMethodIdentsUsed.add(ident);
+            }
         }
+    }
+
+    private boolean isField(final String ident) {
+        return classFrame.containsVariable(ident);
     }
 
     private void leaveIdent(final DetailAST ast) {
@@ -215,6 +250,19 @@ public class CohesionCheck extends AbstractCheck {
                                .size();
         if (size > 1) {
             log(1, "cohesion.partitioned", size, result.getPartitionedNonPrivateMethods());
+        }
+    }
+
+    private class Frame {
+
+        private final Map<String, String> variables = new HashMap<>();
+
+        void addVariable(final String name, final String type) {
+            variables.put(name, type);
+        }
+
+        boolean containsVariable(final String name) {
+            return variables.containsKey(name);
         }
     }
 }
