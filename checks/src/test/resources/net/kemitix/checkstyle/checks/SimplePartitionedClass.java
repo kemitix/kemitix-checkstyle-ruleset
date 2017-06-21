@@ -29,7 +29,8 @@ class SimplePartitionedClass {
     }
 
     public String getFullFormat() {
-        return left + format + right;
+        final String fullFormat = left + format + right;
+        return fullFormat;
     }
 
     public String sayHello(final SimpleClass name) {
