@@ -108,8 +108,10 @@ public class CohesionCheckTest {
         //then
         startFileAudit(className);
         hasErrorMessage("Class has 2 components composed of:");
-        hasErrorMessage("[counter(), increment()]");
-        hasErrorMessage("[getFullFormat(), sayHello(String)]");
+        hasErrorMessage("[int counter(), void increment()]");
+        final String fullFormatSignature = "java.lang.String getFullFormat(java.lang.String)";
+        final String sayHelloSignature = "java.lang.String sayHello(net.kemitix.checkstyle.checks.SimpleClass)";
+        hasErrorMessage("[" + fullFormatSignature + ", " + sayHelloSignature + "]");
         finishFileAudit(className);
     }
 

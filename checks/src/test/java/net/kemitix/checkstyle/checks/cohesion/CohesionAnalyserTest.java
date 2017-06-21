@@ -40,15 +40,15 @@ public class CohesionAnalyserTest {
     @Test
     public void canDetectNonBeanMethods() {
         //given
-        final String beanGetMethod = "getValue()";
+        final String beanGetMethod = "java.lang.String getValue()";
         nonPrivateMethods.add(beanGetMethod);
-        final String beanSetMethod = "setValue(java.lang.String)";
+        final String beanSetMethod = "void setValue(java.lang.String)";
         nonPrivateMethods.add(beanSetMethod);
-        final String nonBeanMethod = "nonBean()";
+        final String nonBeanMethod = "void nonBean()";
         nonPrivateMethods.add(nonBeanMethod);
-        final String booleanBeanMethod = "isEnabled()";
+        final String booleanBeanMethod = "java.lang.Boolean isEnabled()";
         nonPrivateMethods.add(booleanBeanMethod);
-        final String primitiveBooleanBeanMethod = "isValid()";
+        final String primitiveBooleanBeanMethod = "boolean isValid()";
         nonPrivateMethods.add(primitiveBooleanBeanMethod);
         usedByMethod.put(beanGetMethod, setOf("value"));
         usedByMethod.put(beanSetMethod, setOf("value"));
