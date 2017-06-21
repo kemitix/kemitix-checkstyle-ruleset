@@ -25,6 +25,7 @@ import com.google.common.collect.Sets;
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
+import lombok.RequiredArgsConstructor;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalyser;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalysisResult;
 import net.kemitix.checkstyle.checks.cohesion.DefaultCohesionAnalyser;
@@ -133,7 +134,7 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void openClassFrame() {
-        classFrame = new Frame();
+        classFrame = new Frame(null);
         currentFrame = classFrame;
         frameStack.push(currentFrame);
     }
@@ -168,7 +169,7 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void openFrame() {
-        currentFrame = new Frame();
+        currentFrame = new Frame(currentFrame);
         frameStack.push(currentFrame);
     }
 
@@ -198,6 +199,7 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void leaveParameterDef(final DetailAST ast) {
+        currentFrame.addVariable(getIdent(ast), getType(ast));
 
     }
 
@@ -253,7 +255,10 @@ public class CohesionCheck extends AbstractCheck {
         }
     }
 
+    @RequiredArgsConstructor
     private class Frame {
+
+        private final Frame parent;
 
         private final Map<String, String> variables = new HashMap<>();
 
@@ -263,6 +268,18 @@ public class CohesionCheck extends AbstractCheck {
 
         boolean containsVariable(final String name) {
             return variables.containsKey(name);
+        }
+
+        String getTypeFor(final String name) {
+            System.out.println("Frame.getTypeFor");
+            System.out.println("name = [" + name + "]");
+            System.out.println("variables = " + variables);
+            if (variables.containsKey(name)) {
+                return variables.get(name);
+            }
+            return Optional.ofNullable(parent)
+                           .map(p -> p.getTypeFor(name))
+                           .orElse("[unknown]");
         }
     }
 }
