@@ -146,6 +146,8 @@ public class CohesionCheck extends AbstractCheck {
             final Set<String> itemsUsed = Sets.union(fieldsUsed, methodsUsed);
             usedByMethod.put(methodSignature, itemsUsed);
         });
+        Display.usedByMethod(usedByMethod);
+        Display.nonPrivateMethods(nonPrivateMethods);
         analyser.analyse(usedByMethod, nonPrivateMethods, this::resultConsumer);
     }
 
@@ -252,6 +254,27 @@ public class CohesionCheck extends AbstractCheck {
                                .size();
         if (size > 1) {
             log(1, "cohesion.partitioned", size, result.getPartitionedNonPrivateMethods());
+        }
+    }
+
+    private static class Display {
+
+        static void usedByMethod(final Map<String, Set<String>> usedByMethod) {
+            System.out.println("Display.usedByMethod");
+            usedByMethod.keySet()
+                        .forEach(methodName -> {
+                            System.out.println(methodName + ":");
+                            usedByMethod.get(methodName)
+                                        .stream()
+                                        .map(item -> " - " + item)
+                                        .forEach(System.out::println);
+                        });
+        }
+
+        static void nonPrivateMethods(final Set<String> nonPrivateMethods) {
+            System.out.println("Display.nonPrivateMethods");
+            System.out.println("nonPrivateMethods.size() = " + nonPrivateMethods.size());
+            nonPrivateMethods.forEach(System.out::println);
         }
     }
 
