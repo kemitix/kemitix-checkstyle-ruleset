@@ -108,8 +108,8 @@ public class CohesionCheckTest {
         //then
         startFileAudit(className);
         hasErrorMessage("Class has 2 components composed of:");
-        hasErrorMessage("[int counter(), void increment()]");
-        hasErrorMessage("[java.lang.String getFullFormat(), java.lang.String sayHello(java.lang.String)]");
+        hasErrorMessage("[counter(), increment()]");
+        hasErrorMessage("[getFullFormat(), sayHello(String)]");
         finishFileAudit(className);
     }
 
