@@ -28,13 +28,13 @@ class SimplePartitionedClass {
         counter += 1;
     }
 
-    public String getFullFormat() {
+    public String getFullFormat(final String ignored) {
         final String fullFormat = left + format + right;
         return fullFormat;
     }
 
     public String sayHello(final SimpleClass name) {
-        return String.format(getFullFormat(), name);
+        return String.format(getFullFormat("ignore me"), name);
     }
 
 }
