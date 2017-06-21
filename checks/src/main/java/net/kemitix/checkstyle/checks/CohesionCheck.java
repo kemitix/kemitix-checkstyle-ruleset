@@ -24,6 +24,7 @@ package net.kemitix.checkstyle.checks;
 import com.google.common.collect.Sets;
 import com.puppycrawl.tools.checkstyle.api.AbstractCheck;
 import com.puppycrawl.tools.checkstyle.api.DetailAST;
+import com.puppycrawl.tools.checkstyle.api.FileContents;
 import com.puppycrawl.tools.checkstyle.api.TokenTypes;
 import lombok.RequiredArgsConstructor;
 import net.kemitix.checkstyle.checks.cohesion.CohesionAnalyser;
@@ -131,6 +132,10 @@ public class CohesionCheck extends AbstractCheck {
     private void visitClassDef(final DetailAST ast) {
         System.out.println("Checking class: " + getIdent(ast));
         openClassFrame();
+        final FileContents fileContents = getFileContents();
+        final String fileName = fileContents.getFileName();
+        // parse filename?
+        System.out.println("fileName = " + fileName);
     }
 
     private void openClassFrame() {
@@ -140,6 +145,7 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void leaveClassDef(final DetailAST ast) {
+        //TODO: gather field names from current frame
         identsUsedByMethod.forEach((methodSignature, identsUsed) -> {
             final Set<String> fieldsUsed = Sets.intersection(fieldNames, identsUsed);
             final Set<String> methodsUsed = Sets.intersection(methodNames, identsUsed);
