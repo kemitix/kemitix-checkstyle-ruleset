@@ -143,10 +143,17 @@ public class CohesionCheck extends AbstractCheck {
     }
 
     private void visitMethodDef(final DetailAST ast) {
-        System.out.println("CohesionCheck.visitMethodDef");
         currentMethodName = getIdent(ast);
-        System.out.println(String.format("signature: %s(.?.)", currentMethodName));
         methodNames.add(currentMethodName);
+        if (!isPrivate(ast)) {
+            nonPrivateMethods.add(currentMethodName);
+        }
+    }
+
+    private boolean isPrivate(final DetailAST ast) {
+        return Optional.ofNullable(ast.findFirstToken(TokenTypes.MODIFIERS))
+                       .map(t -> t.branchContains(TokenTypes.LITERAL_PRIVATE))
+                       .orElse(false);
     }
 
     private void leaveMethodDef(final DetailAST ast) {
