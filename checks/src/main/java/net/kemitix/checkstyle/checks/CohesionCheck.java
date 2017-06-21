@@ -88,15 +88,12 @@ public class CohesionCheck extends AbstractCheck {
 
     @Override
     public final void init() {
-        tokenVisitHandlers.put(TokenTypes.CLASS_DEF, this::visitClassDef);
-        tokenVisitHandlers.put(TokenTypes.VARIABLE_DEF, this::visitVariableDef);
-        tokenVisitHandlers.put(TokenTypes.METHOD_DEF, this::visitMethodDef);
-        tokenVisitHandlers.put(TokenTypes.PARAMETER_DEF, this::visitParameterDef);
-        tokenVisitHandlers.put(TokenTypes.EXPR, this::visitExpression);
-        tokenVisitHandlers.put(TokenTypes.IDENT, this::visitIdent);
-        tokenLeaveHandlers.put(TokenTypes.CLASS_DEF, this::leaveClass);
-        tokenLeaveHandlers.put(TokenTypes.METHOD_DEF, this::leaveMethodDef);
-        tokenLeaveHandlers.put(TokenTypes.EXPR, this::leaveExpression);
+        tokenHandlers(TokenTypes.CLASS_DEF, this::visitClassDef, this::leaveClassDef);
+        tokenHandlers(TokenTypes.VARIABLE_DEF, this::visitVariableDef, this::leaveVariableDef);
+        tokenHandlers(TokenTypes.METHOD_DEF, this::visitMethodDef, this::leaveMethodDef);
+        tokenHandlers(TokenTypes.PARAMETER_DEF, this::visitParameterDef, this::leaveParameterDef);
+        tokenHandlers(TokenTypes.EXPR, this::visitExpression, this::leaveExpression);
+        tokenHandlers(TokenTypes.IDENT, this::visitIdent, this::leaveIdent);
         usedByMethod.clear();
         identsUsedByMethod.clear();
         nonPrivateMethods.clear();
@@ -105,25 +102,51 @@ public class CohesionCheck extends AbstractCheck {
         usedByMethod.clear();
     }
 
+    @Override
+    public final void visitToken(final DetailAST ast) {
+        Optional.ofNullable(tokenVisitHandlers.get(ast.getType()))
+                .ifPresent(handler -> handler.accept(ast));
+    }
+
+    @Override
+    public final void leaveToken(final DetailAST ast) {
+        Optional.ofNullable(tokenLeaveHandlers.get(ast.getType()))
+                .ifPresent(handler -> handler.accept(ast));
+    }
+
+    private void tokenHandlers(final int token, final Consumer<DetailAST> onVisit, final Consumer<DetailAST> onLeave) {
+        tokenVisitHandlers.put(token, onVisit);
+        tokenLeaveHandlers.put(token, onLeave);
+    }
+
     private void visitClassDef(final DetailAST ast) {
         System.out.println("Checking class: " + getIdent(ast));
     }
 
-    private void visitIdent(final DetailAST ast) {
-        if (inExpression) {
-            System.out.println("adding item to current methods: " + ast.getText());
-            currentMethodIdentsUsed.add(ast.getText());
-        }
+    private void leaveClassDef(final DetailAST ast) {
+        identsUsedByMethod.forEach((methodSignature, identsUsed) -> {
+            final Set<String> fieldsUsed = Sets.intersection(fieldNames, identsUsed);
+            final Set<String> methodsUsed = Sets.intersection(methodNames, identsUsed);
+            final Set<String> itemsUsed = Sets.union(fieldsUsed, methodsUsed);
+            usedByMethod.put(methodSignature, itemsUsed);
+        });
+        analyser.analyse(usedByMethod, nonPrivateMethods, this::resultConsumer);
     }
 
-    private void leaveExpression(final DetailAST ast) {
-        //System.out.println("CohesionCheck.leaveExpression: " + ast.toStringTree());
-        inExpression = false;
+    private void visitVariableDef(final DetailAST ast) {
+        final String variableName = getIdent(ast);
+        fieldNames.add(variableName);
     }
 
-    private void visitExpression(final DetailAST ast) {
-        //System.out.println("CohesionCheck.visitExpression: " + ast.toStringList());
-        inExpression = true;
+    private void leaveVariableDef(final DetailAST ast) {
+
+    }
+
+    private void visitMethodDef(final DetailAST ast) {
+        System.out.println("CohesionCheck.visitMethodDef");
+        currentMethodName = getIdent(ast);
+        System.out.println(String.format("signature: %s(.?.)", currentMethodName));
+        methodNames.add(currentMethodName);
     }
 
     private void leaveMethodDef(final DetailAST ast) {
@@ -139,21 +162,29 @@ public class CohesionCheck extends AbstractCheck {
         currentMethodParameterTypes.add(getType(ast));
     }
 
-    @Override
-    public final void visitToken(final DetailAST ast) {
-        Optional.ofNullable(tokenVisitHandlers.get(ast.getType()))
-                .ifPresent(handler -> handler.accept(ast));
+    private void leaveParameterDef(final DetailAST ast) {
+
     }
 
-    @Override
-    public final void leaveToken(final DetailAST ast) {
-        Optional.ofNullable(tokenLeaveHandlers.get(ast.getType()))
-                .ifPresent(handler -> handler.accept(ast));
+    private void visitExpression(final DetailAST ast) {
+        //System.out.println("CohesionCheck.visitExpression: " + ast.toStringList());
+        inExpression = true;
     }
 
-    private void visitVariableDef(final DetailAST ast) {
-        final String variableName = getIdent(ast);
-        fieldNames.add(variableName);
+    private void leaveExpression(final DetailAST ast) {
+        //System.out.println("CohesionCheck.leaveExpression: " + ast.toStringTree());
+        inExpression = false;
+    }
+
+    private void visitIdent(final DetailAST ast) {
+        if (inExpression) {
+            System.out.println("adding item to current methods: " + ast.getText());
+            currentMethodIdentsUsed.add(ast.getText());
+        }
+    }
+
+    private void leaveIdent(final DetailAST ast) {
+
     }
 
     private String getIdent(final DetailAST ast) {
@@ -170,23 +201,6 @@ public class CohesionCheck extends AbstractCheck {
                        .map(DetailAST::getFirstChild)
                        .map(DetailAST::getText)
                        .orElse("[unknown]");
-    }
-
-    private void leaveClass(final DetailAST ast) {
-        identsUsedByMethod.forEach((methodSignature, identsUsed) -> {
-            final Set<String> fieldsUsed = Sets.intersection(fieldNames, identsUsed);
-            final Set<String> methodsUsed = Sets.intersection(methodNames, identsUsed);
-            final Set<String> itemsUsed = Sets.union(fieldsUsed, methodsUsed);
-            usedByMethod.put(methodSignature, itemsUsed);
-        });
-        analyser.analyse(usedByMethod, nonPrivateMethods, this::resultConsumer);
-    }
-
-    private void visitMethodDef(final DetailAST ast) {
-        System.out.println("CohesionCheck.visitMethodDef");
-        currentMethodName = getIdent(ast);
-        System.out.println(String.format("signature: %s(.?.)", currentMethodName));
-        methodNames.add(currentMethodName);
     }
 
     private void resultConsumer(final CohesionAnalysisResult result) {
