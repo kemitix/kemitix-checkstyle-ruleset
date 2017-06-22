@@ -7,7 +7,7 @@ if [ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" == 'false' ]; the
 	echo "Signing key decrypted"
 	gpg --batch --fast-import travis-ci/codesigning.asc
 	echo "Signing key imported"
-	./mvnw --projects .,plugin,ruleset --settings travis-ci/travis-settings.xml \
+	./mvnw --projects .,checks,plugin,ruleset --settings travis-ci/travis-settings.xml \
 		-Dskip-Tests=true -P release -B deploy
 	echo "Deploy complete"
 else

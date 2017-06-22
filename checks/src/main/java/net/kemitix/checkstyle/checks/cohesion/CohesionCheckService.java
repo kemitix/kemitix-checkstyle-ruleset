@@ -19,21 +19,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.checks.cohesion;
+
+import java.io.File;
+import java.util.function.Consumer;
 
 /**
- * Ruleset levels.
+ * Service for performing the {@link net.kemitix.checkstyle.checks.CohesionCheck}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleLevel {
+public interface CohesionCheckService {
 
-    DISABLED,
-    LAYOUT,
-    NAMING,
-    JAVADOC,
-    TWEAKS,
-    COMPLEXITY,
-    EXPERIMENTAL,
-    UNSPECIFIED,
+    /**
+     * Performs the cohesion check on the given file, passing results to the consumer.
+     *
+     * @param file           the file to check
+     * @param resultConsumer the consumer of the results
+     */
+    void check(File file, Consumer<CohesionAnalysisResult> resultConsumer);
 }

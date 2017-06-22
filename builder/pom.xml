@@ -74,6 +74,10 @@
             <groupId>com.github.sevntu-checkstyle</groupId>
             <artifactId>sevntu-checks</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.kemitix</groupId>
+            <artifactId>kemitix-checkstyle-checks</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

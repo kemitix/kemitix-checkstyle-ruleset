@@ -19,21 +19,28 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.checks.cohesion;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
 /**
- * Ruleset levels.
+ * Analyses the method invocations of a class to determine the cohesiveness of a class.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleLevel {
+public interface CohesionAnalyser {
 
-    DISABLED,
-    LAYOUT,
-    NAMING,
-    JAVADOC,
-    TWEAKS,
-    COMPLEXITY,
-    EXPERIMENTAL,
-    UNSPECIFIED,
+    /**
+     * Analyse the cohesion of a class from the items used by each method.
+     *
+     * @param usedByMethod      a map of fields and methods used grouped by each method
+     * @param nonPrivateMethods a list of methods
+     * @param resultConsumer    the consumer to give results to
+     */
+    void analyse(
+            Map<String, Set<String>> usedByMethod, Set<String> nonPrivateMethods,
+            Consumer<CohesionAnalysisResult> resultConsumer
+                );
 }

@@ -19,21 +19,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
-
 /**
- * Ruleset levels.
+ * Cohesion Check.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleLevel {
 
-    DISABLED,
-    LAYOUT,
-    NAMING,
-    JAVADOC,
-    TWEAKS,
-    COMPLEXITY,
-    EXPERIMENTAL,
-    UNSPECIFIED,
-}
+package net.kemitix.checkstyle.checks.cohesion;

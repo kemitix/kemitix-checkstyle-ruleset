@@ -36,8 +36,10 @@ public class DefaultRuleClassLocatorTest {
         final String expected = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
         final List<String> checkstyleClasses = Collections.singletonList(expected);
         final List<String> sevntuClasses = Collections.emptyList();
+        final List<String> kemitixClasses = Collections.emptyList();
         given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(checkstyleClasses.stream());
         given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(sevntuClasses.stream());
+        given(packageScanner.apply(RuleSource.KEMITIX)).willReturn(kemitixClasses.stream());
         subject.init();
         final Rule rule = createCheckstyleRule(rulename);
         //when

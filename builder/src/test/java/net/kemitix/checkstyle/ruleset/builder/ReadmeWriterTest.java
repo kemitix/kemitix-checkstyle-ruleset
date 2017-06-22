@@ -23,6 +23,9 @@ import static org.mockito.BDDMockito.given;
  */
 public class ReadmeWriterTest {
 
+    @org.junit.Rule
+    public TemporaryFolder folder = new TemporaryFolder();
+
     private ReadmeWriter readmeWriter;
 
     private RulesProperties rulesProperties;
@@ -35,15 +38,12 @@ public class ReadmeWriterTest {
 
     private Path readme;
 
-    @org.junit.Rule
-    public TemporaryFolder folder = new TemporaryFolder();
-
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         final Path template = folder.newFile("README-template.md")
                                     .toPath();
-        Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "cd:%s", "sd:%s"));
+        Files.write(template, Arrays.asList("i:%s", "ce:%s", "se:%s", "ke:%s", "cd:%s", "sd:%s"));
         final TemplateProperties templateProperties = new TemplateProperties();
         templateProperties.setReadmeTemplate(template);
         final Path fragments = folder.newFolder("fragments")
@@ -61,23 +61,26 @@ public class ReadmeWriterTest {
     @Test
     public void createReadme() throws Exception {
         //given
-        val expected = Arrays.asList("i:index", "ce:checkstyle-enabled", "se:sevntu-enabled", "cd:checkstyle-disabled",
-                                     "sd:sevntu-disabled"
+        val expected = Arrays.asList("i:index", "ce:checkstyle-enabled", "se:sevntu-enabled", "ke:kemitix-enabled",
+                                     "cd:checkstyle-disabled", "sd:sevntu-disabled"
                                     );
         val rules = rulesProperties.getRules();
         final Rule checkstyleEnabled = rule(RuleSource.CHECKSTYLE, true, "checkstyle enabled");
         final Rule checkstyleDisabled = rule(RuleSource.CHECKSTYLE, false, "checkstyle disabled");
         final Rule sevntuEnabled = rule(RuleSource.SEVNTU, true, "sevntu enabled");
         final Rule sevntuDisabled = rule(RuleSource.SEVNTU, false, "sevntu disabled");
+        final Rule kemitixEnabled = rule(RuleSource.KEMITIX, true, "kemitix enabled");
         rules.add(checkstyleEnabled);
         rules.add(checkstyleDisabled);
         rules.add(sevntuEnabled);
         rules.add(sevntuDisabled);
+        rules.add(kemitixEnabled);
         given(indexBuilder.build()).willReturn("index");
         given(ruleReadmeLoader.load(checkstyleEnabled)).willReturn(Stream.of("checkstyle-enabled"));
         given(ruleReadmeLoader.load(checkstyleDisabled)).willReturn(Stream.of("checkstyle-disabled"));
         given(ruleReadmeLoader.load(sevntuEnabled)).willReturn(Stream.of("sevntu-enabled"));
         given(ruleReadmeLoader.load(sevntuDisabled)).willReturn(Stream.of("sevntu-disabled"));
+        given(ruleReadmeLoader.load(kemitixEnabled)).willReturn(Stream.of("kemitix-enabled"));
         //when
         readmeWriter.run();
         //then

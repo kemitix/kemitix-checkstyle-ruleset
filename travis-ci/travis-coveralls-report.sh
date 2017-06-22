@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-./mvnw --projects builder,plugin test jacoco:report coveralls:report
+./mvnw --projects builder,checks,plugin test jacoco:report coveralls:report

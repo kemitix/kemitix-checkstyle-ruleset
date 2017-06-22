@@ -19,21 +19,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.checks;
+
+import org.immutables.value.Value;
 
 /**
- * Ruleset levels.
+ * Regression subject for org.immutables.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleLevel {
+@Value.Immutable
+public interface Values {
 
-    DISABLED,
-    LAYOUT,
-    NAMING,
-    JAVADOC,
-    TWEAKS,
-    COMPLEXITY,
-    EXPERIMENTAL,
-    UNSPECIFIED,
+    /**
+     * Gets the ID.
+     *
+     * @return the id
+     */
+    @Value.Parameter
+    long getId();
+
 }

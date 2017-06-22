@@ -19,21 +19,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package net.kemitix.checkstyle.ruleset.builder;
+package net.kemitix.checkstyle.checks.cohesion;
+
+import lombok.RequiredArgsConstructor;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
- * Ruleset levels.
+ * Parse a class for identifying its cohesiveness.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public enum RuleLevel {
+public interface ClassCohesionParser {
 
-    DISABLED,
-    LAYOUT,
-    NAMING,
-    JAVADOC,
-    TWEAKS,
-    COMPLEXITY,
-    EXPERIMENTAL,
-    UNSPECIFIED,
+    /**
+     * Parse a class file to identify the items used by each method and the non-private methods of its API.
+     *
+     * @param fileName  the source file
+     * @param className the class within the file
+     *
+     * @return an instance of Results
+     */
+    Results parse(String fileName, String className);
+
+    /**
+     * Represents the results of the parsing.
+     */
+    @RequiredArgsConstructor
+    class Results {
+
+        private final Map<String, Set<String>> usedByMethod;
+
+        private final Set<String> nonPrivateMethods;
+
+        public Map<String, Set<String>> getUsedByMethod() {
+            return usedByMethod;
+        }
+
+        public Set<String> getNonPrivateMethods() {
+            return nonPrivateMethods;
+        }
+    }
 }

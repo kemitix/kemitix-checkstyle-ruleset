@@ -69,6 +69,8 @@ public class DefaultCheckstyleExecutor implements CheckstyleExecutor {
 
     private static final String KEMITIX_ARTIFACTID = "kemitix-checkstyle-ruleset";
 
+    private static final String KEMITIX_CHECKS_ID = "kemitix-checkstyle-checks";
+
     private static final String APACHE_PLUGIN_GROUPID = "org.apache.maven.plugins";
 
     private static final String APACHE_PLUGIN_ARTIFACTID = "maven-checkstyle-plugin";
@@ -124,21 +126,27 @@ public class DefaultCheckstyleExecutor implements CheckstyleExecutor {
         val pluginVersion = getProperty(properties, "maven-checkstyle-plugin.version");
         val checkstyleVersion = getProperty(properties, "checkstyle.version");
         val sevntuVersion = getProperty(properties, "sevntu.version");
-        info("Checkstyle %s (plugin: %s, sevntu: %s, ruleset: %s)", checkstyleVersion,
-             pluginVersion, sevntuVersion, rulesetVersion
+        info("Checkstyle %s (plugin: %s, sevntu: %s, ruleset: %s)", checkstyleVersion, pluginVersion, sevntuVersion,
+             rulesetVersion
             );
 
         // create checkstyle dependencies
         val checkstyle = getCheckstyleDependency(checkstyleVersion);
         val sevntu = getSevntuDependency(sevntuVersion);
-        val ruleset = getRulesetDependency();
-        final List<Dependency> dependencies = pluginExecutor.dependencies(checkstyle, sevntu, ruleset);
+        val kemitixChecks = getKemitixChecksDependency();
+        val kemitixRuleset = getKemitixRulesetDependency();
+        final List<Dependency> dependencies =
+                pluginExecutor.dependencies(checkstyle, sevntu, kemitixChecks, kemitixRuleset);
 
         return pluginExecutor.plugin(APACHE_PLUGIN_GROUPID, APACHE_PLUGIN_ARTIFACTID, pluginVersion, dependencies);
     }
 
-    private Dependency getRulesetDependency() {
+    private Dependency getKemitixRulesetDependency() {
         return pluginExecutor.dependency(KEMITIX_GROUPID, KEMITIX_ARTIFACTID, rulesetVersion);
+    }
+
+    private Dependency getKemitixChecksDependency() {
+        return pluginExecutor.dependency(KEMITIX_GROUPID, KEMITIX_CHECKS_ID, rulesetVersion);
     }
 
     private Dependency getSevntuDependency(final String sevntuVersion) {
