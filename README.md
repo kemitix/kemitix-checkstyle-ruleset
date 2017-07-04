@@ -268,7 +268,7 @@ Rule|Level|Source|Enabled|Suppressible
 [VisibilityModifier](#visibilitymodifier)|tweaks|checkstyle|Yes|No
 [WhitespaceAfter](#whitespaceafter)|layout|checkstyle|Yes|
 [WhitespaceAround](#whitespacearound)|layout|checkstyle|Yes|
-[WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer)|layout|sevntu||
+[WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer)|layout|sevntu|Yes|
 [WriteTag](#writetag)|unspecified|checkstyle||
 
 ## Enabled Checks
@@ -2607,6 +2607,24 @@ class Derived extends Base {
     }
 }
 ````
+#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
+
+This checks enforces whitespace before array initializer.
+
+Valid:
+````java
+int[] ints = new int[] {
+    0, 1, 2, 3
+};
+
+int[] tab = new int[]
+                {0, 1, 2, 3};
+````
+
+Invalid:
+````java
+int[] ints = new int[]{0, 1, 2, 3};
+````
 
 ## Disabled Checks
 
@@ -2733,8 +2751,5 @@ Generic rule; doesn't embody a 'quality' check.
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
-#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
-
-TODO: enable
 
 [Effective Java]: http://amzn.to/2aSz6GE

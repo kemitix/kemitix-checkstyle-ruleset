@@ -1496,10 +1496,9 @@ rules:
         name: WhitespaceBeforeArrayInitializer
         parent: TREEWALKER
         level: LAYOUT
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html
-        reason: "TODO: enable"
     -
         name: MoveVariableInsideIfCheck
         parent: TREEWALKER
