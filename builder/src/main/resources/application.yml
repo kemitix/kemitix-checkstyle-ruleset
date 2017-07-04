@@ -1433,10 +1433,9 @@ rules:
         name: EmptyPublicCtorInClass
         parent: TREEWALKER
         level: TWEAKS
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html
-        reason: "TODO: enable"
     -
         name: FinalizeImplementation
         parent: TREEWALKER

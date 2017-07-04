@@ -177,6 +177,7 @@
 <module name="com.github.sevntu.checkstyle.checks.naming.UniformEnumConstantNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.UselessSingleCatchCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.UselessSuperCtorCallCheck"/>
+<module name="com.github.sevntu.checkstyle.checks.coding.EmptyPublicCtorInClassCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.MoveVariableInsideIfCheck"/>
 
     </module><!-- /TreeWalker -->

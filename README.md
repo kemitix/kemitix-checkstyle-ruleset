@@ -116,7 +116,7 @@ Rule|Level|Source|Enabled|Suppressible
 [EmptyForInitializerPad](#emptyforinitializerpad)|layout|checkstyle|Yes|
 [EmptyForIteratorPad](#emptyforiteratorpad)|layout|checkstyle|Yes|
 [EmptyLineSeparator](#emptylineseparator)|layout|checkstyle|Yes|
-[EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu||
+[EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu|Yes|
 [EmptyStatement](#emptystatement)|layout|checkstyle|Yes|
 [EnumValueName](#enumvaluename)|naming|sevntu|Yes|
 [EqualsAvoidNull](#equalsavoidnull)|tweaks|checkstyle|Yes|
@@ -2258,6 +2258,32 @@ Map<Long, String> idTable = new HashMap<Long, String>();
 Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
 
 Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
+#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
+
+This Check looks for useless empty public constructors. Class constructor is considered useless by this Check if and only if class has exactly one ctor, which is public, empty(one that has no statements) and default.
+
+Valid:
+````java
+class ValidPrivateCtor {
+    private ValidPrivateCtor() {
+    }
+}
+
+class ValidOverloadedCtor {
+    public ValidOverloadedCtor() {
+    }
+    public ValidOverloadedCtor(int i) {
+    }
+}
+````
+
+Invalid:
+````java
+class Invalid {
+     public Invalid() {
+     }
+}
+````
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 
 Checks that Enum Values match the pattern: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
@@ -2686,9 +2712,6 @@ Appears to be broken as of `1.21.0`.
 #### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
 
 The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
-#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
-
-TODO: enable
 #### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
 
 TODO: enable
