@@ -127,7 +127,7 @@ Rule|Level|Source|Enabled|Suppressible
 [FileLength](#filelength)|complexity|checkstyle|Yes|
 [FileTabCharacter](#filetabcharacter)|layout|checkstyle|Yes|
 [FinalClass](#finalclass)|complexity|checkstyle|Yes|
-[FinalizeImplementation](#finalizeimplementation)|unspecified|sevntu||
+[FinalizeImplementation](#finalizeimplementation)|tweaks|sevntu|Yes|
 [FinalLocalVariable](#finallocalvariable)|tweaks|checkstyle||
 [FinalParameters](#finalparameters)|tweaks|checkstyle|Yes|
 [ForbidAnnotation](#forbidannotation)|unspecified|sevntu||
@@ -2303,6 +2303,49 @@ enum InvalidConstants {
     alpha, Beta;
 }
 ````
+#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
+
+Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation. 
+
+Valid:
+```java
+class Valid {
+    protected void finalize() {
+        try {
+            doSomething();
+        } finally {
+            super.finalize();
+        }
+    }
+}
+```
+
+Invalid:
+```java
+class InvalidNoEffect1 {
+    protected void finalize() {
+    }
+}
+class InvalidNoEffect2 {
+    protected void finalize() {
+        doSomething();
+    }
+}
+class InvalidUseless {
+    protected void finalize() {
+        super.finalize();
+    }
+}
+class InvalidPublic {
+    public void finalize() {
+        try {
+            doSomething();
+        } finally {
+            super.finalize();
+        }
+    }
+}
+```
 #### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
 
 Prevents the use of `/* C-style */` comments inside methods.
@@ -2730,9 +2773,6 @@ Appears to be broken as of `1.21.0`.
 #### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
 
 The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
-#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
-
-TODO: enable
 #### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
