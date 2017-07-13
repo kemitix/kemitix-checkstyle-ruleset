@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>3.3.0</version>
+    <version>3.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Kemitix Checkstyle :: Ruleset :: Parent</name>
