@@ -22,31 +22,18 @@
 package net.kemitix.checkstyle.regressions;
 
 /**
- * Regression demo for {@code ExplicitInitializationCheck}.
+ * Regression test for {@code FinalizeImplementationCheck}.
  *
- * @author Paul Campbell (pcampbell@kemitix.net).
+ * @author Paul Campbell pcampbell@kemitix.net
  */
-@SuppressWarnings({"hideutilityclassconstructor", "PMD.UnusedPrivateField"})
-class ExplicitInitialization {
+class FinalizeImplementation {
 
-    private boolean validBoolean = false;
-
-    private int validInt = 0;
-
-    private String validString = "";
-
-    private Object validObject = new Object();
-
-    @SuppressWarnings("explicitinitialization")
-    private Boolean invalidBoolean = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private Integer invalidInteger = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private String invalidString = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private Object invalidObject = null;
+    /**
+     * Negates effect of superclass finalize.
+     */
+    @SuppressWarnings({"PMD.EmptyFinalizer", "nofinalizer", "finalizeimplementation"})
+    protected void finalize() {
+        // doesn't call super.finalize()
+    }
 
 }

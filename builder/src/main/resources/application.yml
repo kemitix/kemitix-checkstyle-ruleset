@@ -1392,11 +1392,10 @@ rules:
     -
         name: AvoidDefaultSerializableInInnerClasses
         parent: TREEWALKER
-        level: COMPLEXITY
-        enabled: false
+        level: TWEAKS
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html
-        reason: "TODO: enable"
     -
         name: AvoidModifiersForTypes
         parent: TREEWALKER
@@ -1433,18 +1432,16 @@ rules:
         name: EmptyPublicCtorInClass
         parent: TREEWALKER
         level: TWEAKS
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html
-        reason: "TODO: enable"
     -
         name: FinalizeImplementation
         parent: TREEWALKER
-        level:
-        enabled: false
+        level: TWEAKS
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html
-        reason: "TODO: enable"
     -
         name: ForbidAnnotation
         parent: TREEWALKER
@@ -1497,10 +1494,9 @@ rules:
         name: WhitespaceBeforeArrayInitializer
         parent: TREEWALKER
         level: LAYOUT
-        enabled: false
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html
-        reason: "TODO: enable"
     -
         name: MoveVariableInsideIfCheck
         parent: TREEWALKER

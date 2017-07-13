@@ -1,6 +1,21 @@
 CHANGELOG
 =========
 
+3.3.0
+-----
+
+* Upgrade spring boot to 1.5.4
+* Upgrade platform to Brussels-SR3
+* Upgrade checkstyle to 8.0
+* Upgrade immutables to 2.5.6
+* Upgrade mockito to 2.8.47
+* Upgrade sevntu to 1.24.1
+* Enable rule: EmptyPublicCtorInClass
+* Enable rule: WhiteSpaceBeforeArrayInitializer
+* Enable rule: FinalizeImplementation
+* Enable rule: AvoidDefaultSerializableInInnerClass
+
+
 3.2.0
 -----
 

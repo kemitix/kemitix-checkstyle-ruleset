@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>3.2.0</version>
+    <version>3.3.0</version>
     <packaging>pom</packaging>
 
     <name>Kemitix Checkstyle :: Ruleset :: Parent</name>
@@ -19,10 +19,17 @@
 
     <properties>
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>7.8</checkstyle.version>
-        <sevntu.version>1.24.0</sevntu.version>
+        <checkstyle.version>8.0</checkstyle.version>
+        <sevntu.version>1.24.1</sevntu.version>
 
-        <mockito.version>1.10.19</mockito.version>
+        <spring-platform.version>Brussels-SR3</spring-platform.version>
+        <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
+        <mapstream.version>2.3.5</mapstream.version>
+        <map-builder.version>1.0.0</map-builder.version>
+        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
+        <immutables-value.version>2.5.6</immutables-value.version>
+
+        <mockito.version>2.8.47</mockito.version>
         <assertj.version>3.8.0</assertj.version>
     </properties>
 
@@ -51,6 +58,28 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.puppycrawl.tools</groupId>
+                <artifactId>checkstyle</artifactId>
+                <version>${checkstyle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sevntu-checkstyle</groupId>
+                <artifactId>sevntu-checks</artifactId>
+                <version>${sevntu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.speedment.common</groupId>
+                <artifactId>mapstream</artifactId>
+                <version>${mapstream.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
@@ -59,6 +88,16 @@
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${assertj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>me.andrz</groupId>
+                <artifactId>map-builder</artifactId>
+                <version>${map-builder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.immutables</groupId>
+                <artifactId>value</artifactId>
+                <version>${immutables-value.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

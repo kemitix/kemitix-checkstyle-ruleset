@@ -83,7 +83,7 @@ Rule|Level|Source|Enabled|Suppressible
 [AtclauseOrder](#atclauseorder)|javadoc|checkstyle|Yes|
 [AvoidConditionInversion](#avoidconditioninversion)|complexity|sevntu||
 [AvoidConstantAsFirstOperandInCondition](#avoidconstantasfirstoperandincondition)|tweaks|sevntu|Yes|
-[AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|complexity|sevntu||
+[AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|tweaks|sevntu|Yes|
 [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters)|tweaks|checkstyle|Yes|
 [AvoidHidingCauseException](#avoidhidingcauseexception)|tweaks|sevntu|Yes|
 [AvoidInlineConditionals](#avoidinlineconditionals)|complexity|checkstyle|Yes|
@@ -116,7 +116,7 @@ Rule|Level|Source|Enabled|Suppressible
 [EmptyForInitializerPad](#emptyforinitializerpad)|layout|checkstyle|Yes|
 [EmptyForIteratorPad](#emptyforiteratorpad)|layout|checkstyle|Yes|
 [EmptyLineSeparator](#emptylineseparator)|layout|checkstyle|Yes|
-[EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu||
+[EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu|Yes|
 [EmptyStatement](#emptystatement)|layout|checkstyle|Yes|
 [EnumValueName](#enumvaluename)|naming|sevntu|Yes|
 [EqualsAvoidNull](#equalsavoidnull)|tweaks|checkstyle|Yes|
@@ -127,7 +127,7 @@ Rule|Level|Source|Enabled|Suppressible
 [FileLength](#filelength)|complexity|checkstyle|Yes|
 [FileTabCharacter](#filetabcharacter)|layout|checkstyle|Yes|
 [FinalClass](#finalclass)|complexity|checkstyle|Yes|
-[FinalizeImplementation](#finalizeimplementation)|unspecified|sevntu||
+[FinalizeImplementation](#finalizeimplementation)|tweaks|sevntu|Yes|
 [FinalLocalVariable](#finallocalvariable)|tweaks|checkstyle||
 [FinalParameters](#finalparameters)|tweaks|checkstyle|Yes|
 [ForbidAnnotation](#forbidannotation)|unspecified|sevntu||
@@ -268,7 +268,7 @@ Rule|Level|Source|Enabled|Suppressible
 [VisibilityModifier](#visibilitymodifier)|tweaks|checkstyle|Yes|No
 [WhitespaceAfter](#whitespaceafter)|layout|checkstyle|Yes|
 [WhitespaceAround](#whitespacearound)|layout|checkstyle|Yes|
-[WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer)|layout|sevntu||
+[WhitespaceBeforeArrayInitializer](#whitespacebeforearrayinitializer)|layout|sevntu|Yes|
 [WriteTag](#writetag)|unspecified|checkstyle||
 
 ## Enabled Checks
@@ -2182,6 +2182,9 @@ Invalid:
 ````
 if (12 == a) {}
 ````
+#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
+
+Prevent the use of default serialization methods on inner classes. If an inner class needs to implement the Serializable interface, then it *must* implement both `writeObject()` and `readObject()` methods.
 #### [AvoidHidingCauseException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html)
 
 Ensures that an exception is re-thrown properly and is not swallowed by a `catch` block.
@@ -2258,6 +2261,32 @@ Map<Long, String> idTable = new HashMap<Long, String>();
 Checks that when an exception is caught, that if it is logged then it is not also re-thrown. Log or throw; one or the other or neither, but not both.
 
 Accepts `java.util.logging.Logger` and `org.slf4j.Logger`.
+#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
+
+This Check looks for useless empty public constructors. Class constructor is considered useless by this Check if and only if class has exactly one ctor, which is public, empty(one that has no statements) and default.
+
+Valid:
+````java
+class ValidPrivateCtor {
+    private ValidPrivateCtor() {
+    }
+}
+
+class ValidOverloadedCtor {
+    public ValidOverloadedCtor() {
+    }
+    public ValidOverloadedCtor(int i) {
+    }
+}
+````
+
+Invalid:
+````java
+class Invalid {
+     public Invalid() {
+     }
+}
+````
 #### [EnumValueName](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/naming/EnumValueNameCheck.html)
 
 Checks that Enum Values match the pattern: `^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$`
@@ -2277,6 +2306,49 @@ enum InvalidConstants {
     alpha, Beta;
 }
 ````
+#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
+
+Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation. 
+
+Valid:
+```java
+class Valid {
+    protected void finalize() {
+        try {
+            doSomething();
+        } finally {
+            super.finalize();
+        }
+    }
+}
+```
+
+Invalid:
+```java
+class InvalidNoEffect1 {
+    protected void finalize() {
+    }
+}
+class InvalidNoEffect2 {
+    protected void finalize() {
+        doSomething();
+    }
+}
+class InvalidUseless {
+    protected void finalize() {
+        super.finalize();
+    }
+}
+class InvalidPublic {
+    public void finalize() {
+        try {
+            doSomething();
+        } finally {
+            super.finalize();
+        }
+    }
+}
+```
 #### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
 
 Prevents the use of `/* C-style */` comments inside methods.
@@ -2581,6 +2653,24 @@ class Derived extends Base {
     }
 }
 ````
+#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
+
+This checks enforces whitespace before array initializer.
+
+Valid:
+````java
+int[] ints = new int[] {
+    0, 1, 2, 3
+};
+
+int[] tab = new int[]
+                {0, 1, 2, 3};
+````
+
+Invalid:
+````java
+int[] ints = new int[]{0, 1, 2, 3};
+````
 
 ## Disabled Checks
 
@@ -2671,9 +2761,6 @@ As the sevntu check are considered experimental not all those that are not enabl
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
-#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
-
-TODO: enable
 #### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
@@ -2686,12 +2773,6 @@ Appears to be broken as of `1.21.0`.
 #### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
 
 The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
-#### [EmptyPublicCtorInClass](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/EmptyPublicCtorInClassCheck.html)
-
-TODO: enable
-#### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
-
-TODO: enable
 #### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
@@ -2710,8 +2791,5 @@ Generic rule; doesn't embody a 'quality' check.
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
-#### [WhitespaceBeforeArrayInitializer](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/WhitespaceBeforeArrayInitializerCheck.html)
-
-TODO: enable
 
 [Effective Java]: http://amzn.to/2aSz6GE
