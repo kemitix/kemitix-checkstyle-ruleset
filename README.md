@@ -83,7 +83,7 @@ Rule|Level|Source|Enabled|Suppressible
 [AtclauseOrder](#atclauseorder)|javadoc|checkstyle|Yes|
 [AvoidConditionInversion](#avoidconditioninversion)|complexity|sevntu||
 [AvoidConstantAsFirstOperandInCondition](#avoidconstantasfirstoperandincondition)|tweaks|sevntu|Yes|
-[AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|complexity|sevntu||
+[AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|tweaks|sevntu|Yes|
 [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters)|tweaks|checkstyle|Yes|
 [AvoidHidingCauseException](#avoidhidingcauseexception)|tweaks|sevntu|Yes|
 [AvoidInlineConditionals](#avoidinlineconditionals)|complexity|checkstyle|Yes|
@@ -2182,6 +2182,9 @@ Invalid:
 ````
 if (12 == a) {}
 ````
+#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
+
+Prevent the use of default serialization methods on inner classes. If an inner class needs to implement the Serializable interface, then it *must* implement both `writeObject()` and `readObject()` methods.
 #### [AvoidHidingCauseException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidHidingCauseExceptionCheck.html)
 
 Ensures that an exception is re-thrown properly and is not swallowed by a `catch` block.
@@ -2758,9 +2761,6 @@ As the sevntu check are considered experimental not all those that are not enabl
 #### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
 
 Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
-#### [AvoidDefaultSerializableInInnerClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html)
-
-TODO: enable
 #### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.

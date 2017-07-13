@@ -1392,11 +1392,10 @@ rules:
     -
         name: AvoidDefaultSerializableInInnerClasses
         parent: TREEWALKER
-        level: COMPLEXITY
-        enabled: false
+        level: TWEAKS
+        enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidDefaultSerializableInInnerClassesCheck.html
-        reason: "TODO: enable"
     -
         name: AvoidModifiersForTypes
         parent: TREEWALKER
