@@ -26,7 +26,7 @@ package net.kemitix.checkstyle.regressions;
  *
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
-@SuppressWarnings("hideutilityclassconstructor")
+@SuppressWarnings({"hideutilityclassconstructor", "PMD.UnusedPrivateField"})
 class ExplicitInitialization {
 
     private boolean validBoolean = false;
