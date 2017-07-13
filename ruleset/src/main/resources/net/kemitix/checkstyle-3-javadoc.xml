@@ -117,6 +117,7 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.SimpleAccessorNameNotationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.UniformEnumConstantNameCheck"/>
+<module name="com.github.sevntu.checkstyle.checks.coding.WhitespaceBeforeArrayInitializerCheck"/>
 
     </module><!-- /TreeWalker -->
 

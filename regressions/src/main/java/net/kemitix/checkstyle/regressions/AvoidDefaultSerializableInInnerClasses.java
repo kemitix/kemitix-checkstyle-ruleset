@@ -21,32 +21,21 @@
 
 package net.kemitix.checkstyle.regressions;
 
+import java.io.Serializable;
+
 /**
- * Regression demo for {@code ExplicitInitializationCheck}.
+ * Regression test for {@code AvoidDefaultSerializableInInnerClasses}.
  *
- * @author Paul Campbell (pcampbell@kemitix.net).
+ * @author Paul Campbell (pcampbell@kemitix.net)
  */
-@SuppressWarnings({"hideutilityclassconstructor", "PMD.UnusedPrivateField"})
-class ExplicitInitialization {
+public class AvoidDefaultSerializableInInnerClasses {
 
-    private boolean validBoolean = false;
+    /**
+     * Inner class should not use default implementations of {@code readObject()} and {@code writeObject()}.
+     */
+    @SuppressWarnings("avoiddefaultserializableininnerclasses")
+    public class InnerClass implements Serializable {
 
-    private int validInt = 0;
-
-    private String validString = "";
-
-    private Object validObject = new Object();
-
-    @SuppressWarnings("explicitinitialization")
-    private Boolean invalidBoolean = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private Integer invalidInteger = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private String invalidString = null;
-
-    @SuppressWarnings("explicitinitialization")
-    private Object invalidObject = null;
+    }
 
 }
