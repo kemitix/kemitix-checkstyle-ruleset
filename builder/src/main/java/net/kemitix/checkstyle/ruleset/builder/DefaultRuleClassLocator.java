@@ -28,6 +28,7 @@ import javax.annotation.PostConstruct;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -62,6 +63,7 @@ public class DefaultRuleClassLocator implements RuleClassLocator {
     }
 
     private String getCanonicalClassName(final RuleSource source, final String name) {
+        Objects.requireNonNull(checkClasses, "init() method not called");
         return checkClasses.get(source)
                            .stream()
                            .sorted()
