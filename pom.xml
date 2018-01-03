@@ -36,7 +36,6 @@
     <modules>
         <module>builder</module>
         <module>ruleset</module>
-        <module>plugin</module>
         <module>regressions</module>
     </modules>
 
