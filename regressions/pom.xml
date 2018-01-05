@@ -13,7 +13,7 @@
     <name>Kemitix Checkstyle :: Ruleset :: Regression Tests</name>
 
     <properties>
-        <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
+        <!-- use the disabled ruleset for normal builds. comment out the following line to check that conditions are caught -->
         <ruleset.level>0-disabled</ruleset.level>
         <digraph-dependency.basePackage>net.kemitix.checkstyle.regressions</digraph-dependency.basePackage>
         <pitest.skip>true</pitest.skip>
@@ -28,7 +28,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

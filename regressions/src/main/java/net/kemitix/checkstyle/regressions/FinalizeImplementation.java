@@ -31,7 +31,7 @@ class FinalizeImplementation {
     /**
      * Negates effect of superclass finalize.
      */
-    @SuppressWarnings({"PMD.EmptyFinalizer", "nofinalizer", "finalizeimplementation"})
+    @SuppressWarnings("PMD.EmptyFinalizer")
     protected void finalize() {
         // doesn't call super.finalize()
     }

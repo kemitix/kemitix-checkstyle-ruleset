@@ -37,16 +37,12 @@ class ExplicitInitialization {
 
     private Object validObject = new Object();
 
-    @SuppressWarnings("explicitinitialization")
     private Boolean invalidBoolean = null;
 
-    @SuppressWarnings("explicitinitialization")
     private Integer invalidInteger = null;
 
-    @SuppressWarnings("explicitinitialization")
     private String invalidString = null;
 
-    @SuppressWarnings("explicitinitialization")
     private Object invalidObject = null;
 
 }
