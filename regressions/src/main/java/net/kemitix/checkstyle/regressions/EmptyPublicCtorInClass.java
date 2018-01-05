@@ -31,7 +31,6 @@ public class EmptyPublicCtorInClass {
     /**
      * Useless empty public constructors.
      */
-    @SuppressWarnings("emptypublicctorinclass")
     EmptyPublicCtorInClass() {
     }
 

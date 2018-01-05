@@ -41,7 +41,6 @@ class MoveVariableInsideIf {
      *
      * @return value
      */
-    @SuppressWarnings("movevariableinsideif")
     protected String invalid() {
         String variable = input.substring(1);
         if (condition) {

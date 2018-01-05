@@ -15,16 +15,16 @@ public class RulesPropertiesTest {
     private RulesProperties rulesProperties;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         rulesProperties = new RulesProperties();
     }
 
     @Test
-    public void getEmpty() throws Exception {
+    public void getEmpty() {
         assertThat(rulesProperties.getRules()).isEmpty();
     }
     @Test
-    public void getContent() throws Exception {
+    public void getContent() {
         //given
         final Rule rule = new Rule();
         //when

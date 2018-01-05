@@ -13,17 +13,36 @@
     <name>Kemitix Checkstyle :: Ruleset :: Regression Tests</name>
 
     <properties>
-        <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
-        <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
+        <!-- use the disabled ruleset for normal builds. comment out the following line to check that conditions are caught -->
+        <ruleset.level>0-disabled</ruleset.level>
+        <digraph-dependency.basePackage>net.kemitix.checkstyle.regressions</digraph-dependency.basePackage>
         <pitest.skip>true</pitest.skip>
+        <immutables-value.version>2.5.6</immutables-value.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
+            <version>${immutables-value.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.tiles:all-tiles:${kemitix-tiles.version}</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
