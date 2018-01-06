@@ -451,8 +451,6 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType
-        properties:
-            authorFormat: ^.+ (\S+@[\S.]+)$
     -
         name: JavaNCSS
         parent: TREEWALKER
