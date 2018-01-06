@@ -427,7 +427,7 @@ rules:
         name: JavadocPackage
         parent: CHECKER
         level: JAVADOC
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage
     -
