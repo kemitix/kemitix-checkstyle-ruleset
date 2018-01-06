@@ -21,9 +21,9 @@
         <checkstyle.version>8.7</checkstyle.version>
         <sevntu.version>1.26.0</sevntu.version>
 
-        <spring-platform.version>Brussels-SR3</spring-platform.version>
-        <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
         <lombok.version>1.16.18</lombok.version>
+        <spring-platform.version>Brussels-SR6</spring-platform.version>
+        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
