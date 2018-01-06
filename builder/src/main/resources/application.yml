@@ -324,7 +324,7 @@ rules:
         name: Header
         parent: CHECKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_header.html#Header
         properties:
