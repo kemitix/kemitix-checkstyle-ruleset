@@ -18,8 +18,8 @@
         <java.version>1.8</java.version>
 
         <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <sevntu.version>1.24.1</sevntu.version>
         <checkstyle.version>8.7</checkstyle.version>
+        <sevntu.version>1.26.0</sevntu.version>
 
         <spring-platform.version>Brussels-SR3</spring-platform.version>
         <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
