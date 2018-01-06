@@ -101,14 +101,14 @@ rules:
         name: AvoidStarImport
         parent: TREEWALKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport
     -
         name: AvoidStaticImport
         parent: TREEWALKER
         level: COMPLEXITY
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport
         properties:
@@ -324,7 +324,7 @@ rules:
         name: Header
         parent: CHECKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_header.html#Header
         properties:
@@ -427,7 +427,7 @@ rules:
         name: JavadocPackage
         parent: CHECKER
         level: JAVADOC
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage
     -
@@ -451,8 +451,6 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType
-        properties:
-            authorFormat: ^.+ (\S+@[\S.]+)$
     -
         name: JavaNCSS
         parent: TREEWALKER
