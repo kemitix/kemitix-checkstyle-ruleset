@@ -108,7 +108,7 @@ rules:
         name: AvoidStaticImport
         parent: TREEWALKER
         level: COMPLEXITY
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport
         properties:
