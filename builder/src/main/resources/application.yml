@@ -101,7 +101,7 @@ rules:
         name: AvoidStarImport
         parent: TREEWALKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport
     -
