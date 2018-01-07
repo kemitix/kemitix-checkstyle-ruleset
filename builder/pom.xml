@@ -14,12 +14,12 @@
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>ruleset-builder</artifactId>
     <packaging>jar</packaging>
-    <version>3.4.0-SNAPSHOT</version>
+    <version>3.5.0-SNAPSHOT</version>
 
     <properties>
         <java.version>1.8</java.version>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.1.1</kemitix-tiles.version>
+        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
 
         <checkstyle.version>8.7</checkstyle.version>
         <sevntu.version>1.26.0</sevntu.version>

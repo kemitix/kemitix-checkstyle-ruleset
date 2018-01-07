@@ -12,11 +12,11 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>ruleset-regressions</artifactId>
-    <version>3.4.0-SNAPSHOT</version>
+    <version>3.5.0-SNAPSHOT</version>
 
     <properties>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.1.1</kemitix-tiles.version>
+        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
 
         <!-- use the disabled ruleset for normal builds. comment out the following line to check that conditions are caught -->
         <ruleset.level>0-disabled</ruleset.level>
