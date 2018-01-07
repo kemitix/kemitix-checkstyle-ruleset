@@ -5,25 +5,49 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-        <version>3.3.0</version>
+        <artifactId>kemitix-parent</artifactId>
+        <version>5.0.3</version>
+        <relativePath/>
     </parent>
 
-    <artifactId>kemitix-checkstyle-ruleset-regressions</artifactId>
-    <name>Kemitix Checkstyle :: Ruleset :: Regression Tests</name>
+    <groupId>net.kemitix.checkstyle</groupId>
+    <artifactId>ruleset-regressions</artifactId>
+    <version>3.4.0</version>
 
     <properties>
-        <kemitix-checkstyle-ruleset.version>${project.version}</kemitix-checkstyle-ruleset.version>
-        <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
+        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+
+        <!-- use the disabled ruleset for normal builds. comment out the following line to check that conditions are caught -->
+        <ruleset.level>0-disabled</ruleset.level>
+        <digraph-dependency.basePackage>net.kemitix.checkstyle.regressions</digraph-dependency.basePackage>
         <pitest.skip>true</pitest.skip>
+        <immutables-value.version>2.5.6</immutables-value.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
+            <version>${immutables-value.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.tiles:checkstyle-tile:${kemitix-tiles.version}</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

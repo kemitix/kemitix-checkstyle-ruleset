@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TemporaryFolder;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -24,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 
 /**
  * Tests for {@link CheckstyleWriter}.
@@ -58,12 +57,10 @@ public class CheckstyleWriterTest {
 
     private Path outputDirectory;
 
-    @Mock
-    private RuleClassLocator ruleClassLocator;
+    private RuleClassLocator ruleClassLocator = mock(RuleClassLocator.class);
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
         ruleName = "RegexpOnFilename";
         ruleClassname = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
         outputProperties = new OutputProperties();
@@ -90,7 +87,7 @@ public class CheckstyleWriterTest {
         given(ruleClassLocator.apply(any())).willReturn(ruleClassname);
     }
 
-    private Map.Entry<RuleLevel, String> getOutputFile(final RuleLevel level) throws IOException {
+    private Map.Entry<RuleLevel, String> getOutputFile(final RuleLevel level) {
         final String xmlFile = String.format("checkstyle-%s.xml", level.toString());
         return new AbstractMap.SimpleImmutableEntry<>(level, xmlFile);
     }
@@ -202,7 +199,7 @@ public class CheckstyleWriterTest {
 
     // throw RTE if template not found
     @Test
-    public void throwRteIfTemplateNotFound() throws Exception {
+    public void throwRteIfTemplateNotFound() {
         //given
         templateProperties.setCheckstyleXml(Paths.get("garbage"));
         //when
@@ -214,7 +211,7 @@ public class CheckstyleWriterTest {
 
     // throw RTE if error writing file
     @Test
-    public void throwRteIfErrorWritingFile() throws Exception {
+    public void throwRteIfErrorWritingFile() {
         //given
         final String imaginary = String.join(FILE_SEPARATOR, "", "..", "imaginary");
         outputProperties.setDirectory(Paths.get(imaginary));

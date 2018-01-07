@@ -22,7 +22,7 @@
 package net.kemitix.checkstyle.regressions;
 
 /**
- * Sample class.
+ * Sample class with no checkstyle issues.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */

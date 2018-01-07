@@ -33,7 +33,6 @@ public class AvoidDefaultSerializableInInnerClasses {
     /**
      * Inner class should not use default implementations of {@code readObject()} and {@code writeObject()}.
      */
-    @SuppressWarnings("avoiddefaultserializableininnerclasses")
     public class InnerClass implements Serializable {
 
     }

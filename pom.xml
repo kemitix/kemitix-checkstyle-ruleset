@@ -3,103 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-parent</artifactId>
-        <version>3.0.0</version>
-        <relativePath/>
-    </parent>
 
-    <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-    <version>3.3.0</version>
+    <groupId>net.kemitix.checkstyle</groupId>
+    <artifactId>ruleset-root</artifactId>
+    <version>3.4.0</version>
     <packaging>pom</packaging>
-
-    <name>Kemitix Checkstyle :: Ruleset :: Parent</name>
-    <description>Parent POM for the Kemitix Checkstyle Ruleset and it's Builder</description>
-
-    <properties>
-        <maven-checkstyle-plugin.version>2.17</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.0</checkstyle.version>
-        <sevntu.version>1.24.1</sevntu.version>
-
-        <spring-platform.version>Brussels-SR3</spring-platform.version>
-        <spring-boot.version>1.5.4.RELEASE</spring-boot.version>
-        <mapstream.version>2.3.5</mapstream.version>
-        <map-builder.version>1.0.0</map-builder.version>
-        <coveralls-maven-plugin.version>4.3.0</coveralls-maven-plugin.version>
-        <immutables-value.version>2.5.6</immutables-value.version>
-
-        <mockito.version>2.8.47</mockito.version>
-        <assertj.version>3.8.0</assertj.version>
-    </properties>
 
     <modules>
         <module>builder</module>
         <module>ruleset</module>
-        <module>plugin</module>
         <module>regressions</module>
     </modules>
-
-    <issueManagement>
-        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-
-    <scm>
-        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
-        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
-        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
-    </scm>
-
-    <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
-
-    <inceptionYear>2016</inceptionYear>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.puppycrawl.tools</groupId>
-                <artifactId>checkstyle</artifactId>
-                <version>${checkstyle.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.sevntu-checkstyle</groupId>
-                <artifactId>sevntu-checks</artifactId>
-                <version>${sevntu.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring-platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>com.speedment.common</groupId>
-                <artifactId>mapstream</artifactId>
-                <version>${mapstream.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.assertj</groupId>
-                <artifactId>assertj-core</artifactId>
-                <version>${assertj.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>me.andrz</groupId>
-                <artifactId>map-builder</artifactId>
-                <version>${map-builder.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.immutables</groupId>
-                <artifactId>value</artifactId>
-                <version>${immutables-value.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
 </project>

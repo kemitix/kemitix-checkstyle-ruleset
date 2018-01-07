@@ -22,7 +22,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import com.speedment.common.mapstream.MapStream;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
@@ -58,13 +57,13 @@ class CheckstyleWriter implements CommandLineRunner {
     private final RuleClassLocator ruleClassLocator;
 
     @Override
-    public void run(final String... args) throws Exception {
+    public void run(final String... args) {
         Stream.of(RuleLevel.values())
               .filter(level -> !level.equals(RuleLevel.UNSPECIFIED))
               .forEach(this::writeCheckstyleFile);
     }
 
-    private void writeCheckstyleFile(@NonNull final RuleLevel ruleLevel) {
+    private void writeCheckstyleFile(final RuleLevel ruleLevel) {
         val xmlFile = outputProperties.getDirectory()
                                       .resolve(outputProperties.getRulesetFiles()
                                                                .get(ruleLevel));

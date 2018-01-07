@@ -6,97 +6,62 @@
 
     <parent>
         <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-        <version>3.3.0</version>
+        <artifactId>kemitix-parent</artifactId>
+        <version>5.0.3</version>
+        <relativePath/>
     </parent>
 
     <artifactId>kemitix-checkstyle-ruleset</artifactId>
+    <version>3.4.0</version>
     <packaging>jar</packaging>
 
-    <name>Kemitix Checkstyle :: Ruleset</name>
-    <description>Checkstyle Ruleset for use by packages derived from kemitix-parent</description>
+    <name>Kemitix Checkstyle Ruleset</name>
+    <description>A Checkstyle Ruleset</description>
+    <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
 
     <properties>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <!-- plugin sequence: javadoc, sources, gpg, deploy -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>${maven-javadoc-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-javadocs</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-javadoc-plugin -->
+    <licenses>
+        <license>
+            <name>The MIT License (MIT)</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>${maven-source-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-source-plugin -->
+    <developers>
+        <developer>
+            <name>Paul Campbell</name>
+            <email>pcampbell@kemitix.net</email>
+            <organization>Kemitix</organization>
+            <organizationUrl>https://github.com/kemitix/</organizationUrl>
+        </developer>
+    </developers>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin.version}</version>
-                        <configuration>
-                            <passphrase>${gpg.passphrase}</passphrase>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin><!-- maven-gpg-plugin -->
+    <scm>
+        <connection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</connection>
+        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
+        <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
+    </scm>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-deploy-plugin</artifactId>
-                        <version>${maven-deploy-plugin.version}</version>
-                    </plugin><!-- maven deploy-plugin -->
-                </plugins>
-            </build>
-        </profile><!-- release -->
-    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:enforcer-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:release-tile:${kemitix-tiles.version}</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 </project>
