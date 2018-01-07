@@ -3,43 +3,62 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <properties>
-        <lombok.version>1.16.18</lombok.version>
-    </properties>
 
     <parent>
         <groupId>net.kemitix</groupId>
-        <artifactId>kemitix-checkstyle-ruleset-parent</artifactId>
-        <version>3.4.0-SNAPSHOT</version>
+        <artifactId>kemitix-parent</artifactId>
+        <version>5.0.3</version>
+        <relativePath/>
     </parent>
 
-    <artifactId>kemitix-checkstyle-ruleset-builder</artifactId>
+    <groupId>net.kemitix.checkstyle</groupId>
+    <artifactId>ruleset-builder</artifactId>
     <packaging>jar</packaging>
+    <version>3.4.0-SNAPSHOT</version>
 
-    <name>Kemitix Checkstyle :: Ruleset :: Builder</name>
-    <description>Builder for the Kemitix Checkstyle Ruleset</description>
+    <properties>
+        <java.version>1.8</java.version>
+        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <kemitix-tiles.version>0.1.1</kemitix-tiles.version>
 
-    <issueManagement>
-        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
+        <checkstyle.version>8.7</checkstyle.version>
+        <sevntu.version>1.26.0</sevntu.version>
+        <lombok.version>1.16.18</lombok.version>
+        <spring-platform.version>Brussels-SR6</spring-platform.version>
+        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
+        <mapstream.version>2.3.5</mapstream.version>
+        <map-builder.version>1.0.0</map-builder.version>
+        <mockito.version>2.13.0</mockito.version>
+        <assertj.version>3.9.0</assertj.version>
+    </properties>
 
-    <scm>
-        <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
-        <connection>scm:git:git://github.com/kemitix/kemitix-checkstyle-ruleset.git</connection>
-        <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
-    </scm>
-
-    <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
-
-    <inceptionYear>2016</inceptionYear>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -63,6 +82,7 @@
         <dependency>
             <groupId>com.speedment.common</groupId>
             <artifactId>mapstream</artifactId>
+            <version>${mapstream.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,16 +92,19 @@
         <dependency>
             <groupId>me.andrz</groupId>
             <artifactId>map-builder</artifactId>
+            <version>${map-builder.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.sevntu-checkstyle</groupId>
             <artifactId>sevntu-checks</artifactId>
+            <version>${sevntu.version}</version>
         </dependency>
     </dependencies>
 
@@ -94,7 +117,15 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:all-tiles:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:enforcer-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:compiler-tile:${kemitix-tiles.version}</tile>
+                        <!--<tile>net.kemitix.tiles:checkstyle-tile:${kemitix-tiles.version}</tile>-->
+                        <tile>net.kemitix.tiles:huntbugs-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:pmd-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:testing-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:coverage-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:pitest-tile:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
@@ -108,17 +139,10 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>
-                                repackage
-                            </goal>
+                            <goal>repackage</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
