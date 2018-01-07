@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+3.4.0
+-----
+
+* Disable Header check
+* Remove requirement for `@author` in Type Javadoc
+* Disable AvoidStarImport check
+* Disable AvoidStaticImport check
+* Disable JavadocPackage check
+* Upgrade `checkstyle` to 8.7
+* Upgrade `sevntu-checkstyle` to 1.26.0
+
 3.3.0
 -----
 
