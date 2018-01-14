@@ -328,7 +328,7 @@ rules:
         name: Header
         parent: CHECKER
         level: LAYOUT
-        enabled: false
+        enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_header.html#Header
         properties:
@@ -431,7 +431,7 @@ rules:
         name: JavadocPackage
         parent: CHECKER
         level: JAVADOC
-        enabled: false
+        enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage
     -
