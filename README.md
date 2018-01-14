@@ -90,8 +90,8 @@ Rule|Level|Source|Enabled|Suppressible
 [AvoidModifiersForTypes](#avoidmodifiersfortypes)|unspecified|sevntu||
 [AvoidNestedBlocks](#avoidnestedblocks)|complexity|checkstyle|Yes|
 [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean)|tweaks|sevntu|Yes|
-[AvoidStarImport](#avoidstarimport)|layout|checkstyle|Yes|
-[AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle|Yes|
+[AvoidStarImport](#avoidstarimport)|layout|checkstyle||
+[AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle||
 [BooleanExpressionComplexity](#booleanexpressioncomplexity)|complexity|checkstyle|Yes|
 [CatchParameterName](#catchparametername)|naming|checkstyle|Yes|
 [CauseParameterInException](#causeparameterinexception)|tweaks|sevntu||
@@ -413,37 +413,6 @@ Invalid:
 {
     // ...
 }
-````
-#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
-
-Prevents the use of the star import.
-
-Invalid:
-````
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-````
-#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
-
-Prevents importing static members, unless they are one of the following:
-
-* `org.assertj.core.api.Assertions.assertThat`
-* `org.mockito.BDDMockito.given`
-* `org.mockito.Mockito.*`
-* `org.mockito.Matchers.*`
-* `org.mockito.Mockito.*`
-
-Valid:
-````
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-````
-
-Invalid:
-````
-import static java.nio.charset.StandardCharsets.UTF_8;
 ````
 #### [BooleanExpressionComplexity](http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity)
 
@@ -1233,7 +1202,7 @@ Checks that paragraphs in Javadoc blocks are wrapped in `<p>` elements and have 
 Checks the formatting of the Javadoc blocks. See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle) for all the checks that are applied.
 #### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType)
 
-Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags. The `@author` tag must have a name and, in brackets, an email address.
+Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags.
 #### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
 
 Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
@@ -2681,6 +2650,13 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
+#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
+
+Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcards
+#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
+
+Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
+Recommends using a static import to access constants from another class over inheriting them.
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.

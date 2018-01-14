@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+3.4.1
+-----
+
+* \[bug] update the ruleset files
+* Add missing reasons for disabling checks
+
 3.4.0
 -----
 

@@ -22,7 +22,6 @@
         <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationUseStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.ArrayTypeStyleCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForInitializerPadCheck"/>
