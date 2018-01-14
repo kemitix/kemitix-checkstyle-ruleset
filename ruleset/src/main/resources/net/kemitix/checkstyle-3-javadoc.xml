@@ -31,7 +31,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.AtclauseOrderCheck">
     <property name="tagOrder" value="@param, @author, @version, @serial, @return, @throws, @exception,             @serialData, @serialField, @see, @since, @deprecated"/>
 </module>
-<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.CatchParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.ClassTypeParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"/>
@@ -51,9 +50,7 @@
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck">
-    <property name="authorFormat" value="^.+ (\S+@[\S.]+)$"/>
-</module>
+<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
     <property name="max" value="120"/>
