@@ -38,10 +38,6 @@
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.AvoidInlineConditionalsCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.AvoidNestedBlocksCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStaticImportCheck">
-    <property name="excludes" value="org.assertj.core.api.Assertions.assertThat,org.mockito.BDDMockito.given,org.mockito.Mockito.*,org.mockito.Matchers.*,org.mockito.Mockito.*"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck">
     <property name="max" value="2"/>
 </module>
@@ -99,9 +95,7 @@
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck">
-    <property name="authorFormat" value="^.+ (\S+@[\S.]+)$"/>
-</module>
+<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.metrics.JavaNCSSCheck">
     <property name="classMaximum" value="1200"/>
 <property name="fileMaximum" value="1600"/>

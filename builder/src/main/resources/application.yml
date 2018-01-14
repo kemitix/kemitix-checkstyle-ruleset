@@ -103,6 +103,7 @@ rules:
         level: LAYOUT
         enabled: false
         source: CHECKSTYLE
+        reason: "Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcards"
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport
     -
         name: AvoidStaticImport
@@ -110,6 +111,9 @@ rules:
         level: COMPLEXITY
         enabled: false
         source: CHECKSTYLE
+        reason: "Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
+
+          Recommends using a static import to access constants from another class over inheriting them."
         uri: http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport
         properties:
             excludes: org.assertj.core.api.Assertions.assertThat,org.mockito.BDDMockito.given,org.mockito.Mockito.*,org.mockito.Matchers.*,org.mockito.Mockito.*
@@ -324,7 +328,7 @@ rules:
         name: Header
         parent: CHECKER
         level: LAYOUT
-        enabled: false
+        enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_header.html#Header
         properties:
@@ -427,7 +431,7 @@ rules:
         name: JavadocPackage
         parent: CHECKER
         level: JAVADOC
-        enabled: false
+        enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage
     -

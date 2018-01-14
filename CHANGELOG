@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+3.4.1
+-----
+
+* \[bug] update the ruleset files
+* Restore Header and JavadocPackage checks
+* Add missing reasons for disabling checks
+
 3.4.0
 -----
 
