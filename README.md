@@ -1,10 +1,9 @@
 # kemitix-checkstyle-ruleset
 
-Provides an extensive Checkstyle ruleset for use with Apache's `maven-checkstyle-plugin`.
+Provides an extensive Checkstyle ruleset for use with Checkstyle, together with a fully configured maven-tile.
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
 
-* [Requirements](#requirements)
 * [Usage](#usage)
 * [All Checks](#all-checks)
 * [Enabled Checks](#enabled-checks)
@@ -14,16 +13,32 @@ The ruleset includes checks from both the core Checkstyle library and from the S
     * [Checkstyle](#checkstyle-1)
     * [Sevntu](#sevntu-1)
 
-## Requirements
-
-* [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/) 2.17+
-* [Checkstyle](http://checkstyle.sourceforge.net/) 7.0+
-* [Sevntu-checkstyle](http://sevntu-checkstyle.github.io/sevntu.checkstyle/) 1.21.0+
-
 ## Usage
 
-To use this ruleset add the plugin `kemitix-checktyle-ruleset-maven-plugin`.
-The `maven-checkstyle-plugin` will be included automatically.
+The simplest way to use the ruleset is with the maven-tile:
+
+```xml
+<project>
+    <properties>
+        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                 <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.checkstyle:tile:4.0.0</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
 
 The following levels implement increasingly strict rulesets:
 
@@ -34,40 +49,11 @@ The following levels implement increasingly strict rulesets:
 * 4-tweaks
 * 5-complexity
 
+The default ruleset from the maven-tile is 5-complexity. Other levels can be selected by setting the `kemitix.checkstyle.ruleset.level` to one the values above.
+
 ### Change from 2.x
 
-In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal.
-The level is now specified as a configuration parameter. See the example below.
-
-### Example
-
-````
-<properties>
-    <kemitix-checkstyle-ruleset.version>2.1.0</kemitix-checkstyle-ruleset.version>
-    <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
-</properties>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>net.kemitix</groupId>
-            <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
-            <version>${kemitix-checkstyle-ruleset.version}</version>
-            <configuration>
-                <level>${kemitix-checkstyle-ruleset.level}</level>
-            </configuration>
-            <executions>
-                <execution>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
-````
+In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal. The level is now specified as a configuration parameter. See the example below. The kemitix-checkstyle-maven-plugin has also been removed in favour of the maven-tile.
 
 ## All Checks
 
@@ -2277,7 +2263,7 @@ enum InvalidConstants {
 ````
 #### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
 
-Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation. 
+Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation.
 
 Valid:
 ```java

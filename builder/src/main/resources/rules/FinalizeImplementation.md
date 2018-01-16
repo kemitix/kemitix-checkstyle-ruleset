@@ -1,5 +1,5 @@
 
-Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation. 
+Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation.
 
 Valid:
 ```java
