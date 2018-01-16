@@ -6,7 +6,7 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>root</artifactId>
-    <version>3.5.0-SNAPSHOT</version>
+    <version>4.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
