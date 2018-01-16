@@ -142,8 +142,9 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <phase>package</phase>
                         <goals>
-                            <goal>repackage</goal>
+                            <goal>run</goal>
                         </goals>
                     </execution>
                 </executions>
