@@ -6,13 +6,14 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>root</artifactId>
-    <version>3.4.1</version>
+    <version>4.0.0</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>builder</module>
         <module>ruleset</module>
         <module>regressions</module>
+        <module>tile</module>
     </modules>
 
 </project>
