@@ -9,6 +9,10 @@
     <version>4.0.0</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <maven.install.skip>true</maven.install.skip>
+    </properties>
+
     <modules>
         <module>builder</module>
         <module>ruleset</module>
