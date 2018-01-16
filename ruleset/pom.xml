@@ -11,7 +11,8 @@
         <relativePath/>
     </parent>
 
-    <artifactId>kemitix-checkstyle-ruleset</artifactId>
+    <groupId>net.kemitix.checkstyle</groupId>
+    <artifactId>ruleset</artifactId>
     <version>3.5.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
