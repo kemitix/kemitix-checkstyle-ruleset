@@ -1,10 +1,9 @@
 # kemitix-checkstyle-ruleset
 
-Provides an extensive Checkstyle ruleset for use with Apache's `maven-checkstyle-plugin`.
+Provides an extensive Checkstyle ruleset for use with Checkstyle, together with a fully configured maven-tile.
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
 
-* [Requirements](#requirements)
 * [Usage](#usage)
 * [All Checks](#all-checks)
 * [Enabled Checks](#enabled-checks)
@@ -14,16 +13,32 @@ The ruleset includes checks from both the core Checkstyle library and from the S
     * [Checkstyle](#checkstyle-1)
     * [Sevntu](#sevntu-1)
 
-## Requirements
-
-* [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/) 2.17+
-* [Checkstyle](http://checkstyle.sourceforge.net/) 7.0+
-* [Sevntu-checkstyle](http://sevntu-checkstyle.github.io/sevntu.checkstyle/) 1.21.0+
-
 ## Usage
 
-To use this ruleset add the plugin `kemitix-checktyle-ruleset-maven-plugin`.
-The `maven-checkstyle-plugin` will be included automatically.
+The simplest way to use the ruleset is with the maven-tile:
+
+```xml
+<project>
+    <properties>
+        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                 <version>${tiles-maven-plugin.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.checkstyle:tile:4.0.0</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
 
 The following levels implement increasingly strict rulesets:
 
@@ -34,40 +49,11 @@ The following levels implement increasingly strict rulesets:
 * 4-tweaks
 * 5-complexity
 
+The default ruleset from the maven-tile is 5-complexity. Other levels can be selected by setting the `kemitix.checkstyle.ruleset.level` to one the values above.
+
 ### Change from 2.x
 
-In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal.
-The level is now specified as a configuration parameter. See the example below.
-
-### Example
-
-````
-<properties>
-    <kemitix-checkstyle-ruleset.version>2.1.0</kemitix-checkstyle-ruleset.version>
-    <kemitix-checkstyle-ruleset.level>5-complexity</kemitix-checkstyle-ruleset.level>
-</properties>
-
-<build>
-    <plugins>
-        <plugin>
-            <groupId>net.kemitix</groupId>
-            <artifactId>kemitix-checkstyle-ruleset-maven-plugin</artifactId>
-            <version>${kemitix-checkstyle-ruleset.version}</version>
-            <configuration>
-                <level>${kemitix-checkstyle-ruleset.level}</level>
-            </configuration>
-            <executions>
-                <execution>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
-    </plugins>
-</build>
-````
+In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal. The level is now specified as a configuration parameter. See the example below. The kemitix-checkstyle-maven-plugin has also been removed in favour of the maven-tile.
 
 ## All Checks
 
@@ -90,8 +76,8 @@ Rule|Level|Source|Enabled|Suppressible
 [AvoidModifiersForTypes](#avoidmodifiersfortypes)|unspecified|sevntu||
 [AvoidNestedBlocks](#avoidnestedblocks)|complexity|checkstyle|Yes|
 [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean)|tweaks|sevntu|Yes|
-[AvoidStarImport](#avoidstarimport)|layout|checkstyle|Yes|
-[AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle|Yes|
+[AvoidStarImport](#avoidstarimport)|layout|checkstyle||
+[AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle||
 [BooleanExpressionComplexity](#booleanexpressioncomplexity)|complexity|checkstyle|Yes|
 [CatchParameterName](#catchparametername)|naming|checkstyle|Yes|
 [CauseParameterInException](#causeparameterinexception)|tweaks|sevntu||
@@ -413,37 +399,6 @@ Invalid:
 {
     // ...
 }
-````
-#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
-
-Prevents the use of the star import.
-
-Invalid:
-````
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import javax.swing.event.*;
-````
-#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
-
-Prevents importing static members, unless they are one of the following:
-
-* `org.assertj.core.api.Assertions.assertThat`
-* `org.mockito.BDDMockito.given`
-* `org.mockito.Mockito.*`
-* `org.mockito.Matchers.*`
-* `org.mockito.Mockito.*`
-
-Valid:
-````
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-````
-
-Invalid:
-````
-import static java.nio.charset.StandardCharsets.UTF_8;
 ````
 #### [BooleanExpressionComplexity](http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity)
 
@@ -1233,7 +1188,7 @@ Checks that paragraphs in Javadoc blocks are wrapped in `<p>` elements and have 
 Checks the formatting of the Javadoc blocks. See the official [Checkstyle documentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocStyle) for all the checks that are applied.
 #### [JavadocType](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocType)
 
-Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags. The `@author` tag must have a name and, in brackets, an email address.
+Checks the format for Javadoc for classes and enums. Javadoc must be present, not have any unknown tags and not missing any `@param` tags.
 #### [JavaNCSS](http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS)
 
 Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
@@ -2308,7 +2263,7 @@ enum InvalidConstants {
 ````
 #### [FinalizeImplementation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/FinalizeImplementationCheck.html)
 
-Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation. 
+Checks that the `finalize()` implementation doesn't ignore the base class implementation, and doesn't *only* call the base class implementation.
 
 Valid:
 ```java
@@ -2681,6 +2636,13 @@ These checks are not enabled. Notes are included for each explaining why.
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
+#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
+
+Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcards
+#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
+
+Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
+Recommends using a static import to access constants from another class over inheriting them.
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.

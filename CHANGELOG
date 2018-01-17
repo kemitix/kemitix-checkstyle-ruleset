@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+4.0.0
+-----
+
+* Upgrade to `maven-checkstyle-plugin` 3.0.0
+* Change ruleset groupId/artifactId to `net.kemitix.checkstyle/ruleset`
+* Add maven-tile `net.kemitix.checkstyle:tile`
+* \[bug] update the ruleset files
+* Restore Header and JavadocPackage checks
+* Add missing reasons for disabling checks
+
 3.4.0
 -----
 

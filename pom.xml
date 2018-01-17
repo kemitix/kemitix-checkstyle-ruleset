@@ -5,14 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix.checkstyle</groupId>
-    <artifactId>ruleset-root</artifactId>
-    <version>3.4.0</version>
+    <artifactId>root</artifactId>
+    <version>4.0.0</version>
     <packaging>pom</packaging>
+
+    <properties>
+        <maven.install.skip>true</maven.install.skip>
+    </properties>
 
     <modules>
         <module>builder</module>
         <module>ruleset</module>
         <module>regressions</module>
+        <module>tile</module>
     </modules>
 
 </project>

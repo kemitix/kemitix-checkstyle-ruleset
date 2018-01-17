@@ -25,7 +25,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationUseStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.ArrayTypeStyleCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.CatchParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.ClassTypeParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.indentation.CommentsIndentationCheck"/>
