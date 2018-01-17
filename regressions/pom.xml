@@ -19,8 +19,14 @@
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
 
+        <checkstyle.version>8.6</checkstyle.version>
+        <sevntu.version>1.26.0</sevntu.version>
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
+        <!--<kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>-->
         <!-- use the disabled ruleset for normal builds. comment out the following line to check that conditions are caught -->
-        <ruleset.level>0-disabled</ruleset.level>
+        <kemitix.checkstyle.ruleset.level>0-disabled</kemitix.checkstyle.ruleset.level>
+        <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
         <digraph-dependency.basePackage>net.kemitix.checkstyle.regressions</digraph-dependency.basePackage>
         <pitest.skip>true</pitest.skip>
         <immutables-value.version>2.5.6</immutables-value.version>
@@ -44,9 +50,43 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:checkstyle-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:compiler-tile:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.github.sevntu-checkstyle</groupId>
+                        <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
+                        <version>${sevntu.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>net.kemitix.checkstyle</groupId>
+                        <artifactId>ruleset</artifactId>
+                        <version>${kemitix.checkstyle.ruleset.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>${kemitix.checkstyle.ruleset.location}</configLocation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
