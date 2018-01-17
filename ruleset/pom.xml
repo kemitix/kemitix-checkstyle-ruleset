@@ -23,6 +23,7 @@
     <properties>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
     </properties>
 
     <licenses>
@@ -60,6 +61,14 @@
                         <tile>net.kemitix.tiles:enforcer-tile:${kemitix-tiles.version}</tile>
                         <tile>net.kemitix.tiles:release-tile:${kemitix-tiles.version}</tile>
                     </tiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
         </plugins>

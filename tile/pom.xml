@@ -18,6 +18,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
     </properties>
 
     <build>
@@ -27,6 +28,12 @@
                 <artifactId>tiles-maven-plugin</artifactId>
                 <version>${tiles-maven-plugin.version}</version>
                 <extensions>true</extensions>
+                <configuration>
+                    <tiles>
+                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:release-tile:${kemitix-tiles.version}</tile>
+                    </tiles>
+                </configuration>
             </plugin>
         </plugins>
     </build>
