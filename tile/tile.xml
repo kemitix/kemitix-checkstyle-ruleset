@@ -32,6 +32,9 @@
                 </dependencies>
                 <configuration>
                     <configLocation>${kemitix.checkstyle.ruleset.location}</configLocation>
+                    <sourceDirectories>
+                        <sourceDirectory>${build.sourceDirectory}</sourceDirectory>
+                    </sourceDirectories>
                 </configuration>
                 <executions>
                     <execution>
