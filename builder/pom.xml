@@ -36,6 +36,7 @@
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
         <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
+        <javax.annotation-api.version>1.2</javax.annotation-api.version>
     </properties>
 
     <dependencyManagement>
@@ -75,6 +76,11 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax.annotation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
