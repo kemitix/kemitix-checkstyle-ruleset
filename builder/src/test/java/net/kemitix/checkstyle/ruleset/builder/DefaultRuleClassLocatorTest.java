@@ -4,7 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
@@ -19,14 +21,9 @@ import static org.mockito.Mockito.mock;
  */
 public class DefaultRuleClassLocatorTest {
 
-    private DefaultRuleClassLocator subject;
+    private final Map<RuleSource, List<String>> checkClasses = new HashMap<>();
 
-    private PackageScanner packageScanner = mock(PackageScanner.class);
-
-    @Before
-    public void setUp() {
-        subject = new DefaultRuleClassLocator(packageScanner);
-    }
+    private final DefaultRuleClassLocator subject = new DefaultRuleClassLocator(checkClasses);
 
     @Test
     public void canLookupRuleWithClassNameEndingInCheck() {
@@ -35,9 +32,8 @@ public class DefaultRuleClassLocatorTest {
         final String expected = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
         final List<String> checkstyleClasses = Collections.singletonList(expected);
         final List<String> sevntuClasses = Collections.emptyList();
-        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(checkstyleClasses.stream());
-        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(sevntuClasses.stream());
-        subject.init();
+        checkClasses.put(RuleSource.CHECKSTYLE, checkstyleClasses);
+        checkClasses.put(RuleSource.SEVNTU, sevntuClasses);
         final Rule rule = createCheckstyleRule(rulename);
         //when
         final String result = subject.apply(rule);
@@ -52,9 +48,8 @@ public class DefaultRuleClassLocatorTest {
         final String expected = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilename";
         final List<String> checkstyleClasses = Collections.singletonList(expected);
         final List<String> sevntuClasses = Collections.emptyList();
-        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(checkstyleClasses.stream());
-        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(sevntuClasses.stream());
-        subject.init();
+        checkClasses.put(RuleSource.CHECKSTYLE, checkstyleClasses);
+        checkClasses.put(RuleSource.SEVNTU, sevntuClasses);
         final Rule rule = createCheckstyleRule(rulename);
         //when
         final String result = subject.apply(rule);
@@ -69,21 +64,13 @@ public class DefaultRuleClassLocatorTest {
         final String expected = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameNoMatch";
         final List<String> checkstyleClasses = Collections.singletonList(expected);
         final List<String> sevntuClasses = Collections.emptyList();
-        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(checkstyleClasses.stream());
-        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(sevntuClasses.stream());
-        subject.init();
+        checkClasses.put(RuleSource.CHECKSTYLE, checkstyleClasses);
+        checkClasses.put(RuleSource.SEVNTU, sevntuClasses);
         final Rule rule = createCheckstyleRule(rulename);
         //then
         assertThatThrownBy(() -> subject.apply(rule))
                 .isInstanceOf(CheckstyleClassNotFoundException.class)
                 .hasMessage("No class found to implement RegexpOnFilename");
-    }
-
-    @Test
-    public void throwsNullPointerExceptionWhenInitNotCalled() {
-        assertThatNullPointerException()
-                .isThrownBy(() -> subject.apply(new Rule()))
-                .withMessage("init() method not called");
     }
 
     private Rule createCheckstyleRule(final String rulename) {
