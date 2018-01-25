@@ -12,7 +12,7 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>regressions</artifactId>
-    <version>4.0.0</version>
+    <version>4.0.1</version>
 
     <properties>
         <maven.install.skip>true</maven.install.skip>
