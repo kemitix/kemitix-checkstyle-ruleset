@@ -1,6 +1,5 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -9,10 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 
 /**
  * Tests for {@link DefaultRuleClassLocator}.
