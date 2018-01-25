@@ -24,13 +24,9 @@ package net.kemitix.checkstyle.ruleset.builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Default implementation of {@link RuleClassLocator}.
@@ -41,38 +37,30 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class DefaultRuleClassLocator implements RuleClassLocator {
 
-    private final PackageScanner packageScanner;
-
-    private Map<RuleSource, List<String>> checkClasses;
-
-    /**
-     * Initialise class lists for {@link RuleSource}s.
-     */
-    @PostConstruct
-    public final void init() {
-        checkClasses = Stream.of(RuleSource.values())
-                             .map(source -> new AbstractMap.SimpleEntry<>(
-                                     source, packageScanner.apply(source)
-                                                           .collect(Collectors.toList())))
-                             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
+    private final Map<RuleSource, List<String>> checkClasses;
 
     @Override
     public final String apply(final Rule rule) {
         return getCanonicalClassName(rule.getSource(), rule.getName());
     }
 
-    private String getCanonicalClassName(final RuleSource source, final String name) {
+    private String getCanonicalClassName(
+            final RuleSource source,
+            final String name
+                                        ) {
         Objects.requireNonNull(checkClasses, "init() method not called");
         return checkClasses.get(source)
-                           .stream()
-                           .sorted()
-                           .filter(classname -> byRuleName(classname, name))
-                           .findFirst()
-                           .orElseThrow(() -> new CheckstyleClassNotFoundException(name));
+                .stream()
+                .sorted()
+                .filter(classname -> byRuleName(classname, name))
+                .findFirst()
+                .orElseThrow(() -> new CheckstyleClassNotFoundException(name));
     }
 
-    private boolean byRuleName(final String classname, final String name) {
+    private boolean byRuleName(
+            final String classname,
+            final String name
+                              ) {
         final String classNameWithDelimiter = "." + name;
         return classname.endsWith(classNameWithDelimiter) || classname.endsWith(classNameWithDelimiter + "Check");
     }

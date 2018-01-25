@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DefaultPackageScannerTest {
 
-    private DefaultPackageScanner scanner;
+    private PackageScanner scanner;
 
     @Before
     public void setUp() throws Exception {

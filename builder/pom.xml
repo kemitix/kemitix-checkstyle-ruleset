@@ -20,11 +20,11 @@
         <maven.install.skip>true</maven.install.skip>
         <java.version>1.8</java.version>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+        <kemitix-tiles.version>0.3.0</kemitix-tiles.version>
 
         <checkstyle.version>8.6</checkstyle.version>
         <sevntu.version>1.26.0</sevntu.version>
-        <lombok.version>1.16.18</lombok.version>
+        <lombok.version>1.16.20</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
         <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
         <mapstream.version>2.3.5</mapstream.version>
@@ -36,6 +36,7 @@
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
         <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
+        <javax.annotation-api.version>1.2</javax.annotation-api.version>
     </properties>
 
     <dependencyManagement>
@@ -55,6 +56,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -75,6 +77,11 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>${javax.annotation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

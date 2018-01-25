@@ -6,6 +6,13 @@ CHANGELOG
 
 *
 
+4.0.1
+-----
+
+* Add sourceDirectories to avoid scanning generated sources
+* Upgrade lombok to 1.16.20
+* Upgrade kemitix-maven-tiles to 0.3.0
+
 4.0.0
 -----
 
