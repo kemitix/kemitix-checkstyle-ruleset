@@ -20,7 +20,7 @@
         <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
 
         <checkstyle.version>8.6</checkstyle.version>
-        <sevntu.version>1.26.0</sevntu.version>
+        <sevntu.version>1.27.0</sevntu.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <!--<kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>-->
