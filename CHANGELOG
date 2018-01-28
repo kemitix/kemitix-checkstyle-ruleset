@@ -5,6 +5,7 @@ CHANGELOG
 -----
 
 * Upgrade `secntu-checkstyle` to 1.27.0
+* Upgrade `checkstyle` to 8.7 (properly now that it is supported by sevntu)
 
 4.0.1
 -----
