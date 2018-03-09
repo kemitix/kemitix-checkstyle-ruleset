@@ -47,10 +47,16 @@ public class BuilderConfiguration {
      * @return the ClassPath
      *
      * @throws IOException if there is an error
+     * @param classLoader
      */
     @Bean
-    public ClassPath classPath() throws IOException {
-        return ClassPath.from(getClass().getClassLoader());
+    public ClassPath classPath(final ClassLoader classLoader) throws IOException {
+        return ClassPath.from(classLoader);
+    }
+
+    @Bean
+    public ClassLoader classLoader() {
+        return BuilderConfiguration.class.getClassLoader();
     }
 
     /**

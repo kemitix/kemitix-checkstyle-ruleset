@@ -23,7 +23,8 @@ public class BuilderConfigurationTest {
     @Test
     public void canGetClassPath() throws IOException {
         //when
-        final ClassPath classPath = new BuilderConfiguration().classPath();
+        final BuilderConfiguration builderConfiguration = new BuilderConfiguration();
+        final ClassPath classPath = builderConfiguration.classPath(builderConfiguration.getClass().getClassLoader());
         //then
         assertThat(classPath).isNotNull();
     }
