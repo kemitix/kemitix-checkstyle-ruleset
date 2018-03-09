@@ -8,7 +8,9 @@
     <property name="fileNamePattern" value="(.sync-conflict-| conflicted copy )"/>
 <property name="match" value="true"/>
 </module>
-<module name="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck">
+    <property name="max" value="500"/>
+</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck">
     <property name="fileExtensions" value="java"/>
@@ -97,9 +99,9 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.metrics.JavaNCSSCheck">
-    <property name="classMaximum" value="1200"/>
-<property name="fileMaximum" value="1600"/>
-<property name="methodMaximum" value="40"/>
+    <property name="classMaximum" value="250"/>
+<property name="fileMaximum" value="250"/>
+<property name="methodMaximum" value="12"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
@@ -110,10 +112,10 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.MethodCountCheck">
-    <property name="maxTotal" value="30"/>
+    <property name="maxTotal" value="10"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.MethodLengthCheck">
-    <property name="max" value="40"/>
+    <property name="max" value="30"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"/>
