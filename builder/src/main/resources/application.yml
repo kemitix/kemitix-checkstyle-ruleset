@@ -296,6 +296,8 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_sizes.html#FileLength
+        properties:
+          max: 500
     -
         name: FileTabCharacter
         parent: CHECKER
@@ -463,9 +465,9 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_metrics.html#JavaNCSS
         properties:
-            classMaximum: 1200
-            fileMaximum: 1600
-            methodMaximum: 40
+            classMaximum: 250
+            fileMaximum: 250
+            methodMaximum: 12
     -
         name: LeftCurly
         parent: TREEWALKER
@@ -518,7 +520,7 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_sizes.html#MethodCount
         properties:
-            maxTotal: 30
+            maxTotal: 10
     -
         name: MethodLength
         parent: TREEWALKER
@@ -527,7 +529,7 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_sizes.html#MethodLength
         properties:
-            max: 40
+            max: 30
     -
         name: MethodName
         parent: TREEWALKER
