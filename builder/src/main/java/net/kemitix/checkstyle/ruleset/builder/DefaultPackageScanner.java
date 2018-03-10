@@ -22,6 +22,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import com.google.common.reflect.ClassPath;
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import lombok.RequiredArgsConstructor;
 import net.kemitix.conditional.Value;
 import org.springframework.stereotype.Service;
@@ -44,23 +45,25 @@ public class DefaultPackageScanner implements PackageScanner {
     @Override
     public final Stream<String> apply(final RuleSource ruleSource) {
         return Value.<Stream<String>>where(isJava8())
-                .then(scanPackageByClassPath(ruleSource))
-                .otherwise(scanPackageByModulePath());
+                .then(scanPackageByClassPath(ruleSource.getBasePackage()))
+                .otherwise(scanPackageByModulePath(ruleSource.getBasePackage()));
     }
 
     private boolean isJava8() {
         return getClass().getClassLoader() instanceof URLClassLoader;
     }
 
-    private Supplier<Stream<String>> scanPackageByClassPath(final RuleSource ruleSource) {
-        return () -> classPath.getTopLevelClassesRecursive(ruleSource.getBasePackage())
+    private Supplier<Stream<String>> scanPackageByClassPath(final String basePackage) {
+        return () -> classPath.getTopLevelClassesRecursive(basePackage)
                 .stream()
                 .map(ClassPath.ClassInfo::getName);
     }
 
-    private Supplier<Stream<String>> scanPackageByModulePath() {
-        return () -> {
-            throw new UnsupportedOperationException("Java 9 Module Path in unsupported");
-        };
+    private Supplier<Stream<String>> scanPackageByModulePath(final String basePackage) {
+        return () -> new FastClasspathScanner(basePackage)
+                .scan()
+                .getNamesOfAllStandardClasses()
+                .stream()
+                .filter(packageName -> packageName.startsWith(basePackage));
     }
 }
