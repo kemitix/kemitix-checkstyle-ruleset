@@ -23,8 +23,11 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import com.google.common.reflect.ClassPath;
 import lombok.RequiredArgsConstructor;
+import net.kemitix.conditional.Value;
 import org.springframework.stereotype.Service;
 
+import java.net.URLClassLoader;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -40,8 +43,24 @@ public class DefaultPackageScanner implements PackageScanner {
 
     @Override
     public final Stream<String> apply(final RuleSource ruleSource) {
-        return classPath.getTopLevelClassesRecursive(ruleSource.getBasePackage())
-                        .stream()
-                        .map(ClassPath.ClassInfo::getName);
+        return Value.<Stream<String>>where(isJava8())
+                .then(scanPackageByClassPath(ruleSource))
+                .otherwise(scanPackageByModulePath());
+    }
+
+    private boolean isJava8() {
+        return getClass().getClassLoader() instanceof URLClassLoader;
+    }
+
+    private Supplier<Stream<String>> scanPackageByClassPath(final RuleSource ruleSource) {
+        return () -> classPath.getTopLevelClassesRecursive(ruleSource.getBasePackage())
+                .stream()
+                .map(ClassPath.ClassInfo::getName);
+    }
+
+    private Supplier<Stream<String>> scanPackageByModulePath() {
+        return () -> {
+            throw new UnsupportedOperationException("Java 9 Module Path in unsupported");
+        };
     }
 }
