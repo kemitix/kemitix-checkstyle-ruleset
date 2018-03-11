@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix.checkstyle</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>kemitix-checkstyle-ruleset</artifactId>
     <version>4.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
