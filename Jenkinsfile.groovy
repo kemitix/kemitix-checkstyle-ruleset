@@ -46,7 +46,6 @@ pipeline {
             }
         }
         stage('Build Java Next') {
-            when { expression { true == false } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK Next') {
                     sh "${mvn} clean install"
