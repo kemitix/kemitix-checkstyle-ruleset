@@ -32,9 +32,14 @@ pipeline {
                     sh "${mvn} checkstyle:checkstyle"
                     sh "${mvn} pmd:pmd"
                     pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
-                    withSonarQubeEnv('sonarqube') {
-                        sh "${mvn} org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar"
-                    }
+                }
+            }
+        }
+        stage('SonarQube (develop only)') {
+            when { expression { env.GIT_BRANCH == 'develop' } }
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh "${mvn} org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar"
                 }
             }
         }
