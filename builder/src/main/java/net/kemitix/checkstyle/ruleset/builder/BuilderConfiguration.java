@@ -21,15 +21,12 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import com.google.common.reflect.ClassPath;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,24 +39,6 @@ import java.util.stream.Stream;
 public class BuilderConfiguration {
 
     /**
-     * Create the ClassPath used to scan packages.
-     *
-     * @return the ClassPath
-     *
-     * @throws IOException if there is an error
-     * @param classLoader
-     */
-    @Bean
-    public ClassPath classPath(final ClassLoader classLoader) throws IOException {
-        return ClassPath.from(classLoader);
-    }
-
-    @Bean
-    public ClassLoader classLoader() {
-        return BuilderConfiguration.class.getClassLoader();
-    }
-
-    /**
      * A Map of rules for each RuleSource.
      *
      * @param packageScanner the PackageScanner
@@ -69,24 +48,16 @@ public class BuilderConfiguration {
     @Bean
     public Map<RuleSource, List<String>> checkClasses(final PackageScanner packageScanner) {
         return Stream.of(RuleSource.values())
-                .map(toRuleSourceEntry(packageScanner))
+                .map(source -> entry(source, packageScanner.apply(source)
+                        .collect(Collectors.toList())))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private static Function<RuleSource, AbstractMap.SimpleEntry<RuleSource, List<String>>> toRuleSourceEntry(
-            final PackageScanner packageScanner
-                                                                                                            ) {
-        return source -> new AbstractMap.SimpleEntry<>(
-                source,
-                classesInSource(source, packageScanner)
-        );
+    private static AbstractMap.SimpleEntry<RuleSource, List<String>> entry(
+            final RuleSource key,
+            final List<String> value
+                                                                          ) {
+        return new AbstractMap.SimpleEntry<>(key, value);
     }
 
-    private static List<String> classesInSource(
-            final RuleSource source,
-            final PackageScanner packageScanner
-                                               ) {
-        return packageScanner.apply(source)
-                .collect(Collectors.toList());
-    }
 }
