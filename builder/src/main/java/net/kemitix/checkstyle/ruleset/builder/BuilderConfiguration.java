@@ -48,16 +48,11 @@ public class BuilderConfiguration {
     @Bean
     public Map<RuleSource, List<String>> checkClasses(final PackageScanner packageScanner) {
         return Stream.of(RuleSource.values())
-                .map(source -> entry(source, packageScanner.apply(source)
-                        .collect(Collectors.toList())))
+                .map(source -> entry(source, packageScanner.apply(source)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private static AbstractMap.SimpleEntry<RuleSource, List<String>> entry(
-            final RuleSource key,
-            final List<String> value
-                                                                          ) {
+    private static <K, V> AbstractMap.SimpleEntry<K, V> entry(final K key, final V value) {
         return new AbstractMap.SimpleEntry<>(key, value);
     }
-
 }

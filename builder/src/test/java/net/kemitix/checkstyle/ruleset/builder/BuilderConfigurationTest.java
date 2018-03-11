@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -21,28 +22,19 @@ import static org.mockito.Mockito.mock;
 public class BuilderConfigurationTest {
 
     @Test
-    public void canGetClassPath() throws IOException {
-        //when
-        final BuilderConfiguration builderConfiguration = new BuilderConfiguration();
-        final ClassPath classPath = builderConfiguration.classPath(builderConfiguration.getClass().getClassLoader());
-        //then
-        assertThat(classPath).isNotNull();
-    }
-
-    @Test
     public void canGetCheckClasses() {
         //given
         final PackageScanner packageScanner = mock(PackageScanner.class);
         final String checkstyleClass = "checkstyle class";
-        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(Stream.of(checkstyleClass));
+        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(singletonList(checkstyleClass));
         final String sevntuClass = "sevntu class";
-        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(Stream.of(sevntuClass));
+        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(singletonList(sevntuClass));
         //when
         final Map<RuleSource, List<String>> checkClasses = new BuilderConfiguration().checkClasses(packageScanner);
         //then
         assertThat(checkClasses).containsOnlyKeys(RuleSource.values());
         assertThat(checkClasses)
-                .containsEntry(RuleSource.CHECKSTYLE, Collections.singletonList(checkstyleClass))
-                .containsEntry(RuleSource.SEVNTU, Collections.singletonList(sevntuClass));
+                .containsEntry(RuleSource.CHECKSTYLE, singletonList(checkstyleClass))
+                .containsEntry(RuleSource.SEVNTU, singletonList(sevntuClass));
     }
 }
