@@ -36,7 +36,7 @@ pipeline {
             }
         }
         stage('SonarQube (develop only)') {
-            when { expression { env.GIT_BRANCH == 'develop' } }
+            when { expression { env.GIT_BRANCH == 'develop' && env.GIT_URL.startsWith('https://') } }
             steps {
                 withSonarQubeEnv('sonarqube') {
                     withMaven(maven: 'maven', jdk: 'JDK LTS') {
