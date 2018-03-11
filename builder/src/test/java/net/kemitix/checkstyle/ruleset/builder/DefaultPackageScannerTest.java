@@ -1,10 +1,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import com.google.common.reflect.ClassPath;
-import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,27 +14,21 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DefaultPackageScannerTest {
 
-    private PackageScanner scanner;
-
-    @Before
-    public void setUp() throws Exception {
-        final ClassPath classPath = ClassPath.from(getClass().getClassLoader());
-        scanner = new DefaultPackageScanner(classPath);
-    }
+    private PackageScanner scanner = new DefaultPackageScanner();
 
     @Test
-    public void canScanCheckstylePackage() throws IOException {
+    public void canScanCheckstylePackage() {
         //when
-        final Stream<String> result = scanner.apply(RuleSource.CHECKSTYLE);
+        final List<String> result = scanner.apply(RuleSource.CHECKSTYLE);
         //then
         assertThat(result).allMatch(cn -> cn.startsWith(RuleSource.CHECKSTYLE.getBasePackage()))
                           .contains("com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck");
     }
 
     @Test
-    public void canScanSevntuPackage() throws IOException {
+    public void canScanSevntuPackage() {
         //when
-        final Stream<String> result = scanner.apply(RuleSource.SEVNTU);
+        final List<String> result = scanner.apply(RuleSource.SEVNTU);
         //then
         assertThat(result).allMatch(cn -> cn.startsWith(RuleSource.SEVNTU.getBasePackage()))
                           .contains("com.github.sevntu.checkstyle.checks.design.NestedSwitchCheck");

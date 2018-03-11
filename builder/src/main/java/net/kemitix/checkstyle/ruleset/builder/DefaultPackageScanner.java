@@ -21,11 +21,11 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import com.google.common.reflect.ClassPath;
-import lombok.RequiredArgsConstructor;
+import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Default implementation of {@link PackageScanner}.
@@ -33,15 +33,16 @@ import java.util.stream.Stream;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-@RequiredArgsConstructor
 public class DefaultPackageScanner implements PackageScanner {
 
-    private final ClassPath classPath;
-
     @Override
-    public final Stream<String> apply(final RuleSource ruleSource) {
-        return classPath.getTopLevelClassesRecursive(ruleSource.getBasePackage())
-                        .stream()
-                        .map(ClassPath.ClassInfo::getName);
+    public final List<String> apply(final RuleSource ruleSource) {
+        final String basePackage = ruleSource.getBasePackage();
+        return new FastClasspathScanner(basePackage)
+                .scan()
+                .getNamesOfAllStandardClasses()
+                .stream()
+                .filter(packageName -> packageName.startsWith(basePackage))
+                .collect(Collectors.toList());
     }
 }

@@ -31,6 +31,7 @@
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>2.13.0</mockito.version>
         <assertj.version>3.9.0</assertj.version>
+        <fast-classpath-scanner.version>2.18.1</fast-classpath-scanner.version>
 
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
@@ -57,6 +58,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.lukehutch</groupId>
+            <artifactId>fast-classpath-scanner</artifactId>
+            <version>${fast-classpath-scanner.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>

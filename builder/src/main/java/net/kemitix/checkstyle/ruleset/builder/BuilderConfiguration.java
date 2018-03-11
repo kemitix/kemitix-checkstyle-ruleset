@@ -21,15 +21,12 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import com.google.common.reflect.ClassPath;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,18 +39,6 @@ import java.util.stream.Stream;
 public class BuilderConfiguration {
 
     /**
-     * Create the ClassPath used to scan packages.
-     *
-     * @return the ClassPath
-     *
-     * @throws IOException if there is an error
-     */
-    @Bean
-    public ClassPath classPath() throws IOException {
-        return ClassPath.from(getClass().getClassLoader());
-    }
-
-    /**
      * A Map of rules for each RuleSource.
      *
      * @param packageScanner the PackageScanner
@@ -63,24 +48,11 @@ public class BuilderConfiguration {
     @Bean
     public Map<RuleSource, List<String>> checkClasses(final PackageScanner packageScanner) {
         return Stream.of(RuleSource.values())
-                .map(toRuleSourceEntry(packageScanner))
+                .map(source -> entry(source, packageScanner.apply(source)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    private static Function<RuleSource, AbstractMap.SimpleEntry<RuleSource, List<String>>> toRuleSourceEntry(
-            final PackageScanner packageScanner
-                                                                                                            ) {
-        return source -> new AbstractMap.SimpleEntry<>(
-                source,
-                classesInSource(source, packageScanner)
-        );
-    }
-
-    private static List<String> classesInSource(
-            final RuleSource source,
-            final PackageScanner packageScanner
-                                               ) {
-        return packageScanner.apply(source)
-                .collect(Collectors.toList());
+    private static <K, V> AbstractMap.SimpleEntry<K, V> entry(final K key, final V value) {
+        return new AbstractMap.SimpleEntry<>(key, value);
     }
 }
