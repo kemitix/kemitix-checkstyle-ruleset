@@ -36,10 +36,12 @@ pipeline {
             }
         }
         stage('SonarQube (develop only)') {
-            when { expression { env.GIT_BRANCH == 'develop' } }
+            when { expression { env.GIT_BRANCH == 'develop' && env.GIT_URL.startsWith('https://') } }
             steps {
                 withSonarQubeEnv('sonarqube') {
-                    sh "${mvn} org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar"
+                    withMaven(maven: 'maven', jdk: 'JDK LTS') {
+                        sh "${mvn} org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar"
+                    }
                 }
             }
         }
