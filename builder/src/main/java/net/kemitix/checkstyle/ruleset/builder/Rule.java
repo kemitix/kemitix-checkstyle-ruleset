@@ -21,13 +21,17 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
+import com.speedment.common.mapstream.MapStream;
 import lombok.Getter;
 import lombok.Setter;
+import net.kemitix.conditional.Value;
 
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * A single Checkstyle Check.
@@ -39,6 +43,10 @@ import java.util.Map;
 public class Rule {
 
     private static final Locale LOCALE = Locale.ENGLISH;
+
+    private static final String MODULE_NO_PROPERTIES = "<module name=\"%s\"/>";
+
+    private static final String MODULE_WITH_PROPERTIES = "<module name=\"%s\">%n    %s%n</module>";
 
     /**
      * Configuration properties.
@@ -98,6 +106,69 @@ public class Rule {
     protected static int sortByName(final Rule left, final Rule right) {
         return left.getLowerCaseRuleName()
                    .compareTo(right.getLowerCaseRuleName());
+    }
+
+    /**
+     * Predicate to check that the Rule has the given RuleParent.
+     *
+     * @param ruleParent the RuleParent to match
+     *
+     * @return a Predicate to check a Rule
+     */
+    static Predicate<Rule> hasParent(final RuleParent ruleParent) {
+        return rule -> ruleParent.equals(rule.getParent());
+    }
+
+
+    /**
+     * Predicate to check that the Rule is included in the given RuleLevel.
+     *
+     * @param ruleLevel the RuleLevel to match
+     *
+     * @return a Predicate to check a Rule
+     */
+    static Predicate<Rule> isIncludedInLevel(final RuleLevel ruleLevel) {
+        return rule -> ruleLevel.compareTo(rule.getLevel()) >= 0;
+    }
+
+    private static String formatProperties(final Map<String, String> properties) {
+        return MapStream.of(properties)
+                .map((k, v) -> String.format("<property name=\"%s\" value=\"%s\"/>", k, v))
+                .collect(Collectors.joining(System.lineSeparator()));
+    }
+
+    private static boolean hasProperties(final Rule rule) {
+        return !rule.getProperties().isEmpty();
+    }
+
+    /**
+     * Formats the Rule as an XML module fragment.
+     *
+     * @param rule the Rule to format
+     * @param ruleClassname the classname for the Rule
+     *
+     * @return an XML {@code <module/>} fragment
+     */
+    static String asModule(
+            final String ruleClassname,
+            final Rule rule
+                          ) {
+        return Value.<String>where(hasProperties(rule))
+                .then(() -> moduleWithParameters(rule, ruleClassname))
+                .otherwise(() -> moduleNoParameters(ruleClassname));
+    }
+
+    private static String moduleNoParameters(
+            final String ruleClassname
+                                            ) {
+        return String.format(MODULE_NO_PROPERTIES, ruleClassname);
+    }
+
+    private static String moduleWithParameters(
+            final Rule rule,
+            final String ruleClassname
+                                              ) {
+        return String.format(MODULE_WITH_PROPERTIES, ruleClassname, formatProperties(rule.getProperties()));
     }
 
     private String getLowerCaseRuleName() {
