@@ -48,14 +48,17 @@ pipeline {
         stage('Build Java Next') {
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK Next') {
-                    sh "${mvn} clean install"
+                    sh "${mvn} clean install -Djava.version=9"
+                    //TODO: check that git status is still clean - i.e. builder didn't update any rulesets
                 }
             }
         }
         stage('Build Java LTS') {
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK LTS') {
+
                     sh "${mvn} clean install"
+                    //TODO: check that git status is still clean - i.e. builder didn't update any rulesets
                 }
             }
         }
