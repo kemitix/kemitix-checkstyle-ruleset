@@ -1,18 +1,9 @@
-// non-standard Jenkinsfile
-// * only publish code coverage to codacy for builder module
-// * only deploy artifacts for ruleset and tile modules
-
 final String mvn = "mvn --batch-mode --update-snapshots"
 
 pipeline {
     agent any
     stages {
-        stage('Environment') {
-            steps {
-                sh 'set'
-            }
-        }
-        stage('no SNAPSHOT in master') {
+        stage('master != SNAPSHOT') {
             // checks that the pom version is not a snapshot when the current or target branch is master
             when {
                 expression {
@@ -24,54 +15,39 @@ pipeline {
                 error("Build failed because SNAPSHOT version")
             }
         }
-        stage('Static Code Analysis') {
-            when { expression { findFiles(glob: '**/src/main/java/**/*.java').length > 0 } }
+        stage('Build & Test') {
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK LTS') {
-                    sh "${mvn} compile"
-                    sh "${mvn} checkstyle:checkstyle"
-                    sh "${mvn} pmd:pmd"
+                    sh "${mvn} clean compile checkstyle:checkstyle pmd:pmd test"
+                    //junit '**/target/surefire-reports/*.xml'
+                    sh "${mvn} -pl builder jacoco:report com.gavinmogan:codacy-maven-plugin:coverage " +
+                            "-DcoverageReportFile=target/site/jacoco/jacoco.xml " +
+                            "-DprojectToken=`$JENKINS_HOME/codacy/token` " +
+                            "-DapiToken=`$JENKINS_HOME/codacy/apitoken` " +
+                            "-Dcommit=`git rev-parse HEAD`"
+                    jacoco exclusionPattern: '**/*{Test|IT|Main|Application|Immutable}.class'
                     pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
+                    step([$class: 'hudson.plugins.checkstyle.CheckStylePublisher',
+                          pattern: '**/target/checkstyle-result.xml',
+                          healthy:'20',
+                          unHealthy:'100'])
                 }
             }
         }
-        stage('SonarQube (develop only)') {
-            when { expression { env.GIT_BRANCH == 'develop' && env.GIT_URL.startsWith('https://') } }
+        stage('Verify & Install') {
+            steps {
+                withMaven(maven: 'maven', jdk: 'JDK LTS') {
+                    sh "${mvn} -DskipTests install"
+                }
+            }
+        }
+        stage('SonarQube (github only)') {
+            when { expression { env.GIT_URL.startsWith('https://github.com') } }
             steps {
                 withSonarQubeEnv('sonarqube') {
                     withMaven(maven: 'maven', jdk: 'JDK LTS') {
                         sh "${mvn} org.sonarsource.scanner.maven:sonar-maven-plugin:3.4.0.905:sonar"
                     }
-                }
-            }
-        }
-        stage('Build Java Next') {
-            steps {
-                withMaven(maven: 'maven', jdk: 'JDK Next') {
-                    sh "${mvn} clean install -Djava.version=9 -Dmaven-enforcer-plugin.version=3.0.0-M1"
-                    //TODO: check that git status is still clean - i.e. builder didn't update any rulesets
-                }
-            }
-        }
-        stage('Build Java LTS') {
-            steps {
-                withMaven(maven: 'maven', jdk: 'JDK LTS') {
-                    sh "${mvn} clean install"
-                    //TODO: check that git status is still clean - i.e. builder didn't update any rulesets
-                }
-            }
-        }
-        stage('Test Results') {
-            when { expression { findFiles(glob: '**/target/surefire-reports/*.xml').length > 0 } }
-            steps {
-                junit '**/target/surefire-reports/*.xml'
-                jacoco exclusionPattern: '**/*{Test|IT|Main|Application|Immutable}.class'
-                withMaven(maven: 'maven', jdk: 'JDK LTS') {
-                    sh "${mvn} -pl builder com.gavinmogan:codacy-maven-plugin:coverage " +
-                            "-DcoverageReportFile=target/site/jacoco/jacoco.xml " +
-                            "-DprojectToken=`$JENKINS_HOME/codacy/token` " +
-                            "-DapiToken=`$JENKINS_HOME/codacy/apitoken` " +
-                            "-Dcommit=`git rev-parse HEAD`"
                 }
             }
         }
@@ -81,11 +57,18 @@ pipeline {
                 archiveArtifacts '**/target/*.jar'
             }
         }
-        stage('Deploy') {
-            when { expression { (env.GIT_BRANCH == 'master' && env.GIT_URL.startsWith('https://')) } }
+        stage('Deploy (master on github)') {
+            when { expression { (env.GIT_BRANCH == 'master' && env.GIT_URL.startsWith('https://github.com')) } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK LTS') {
-                    sh "${mvn} -pl ruleset,tile deploy --activate-profiles release -DskipTests=true"
+                    sh "${mvn} deploy --activate-profiles release -DskipTests=true"
+                }
+            }
+        }
+        stage('Build Java 9') {
+            steps {
+                withMaven(maven: 'maven', jdk: 'JDK 9') {
+                    sh "${mvn} clean verify -Djava.version=9"
                 }
             }
         }
