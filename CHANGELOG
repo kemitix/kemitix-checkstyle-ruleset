@@ -6,6 +6,7 @@ CHANGELOG
 
 * EmptyLineSeparator: disabled
 * Upgrade `tiles-maven-plugin` to 2.11
+* Upgrade `checkstyle` to 8.9
 
 4.1.0
 -----
