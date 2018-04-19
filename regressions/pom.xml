@@ -17,7 +17,7 @@
     <properties>
         <maven.install.skip>true</maven.install.skip>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+        <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
 
         <checkstyle.version>8.7</checkstyle.version>
         <sevntu.version>1.27.0</sevntu.version>
@@ -50,8 +50,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:compiler-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:compiler:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
