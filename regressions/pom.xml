@@ -21,7 +21,7 @@
 
         <java.version>1.8</java.version>
         <checkstyle.version>8.9</checkstyle.version>
-        <sevntu.version>1.27.0</sevntu.version>
+        <sevntu.version>1.29.0</sevntu.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <!--<kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>-->
