@@ -7,7 +7,7 @@
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-parent</artifactId>
-        <version>5.0.3</version>
+        <version>5.1.0</version>
         <relativePath/>
     </parent>
 
@@ -22,7 +22,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+        <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
     </properties>
 
@@ -57,9 +57,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:enforcer-tile:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:release-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:enforcer:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
