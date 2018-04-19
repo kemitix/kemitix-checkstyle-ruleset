@@ -5,6 +5,7 @@ CHANGELOG
 -----
 
 * EmptyLineSeparator: disabled
+* Upgrade `tiles-maven-plugin` to 2.11
 
 4.1.0
 -----

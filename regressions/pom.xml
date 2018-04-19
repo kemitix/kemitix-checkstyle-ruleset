@@ -16,7 +16,7 @@
 
     <properties>
         <maven.install.skip>true</maven.install.skip>
-        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <tiles-maven-plugin.version>2.11</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
 
         <java.version>1.8</java.version>

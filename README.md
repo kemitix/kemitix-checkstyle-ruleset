@@ -20,7 +20,7 @@ The simplest way to use the ruleset is with the maven-tile:
 ```xml
 <project>
     <properties>
-        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <tiles-maven-plugin.version>2.11</tiles-maven-plugin.version>
     </properties>
     <build>
         <plugins>
