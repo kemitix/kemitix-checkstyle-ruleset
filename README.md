@@ -101,7 +101,7 @@ Rule|Level|Source|Enabled|Suppressible
 [EmptyCatchBlock](#emptycatchblock)|tweaks|checkstyle|Yes|
 [EmptyForInitializerPad](#emptyforinitializerpad)|layout|checkstyle|Yes|
 [EmptyForIteratorPad](#emptyforiteratorpad)|layout|checkstyle|Yes|
-[EmptyLineSeparator](#emptylineseparator)|layout|checkstyle|Yes|
+[EmptyLineSeparator](#emptylineseparator)|layout|checkstyle||
 [EmptyPublicCtorInClass](#emptypublicctorinclass)|tweaks|sevntu|Yes|
 [EmptyStatement](#emptystatement)|layout|checkstyle|Yes|
 [EnumValueName](#enumvaluename)|naming|sevntu|Yes|
@@ -767,59 +767,6 @@ for (Iterator i = list.getIterator(); i.hasNext() ;) {}
 Invalid:
 ````
 for (Iterator i = list.getIterator(); i.hasNext() ; ) {}
-````
-#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator)
-
-Checks that there are blank lines between header, package, import blocks, field, constructors, methods, nested classes, static initialisers and instance initialisers.
-
-Valid:
-````
-/**
- * Licence header.
- */
-
-package net.kemitix.foo;
-
-import ...;
-import ...;
-
-class Foo {
-
-    private int a;
-
-    private int b;
-
-    Foo() {}
-
-    Foo(int a, int b) {}
-
-    int getA() {}
-
-    int getB() {}
-
-    class Bar {
-    }
-}
-````
-
-Invalid:
-````
-/**
- * Licence header.
- */
-package net.kemitix.foo;
-import ...;
-import ...;
-class Foo {
-    private int a;
-    private int b;
-    Foo() {}
-    Foo(int a, int b) {}
-    int getA() {}
-    int getB() {}
-    class Bar {
-    }
-}
 ````
 #### [EmptyStatement](http://checkstyle.sourceforge.net/config_coding.html#EmptyStatement)
 
@@ -2643,6 +2590,9 @@ Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcard
 
 Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
 Recommends using a static import to access constants from another class over inheriting them.
+#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator)
+
+
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.

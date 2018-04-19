@@ -62,7 +62,6 @@
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForInitializerPadCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForIteratorPadCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EmptyStatementCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EqualsAvoidNullCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EqualsHashCodeCheck"/>

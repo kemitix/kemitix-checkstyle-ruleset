@@ -26,7 +26,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.DeclarationOrderCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForInitializerPadCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyForIteratorPadCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.EmptyLineSeparatorCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EmptyStatementCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
