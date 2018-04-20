@@ -1,7 +1,7 @@
 <project>
     <properties>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.9</checkstyle.version>
+        <checkstyle.version>8.10</checkstyle.version>
         <sevntu.version>1.29.0</sevntu.version>
         <kemitix.checkstyle.ruleset.version>4.0.1</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>

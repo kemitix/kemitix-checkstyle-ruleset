@@ -20,7 +20,7 @@
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
 
         <java.version>1.8</java.version>
-        <checkstyle.version>8.9</checkstyle.version>
+        <checkstyle.version>8.10</checkstyle.version>
         <sevntu.version>1.29.0</sevntu.version>
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
