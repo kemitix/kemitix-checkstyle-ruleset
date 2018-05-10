@@ -241,9 +241,10 @@ rules:
         name: EmptyLineSeparator
         parent: TREEWALKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator
+        reason:
     -
         name: EmptyStatement
         parent: TREEWALKER

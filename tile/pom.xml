@@ -17,7 +17,7 @@
     <packaging>tile</packaging>
 
     <properties>
-        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
+        <tiles-maven-plugin.version>2.11</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
     </properties>
 
