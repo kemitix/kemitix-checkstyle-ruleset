@@ -18,5 +18,3 @@ if (condition) {
 }
 return "";
 ````
-
-Example: [MoveVariableInsideIf.java](https://github.com/kemitix/kemitix-checkstyle-ruleset/blob/master/regressions/src/main/java/net/kemitix/checkstyle/regressions/MoveVariableInsideIf.java)
