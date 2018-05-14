@@ -5,14 +5,4 @@ cache:
   directories:
   - "$HOME/.m2"
 install: true
-script: "./mvnw clean install"
-after_success:
-- sh .travis-support/coveralls.sh
-- bash <(curl -s https://codecov.io/bash)
-deploy:
-  provider: script
-  script: sh .travis-support/deploy.sh
-  on:
-    branch: master
-env:
-  global:
+script: "./mvnw --batch-mode --errors --update-snapshots clean install"

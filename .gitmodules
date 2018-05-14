@@ -1,3 +1,0 @@
-[submodule ".travis-support"]
-	path = .travis-support
-	url = https://github.com/kemitix/kemitix-travis-support.git

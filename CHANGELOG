@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+4.1.0
+-----
+
+* EmptyLineSeparator: disabled
+* Upgrade `tiles-maven-plugin` to 2.11
+* Upgrade `checkstyle` to 8.10
+* Upgrade `sevntu-checkstyle` to 1.29.0
+* Upgrade `secntu-checkstyle` to 1.27.0
+* Upgrade `checkstyle` to 8.7 (properly now that it is supported by sevntu)
+
 4.0.1
 -----
 

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix.checkstyle</groupId>
-    <artifactId>root</artifactId>
-    <version>4.0.1</version>
+    <artifactId>kemitix-checkstyle-ruleset</artifactId>
+    <version>4.1.0</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -16,7 +16,6 @@
     <modules>
         <module>builder</module>
         <module>ruleset</module>
-        <module>regressions</module>
         <module>tile</module>
     </modules>
 

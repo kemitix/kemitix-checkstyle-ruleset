@@ -5,20 +5,20 @@
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-parent</artifactId>
-        <version>5.0.3</version>
+        <version>5.1.0</version>
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>tile</artifactId>
-    <version>4.0.1</version>
+    <version>4.1.0</version>
 
     <packaging>tile</packaging>
 
     <properties>
-        <tiles-maven-plugin.version>2.10</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.2.0</kemitix-tiles.version>
+        <tiles-maven-plugin.version>2.11</tiles-maven-plugin.version>
+        <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
     </properties>
 
     <build>
@@ -30,8 +30,7 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:maven-plugins-tile:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:release-tile:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
