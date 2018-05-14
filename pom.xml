@@ -16,7 +16,6 @@
     <modules>
         <module>builder</module>
         <module>ruleset</module>
-        <module>regressions</module>
         <module>tile</module>
     </modules>
 

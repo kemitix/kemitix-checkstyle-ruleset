@@ -2332,8 +2332,6 @@ if (condition) {
 }
 return "";
 ````
-
-Example: [MoveVariableInsideIf.java](https://github.com/kemitix/kemitix-checkstyle-ruleset/blob/master/regressions/src/main/java/net/kemitix/checkstyle/regressions/MoveVariableInsideIf.java)
 #### [NameConventionForJunit4TestClasses](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/NameConventionForJunit4TestClassesCheck.html)
 
 Checks the names of JUnit test classes. Classes checked are those that have at least one method annotated with `Test` or `org.junit.Test`.
