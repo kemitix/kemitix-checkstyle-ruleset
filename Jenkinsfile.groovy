@@ -72,5 +72,12 @@ pipeline {
                 }
             }
         }
+        stage('Build Java 10') {
+            steps {
+                withMaven(maven: 'maven', jdk: 'JDK 10') {
+                    sh "${mvn} clean verify -Djava.version=10"
+                }
+            }
+        }
     }
 }
