@@ -1,4 +1,5 @@
 final String mvn = "mvn --batch-mode --update-snapshots --errors"
+final dependenciesSupportJDK=9
 
 pipeline {
     agent any
@@ -66,6 +67,7 @@ pipeline {
             }
         }
         stage('Build Java 9') {
+            when { expression { dependenciesSupportJDK >= 9 } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 9') {
                     sh "${mvn} clean verify -Djava.version=9"
@@ -73,6 +75,7 @@ pipeline {
             }
         }
         stage('Build Java 10') {
+            when { expression { dependenciesSupportJDK >= 10 } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 10') {
                     sh "${mvn} clean verify -Djava.version=10"
