@@ -1,4 +1,4 @@
-final String mvn = "mvn --batch-mode --update-snapshots"
+final String mvn = "mvn --batch-mode --update-snapshots --errors"
 
 pipeline {
     agent any
