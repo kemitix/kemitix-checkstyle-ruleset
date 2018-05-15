@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Writes the README file.
@@ -94,8 +95,9 @@ class ReadmeWriter implements CommandLineRunner {
     }
 
     private String readFile(final Path file) throws IOException {
-        return Files.lines(file, StandardCharsets.UTF_8)
-                    .collect(Collectors.joining(NEWLINE));
+        try (Stream<String> lines = Files.lines(file, StandardCharsets.UTF_8)) {
+            return lines.collect(Collectors.joining(NEWLINE));
+        }
     }
 
 }
