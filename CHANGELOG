@@ -1,10 +1,15 @@
 CHANGELOG
 =========
 
+4.1.1
+-----
+
+* Fix version of `ruleset` used in `tile`
+
 4.1.0
 -----
 
-* EmptyLineSeparator: disabled
+* `EmptyLineSeparator`: disabled
 * Upgrade `tiles-maven-plugin` to 2.11
 * Upgrade `checkstyle` to 8.10
 * Upgrade `sevntu-checkstyle` to 1.29.0

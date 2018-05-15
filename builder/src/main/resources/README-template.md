@@ -31,7 +31,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:4.0.1</tile>
+                        <tile>net.kemitix.checkstyle:tile:4.1.1</tile>
                     </tiles>
                 </configuration>
             </plugin>
