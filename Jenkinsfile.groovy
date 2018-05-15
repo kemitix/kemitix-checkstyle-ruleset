@@ -62,7 +62,7 @@ pipeline {
             when { expression { (env.GIT_BRANCH == 'master' && env.GIT_URL.startsWith('https://github.com')) } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK LTS') {
-                    sh "${mvn} deploy --activate-profiles release -DskipTests=true"
+                    sh "${mvn} deploy -pl ruleset,tile --activate-profiles release -DskipTests=true"
                 }
             }
         }
