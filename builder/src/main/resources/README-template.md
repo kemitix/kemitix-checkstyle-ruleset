@@ -2,6 +2,14 @@
 
 Provides an extensive Checkstyle ruleset for use with Checkstyle, together with a fully configured maven-tile.
 
+[![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix/kemitix-checkstyle-ruleset.svg?style=for-the-badge)](https://oss.sonatype.org/content/repositories/releases/net/kemitix/kemitix-checkstyle-ruleset/)
+[![Maven Central](https://img.shields.io/maven-central/v/net.kemitix/kemitix-checkstyle-ruleset.svg?style=for-the-badge)](https://search.maven.org/#search|ga|1|g%%3A"net.kemitix"%%20AND%%20a%%3A"kemitix-checkstyle-ruleset")
+
+[![SonarQube Coverage](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle%%3Akemitix-checkstyle-ruleset/coverage.svg?style=for-the-badge)](https://sonarcloud.io/dashboard?id=net.kemitix%%3Akemitix-checkstyle-ruleset)
+[![SonarQube Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle%%3Akemitix-checkstyle-ruleset/tech_debt.svg?style=for-the-badge)](https://sonarcloud.io/dashboard?id=net.kemitix%%3Akemitix-checkstyle-ruleset)
+
+[![Codacy grade](https://img.shields.io/codacy/grade/d57096b0639d496aba9a7e43e7cf5b4c.svg?style=for-the-badge)](https://app.codacy.com/project/kemitix/kemitix-checkstyle-ruleset/dashboard)
+
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
 
 * [Usage](#usage)
@@ -31,7 +39,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:4.1.1</tile>
+                        <tile>net.kemitix.checkstyle:tile:RELEASE</tile>
                     </tiles>
                 </configuration>
             </plugin>

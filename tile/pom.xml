@@ -5,14 +5,14 @@
     <parent>
         <groupId>net.kemitix</groupId>
         <artifactId>kemitix-parent</artifactId>
-        <version>5.1.0</version>
+        <version>5.1.1</version>
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>tile</artifactId>
-    <version>4.1.1</version>
+    <version>DEV-SNAPSHOT</version>
 
     <packaging>tile</packaging>
 
