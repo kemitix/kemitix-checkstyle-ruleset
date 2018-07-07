@@ -38,7 +38,7 @@
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
         <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
-        <javax.annotation-api.version>1.2</javax.annotation-api.version>
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     </properties>
 
     <dependencyManagement>
