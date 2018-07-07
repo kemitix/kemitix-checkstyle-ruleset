@@ -14,7 +14,7 @@
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>builder</artifactId>
     <packaging>jar</packaging>
-    <version>4.1.1</version>
+    <version>DEV-SNAPSHOT</version>
 
     <properties>
         <maven.install.skip>true</maven.install.skip>

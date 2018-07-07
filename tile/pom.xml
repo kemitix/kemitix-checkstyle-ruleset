@@ -12,7 +12,7 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>tile</artifactId>
-    <version>4.1.1</version>
+    <version>DEV-SNAPSHOT</version>
 
     <packaging>tile</packaging>
 

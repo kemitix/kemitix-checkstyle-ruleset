@@ -13,7 +13,7 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>ruleset</artifactId>
-    <version>4.1.1</version>
+    <version>DEV-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Kemitix Checkstyle Ruleset</name>
