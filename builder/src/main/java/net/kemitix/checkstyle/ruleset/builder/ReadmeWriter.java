@@ -94,8 +94,7 @@ class ReadmeWriter implements CommandLineRunner {
     }
 
     private String readFile(final Path file) throws IOException {
-        return Files.lines(file, StandardCharsets.UTF_8)
-                    .collect(Collectors.joining(NEWLINE));
+        return String.join(NEWLINE, Files.readAllLines(file, StandardCharsets.UTF_8));
     }
 
 }
