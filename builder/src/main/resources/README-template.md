@@ -2,8 +2,8 @@
 
 Provides an extensive Checkstyle ruleset for use with Checkstyle, together with a fully configured maven-tile.
 
-[![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix/kemitix-checkstyle-ruleset.svg?style=for-the-badge)](https://oss.sonatype.org/content/repositories/releases/net/kemitix/kemitix-checkstyle-ruleset/)
-[![Maven Central](https://img.shields.io/maven-central/v/net.kemitix/kemitix-checkstyle-ruleset.svg?style=for-the-badge)](https://search.maven.org/#search|ga|1|g%%3A"net.kemitix"%%20AND%%20a%%3A"kemitix-checkstyle-ruleset")
+[![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)](https://oss.sonatype.org/content/repositories/releases/net/kemitix/kemitix-checkstyle-ruleset/)
+[![Maven Central](https://img.shields.io/maven-central/v/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)](https://search.maven.org/#search|ga|1|g%%3A"net.kemitix"%%20AND%%20a%%3A"kemitix-checkstyle-ruleset")
 
 [![SonarQube Coverage](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle%%3Akemitix-checkstyle-ruleset/coverage.svg?style=for-the-badge)](https://sonarcloud.io/dashboard?id=net.kemitix%%3Akemitix-checkstyle-ruleset)
 [![SonarQube Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle%%3Akemitix-checkstyle-ruleset/tech_debt.svg?style=for-the-badge)](https://sonarcloud.io/dashboard?id=net.kemitix%%3Akemitix-checkstyle-ruleset)
