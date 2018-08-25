@@ -23,7 +23,7 @@
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
 
         <checkstyle.version>8.10</checkstyle.version>
-        <sevntu.version>1.30.0</sevntu.version>
+        <sevntu.version>1.32.0</sevntu.version>
         <lombok.version>1.18.2</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
         <spring-boot.version>1.5.14.RELEASE</spring-boot.version>
