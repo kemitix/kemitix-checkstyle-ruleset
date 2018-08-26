@@ -165,7 +165,7 @@ public class CheckstyleWriterTest {
         //then
         val lines = loadOutputFile(RuleLevel.LAYOUT);
         assertThat(lines).containsExactly("C:", String.format("TW:<module name=\"%s\">", ruleClassname),
-                                          "    <property name=\"key\" value=\"value\"/>", "</module>"
+                                          "        <property name=\"key\" value=\"value\"/>", "</module>"
                                          );
     }
 
