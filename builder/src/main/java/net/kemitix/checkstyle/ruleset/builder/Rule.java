@@ -27,6 +27,7 @@ import lombok.Setter;
 import net.kemitix.conditional.Value;
 
 import java.net.URI;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class Rule {
 
     private static final String MODULE_NO_PROPERTIES = "<module name=\"%s\"/>";
 
-    private static final String MODULE_WITH_PROPERTIES = "<module name=\"%s\">%n    %s%n</module>";
+    private static final String MODULE_WITH_PROPERTIES = "<module name=\"%s\">%n%s%n</module>";
 
     /**
      * Configuration properties.
@@ -133,7 +134,8 @@ public class Rule {
 
     private static String formatProperties(final Map<String, String> properties) {
         return MapStream.of(properties)
-                .map((k, v) -> String.format("<property name=\"%s\" value=\"%s\"/>", k, v))
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .map((k, v) -> String.format("        <property name=\"%s\" value=\"%s\"/>", k, v))
                 .collect(Collectors.joining(System.lineSeparator()));
     }
 

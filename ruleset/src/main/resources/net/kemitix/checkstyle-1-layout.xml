@@ -5,16 +5,16 @@
 <module name="Checker">
 
     <module name="com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck">
-    <property name="fileNamePattern" value="(.sync-conflict-| conflicted copy )"/>
-<property name="match" value="true"/>
+        <property name="fileNamePattern" value="(.sync-conflict-| conflicted copy )"/>
+        <property name="match" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck">
-    <property name="fileExtensions" value="java"/>
-<property name="headerFile" value="LICENSE.txt"/>
+        <property name="fileExtensions" value="java"/>
+        <property name="headerFile" value="LICENSE.txt"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck">
-    <property name="lineSeparator" value="lf"/>
+        <property name="lineSeparator" value="lf"/>
 </module>
 
     <module name="TreeWalker">
@@ -30,13 +30,13 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
-    <property name="max" value="120"/>
+        <property name="max" value="120"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck">
-    <property name="tokens" value="DOT"/>
-<property name="allowLineBreaks" value="false"/>
+        <property name="allowLineBreaks" value="false"/>
+        <property name="tokens" value="DOT"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.OneStatementPerLineCheck"/>
@@ -45,8 +45,8 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.SeparatorWrapCheck">
-    <property name="tokens" value="DOT"/>
-<property name="option" value="nl"/>
+        <property name="option" value="nl"/>
+        <property name="tokens" value="DOT"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.SingleSpaceSeparatorCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"/>
