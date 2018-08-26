@@ -21,7 +21,7 @@
 
 package net.kemitix.checkstyle.ruleset.builder;
 
-import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
+import io.github.classgraph.ClassGraph;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,9 +38,11 @@ public class DefaultPackageScanner implements PackageScanner {
     @Override
     public final List<String> apply(final RuleSource ruleSource) {
         final String basePackage = ruleSource.getBasePackage();
-        return new FastClasspathScanner(basePackage)
+        return new ClassGraph()
+                .whitelistPackages(basePackage)
                 .scan()
-                .getNamesOfAllStandardClasses()
+                .getAllStandardClasses()
+                .getNames()
                 .stream()
                 .filter(packageName -> packageName.startsWith(basePackage))
                 .collect(Collectors.toList());
