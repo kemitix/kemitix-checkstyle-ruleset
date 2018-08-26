@@ -22,7 +22,7 @@
         <tiles-maven-plugin.version>2.12</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
 
-        <checkstyle.version>8.10</checkstyle.version>
+        <checkstyle.version>8.12</checkstyle.version>
         <sevntu.version>1.30.0</sevntu.version>
         <lombok.version>1.18.2</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
