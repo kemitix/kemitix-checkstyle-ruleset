@@ -1,9 +1,10 @@
 CHANGELOG
 =========
 
-4.1.2
+4.2.0
 -----
 
+* [ruleset] Add rule `LambdaParameterName`
 * Upgrade checkstyle to 8.12
 * Upgrade `sevntu` to 1.32.0
 * Switch to trunk-based development
