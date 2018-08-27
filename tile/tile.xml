@@ -1,37 +1,29 @@
 <project>
-    <properties>
-        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.12</checkstyle.version>
-        <sevntu.version>1.32.0</sevntu.version>
-        <kemitix.checkstyle.ruleset.version>DEV-SNAPSHOT</kemitix.checkstyle.ruleset.version>
-        <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
-        <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
-    </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven-checkstyle-plugin.version}</version>
+                <version>@maven-checkstyle-plugin.version@</version>
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>${checkstyle.version}</version>
+                        <version>@checkstyle.version@</version>
                     </dependency>
                     <dependency>
                         <groupId>com.github.sevntu-checkstyle</groupId>
                         <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                        <version>${sevntu.version}</version>
+                        <version>@sevntu.version@</version>
                     </dependency>
                     <dependency>
                         <groupId>net.kemitix.checkstyle</groupId>
                         <artifactId>ruleset</artifactId>
-                        <version>${kemitix.checkstyle.ruleset.version}</version>
+                        <version>@kemitix.checkstyle.ruleset.version@</version>
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <configLocation>${kemitix.checkstyle.ruleset.location}</configLocation>
+                    <configLocation>@kemitix.checkstyle.ruleset.location@</configLocation>
                     <sourceDirectories>
                         <sourceDirectory>${build.sourceDirectory}</sourceDirectory>
                     </sourceDirectories>
