@@ -4,19 +4,21 @@ CHANGELOG
 4.1.2
 -----
 
-* Upgrade `kemitix-parent` to 5.1.1
-* Upgrade `kemitix-maven-tiles` to 0.9.0
-* Upgrade `sevntu` to 1.30.0
-* Upgrade `lombok` to 1.18.0
-* Upgrade `spring-boot` to 1.5.14
-* Upgrade `mockito` to 2.19.0
-* Upgrade `assertj` to 3.10.0
-* Upgrade `conditional` to 0.4.0
-* Upgrade `fast-claspath-scanner` to 3.1.6
-* Upgrade `javax-annotation-api` to 1.3.2
-* Replaced Spring IO Platform dependency management with Spring Boot version
-* Add badges to README
+* Upgrade checkstyle to 8.12
+* Upgrade `sevntu` to 1.32.0
 * Switch to trunk-based development
+* Upgrade `kemitix-parent` to 5.1.1
+* [tile] Upgrade `kemitix-maven-tiles` to 0.9.0
+* [tile] Bump tiles-maven-plugin from 2.11 to 2.12
+* [builder] Replaced Spring IO Platform dependency management with Spring Boot version
+* [builder] Bump spring-boot to 2.0.4.RELEASE
+* [builder] Upgrade `lombok` to 1.18.2
+* [builder] Bump mockito-core from 2.19.0 to 2.21.0
+* [builder] Upgrade `assertj` to 3.11.0
+* [builder] Upgrade `conditional` to 0.6.0
+* [builder] Upgrade `fast-classpath-scanner` to `classgraph`
+* [builder] Upgrade `javax-annotation-api` to 1.3.2
+* Add badges to README
 
 4.1.1
 -----
