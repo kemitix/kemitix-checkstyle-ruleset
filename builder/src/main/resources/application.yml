@@ -413,6 +413,13 @@ rules:
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_design.html#InterfaceIsType
     -
+        name: InterfaceMemberImpliedModifier
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier
+    -
         name: InterfaceTypeParameterName
         parent: TREEWALKER
         level: NAMING
@@ -792,9 +799,10 @@ rules:
         name: RedundantModifier
         parent: TREEWALKER
         level: TWEAKS
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier
+        reason: conflicts with InterfaceMemberImpliedModifier which is now prefered given changes to interfaces in Java 9
     -
         name: RequireThis
         parent: TREEWALKER

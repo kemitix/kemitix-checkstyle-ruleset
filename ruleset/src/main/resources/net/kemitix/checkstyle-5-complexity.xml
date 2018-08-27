@@ -88,6 +88,7 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InnerTypeLastCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InterfaceIsTypeCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.modifier.InterfaceMemberImpliedModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.InterfaceTypeParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck">
         <property name="allowMissingPropertyJavadoc" value="true"/>
@@ -162,7 +163,6 @@
         <property name="ignoreOverriddenMethods" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.modifier.RedundantModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.RequireThisCheck">
         <property name="checkMethods" value="false"/>
 </module>

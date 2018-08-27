@@ -1,11 +1,12 @@
 CHANGELOG
 =========
 
-4.2.0
+5.0.0
 -----
 
+* [BREAKING] [ruleset] Replace `RedundantModifier` with `InterfaceMemberImpliedModifier`
 * [ruleset] Add rule `LambdaParameterName`
-* Upgrade checkstyle to 8.12
+* Upgrade `checkstyle` to 8.12
 * Upgrade `sevntu` to 1.32.0
 * Switch to trunk-based development
 * Upgrade `kemitix-parent` to 5.1.1
