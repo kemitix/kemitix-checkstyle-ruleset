@@ -109,6 +109,7 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.EnumValueNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCCommentsInMethodsCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.naming.LambdaParameterNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NameConventionForJunit4TestClassesCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.SimpleAccessorNameNotationCheck"/>

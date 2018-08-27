@@ -167,6 +167,7 @@ Rule|Level|Source|Enabled|Suppressible
 [JavadocType](#javadoctype)|javadoc|checkstyle|Yes|
 [JavadocVariable](#javadocvariable)|javadoc|checkstyle||
 [JavaNCSS](#javancss)|complexity|checkstyle|Yes|
+[LambdaParameterName](#lambdaparametername)|naming|checkstyle|Yes|
 [LeftCurly](#leftcurly)|layout|checkstyle|Yes|
 [LineLength](#linelength)|layout|checkstyle|Yes|
 [LocalFinalVariableName](#localfinalvariablename)|naming|checkstyle|Yes|
@@ -1159,6 +1160,11 @@ Checks the format for Javadoc for classes and enums. Javadoc must be present, no
 Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
 
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
+#### [LambdaParameterName](http://checkstyle.sourceforge.net/config_naming.html#LambdaParameterName)
+
+Checks the format of lambda parameter names.
+
+Identifiers must match `^[a-z][a-zA-Z0-9]*$`.
 #### [LeftCurly](http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly)
 
 Checks that the left curly brace ('{') is placed at the end of the line. Does not check enums.
