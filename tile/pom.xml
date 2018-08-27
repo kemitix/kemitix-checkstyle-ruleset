@@ -19,8 +19,43 @@
     <properties>
         <tiles-maven-plugin.version>2.12</tiles-maven-plugin.version>
         <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
+
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <checkstyle.version>8.12</checkstyle.version>
+        <sevntu.version>1.32.0</sevntu.version>
+
+        <kemitix.checkstyle.ruleset.version>DEV-SNAPSHOT</kemitix.checkstyle.ruleset.version>
+        <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
+        <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>${checkstyle.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>${maven-checkstyle-plugin.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sevntu-checkstyle</groupId>
+            <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
+            <version>${sevntu.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.kemitix.checkstyle</groupId>
+            <artifactId>ruleset</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    
     <build>
         <plugins>
             <plugin>
@@ -29,6 +64,7 @@
                 <version>${tiles-maven-plugin.version}</version>
                 <extensions>true</extensions>
                 <configuration>
+                    <filtering>true</filtering>
                     <tiles>
                         <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
                     </tiles>
