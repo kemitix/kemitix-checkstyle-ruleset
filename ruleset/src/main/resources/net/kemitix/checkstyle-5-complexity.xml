@@ -88,6 +88,7 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.InnerAssignmentCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InnerTypeLastCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InterfaceIsTypeCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.modifier.InterfaceMemberImpliedModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.InterfaceTypeParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck">
         <property name="allowMissingPropertyJavadoc" value="true"/>
@@ -102,6 +103,7 @@
         <property name="fileMaximum" value="250"/>
         <property name="methodMaximum" value="12"/>
 </module>
+<module name="com.puppycrawl.tools.checkstyle.checks.naming.LambdaParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
         <property name="max" value="120"/>
@@ -161,7 +163,6 @@
         <property name="ignoreOverriddenMethods" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.ParenPadCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.modifier.RedundantModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.RequireThisCheck">
         <property name="checkMethods" value="false"/>
 </module>
@@ -208,7 +209,6 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCCommentsInMethodsCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ForbidReturnInFinallyBlockCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.design.ForbidWildcardAsReturnTypeCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.naming.LambdaParameterNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.LogicConditionNeedOptimizationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.MapIterationInForEachLoopCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NameConventionForJunit4TestClassesCheck"/>

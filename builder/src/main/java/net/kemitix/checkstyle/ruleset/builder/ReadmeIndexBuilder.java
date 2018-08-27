@@ -33,5 +33,5 @@ public interface ReadmeIndexBuilder {
      *
      * @return The rule index.
      */
-    String build();
+    public abstract String build();
 }

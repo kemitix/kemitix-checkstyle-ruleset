@@ -69,6 +69,19 @@ The following levels implement increasingly strict rulesets:
 
 The default ruleset from the maven-tile is 5-complexity. Other levels can be selected by setting the `kemitix.checkstyle.ruleset.level` to one the values above.
 
+### Change from 4.x
+
+The `RedundantModifier` rule has been replaced by the `InterfaceMemberImpliedModifier`. This is to ensure that intefaces
+in Java 9+ are easier to comprehend with the addition of private methods. The rules governing the implied modifiers for
+members of interfaces differs from those of classes. So, to remove the need to remember the different rules, they are 
+now required to be explicitly stated.
+
+### Change from 3.x
+
+Rename the artifact `net.kemitix:kemitix-checkstyle-ruleset` as `net.kemitix.checkstyle:ruleset`.
+
+Introduction of the artifact `net.kemitix.checkstyle:tile` for use with the [tiles-maven-plugin](https://github.com/repaint-io/maven-tiles).
+
 ### Change from 2.x
 
 In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal. The level is now specified as a configuration parameter. See the example below. The kemitix-checkstyle-maven-plugin has also been removed in favour of the maven-tile.

@@ -69,6 +69,19 @@ The following levels implement increasingly strict rulesets:
 
 The default ruleset from the maven-tile is 5-complexity. Other levels can be selected by setting the `kemitix.checkstyle.ruleset.level` to one the values above.
 
+### Change from 4.x
+
+The `RedundantModifier` rule has been replaced by the `InterfaceMemberImpliedModifier`. This is to ensure that intefaces
+in Java 9+ are easier to comprehend with the addition of private methods. The rules governing the implied modifiers for
+members of interfaces differs from those of classes. So, to remove the need to remember the different rules, they are 
+now required to be explicitly stated.
+
+### Change from 3.x
+
+Rename the artifact `net.kemitix:kemitix-checkstyle-ruleset` as `net.kemitix.checkstyle:ruleset`.
+
+Introduction of the artifact `net.kemitix.checkstyle:tile` for use with the [tiles-maven-plugin](https://github.com/repaint-io/maven-tiles).
+
 ### Change from 2.x
 
 In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the 'check' goal. The level is now specified as a configuration parameter. See the example below. The kemitix-checkstyle-maven-plugin has also been removed in favour of the maven-tile.
@@ -158,6 +171,7 @@ Rule|Level|Source|Enabled|Suppressible
 [InnerAssignment](#innerassignment)|tweaks|checkstyle|Yes|
 [InnerTypeLast](#innertypelast)|tweaks|checkstyle|Yes|
 [InterfaceIsType](#interfaceistype)|complexity|checkstyle|Yes|
+[InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle|Yes|
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
 [JavadocMethod](#javadocmethod)|javadoc|checkstyle|Yes|
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
@@ -223,7 +237,7 @@ Rule|Level|Source|Enabled|Suppressible
 [ParenPad](#parenpad)|layout|checkstyle|Yes|
 [PublicReferenceToPrivateType](#publicreferencetoprivatetype)|tweaks|sevntu|Yes|
 [RedundantImport](#redundantimport)|layout|checkstyle||
-[RedundantModifier](#redundantmodifier)|tweaks|checkstyle|Yes|
+[RedundantModifier](#redundantmodifier)|tweaks|checkstyle||
 [RedundantReturn](#redundantreturn)|tweaks|sevntu|Yes|
 [Regexp](#regexp)|unspecified|checkstyle||
 [RegexpHeader](#regexpheader)|unspecified|checkstyle||
@@ -1127,6 +1141,11 @@ interface Foo {
     static final String "Foo!!";
 }
 ````
+#### [InterfaceMemberImpliedModifier](http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier)
+
+Checks that members of an interface explicitly state their modifiers. From Java 9 the implied modifiers for members
+are different depending on whether they are on a class or an interface. Explicitly stating the modifiers removes the
+need for the developer to remember the differences.
 #### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
 
 Checks that the type parameters for an interface are a single uppercase letter.
@@ -1656,15 +1675,6 @@ doSomething( );
 doSomethingElse( 5);
 doSomethingElse(5 );
 ````
-#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
-
-Checks for redundant modifiers. Checks for:
-
-* Interface and annotation definitions.
-* Final modifier on methods of final and anonymous classes.
-* Inner interface declarations that are declared as static.
-* Class constructors.
-* Nested enum definitions that are declared as static.
 #### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
 
 Checks for the existence of forbidden java file names.
@@ -2654,6 +2664,9 @@ Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
 #### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
 
 [UnusedImports](#unusedimports) performs all the same checks and more.
+#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
+
+conflicts with InterfaceMemberImpliedModifier which is now prefered given changes to interfaces in Java 9
 #### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
 
 Generic rule; doesn't embody a 'quality' check.
