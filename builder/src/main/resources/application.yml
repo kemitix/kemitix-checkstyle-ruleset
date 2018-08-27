@@ -470,6 +470,13 @@ rules:
             fileMaximum: 250
             methodMaximum: 12
     -
+        name: LambdaParameterName
+        parent: TREEWALKER
+        level: NAMING
+        enabled: true
+        source: CHECKSTYLE
+        uri: http://checkstyle.sourceforge.net/config_naming.html#LambdaParameterName
+    -
         name: LeftCurly
         parent: TREEWALKER
         level: LAYOUT
@@ -1067,13 +1074,6 @@ rules:
         enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html
-    -
-        name: LambdaParameterName
-        parent: TREEWALKER
-        level: NAMING
-        enabled: true
-        source: CHECKSTYLE
-        uri: http://checkstyle.sourceforge.net/config_naming.html#LambdaParameterName
     -
         name: LogicConditionNeedOptimization
         parent: TREEWALKER

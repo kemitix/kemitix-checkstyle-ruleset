@@ -77,6 +77,7 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.naming.LambdaParameterNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
         <property name="max" value="120"/>
@@ -158,7 +159,6 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.EitherLogOrThrowCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.EnumValueNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCCommentsInMethodsCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.naming.LambdaParameterNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.LogicConditionNeedOptimizationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NameConventionForJunit4TestClassesCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.design.NoMainMethodInAbstractClassCheck"/>
