@@ -30,7 +30,7 @@
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>2.21.0</mockito.version>
-        <assertj.version>3.11.0</assertj.version>
+        <assertj.version>3.11.1</assertj.version>
         <conditional.version>0.7.0</conditional.version>
         <classgraph.version>4.1.2</classgraph.version>
 
