@@ -32,7 +32,7 @@
         <mockito.version>2.22.0</mockito.version>
         <assertj.version>3.11.1</assertj.version>
         <conditional.version>0.7.0</conditional.version>
-        <classgraph.version>4.2.1</classgraph.version>
+        <classgraph.version>4.2.2</classgraph.version>
 
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
