@@ -28,12 +28,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Default implementation of {@link PackageScanner}.
+ * Implementation of {@link PackageScanner} using ClassGraph.
+ *
+ * @see <a href="https://github.com/classgraph/classgraph/">ClassGraph</a>
  *
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-public class DefaultPackageScanner implements PackageScanner {
+public class ClassGraphPackageScanner implements PackageScanner {
 
     @Override
     public final List<String> apply(final RuleSource ruleSource) {
