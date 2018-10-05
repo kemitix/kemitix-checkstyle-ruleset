@@ -3,18 +3,17 @@ package net.kemitix.checkstyle.ruleset.builder;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for {@link DefaultPackageScanner}.
+ * Tests for {@link ClassGraphPackageScanner}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public class DefaultPackageScannerTest {
+public class ClassGraphPackageScannerTest {
 
-    private PackageScanner scanner = new DefaultPackageScanner();
+    private PackageScanner scanner = new ClassGraphPackageScanner();
 
     @Test
     public void canScanCheckstylePackage() {
