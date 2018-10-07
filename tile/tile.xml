@@ -30,6 +30,14 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>checkstyle-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>checkstyle</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>checkstyle-verify</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>

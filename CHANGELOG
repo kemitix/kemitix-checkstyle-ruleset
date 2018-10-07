@@ -4,6 +4,7 @@ CHANGELOG
 5.1.0
 -----
 
+* [tile] Execute `checkstyle:checkstyle` during the `test` phase
 * [jenkins] Remove Build under Java 9 step
 * [travis] Remove Travis CI support
 
