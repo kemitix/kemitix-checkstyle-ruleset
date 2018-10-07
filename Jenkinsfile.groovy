@@ -78,6 +78,14 @@ pipeline {
                 }
             }
         }
+        stage('Build Java 11') {
+            when { expression { dependenciesSupportJDK >= 10 } }
+            steps {
+                withMaven(maven: 'maven', jdk: 'JDK 11') {
+                    sh "${mvn} clean --activate-profiles verify verify -Djava.version=11"
+                }
+            }
+        }
     }
 }
 
