@@ -70,14 +70,6 @@ pipeline {
                 }
             }
         }
-        stage('Build Java 9') {
-            when { expression { dependenciesSupportJDK >= 9 } }
-            steps {
-                withMaven(maven: 'maven', jdk: 'JDK 9') {
-                    sh "${mvn} clean --activate-profiles verify verify -Djava.version=9"
-                }
-            }
-        }
         stage('Build Java 10') {
             when { expression { dependenciesSupportJDK >= 10 } }
             steps {
