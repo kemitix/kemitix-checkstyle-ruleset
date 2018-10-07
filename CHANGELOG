@@ -5,6 +5,7 @@ CHANGELOG
 -----
 
 * [jenkins] Remove Build under Java 9 step
+* [travis] Remove Travis CI support
 
 5.0.0
 -----
