@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-if test $# != 2
+if test $# != 1
 then
-    echo "current and next version missing"
+    echo "Next version missing"
     exit
 fi
 
-CURRENT=$1
-NEXT=$2
+NEXT=$1
 
-echo Updating version from $CURRENT to $NEXT
-
-mvn versions:set -DnewVersion=$NEXT
-perl -p -i -e "s,$CURRENT</,$NEXT</," builder/pom.xml builder/src/main/resources/README-template.md ruleset/pom.xml tile/pom.xml tile/tile.xml
+echo "Updating version to $NEXT..."
+mvn versions:set -DnewVersion=$NEXT -DgenerateBackupPoms=false -DprocessAllModules
+echo "Updating README template..."
+perl -p -i -e "s,DEV-SNAPSHOT</,$NEXT</," builder/src/main/resources/README-template.md
+echo "Done."

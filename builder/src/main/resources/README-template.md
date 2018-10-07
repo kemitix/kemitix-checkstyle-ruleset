@@ -49,7 +49,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:RELEASE</tile>
+                        <tile>net.kemitix.checkstyle:tile:DEV-SNAPSHOT</tile>
                     </tiles>
                 </configuration>
             </plugin>
