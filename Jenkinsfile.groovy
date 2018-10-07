@@ -1,6 +1,6 @@
 final String publicRepo = 'https://github.com/kemitix/'
 final String mvn = "mvn --batch-mode --update-snapshots --errors"
-final dependenciesSupportJDK=10
+final dependenciesSupportJDK = 10
 
 pipeline {
     agent any
@@ -8,7 +8,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 1.8') {
-                    sh "${mvn} clean compile checkstyle:checkstyle pmd:pmd test"
+                    sh "${mvn} clean test"
                     // PMD to Jenkins
                     pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
                 }
@@ -42,7 +42,7 @@ pipeline {
         stage('Verify & Install') {
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 1.8') {
-                    sh "${mvn} -DskipTests install"
+                    sh "${mvn} --activate-profiles verify install"
                 }
             }
         }
@@ -74,7 +74,7 @@ pipeline {
             when { expression { dependenciesSupportJDK >= 9 } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 9') {
-                    sh "${mvn} clean verify -Djava.version=9"
+                    sh "${mvn} clean --activate-profiles verify verify -Djava.version=9"
                 }
             }
         }
@@ -82,7 +82,7 @@ pipeline {
             when { expression { dependenciesSupportJDK >= 10 } }
             steps {
                 withMaven(maven: 'maven', jdk: 'JDK 10') {
-                    sh "${mvn} clean verify -Djava.version=10"
+                    sh "${mvn} clean --activate-profiles verify verify -Djava.version=10"
                 }
             }
         }
