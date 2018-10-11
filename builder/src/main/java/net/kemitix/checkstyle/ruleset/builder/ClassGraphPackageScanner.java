@@ -37,10 +37,9 @@ import java.util.stream.Collectors;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-@RequiredArgsConstructor
 public class ClassGraphPackageScanner implements PackageScanner {
 
-    private final ClassGraph classGraph;
+    private final ClassGraph classGraph = new ClassGraph();
 
     @Override
     public final List<String> apply(final RuleSource ruleSource) {
