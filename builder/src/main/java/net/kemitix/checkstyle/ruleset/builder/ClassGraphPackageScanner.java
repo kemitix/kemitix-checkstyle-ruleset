@@ -22,6 +22,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ScanResult;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,18 +37,28 @@ import java.util.stream.Collectors;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
+@RequiredArgsConstructor
 public class ClassGraphPackageScanner implements PackageScanner {
+
+    private final ClassGraph classGraph;
 
     @Override
     public final List<String> apply(final RuleSource ruleSource) {
         final String basePackage = ruleSource.getBasePackage();
-        return new ClassGraph()
-                .whitelistPackages(basePackage)
-                .scan()
-                .getAllStandardClasses()
-                .getNames()
-                .stream()
-                .filter(packageName -> packageName.startsWith(basePackage))
-                .collect(Collectors.toList());
+        try (ScanResult scanResult = scanPackage(classGraph, basePackage)) {
+            return scanResult
+                    .getAllStandardClasses()
+                    .getNames()
+                    .stream()
+                    .filter(packageName -> packageName.startsWith(basePackage))
+                    .collect(Collectors.toList());
+        }
     }
+
+    private static ScanResult scanPackage(final ClassGraph classGraph, final String basePackage) {
+        return classGraph
+                .whitelistPackages(basePackage)
+                .scan();
+    }
+
 }
