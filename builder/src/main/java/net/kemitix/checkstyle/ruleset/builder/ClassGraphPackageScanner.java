@@ -23,7 +23,6 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
