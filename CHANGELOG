@@ -8,6 +8,7 @@ CHANGELOG
 * Bump kemitix-parent from 5.1.1 to 5.2.0 (#130)
 * [jenkins] Don't use verify profile with clean phase (#131)
 * Bump classgraph from 4.2.8 to 4.2.12 (#132)(#133)
+* Bump spring-boot.version from 2.0.5.RELEASE to 2.0.6.RELEASE (#136)
 
 5.1.0
 -----
