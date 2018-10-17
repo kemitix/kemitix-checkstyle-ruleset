@@ -26,7 +26,7 @@
         <sevntu.version>1.32.0</sevntu.version>
         <lombok.version>1.18.2</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
-        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
         <mapstream.version>2.3.5</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>2.23.0</mockito.version>
