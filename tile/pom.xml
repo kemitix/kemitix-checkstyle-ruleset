@@ -12,7 +12,7 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>tile</artifactId>
-    <version>DEV-SNAPSHOT</version>
+    <version>5.1.1</version>
 
     <packaging>tile</packaging>
 
@@ -24,7 +24,7 @@
         <checkstyle.version>8.13</checkstyle.version>
         <sevntu.version>1.32.0</sevntu.version>
 
-        <kemitix.checkstyle.ruleset.version>DEV-SNAPSHOT</kemitix.checkstyle.ruleset.version>
+        <kemitix.checkstyle.ruleset.version>5.1.1</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
         <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
     </properties>
