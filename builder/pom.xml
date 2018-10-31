@@ -24,7 +24,7 @@
 
         <checkstyle.version>8.14</checkstyle.version>
         <sevntu.version>1.32.0</sevntu.version>
-        <lombok.version>1.18.2</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
         <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
         <mapstream.version>2.3.5</mapstream.version>
