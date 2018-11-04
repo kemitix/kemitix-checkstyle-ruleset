@@ -155,7 +155,7 @@ Rule|Level|Source|Enabled|Suppressible
 [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions)|tweaks|sevntu||
 [ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu|Yes|
 [GenericWhitespace](#genericwhitespace)|layout|checkstyle|Yes|
-[Header](#header)|layout|checkstyle|Yes|
+[Header](#header)|layout|checkstyle||
 [HiddenField](#hiddenfield)|tweaks|checkstyle|Yes|
 [HideUtilityClassConstructor](#hideutilityclassconstructor)|tweaks|checkstyle|Yes|
 [IllegalCatch](#illegalcatch)|tweaks|checkstyle|Yes|
@@ -957,9 +957,6 @@ Pair<Integer, String> p1 = new Pair<>(1, "apple");
 List<T> list = ImmutableList.Builder<T>::new;
 sort(list, Comparable::<String>compareTo);
 ````
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
-
-Checks that all `*.java` source files begin with the contents of the `LICENSE.txt` file.
 #### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField)
 
 Checks that a local variable or parameter in a method doesn't have the same name as a field. Doesn't apply in constructors or setters.
@@ -2625,6 +2622,9 @@ Recommends using a static import to access constants from another class over inh
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+Shouldn't need to list in every file, simply listing in project root should be enough.
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 
 Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.

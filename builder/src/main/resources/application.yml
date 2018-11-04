@@ -331,12 +331,13 @@ rules:
         name: Header
         parent: CHECKER
         level: LAYOUT
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_header.html#Header
         properties:
             fileExtensions: java
             headerFile: LICENSE.txt
+        reason: Shouldn't need to list in every file, simply listing in project root should be enough.
     -
         name: HiddenField
         parent: TREEWALKER

@@ -12,10 +12,6 @@
         <property name="max" value="500"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck">
-        <property name="fileExtensions" value="java"/>
-        <property name="headerFile" value="LICENSE.txt"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck">
         <property name="lineSeparator" value="lf"/>
