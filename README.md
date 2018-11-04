@@ -253,7 +253,7 @@ Rule|Level|Source|Enabled|Suppressible
 [ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean)|tweaks|sevntu|Yes|
 [RightCurly](#rightcurly)|layout|checkstyle|Yes|
 [SeparatorWrap](#separatorwrap)|layout|checkstyle|Yes|
-[SimpleAccessorNameNotation](#simpleaccessornamenotation)|naming|sevntu|Yes|
+[SimpleAccessorNameNotation](#simpleaccessornamenotation)|naming|sevntu||
 [SimplifyBooleanExpression](#simplifybooleanexpression)|complexity|checkstyle|Yes|
 [SimplifyBooleanReturn](#simplifybooleanreturn)|complexity|checkstyle|Yes|
 [SingleBreakOrContinue](#singlebreakorcontinue)|tweaks|sevntu|Yes|
@@ -2517,9 +2517,6 @@ Boolean isEnabled() {
     return null;
 }
 ````
-#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
-
-Checks that setters and getters follow the normal setField(), getField() and isField() pattern, where 'Field' is the name of the field being accessed.
 #### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
 
 Checks that there is at most one `continue` or `break` statement within a looping block (e.g. `for`, `while`, ...)
@@ -2735,6 +2732,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
+#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+
+allow use of non-bean property-like naming
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.

@@ -211,7 +211,6 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.RedundantReturnCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ReturnBooleanFromTernaryCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ReturnNullInsteadOfBooleanCheck"/>
-<module name="com.github.sevntu.checkstyle.checks.coding.SimpleAccessorNameNotationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.SingleBreakOrContinueCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.TernaryPerExpressionCountCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.UniformEnumConstantNameCheck"/>

@@ -1165,9 +1165,10 @@ rules:
         name: SimpleAccessorNameNotation
         parent: TREEWALKER
         level: NAMING
-        enabled: true
+        enabled: false
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html
+        reason: allow use of non-bean property-like naming
     -
         name: SingleBreakOrContinue
         parent: TREEWALKER
