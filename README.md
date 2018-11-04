@@ -2492,14 +2492,14 @@ Ternary statements shouldn't have `Boolean` values as results.
 
 Valid:
 ````
-Boolean set = isSet() ? True : False;
-Boolean notReady = isReady() ? False : True;
+Boolean set = isSet();
+Boolean notReady = !isReady();
 ````
 
 Invalid:
 ````
-Boolean set = isSet();
-Boolean notReady = !isReady();
+Boolean set = isSet() ? True : False;
+Boolean notReady = isReady() ? False : True;
 ````
 #### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html)
 
