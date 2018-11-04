@@ -49,7 +49,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:RELEASE</tile>
+                        <tile>net.kemitix.checkstyle:tile:DEV-SNAPSHOT</tile>
                     </tiles>
                 </configuration>
             </plugin>
@@ -173,7 +173,7 @@ Rule|Level|Source|Enabled|Suppressible
 [InterfaceIsType](#interfaceistype)|complexity|checkstyle|Yes|
 [InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle|Yes|
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
-[JavadocMethod](#javadocmethod)|javadoc|checkstyle|Yes|
+[JavadocMethod](#javadocmethod)|javadoc|checkstyle||
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
 [JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
 [JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
@@ -1159,9 +1159,6 @@ Invalid:
 ````
 interface <Type> Portable {}
 ````
-#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
-
-Checks that all public, protected and package methods have a Javadoc block, that all `@throws` tags are used. Basic setters and getters do not require javadoc.
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 
 Checks that each package has a `package-info.java` file.
@@ -2643,6 +2640,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
+#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
+
+Only exceptional cases should need to be documented.
 #### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.

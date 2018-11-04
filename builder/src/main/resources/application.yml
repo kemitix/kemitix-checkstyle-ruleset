@@ -430,13 +430,14 @@ rules:
         name: JavadocMethod
         parent: TREEWALKER
         level: JAVADOC
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod
         properties:
             allowMissingPropertyJavadoc: true
             validateThrows: true
             scope: package
+        reason: Only exceptional cases should need to be documented.
     -
         name: JavadocPackage
         parent: CHECKER

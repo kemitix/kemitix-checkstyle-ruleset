@@ -90,11 +90,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InterfaceIsTypeCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.modifier.InterfaceMemberImpliedModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.InterfaceTypeParameterNameCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck">
-        <property name="allowMissingPropertyJavadoc" value="true"/>
-        <property name="scope" value="package"/>
-        <property name="validateThrows" value="true"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
