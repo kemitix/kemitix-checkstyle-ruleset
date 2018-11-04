@@ -1,5 +1,5 @@
 
-Checks for catch blocks that are useless. i.e. that catch al exceptions and then just rethrow them.
+Checks for catch blocks that are useless. i.e. that catch all exceptions and then just rethrow them.
 
 Invalid:
 ````

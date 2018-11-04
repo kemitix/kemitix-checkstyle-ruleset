@@ -2551,7 +2551,7 @@ public enum EnumThree {
 ````
 #### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html)
 
-Checks for catch blocks that are useless. i.e. that catch al exceptions and then just rethrow them.
+Checks for catch blocks that are useless. i.e. that catch all exceptions and then just rethrow them.
 
 Invalid:
 ````
