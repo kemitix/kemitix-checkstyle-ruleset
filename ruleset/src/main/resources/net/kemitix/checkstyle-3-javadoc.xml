@@ -9,10 +9,6 @@
         <property name="match" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck">
-        <property name="fileExtensions" value="java"/>
-        <property name="headerFile" value="LICENSE.txt"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck">
         <property name="lineSeparator" value="lf"/>
@@ -42,11 +38,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.FallThroughCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.InterfaceTypeParameterNameCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck">
-        <property name="allowMissingPropertyJavadoc" value="true"/>
-        <property name="scope" value="package"/>
-        <property name="validateThrows" value="true"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
@@ -112,7 +103,6 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.ForbidCCommentsInMethodsCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NameConventionForJunit4TestClassesCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.NumericLiteralNeedsUnderscoreCheck"/>
-<module name="com.github.sevntu.checkstyle.checks.coding.SimpleAccessorNameNotationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.UniformEnumConstantNameCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.WhitespaceBeforeArrayInitializerCheck"/>
 

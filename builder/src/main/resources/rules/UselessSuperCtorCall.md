@@ -1,5 +1,5 @@
 
-Checks for useless calls the the `super()` method in constructors.
+Checks for useless calls to the `super()` method in constructors.
 
 Invalid:
 ````

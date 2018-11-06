@@ -49,7 +49,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:RELEASE</tile>
+                        <tile>net.kemitix.checkstyle:tile:DEV-SNAPSHOT</tile>
                     </tiles>
                 </configuration>
             </plugin>
@@ -155,7 +155,7 @@ Rule|Level|Source|Enabled|Suppressible
 [ForbidThrowAnonymousExceptions](#forbidthrowanonymousexceptions)|tweaks|sevntu||
 [ForbidWildcardAsReturnType](#forbidwildcardasreturntype)|complexity|sevntu|Yes|
 [GenericWhitespace](#genericwhitespace)|layout|checkstyle|Yes|
-[Header](#header)|layout|checkstyle|Yes|
+[Header](#header)|layout|checkstyle||
 [HiddenField](#hiddenfield)|tweaks|checkstyle|Yes|
 [HideUtilityClassConstructor](#hideutilityclassconstructor)|tweaks|checkstyle|Yes|
 [IllegalCatch](#illegalcatch)|tweaks|checkstyle|Yes|
@@ -173,7 +173,7 @@ Rule|Level|Source|Enabled|Suppressible
 [InterfaceIsType](#interfaceistype)|complexity|checkstyle|Yes|
 [InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle|Yes|
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
-[JavadocMethod](#javadocmethod)|javadoc|checkstyle|Yes|
+[JavadocMethod](#javadocmethod)|javadoc|checkstyle||
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
 [JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
 [JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
@@ -253,7 +253,7 @@ Rule|Level|Source|Enabled|Suppressible
 [ReturnNullInsteadOfBoolean](#returnnullinsteadofboolean)|tweaks|sevntu|Yes|
 [RightCurly](#rightcurly)|layout|checkstyle|Yes|
 [SeparatorWrap](#separatorwrap)|layout|checkstyle|Yes|
-[SimpleAccessorNameNotation](#simpleaccessornamenotation)|naming|sevntu|Yes|
+[SimpleAccessorNameNotation](#simpleaccessornamenotation)|naming|sevntu||
 [SimplifyBooleanExpression](#simplifybooleanexpression)|complexity|checkstyle|Yes|
 [SimplifyBooleanReturn](#simplifybooleanreturn)|complexity|checkstyle|Yes|
 [SingleBreakOrContinue](#singlebreakorcontinue)|tweaks|sevntu|Yes|
@@ -957,9 +957,6 @@ Pair<Integer, String> p1 = new Pair<>(1, "apple");
 List<T> list = ImmutableList.Builder<T>::new;
 sort(list, Comparable::<String>compareTo);
 ````
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
-
-Checks that all `*.java` source files begin with the contents of the `LICENSE.txt` file.
 #### [HiddenField](http://checkstyle.sourceforge.net/config_coding.html#HiddenField)
 
 Checks that a local variable or parameter in a method doesn't have the same name as a field. Doesn't apply in constructors or setters.
@@ -1159,9 +1156,6 @@ Invalid:
 ````
 interface <Type> Portable {}
 ````
-#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
-
-Checks that all public, protected and package methods have a Javadoc block, that all `@throws` tags are used. Basic setters and getters do not require javadoc.
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 
 Checks that each package has a `package-info.java` file.
@@ -2498,14 +2492,14 @@ Ternary statements shouldn't have `Boolean` values as results.
 
 Valid:
 ````
-Boolean set = isSet() ? True : False;
-Boolean notReady = isReady() ? False : True;
+Boolean set = isSet();
+Boolean notReady = !isReady();
 ````
 
 Invalid:
 ````
-Boolean set = isSet();
-Boolean notReady = !isReady();
+Boolean set = isSet() ? True : False;
+Boolean notReady = isReady() ? False : True;
 ````
 #### [ReturnNullInsteadOfBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnNullInsteadOfBooleanCheck.html)
 
@@ -2523,9 +2517,6 @@ Boolean isEnabled() {
     return null;
 }
 ````
-#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
-
-Checks that setters and getters follow the normal setField(), getField() and isField() pattern, where 'Field' is the name of the field being accessed.
 #### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
 
 Checks that there is at most one `continue` or `break` statement within a looping block (e.g. `for`, `while`, ...)
@@ -2560,7 +2551,7 @@ public enum EnumThree {
 ````
 #### [UselessSingleCatch](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSingleCatchCheck.html)
 
-Checks for catch blocks that are useless. i.e. that catch al exceptions and then just rethrow them.
+Checks for catch blocks that are useless. i.e. that catch all exceptions and then just rethrow them.
 
 Invalid:
 ````
@@ -2572,7 +2563,7 @@ try {
 ````
 #### [UselessSuperCtorCall](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/UselessSuperCtorCallCheck.html)
 
-Checks for useless calls the the `super()` method in constructors.
+Checks for useless calls to the `super()` method in constructors.
 
 Invalid:
 ````
@@ -2628,6 +2619,9 @@ Recommends using a static import to access constants from another class over inh
 #### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
 
 Doesn't recognise Lombok's `val` as being `final`.
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+Shouldn't need to list in every file, simply listing in project root should be enough.
 #### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
 
 Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
@@ -2643,6 +2637,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
+#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
+
+Only exceptional cases should need to be documented.
 #### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
@@ -2735,6 +2732,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
 
 Generic rule; doesn't embody a 'quality' check.
+#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+
+allow use of non-bean property-like naming
 #### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
 
 Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.

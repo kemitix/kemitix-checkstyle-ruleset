@@ -9,10 +9,6 @@
         <property name="match" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.header.HeaderCheck">
-        <property name="fileExtensions" value="java"/>
-        <property name="headerFile" value="LICENSE.txt"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck">
         <property name="lineSeparator" value="lf"/>
@@ -70,11 +66,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.design.InnerTypeLastCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.modifier.InterfaceMemberImpliedModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.naming.InterfaceTypeParameterNameCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck">
-        <property name="allowMissingPropertyJavadoc" value="true"/>
-        <property name="scope" value="package"/>
-        <property name="validateThrows" value="true"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocParagraphCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTypeCheck"/>
@@ -168,7 +159,6 @@
 <module name="com.github.sevntu.checkstyle.checks.coding.RedundantReturnCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ReturnBooleanFromTernaryCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.ReturnNullInsteadOfBooleanCheck"/>
-<module name="com.github.sevntu.checkstyle.checks.coding.SimpleAccessorNameNotationCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.SingleBreakOrContinueCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.coding.TernaryPerExpressionCountCheck"/>
 <module name="com.github.sevntu.checkstyle.checks.naming.UniformEnumConstantNameCheck"/>
