@@ -7,7 +7,7 @@ CHANGELOG
 * Disable JavadocMethod
 * Disable Header
 * Fix example for ReturnBooleanFromTernary check
-* Disable SimeplAccessorNameNotation
+* Disable SimpleAccessorNameNotation
 * Fix typo in UselessSingleCatch
 * Fix typo in UselessSuperCtorCall
 
