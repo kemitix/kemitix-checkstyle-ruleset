@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+5.2.0
+-----
+
+* Disable JavadocMethod
+* Disable Header
+* Fix example for ReturnBooleanFromTernary check
+* Disable SimeplAccessorNameNotation
+* Fix typo in UselessSingleCatch
+* Fix typo in UselessSuperCtorCall
+
 5.1.1
 -----
 
