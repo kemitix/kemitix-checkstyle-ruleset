@@ -17,7 +17,6 @@
     <module name="TreeWalker">
 
         <module name="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.naming.AbstractClassNameCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationLocationCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.annotation.AnnotationUseStyleCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.ArrayTypeStyleCheck"/>

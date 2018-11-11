@@ -91,7 +91,7 @@ In 2.x, the level was specified as the goal to invoke. In 3.x, there is only the
 Rule|Level|Source|Enabled|Suppressible
 ----|-----|------|-------|------------
 [AbbreviationAsWordInName](#abbreviationaswordinname)|naming|checkstyle|Yes|
-[AbstractClassName](#abstractclassname)|naming|checkstyle|Yes|
+[AbstractClassName](#abstractclassname)|naming|checkstyle||
 [AnnotationLocation](#annotationlocation)|layout|checkstyle|Yes|
 [AnnotationUseStyle](#annotationusestyle)|layout|checkstyle|Yes|
 [AnonInnerLength](#anoninnerlength)|complexity|checkstyle|Yes|
@@ -310,19 +310,6 @@ class DaoManager {}
 Invalid:
 ````
 class DAOManager {}
-````
-#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName)
-
-The name of an `abstract` class must start with `Abstract`. Classes that start with `Abstract` must be `abstract`.
-
-Valid:
-````
-abstract class AbstractCardHand implements CardHand {}
-````
-
-Invalid:
-````
-abstract class BaseCardHand implements CardHand {}
 ````
 #### [AnnotationLocation](http://checkstyle.sourceforge.net/config_annotation.html#AnnotationLocation)
 
@@ -2603,6 +2590,9 @@ These checks are not enabled. Notes are included for each explaining why.
 
 ### Checkstyle
 
+#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName)
+
+Prevents some more meaningful abstract class names
 #### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
