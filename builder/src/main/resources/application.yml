@@ -34,9 +34,10 @@ rules:
         name: AbstractClassName
         parent: TREEWALKER
         level: NAMING
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName
+        reason: Prevents some more meaningful abstract class names
     -
         name: AnnotationLocation
         parent: TREEWALKER

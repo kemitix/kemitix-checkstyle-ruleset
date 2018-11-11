@@ -1,5 +1,11 @@
 * CHANGELOG
 
+** 5.3.0 - 2018-11-11
+
+*** Removed
+
+    * Disable AbstractClassName
+
 ** 5.2.0
  
    * Disable JavadocMethod
