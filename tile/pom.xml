@@ -24,7 +24,7 @@
         <checkstyle.version>8.14</checkstyle.version>
         <sevntu.version>1.32.0</sevntu.version>
 
-        <kemitix.checkstyle.ruleset.version>DEV-SNAPSHOT</kemitix.checkstyle.ruleset.version>
+        <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
         <kemitix.checkstyle.ruleset.location>net/kemitix/checkstyle-${kemitix.checkstyle.ruleset.level}.xml</kemitix.checkstyle.ruleset.location>
     </properties>
