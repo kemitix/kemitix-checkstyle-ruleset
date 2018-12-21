@@ -1,5 +1,16 @@
 * CHANGELOG
 
+** 5.3.2 - ?
+
+   * Bump mockito-core from 2.23.0 to 2.23.4 (#146)
+   * Bump spring-boot.version from 2.1.0.RELEASE to 2.1.1.RELEASE (#149)
+   * Bump checkstyle from 8.14 to 8.15 (#148)
+   * Bump classgraph from 4.2.12 to 4.6.3 (#150)(#151)
+
+** 5.3.1 - 2018-11-17
+
+   * [tile] use project version for selecting ruleset version (#145)
+
 ** 5.3.0 - 2018-11-11
 
 *** Removed
