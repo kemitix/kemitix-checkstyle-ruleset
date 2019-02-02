@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * [5.3.3] - 2019-02-02
 
+** Changed
+
+   - [tile] Improved use of properties to remove duplication
+
 ** Dependencies
 
    - Bump classgraph from 4.6.9 to 4.6.29 (#158)(#160)
