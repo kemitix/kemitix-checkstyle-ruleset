@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+* [5.3.3] - 2019-02-02
+
+** Dependencies
+
+   - Bump classgraph from 4.6.9 to 4.6.29 (#158)(#160)
+   - Bump checkstyle from 8.15 to 8.16 (#159)
+
 * [5.3.2] - 2018-12-21
 
 ** Dependencies
