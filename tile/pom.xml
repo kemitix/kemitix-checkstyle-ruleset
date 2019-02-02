@@ -18,7 +18,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.12</tiles-maven-plugin.version>
-        <kemitix-tiles.version>0.8.1</kemitix-tiles.version>
+        <kemitix-maven-tiles.version>0.8.1</kemitix-maven-tiles.version>
 
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.16</checkstyle.version>
@@ -66,7 +66,7 @@
                 <configuration>
                     <filtering>true</filtering>
                     <tiles>
-                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-maven-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
