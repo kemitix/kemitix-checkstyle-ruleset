@@ -4,8 +4,6 @@ Provides an extensive Checkstyle ruleset for use with Checkstyle, together with 
 
  ![Sonatype Nexus (Release)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
  ![Maven Central](https://img.shields.io/maven-central/v/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
-
- ![Codacy](https://img.shields.io/codacy/grade/f1208289122e48daa89c46671293b3c2.svg?style=for-the-badge)
  ![JPeek](http://i.jpeek.org/net.kemitix.checkstyle/ruleset/badge.svg)
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.

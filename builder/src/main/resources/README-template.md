@@ -4,20 +4,6 @@ Provides an extensive Checkstyle ruleset for use with Checkstyle, together with 
 
  ![Sonatype Nexus (Release)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
  ![Maven Central](https://img.shields.io/maven-central/v/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
-
- ![Coverage](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle:builder/coverage.svg?style=for-the-badge#.svg)
- ![Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/net.kemitix.checkstyle:builder/tech_debt.svg?style=for-the-badge#.svg)
- ![SQALE Rating](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=sqale_rating#.svg)
- ![Alert Status](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=alert_status#.svg)
- ![Reliability](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=reliability_rating#.svg)
- ![Security](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=security_rating#.svg)
- ![SQALE Index](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=sqale_index#.svg)
- ![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=vulnerabilities#.svg)
- ![Bugs](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=bugs#.svg)
- ![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=code_smells#.svg)
- ![NCLOC](https://sonarcloud.io/api/project_badges/measure?project=net.kemitix.checkstyle:kemitix-checkstyle-ruleset&metric=ncloc#.svg)
-
- ![Codacy](https://img.shields.io/codacy/grade/f1208289122e48daa89c46671293b3c2.svg?style=for-the-badge)
  ![JPeek](http://i.jpeek.org/net.kemitix.checkstyle/ruleset/badge.svg)
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
