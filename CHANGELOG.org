@@ -5,221 +5,228 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-** [5.3.2] - 2018-12-21
+* [5.3.3] - 2019-02-02
 
-*** Dependencies
+** Dependencies
 
-    * Bump mockito-core from 2.23.0 to 2.23.4 (#146)
-    * Bump spring-boot.version from 2.1.0.RELEASE to 2.1.1.RELEASE (#149)
-    * Bump checkstyle from 8.14 to 8.15 (#148)
-    * Bump classgraph from 4.2.12 to 4.6.9 (#150)(#151)(#155)
+   - Bump classgraph from 4.6.9 to 4.6.29 (#158)(#160)
+   - Bump checkstyle from 8.15 to 8.16 (#159)
 
-** [5.3.1] - 2018-11-17
+* [5.3.2] - 2018-12-21
 
-*** Fixed
+** Dependencies
 
-    * [tile] use project version for selecting ruleset version (#145)
+   * Bump mockito-core from 2.23.0 to 2.23.4 (#146)
+   * Bump spring-boot.version from 2.1.0.RELEASE to 2.1.1.RELEASE (#149)
+   * Bump checkstyle from 8.14 to 8.15 (#148)
+   * Bump classgraph from 4.2.12 to 4.6.9 (#150)(#151)(#155)
 
-** [5.3.0] - 2018-11-11
+* [5.3.1] - 2018-11-17
 
-*** Removed
+** Fixed
 
-    * Disable AbstractClassName
+   * [tile] use project version for selecting ruleset version (#145)
 
-** [5.2.0]
+* [5.3.0] - 2018-11-11
+
+** Removed
+
+   * Disable AbstractClassName
+
+* [5.2.0]
  
-   * Disable JavadocMethod
-   * Disable Header
-   * Fix example for ReturnBooleanFromTernary check
-   * Disable SimpleAccessorNameNotation
-   * Fix typo in UselessSingleCatch
-   * Fix typo in UselessSuperCtorCall
+  * Disable JavadocMethod
+  * Disable Header
+  * Fix example for ReturnBooleanFromTernary check
+  * Disable SimpleAccessorNameNotation
+  * Fix typo in UselessSingleCatch
+  * Fix typo in UselessSuperCtorCall
 
-** [5.1.1]
+* [5.1.1]
 
-   * [bug] tile depends on DEV-SNAPSHOT ruleset (#137)
-   * Bump mockito-core from 2.22.0 to 2.23.0 (#129)
-   * Bump kemitix-parent from 5.1.1 to 5.2.0 (#130)
-   * [jenkins] Don't use verify profile with clean phase (#131)
-   * Bump classgraph from 4.2.8 to 4.2.12 (#132)(#133)
-   * Bump spring-boot.version from 2.0.5.RELEASE to 2.0.6.RELEASE (#136)
+  * [bug] tile depends on DEV-SNAPSHOT ruleset (#137)
+  * Bump mockito-core from 2.22.0 to 2.23.0 (#129)
+  * Bump kemitix-parent from 5.1.1 to 5.2.0 (#130)
+  * [jenkins] Don't use verify profile with clean phase (#131)
+  * Bump classgraph from 4.2.8 to 4.2.12 (#132)(#133)
+  * Bump spring-boot.version from 2.0.5.RELEASE to 2.0.6.RELEASE (#136)
 
-** [5.1.0]
+* [5.1.0]
 
-   * [tile] Execute `checkstyle:checkstyle` during the `test` phase
-   * [jenkins] Replace Java 9 and 10 steps with a single Java 11 step
-   * [travis] Remove Travis CI support
+  * [tile] Execute `checkstyle:checkstyle` during the `test` phase
+  * [jenkins] Replace Java 9 and 10 steps with a single Java 11 step
+  * [travis] Remove Travis CI support
 
-** [5.0.0]
+* [5.0.0]
 
-   * [BREAKING] [ruleset] Replace `RedundantModifier` with `InterfaceMemberImpliedModifier`
-   * [ruleset] Add rule `LambdaParameterName`
-   * Upgrade `checkstyle` to 8.12
-   * Upgrade `sevntu` to 1.32.0
-   * Switch to trunk-based development
-   * Upgrade `kemitix-parent` to 5.1.1
-   * [tile] Upgrade `kemitix-maven-tiles` to 0.9.0
-   * [tile] Bump tiles-maven-plugin from 2.11 to 2.12
-   * [builder] Replaced Spring IO Platform dependency management with Spring Boot version
-   * [builder] Bump spring-boot to 2.0.4.RELEASE
-   * [builder] Upgrade `lombok` to 1.18.2
-   * [builder] Bump mockito-core from 2.19.0 to 2.21.0
-   * [builder] Upgrade `assertj` to 3.11.0
-   * [builder] Upgrade `conditional` to 0.6.0
-   * [builder] Upgrade `fast-classpath-scanner` to `classgraph`
-   * [builder] Upgrade `javax-annotation-api` to 1.3.2
-   * Add badges to README
+  * [BREAKING] [ruleset] Replace `RedundantModifier` with `InterfaceMemberImpliedModifier`
+  * [ruleset] Add rule `LambdaParameterName`
+  * Upgrade `checkstyle` to 8.12
+  * Upgrade `sevntu` to 1.32.0
+  * Switch to trunk-based development
+  * Upgrade `kemitix-parent` to 5.1.1
+  * [tile] Upgrade `kemitix-maven-tiles` to 0.9.0
+  * [tile] Bump tiles-maven-plugin from 2.11 to 2.12
+  * [builder] Replaced Spring IO Platform dependency management with Spring Boot version
+  * [builder] Bump spring-boot to 2.0.4.RELEASE
+  * [builder] Upgrade `lombok` to 1.18.2
+  * [builder] Bump mockito-core from 2.19.0 to 2.21.0
+  * [builder] Upgrade `assertj` to 3.11.0
+  * [builder] Upgrade `conditional` to 0.6.0
+  * [builder] Upgrade `fast-classpath-scanner` to `classgraph`
+  * [builder] Upgrade `javax-annotation-api` to 1.3.2
+  * Add badges to README
 
-** [4.1.1]
+* [4.1.1]
 
-   * Fix version of `ruleset` used in `tile`
+  * Fix version of `ruleset` used in `tile`
 
-** [4.1.0]
+* [4.1.0]
 
-   * `EmptyLineSeparator`: disabled
-   * Upgrade `tiles-maven-plugin` to 2.11
-   * Upgrade `checkstyle` to 8.10
-   * Upgrade `sevntu-checkstyle` to 1.29.0
-   * Upgrade `secntu-checkstyle` to 1.27.0
-   * Upgrade `checkstyle` to 8.7 (properly now that it is supported by sevntu)
+  * `EmptyLineSeparator`: disabled
+  * Upgrade `tiles-maven-plugin` to 2.11
+  * Upgrade `checkstyle` to 8.10
+  * Upgrade `sevntu-checkstyle` to 1.29.0
+  * Upgrade `secntu-checkstyle` to 1.27.0
+  * Upgrade `checkstyle` to 8.7 (properly now that it is supported by sevntu)
 
-** [4.0.1]
+* [4.0.1]
 
-   * Add sourceDirectories to avoid scanning generated sources
-   * Upgrade lombok to 1.16.20
-   * Upgrade kemitix-maven-tiles to 0.3.0
+  * Add sourceDirectories to avoid scanning generated sources
+  * Upgrade lombok to 1.16.20
+  * Upgrade kemitix-maven-tiles to 0.3.0
 
-** [4.0.0]
+* [4.0.0]
 
-   * Upgrade to `maven-checkstyle-plugin` 3.0.0
-   * Change ruleset groupId/artifactId to `net.kemitix.checkstyle/ruleset`
-   * Add maven-tile `net.kemitix.checkstyle:tile`
-   * \[bug] update the ruleset files
-   * Restore Header and JavadocPackage checks
-   * Add missing reasons for disabling checks
+  * Upgrade to `maven-checkstyle-plugin` 3.0.0
+  * Change ruleset groupId/artifactId to `net.kemitix.checkstyle/ruleset`
+  * Add maven-tile `net.kemitix.checkstyle:tile`
+  * \[bug] update the ruleset files
+  * Restore Header and JavadocPackage checks
+  * Add missing reasons for disabling checks
 
-** [3.4.0]
+* [3.4.0]
 
-   * Disable Header check
-   * Remove requirement for `@author` in Type Javadoc
-   * Disable AvoidStarImport check
-   * Disable AvoidStaticImport check
-   * Disable JavadocPackage check
-   * Upgrade `checkstyle` to 8.7
-   * Upgrade `sevntu-checkstyle` to 1.26.0
+  * Disable Header check
+  * Remove requirement for `@author` in Type Javadoc
+  * Disable AvoidStarImport check
+  * Disable AvoidStaticImport check
+  * Disable JavadocPackage check
+  * Upgrade `checkstyle` to 8.7
+  * Upgrade `sevntu-checkstyle` to 1.26.0
 
-** [3.3.0]
+* [3.3.0]
 
-   * Upgrade spring boot to 1.5.4
-   * Upgrade platform to Brussels-SR3
-   * Upgrade checkstyle to 8.0
-   * Upgrade immutables to 2.5.6
-   * Upgrade mockito to 2.8.47
-   * Upgrade sevntu to 1.24.1
-   * Enable rule: EmptyPublicCtorInClass
-   * Enable rule: WhiteSpaceBeforeArrayInitializer
-   * Enable rule: FinalizeImplementation
-   * Enable rule: AvoidDefaultSerializableInInnerClass
+  * Upgrade spring boot to 1.5.4
+  * Upgrade platform to Brussels-SR3
+  * Upgrade checkstyle to 8.0
+  * Upgrade immutables to 2.5.6
+  * Upgrade mockito to 2.8.47
+  * Upgrade sevntu to 1.24.1
+  * Enable rule: EmptyPublicCtorInClass
+  * Enable rule: WhiteSpaceBeforeArrayInitializer
+  * Enable rule: FinalizeImplementation
+  * Enable rule: AvoidDefaultSerializableInInnerClass
 
-** [3.2.0]
+* [3.2.0]
 
-   * Restructure module parent poms
-   * Upgrade kemitix-parent to 3.0.0
-   * CheckMojo: provide name for parameter 'level'
-   * Normalise maven pom names
-   * circle.yml: added
-   * travis-ci: publish code coverate to codecov
-   * Add level 0 Disabled
+  * Restructure module parent poms
+  * Upgrade kemitix-parent to 3.0.0
+  * CheckMojo: provide name for parameter 'level'
+  * Normalise maven pom names
+  * circle.yml: added
+  * travis-ci: publish code coverate to codecov
+  * Add level 0 Disabled
 
-** [3.1.0]
+* [3.1.0]
 
-   * Upgrade checkstyle to 7.8
-   * Upgrade sevntu to 1.24.0
-   * Add Rule: MoveVariableInsideIf
-   * Add Rule: ForbidWildcardAsReturnType
-   * Modify Rule: ExplicitInitialization only applies to objects
-   * Add Wercker CI
-   * Add Shippable CI
+  * Upgrade checkstyle to 7.8
+  * Upgrade sevntu to 1.24.0
+  * Add Rule: MoveVariableInsideIf
+  * Add Rule: ForbidWildcardAsReturnType
+  * Modify Rule: ExplicitInitialization only applies to objects
+  * Add Wercker CI
+  * Add Shippable CI
 
-** [3.0.1]
+* [3.0.1]
 
-   * Add travis deploy to nexus
+  * Add travis deploy to nexus
 
-** [3.0.0]
+* [3.0.0]
 
-   * BREAKING: Replace goals for plugin: use 'check' and configuration/level (see README.md)
-   * Rules are properly listed in README.md alphabetically
-   * Add unit tests for plugin
+  * BREAKING: Replace goals for plugin: use 'check' and configuration/level (see README.md)
+  * Rules are properly listed in README.md alphabetically
+  * Add unit tests for plugin
 
-** [2.3.0]
+* [2.3.0]
 
-   * Add org.immutables:value compatibility for level 5-complexity (disable ForbidWildcardAsReturn)
-   * Upgrade checkstyle to 7.6.1
+  * Add org.immutables:value compatibility for level 5-complexity (disable ForbidWildcardAsReturn)
+  * Upgrade checkstyle to 7.6.1
 
-** [2.2.0]
+* [2.2.0]
 
-   * Upgrade sevntu to 1.23.1
-   * Upgrade checkstyle to 7.6
-   * Detect sync conflicts
+  * Upgrade sevntu to 1.23.1
+  * Upgrade checkstyle to 7.6
+  * Detect sync conflicts
 
-** [2.1.3]
+* [2.1.3]
 
-   * Change required pom dependency
-   * Only apply checks to code in: src/main/java
-   * Replace parent pom with kemitix-parent:2.4.0
-   * Remove dependency on kemitix-checkstyle-ruleset-maven-plugin for builder module
+  * Change required pom dependency
+  * Only apply checks to code in: src/main/java
+  * Replace parent pom with kemitix-parent:2.4.0
+  * Remove dependency on kemitix-checkstyle-ruleset-maven-plugin for builder module
 
-** [2.1.2]
+* [2.1.2]
 
-   * Use the plugin version to find plugin's own pom
+  * Use the plugin version to find plugin's own pom
 
-** [2.1.1]
+* [2.1.1]
 
-   * Load plugin dependency versions from the plugin's own pom
-   * Cross-platform build
+  * Load plugin dependency versions from the plugin's own pom
+  * Cross-platform build
 
-** [2.1.0]
+* [2.1.0]
 
-   * Upgrade dependencies, including checkstyle to 7.5.1
+  * Upgrade dependencies, including checkstyle to 7.5.1
 
-** [2.0.3]
+* [2.0.3]
 
-   * plugin-sample: Add distributionManagement
+  * plugin-sample: Add distributionManagement
 
-** [2.0.2]
+* [2.0.2]
 
-   * Add distributionManagement to parent
+  * Add distributionManagement to parent
 
-** [2.0.1]
+* [2.0.1]
 
-   * ruleset: restore properties used in release profile
+  * ruleset: restore properties used in release profile
 
-** [2.0.0]
+* [2.0.0]
 
-   * Split ruleset into 5 levels
-   * Provide plugin to simplify use
+  * Split ruleset into 5 levels
+  * Provide plugin to simplify use
 
-** [1.0.0]
+* [1.0.0]
 
-   * LineLength: allow lines up to 120 characters
-   * AtclauseOrder: use order forced by IntelliJ
-   * JavadocMethod: now required on protected and package methods
-   * JavadocType: require @author tag in name (email) format
-   * JavaNCSS: restrict limits another 20%
-   * MethodLength: reduced to max 40 lines
-   * ModifiedControlVariable: don't apply to enhanced for loops
-   * NestedTryDepth: prevent any nesting of try blocks
-   * NoWhiteSpaceAfter: prevent dot separator (.) from being the last character on line
-   * NPathComplexity: reduce to 5 to match CyclomaticComplexity
-   * PackageName: restrict to lowercase letters and numbers
-   * ParameterNumber: don't apply to @Overridden methods
-   * EitherLogOrThrow: support java.util.logging.Logger
-   * TodoComment: only match against comments
-   * IllegalType: recognise more classes from Collections
-   * Remove checks: RedundantImport, ForbidThrowAnonymousExceptions, AvoidConditionInversionCheck and FinalLocalVariable
-   * Added checks: AvoidInlineConditionals, EqualsAvoidNull, FinalLocalVariable, Header, IllegalToken, InterfaceTypeParameterName, MethodTypeParameterName, NoFinalizer, NoLineWrap, PackageAnnotation, RequireThis, SuppressWarnings, Translation, UncommentedMain and UniqueProperties
+  * LineLength: allow lines up to 120 characters
+  * AtclauseOrder: use order forced by IntelliJ
+  * JavadocMethod: now required on protected and package methods
+  * JavadocType: require @author tag in name (email) format
+  * JavaNCSS: restrict limits another 20%
+  * MethodLength: reduced to max 40 lines
+  * ModifiedControlVariable: don't apply to enhanced for loops
+  * NestedTryDepth: prevent any nesting of try blocks
+  * NoWhiteSpaceAfter: prevent dot separator (.) from being the last character on line
+  * NPathComplexity: reduce to 5 to match CyclomaticComplexity
+  * PackageName: restrict to lowercase letters and numbers
+  * ParameterNumber: don't apply to @Overridden methods
+  * EitherLogOrThrow: support java.util.logging.Logger
+  * TodoComment: only match against comments
+  * IllegalType: recognise more classes from Collections
+  * Remove checks: RedundantImport, ForbidThrowAnonymousExceptions, AvoidConditionInversionCheck and FinalLocalVariable
+  * Added checks: AvoidInlineConditionals, EqualsAvoidNull, FinalLocalVariable, Header, IllegalToken, InterfaceTypeParameterName, MethodTypeParameterName, NoFinalizer, NoLineWrap, PackageAnnotation, RequireThis, SuppressWarnings, Translation, UncommentedMain and UniqueProperties
 
-** [0.1.0]
+* [0.1.0]
 
-   * Initial Release
+  * Initial Release
 
