@@ -24,7 +24,6 @@ package net.kemitix.checkstyle.ruleset.builder;
 import com.speedment.common.mapstream.MapStream;
 import lombok.Getter;
 import lombok.Setter;
-import net.kemitix.conditional.Value;
 
 import java.net.URI;
 import java.util.Comparator;
@@ -155,9 +154,11 @@ public class Rule {
             final String ruleClassname,
             final Rule rule
                           ) {
-        return Value.<String>where(hasProperties(rule))
-                .then(() -> moduleWithParameters(rule, ruleClassname))
-                .otherwise(() -> moduleNoParameters(ruleClassname));
+        if (hasProperties(rule)) {
+            return moduleWithParameters(rule, ruleClassname);
+        } else {
+            return moduleNoParameters(ruleClassname);
+        }
     }
 
     private static String moduleNoParameters(
