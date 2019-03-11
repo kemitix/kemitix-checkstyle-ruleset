@@ -27,7 +27,7 @@
         <lombok.version>1.18.6</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
-        <mapstream.version>3.1.12</mapstream.version>
+        <mapstream.version>3.1.13</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>2.25.0</mockito.version>
         <assertj.version>3.12.1</assertj.version>
