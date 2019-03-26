@@ -22,7 +22,7 @@
 
         <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
         <checkstyle.version>8.18</checkstyle.version>
-        <sevntu.version>1.32.0</sevntu.version>
+        <sevntu.version>1.33.0</sevntu.version>
 
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
         <kemitix.checkstyle.ruleset.level>5-complexity</kemitix.checkstyle.ruleset.level>
