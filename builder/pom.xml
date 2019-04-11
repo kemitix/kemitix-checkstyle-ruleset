@@ -29,7 +29,7 @@
         <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
         <mapstream.version>3.1.16</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
-        <mockito.version>2.26.0</mockito.version>
+        <mockito.version>2.27.0</mockito.version>
         <assertj.version>3.12.2</assertj.version>
         <classgraph.version>4.8.24</classgraph.version>
 
