@@ -31,7 +31,7 @@
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>3.1.0</mockito.version>
         <assertj.version>3.13.2</assertj.version>
-        <classgraph.version>4.8.48</classgraph.version>
+        <classgraph.version>4.8.50</classgraph.version>
 
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
