@@ -24,6 +24,7 @@
 
         <checkstyle.version>8.20</checkstyle.version>
         <sevntu.version>1.35.0</sevntu.version>
+        <sevntu-plugin.version>1.35.0</sevntu-plugin.version>
         <lombok.version>1.18.10</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
         <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
@@ -176,7 +177,7 @@
                     <dependency>
                         <groupId>com.github.sevntu-checkstyle</groupId>
                         <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                        <version>${sevntu.version}</version>
+                        <version>${sevntu-plugin.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>net.kemitix.checkstyle</groupId>
