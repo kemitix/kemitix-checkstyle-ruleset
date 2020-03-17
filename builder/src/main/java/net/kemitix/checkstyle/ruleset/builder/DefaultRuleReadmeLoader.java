@@ -24,8 +24,9 @@ class DefaultRuleReadmeLoader implements RuleReadmeLoader {
     @Override
     public Stream<String> load(final Rule rule) {
         if (rule.isEnabled()) {
-            final Path resolve = templateProperties.getReadmeFragments()
-                                                   .resolve(rule.getName() + ".md");
+            final Path resolve =
+                    templateProperties.getReadmeFragments()
+                            .resolve(rule.getName() + ".md");
             log.info("Loading fragment: {}", resolve);
             try {
                 return Stream.concat(Stream.of(formatRuleHeader(rule)), Files.lines(resolve));

@@ -116,7 +116,7 @@ public class CheckstyleWriterTest {
     private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
         val rule = new Rule();
         rule.setName(ruleName);
-        rule.setSource(RuleSource.CHECKSTYLE);
+        rule.setSource(RuleSourceMother.checkstyle.get().getName());
         rule.setEnabled(true);
         rule.setLevel(level);
         rule.setParent(parent);

@@ -1,9 +1,9 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.val;
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.Random;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,32 +14,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class RuleSourceTest {
 
-    @Test
-    public void valueOf() throws Exception {
-        assertThat(RuleSource.valueOf("CHECKSTYLE")).isEqualTo(RuleSource.CHECKSTYLE);
-        assertThat(RuleSource.valueOf("SEVNTU")).isEqualTo(RuleSource.SEVNTU);
-    }
+    private String name = UUID.randomUUID().toString();
+    private String basePackage = UUID.randomUUID().toString();
+    private boolean enabled = new Random().nextBoolean();
 
     @Test
-    public void values() throws Exception {
+    public void create() {
         //given
-        val expected = Arrays.asList("CHECKSTYLE", "SEVNTU");
-        //when
-        val values = Arrays.stream(RuleSource.values())
-                           .map(RuleSource::toString);
+        RuleSource ruleSource = RuleSourceMother.create(name, enabled, basePackage);
         //then
-        assertThat(values).containsExactlyElementsOf(expected);
+        assertThat(ruleSource.getName()).isEqualTo(name);
+        assertThat(ruleSource.getBasePackage()).isEqualTo(basePackage);
+        assertThat(ruleSource.isEnabled()).isEqualTo(enabled);
     }
 
-    @Test
-    public void basePackages() {
-        //given
-        final String puppycrawl = "puppycrawl";
-        final String sevntu = "sevntu";
-        //then
-        assertThat(RuleSource.CHECKSTYLE.getBasePackage()).contains(puppycrawl)
-                                                          .doesNotContain(sevntu);
-        assertThat(RuleSource.SEVNTU.getBasePackage()).contains(sevntu)
-                                                      .doesNotContain(puppycrawl);
-    }
 }

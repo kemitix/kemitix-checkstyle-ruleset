@@ -12,6 +12,15 @@ template:
     checkstyle-xml: builder/src/main/resources/checkstyle-template.xml
     readme-template: builder/src/main/resources/README-template.md
     readme-fragments: builder/src/main/resources/rules
+sources:
+    -
+        name: checkstyle
+        enabled: true
+        base-package: com.puppycrawl.tools.checkstyle
+    -
+        name: sevntu
+        enabled: true
+        base-package: com.github.sevntu.checkstyle.checks
 rules:
     -
         name: RegexpOnFilename

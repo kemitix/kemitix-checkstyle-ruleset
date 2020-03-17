@@ -4,6 +4,7 @@ import com.google.common.reflect.ClassPath;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -21,20 +22,26 @@ import static org.mockito.Mockito.mock;
  */
 public class BuilderConfigurationTest {
 
+    private SourcesProperties sourceProperties = new SourcesProperties();
+
     @Test
     public void canGetCheckClasses() {
         //given
         final PackageScanner packageScanner = mock(PackageScanner.class);
         final String checkstyleClass = "checkstyle class";
-        given(packageScanner.apply(RuleSource.CHECKSTYLE)).willReturn(singletonList(checkstyleClass));
+        final RuleSource checkstyleRuleSource = RuleSourceMother.checkstyle.get();
+        final RuleSource sevntuRuleSource = RuleSourceMother.sevntu.get();
+        given(packageScanner.apply(checkstyleRuleSource)).willReturn(singletonList(checkstyleClass));
         final String sevntuClass = "sevntu class";
-        given(packageScanner.apply(RuleSource.SEVNTU)).willReturn(singletonList(sevntuClass));
+        given(packageScanner.apply(sevntuRuleSource)).willReturn(singletonList(sevntuClass));
+        sourceProperties.setSources(Arrays.asList(checkstyleRuleSource, sevntuRuleSource));
+        BuilderConfiguration subject = new BuilderConfiguration(sourceProperties);
         //when
-        final Map<RuleSource, List<String>> checkClasses = new BuilderConfiguration().checkClasses(packageScanner);
+        final Map<RuleSource, List<String>> checkClasses = subject.checkClasses(packageScanner);
         //then
-        assertThat(checkClasses).containsOnlyKeys(RuleSource.values());
+        assertThat(checkClasses).containsOnlyKeys(Arrays.asList(checkstyleRuleSource, sevntuRuleSource));
         assertThat(checkClasses)
-                .containsEntry(RuleSource.CHECKSTYLE, singletonList(checkstyleClass))
-                .containsEntry(RuleSource.SEVNTU, singletonList(sevntuClass));
+                .containsEntry(checkstyleRuleSource, singletonList(checkstyleClass))
+                .containsEntry(sevntuRuleSource, singletonList(sevntuClass));
     }
 }
