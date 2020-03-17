@@ -20,7 +20,7 @@
         <tiles-maven-plugin.version>2.15</tiles-maven-plugin.version>
         <kemitix-maven-tiles.version>0.8.1</kemitix-maven-tiles.version>
 
-        <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
+        <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
         <checkstyle.version>8.20</checkstyle.version>
         <sevntu.version>1.35.0</sevntu.version>
 
