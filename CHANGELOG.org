@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+* [5.3.6] - 2019-04-05
+
+** Dependencies
+
+   - Bump checkstyle from 8.18 to 8.19 (#188)
+   - Bump classgraph from 4.8.21 to 4.8.22 (#187)
+   - Bump sevntu.version from 1.32.0 to 1.33.0 (#186)
+   - Bump mapstream from 3.1.13 to 3.1.15 (#185)
+   - Bump classgraph from 4.8.17 to 4.8.21 (#184)
+   - Bump classgraph from 4.8.16 to 4.8.17 (#183)
+   - Bump classgraph from 4.8.15 to 4.8.16 (#182)
+   - Bump classgraph from 4.8.14 to 4.8.15 (#181)
+   - Bump mockito-core from 2.25.0 to 2.25.1 (#180)
+   - Bump assertj-core from 3.12.1 to 3.12.2 (#179)
+   - Bump mapstream from 3.1.12 to 3.1.13 (#178)
+   - Bump classgraph from 4.8.12 to 4.8.14 (#177)
+   - Bump mockito-core from 2.24.5 to 2.25.0 (#176)
+
 * [5.3.5] - 2019-03-04
 
 ** Removed
