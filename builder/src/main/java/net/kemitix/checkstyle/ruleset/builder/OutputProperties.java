@@ -32,5 +32,5 @@ class OutputProperties {
     /**
      * The README.md file.
      */
-    private Path readme;
+    private String readme;
 }

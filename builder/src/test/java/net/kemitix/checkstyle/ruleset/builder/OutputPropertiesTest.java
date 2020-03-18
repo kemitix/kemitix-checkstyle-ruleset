@@ -27,7 +27,7 @@ public class OutputPropertiesTest {
         //given
         val directory = Paths.get("directory");
         val rulesetFiles = new HashMap<RuleLevel, String>();
-        val readme = Paths.get("readme.md");
+        val readme = "readme.md";
         //when
         outputProperties.setDirectory(directory);
         outputProperties.setRulesetFiles(rulesetFiles);

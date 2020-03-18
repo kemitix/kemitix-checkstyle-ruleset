@@ -1,5 +1,5 @@
 output:
-    directory: ruleset/src/main/resources/net/kemitix
+    directory: ../ruleset/src/main/resources/net/kemitix
     ruleset-files:
         DISABLED: checkstyle-0-disabled.xml
         LAYOUT: checkstyle-1-layout.xml
@@ -7,11 +7,11 @@ output:
         JAVADOC: checkstyle-3-javadoc.xml
         TWEAKS: checkstyle-4-tweaks.xml
         COMPLEXITY: checkstyle-5-complexity.xml
-    readme: README.md
+    readme: ../README.md
 template:
-    checkstyle-xml: builder/src/main/resources/checkstyle-template.xml
-    readme-template: builder/src/main/resources/README-template.md
-    readme-fragments: builder/src/main/resources/rules
+    checkstyle-xml: src/main/resources/checkstyle-template.xml
+    readme-template: src/main/resources/README-template.md
+    readme-fragments: src/main/resources/rules
 sources:
     -
         name: checkstyle

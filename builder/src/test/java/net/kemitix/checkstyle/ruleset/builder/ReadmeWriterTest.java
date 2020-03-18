@@ -1,25 +1,16 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.val;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
+import java.nio.file.Paths;
 import java.util.UUID;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
@@ -47,8 +38,7 @@ public class ReadmeWriterTest {
 
     @Mock
     private Path templatePath;
-    @Mock
-    private Path outputPath;
+    private String outputPath = UUID.randomUUID().toString();
     private String templateBody = UUID.randomUUID().toString();
     private String formattedOutput = UUID.randomUUID().toString();
 
@@ -73,7 +63,7 @@ public class ReadmeWriterTest {
         //when
         readmeWriter.run();
         //then
-        verify(fileWriter).write(outputPath, formattedOutput);
+        verify(fileWriter).write(Paths.get(outputPath), formattedOutput);
     }
 
 }
