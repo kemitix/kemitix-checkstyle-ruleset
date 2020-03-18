@@ -83,8 +83,8 @@ public class Rule {
      * string.
      */
     protected static int sortByName(final Rule left, final Rule right) {
-        return left.getLowerCaseRuleName()
-                .compareTo(right.getLowerCaseRuleName());
+        return left.getName().toLowerCase(LOCALE)
+                .compareTo(right.getName().toLowerCase(LOCALE));
     }
 
     /**
@@ -153,10 +153,6 @@ public class Rule {
         return String.format(MODULE_WITH_PROPERTIES, ruleClassname, formatProperties(rule.getProperties()));
     }
 
-    private String getLowerCaseRuleName() {
-        return getName().toLowerCase(LOCALE);
-    }
-
     /**
      * Checks that this rule comes from the source named.
      *
@@ -164,7 +160,16 @@ public class Rule {
      * @return true if this rule comes from the source
      */
     public boolean isFromSource(final String sourceName) {
-        return getSource().toLowerCase()
-                .equals(sourceName.toLowerCase());
+        return getSource()
+                .equals(sourceName);
+    }
+
+    /**
+     * The name of the source for the rule.
+     *
+     * @return the source name, in lowercase.
+     */
+    public String getSource() {
+        return source.toLowerCase(Locale.ENGLISH);
     }
 }

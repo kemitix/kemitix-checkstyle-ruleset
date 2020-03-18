@@ -19,7 +19,7 @@ sources:
         base-package: com.puppycrawl.tools.checkstyle
     -
         name: sevntu
-        enabled: true
+        enabled: false
         base-package: com.github.sevntu.checkstyle.checks
 rules:
     -
@@ -504,7 +504,7 @@ rules:
         uri: http://checkstyle.sourceforge.net/config_blocks.html#LeftCurly
     -
         name: LineLength
-        parent: TREEWALKER
+        parent: CHECKER
         level: LAYOUT
         enabled: true
         source: CHECKSTYLE

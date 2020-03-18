@@ -9,6 +9,9 @@
         <property name="match" value="true"/>
 </module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.FileTabCharacterCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
+        <property name="max" value="120"/>
+</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck">
         <property name="lineSeparator" value="lf"/>
 </module>
@@ -25,9 +28,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.coding.EmptyStatementCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.GenericWhitespaceCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.blocks.LeftCurlyCheck"/>
-<module name="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck">
-        <property name="max" value="120"/>
-</module>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.MethodParamPadCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoLineWrapCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceAfterCheck">
@@ -52,8 +52,6 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.UpperEllCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
-<module name="com.github.sevntu.checkstyle.checks.coding.ForbidCCommentsInMethodsCheck"/>
-<module name="com.github.sevntu.checkstyle.checks.coding.WhitespaceBeforeArrayInitializerCheck"/>
 
     </module><!-- /TreeWalker -->
 

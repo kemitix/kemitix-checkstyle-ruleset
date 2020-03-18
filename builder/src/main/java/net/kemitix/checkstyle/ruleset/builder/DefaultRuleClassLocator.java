@@ -3,6 +3,7 @@ package net.kemitix.checkstyle.ruleset.builder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public class DefaultRuleClassLocator implements RuleClassLocator {
             final String name
     ) {
         Objects.requireNonNull(checkClasses, "init() method not called");
-        return sourcesProperties.findSource(sourceName.toLowerCase())
+        return sourcesProperties.findSource(sourceName.toLowerCase(Locale.ENGLISH))
                 .map(checkClasses::get)
                 .flatMap(classes ->
                         classes.stream()

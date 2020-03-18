@@ -36,13 +36,13 @@ public class RuleLoader {
      * Loads from the source, where either the source is disabled or the rule
      * is itself disabled.
      *
-     * @param source the source to load from
+     * @param sourceName the source to load from
      * @return a formatted string containing the disabled rules.
      */
-    public String loadDisabled(final String source) {
-        boolean enabledRuleSource = isEnabledRuleSource(source);
+    public String loadDisabled(final String sourceName) {
+        boolean enabledRuleSource = isEnabledRuleSource(sourceName);
         return readmeRules(rule ->
-                rule.isFromSource(source)
+                rule.isFromSource(sourceName)
                         && (!enabledRuleSource || !rule.isEnabled()));
     }
 
