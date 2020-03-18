@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Writes the README file.
@@ -25,7 +26,7 @@ class ReadmeWriter implements CommandLineRunner {
     public void run(final String... args) throws Exception {
         Path templatePath = templateProperties.getReadmeTemplate();
         String templateBody = fileReader.read(templatePath);
-        Path outputPath = outputProperties.getReadme();
+        Path outputPath = Paths.get(outputProperties.getReadme());
         String outputBody = readmeBuilder.build(templateBody);
         fileWriter.write(outputPath, outputBody);
     }
