@@ -15,21 +15,25 @@ public class ClassGraphPackageScannerTest {
 
     private PackageScanner scanner = new ClassGraphPackageScanner();
 
+    private final RuleSource checkstyleRuleSource = RuleSourceMother.checkstyle.get();
+
+    private final RuleSource sevntuRuleSource = RuleSourceMother.sevntu.get();
+
     @Test
     public void canScanCheckstylePackage() {
         //when
-        final List<String> result = scanner.apply(RuleSource.CHECKSTYLE);
+        final List<String> result = scanner.apply(checkstyleRuleSource);
         //then
-        assertThat(result).allMatch(cn -> cn.startsWith(RuleSource.CHECKSTYLE.getBasePackage()))
+        assertThat(result).allMatch(cn -> cn.startsWith(checkstyleRuleSource.getBasePackage()))
                           .contains("com.puppycrawl.tools.checkstyle.checks.sizes.FileLengthCheck");
     }
 
     @Test
     public void canScanSevntuPackage() {
         //when
-        final List<String> result = scanner.apply(RuleSource.SEVNTU);
+        final List<String> result = scanner.apply(sevntuRuleSource);
         //then
-        assertThat(result).allMatch(cn -> cn.startsWith(RuleSource.SEVNTU.getBasePackage()))
+        assertThat(result).allMatch(cn -> cn.startsWith(sevntuRuleSource.getBasePackage()))
                           .contains("com.github.sevntu.checkstyle.checks.design.NestedSwitchCheck");
     }
 }

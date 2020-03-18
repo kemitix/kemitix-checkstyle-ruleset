@@ -4,6 +4,7 @@ import lombok.val;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.net.URI;
 
@@ -16,6 +17,8 @@ public class RuleTest {
 
     private Rule rule;
 
+    private RuleSource ruleSource = RuleSourceMother.checkstyle.get();
+
     @Before
     public void setUp() throws Exception {
         rule = new Rule();
@@ -27,7 +30,6 @@ public class RuleTest {
         val name = "name";
         val parent = RuleParent.TREEWALKER;
         val level = RuleLevel.LAYOUT;
-        val source = RuleSource.CHECKSTYLE;
         val enabled = true;
         val insuppressible = true;
         val uri = URI.create("rule://name.md");
@@ -38,7 +40,7 @@ public class RuleTest {
         rule.setName(name);
         rule.setParent(parent);
         rule.setLevel(level);
-        rule.setSource(source);
+        rule.setSource(ruleSource.getName());
         rule.setEnabled(enabled);
         rule.setInsuppressible(insuppressible);
         rule.setUri(uri);
@@ -58,7 +60,7 @@ public class RuleTest {
                   .isEqualTo(level);
             softly.assertThat(rule.getSource())
                   .as("set/getSource()")
-                  .isEqualTo(source);
+                  .isEqualTo(ruleSource.getName());
             softly.assertThat(rule.isEnabled())
                   .as("set/isEnabled()")
                   .isEqualTo(enabled);

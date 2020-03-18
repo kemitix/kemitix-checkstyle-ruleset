@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,6 @@ import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Configuration for Builder.
@@ -15,7 +15,10 @@ import java.util.stream.Stream;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Configuration
+@RequiredArgsConstructor
 public class BuilderConfiguration {
+
+    private final SourcesProperties sourcesProperties;
 
     /**
      * A Map of rules for each RuleSource.
@@ -26,7 +29,7 @@ public class BuilderConfiguration {
      */
     @Bean
     public Map<RuleSource, List<String>> checkClasses(final PackageScanner packageScanner) {
-        return Stream.of(RuleSource.values())
+        return sourcesProperties.getSources().stream()
                 .map(source -> entry(source, packageScanner.apply(source)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }

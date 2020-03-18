@@ -37,12 +37,14 @@ public class DefaultReadmeIndexBuilderTest {
         expectedIndexItems.add("[e](#e)|complexity|checkstyle|Yes|");
         expectedIndexItems.add("[f](#f)|unspecified|checkstyle|Yes|");
         val rules = rulesProperties.getRules();
-        rules.add(rule("a", RuleLevel.LAYOUT, RuleSource.CHECKSTYLE, true, true));
-        rules.add(rule("b", RuleLevel.NAMING, RuleSource.SEVNTU, false, false));
-        rules.add(rule("c", RuleLevel.JAVADOC, RuleSource.CHECKSTYLE, true, true));
-        rules.add(rule("d", RuleLevel.TWEAKS, RuleSource.CHECKSTYLE, true, true));
-        rules.add(rule("e", RuleLevel.COMPLEXITY, RuleSource.CHECKSTYLE, true, true));
-        rules.add(rule("f", RuleLevel.UNSPECIFIED, RuleSource.CHECKSTYLE, true, true));
+        RuleSource checkStyleRuleSource = RuleSourceMother.checkstyle.get();
+        RuleSource sevntuRuleSource = RuleSourceMother.sevntu.get();
+        rules.add(rule("a", RuleLevel.LAYOUT, checkStyleRuleSource, true, true));
+        rules.add(rule("b", RuleLevel.NAMING, sevntuRuleSource, false, false));
+        rules.add(rule("c", RuleLevel.JAVADOC, checkStyleRuleSource, true, true));
+        rules.add(rule("d", RuleLevel.TWEAKS, checkStyleRuleSource, true, true));
+        rules.add(rule("e", RuleLevel.COMPLEXITY, checkStyleRuleSource, true, true));
+        rules.add(rule("f", RuleLevel.UNSPECIFIED, checkStyleRuleSource, true, true));
         //when
         val index = indexBuilder.build()
                                 .split("\n");
@@ -57,7 +59,7 @@ public class DefaultReadmeIndexBuilderTest {
         val rule = new Rule();
         rule.setName(name);
         rule.setLevel(level);
-        rule.setSource(source);
+        rule.setSource(source.getName());
         rule.setEnabled(enabled);
         rule.setInsuppressible(!supressible);
         return rule;

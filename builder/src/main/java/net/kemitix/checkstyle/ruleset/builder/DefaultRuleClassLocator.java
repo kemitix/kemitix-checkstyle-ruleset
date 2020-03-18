@@ -1,9 +1,9 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -13,10 +13,18 @@ import java.util.Objects;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class DefaultRuleClassLocator implements RuleClassLocator {
 
     private final Map<RuleSource, List<String>> checkClasses;
+    private final SourcesProperties sourcesProperties;
+
+    public DefaultRuleClassLocator(
+            final Map<RuleSource, List<String>> checkClasses,
+            final SourcesProperties sourcesProperties) {
+        this.checkClasses = checkClasses;
+        this.sourcesProperties = sourcesProperties;
+    }
 
     @Override
     public final String apply(final Rule rule) {
@@ -24,23 +32,26 @@ public class DefaultRuleClassLocator implements RuleClassLocator {
     }
 
     private String getCanonicalClassName(
-            final RuleSource source,
+            final String sourceName,
             final String name
-                                        ) {
+    ) {
         Objects.requireNonNull(checkClasses, "init() method not called");
-        return checkClasses.get(source)
-                .stream()
-                .sorted()
-                .filter(classname -> byRuleName(classname, name))
-                .findFirst()
+        return sourcesProperties.findSource(sourceName.toLowerCase(Locale.ENGLISH))
+                .map(checkClasses::get)
+                .flatMap(classes ->
+                        classes.stream()
+                                .sorted()
+                                .filter(className -> byRuleName(className, name))
+                                .findFirst())
                 .orElseThrow(() -> new CheckstyleClassNotFoundException(name));
     }
 
     private boolean byRuleName(
             final String classname,
             final String name
-                              ) {
+    ) {
         final String classNameWithDelimiter = "." + name;
-        return classname.endsWith(classNameWithDelimiter) || classname.endsWith(classNameWithDelimiter + "Check");
+        return classname.endsWith(classNameWithDelimiter)
+                || classname.endsWith(classNameWithDelimiter + "Check");
     }
 }

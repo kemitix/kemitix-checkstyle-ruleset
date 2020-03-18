@@ -2072,6 +2072,119 @@ Checks that tokens are surrounded by whitespace.
 
 ### Sevntu
 
+
+
+## Disabled Checks
+
+These checks are not enabled. Notes are included for each explaining why.
+
+### Checkstyle
+
+#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName)
+
+Prevents some more meaningful abstract class names
+#### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
+
+Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcards
+#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
+
+Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
+Recommends using a static import to access constants from another class over inheriting them.
+#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator)
+
+
+#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
+
+Doesn't recognise Lombok's `val` as being `final`.
+#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
+
+Shouldn't need to list in every file, simply listing in project root should be enough.
+#### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
+
+Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
+#### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
+
+Only exceptional cases should need to be documented.
+#### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
+
+Couldn't get my IDE's (IntelliJ) code style to match.
+#### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
+
+Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
+#### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
+
+Would not see constructors created using Lombok's `@NoArgsConstructor`.
+#### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
+
+The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
+#### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
+
+Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
+#### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
+
+[FinalParameters](#finalparameters) already protects against assigning values to parameters.
+#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
+
+[UnusedImports](#unusedimports) performs all the same checks and more.
+#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
+
+conflicts with InterfaceMemberImpliedModifier which is now prefered given changes to interfaces in Java 9
+#### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [RegexpSinglelineJava](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
+
+I don't use single line javadoc blocks.
+#### [SummaryJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone)
+
+Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check.
+#### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
+
+[NoFinalizer](#nofinalizer) prevents use of `finalize()`.
+#### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
+
+Generic rule; doesn't embody a 'quality' check.
+
+### Sevntu
+
+As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
+
+#### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
+
+Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
 #### [AvoidConstantAsFirstOperandInCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidConstantAsFirstOperandInConditionCheck.html)
 
 Checks that condition expressions don't become less readable by attempting to use a constant on the left-hand-side of a comparison.
@@ -2109,6 +2222,9 @@ try {
     throw new MyOtherException();
 }
 ````
+#### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 #### [AvoidNotShortCircuitOperatorsForBoolean](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidNotShortCircuitOperatorsForBooleanCheck.html)
 
 Prevents the use of boolean operators that don't allow short-circuiting the expression. (e.g. '|', '&', '|=' and '&=')
@@ -2122,6 +2238,12 @@ Invalid:
 ````
 if ((a < b) | (b > getExpensiveValue())) {}
 ````
+#### [CauseParameterInException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html)
+
+Should already be covered by [AvoidHidingCauseException](#avoidhidingcauseexception).
+#### [ChildBlockLength](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html)
+
+Appears to be broken as of `1.21.0`.
 #### [ConfusingCondition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ConfusingConditionCheck.html)
 
 Checks that the expression with the `if` condition in an `if-then-else` statement is not negated.
@@ -2146,6 +2268,9 @@ if (!isValid()) {
 #### [ConstructorWithoutParams](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ConstructorWithoutParamsCheck.html)
 
 Exception class constructors must accept parameters for message and/or cause. This check is applied to classes whose name ends with `Exception`.
+#### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
+
+The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
 #### [DiamondOperatorForVariableDefinition](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/DiamondOperatorForVariableDefinitionCheck.html)
 
 Checks that the diamond operator is used where possible.
@@ -2252,6 +2377,9 @@ class InvalidPublic {
     }
 }
 ```
+#### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 #### [ForbidCCommentsInMethods](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCCommentsInMethodsCheck.html)
 
 Prevents the use of `/* C-style */` comments inside methods.
@@ -2269,6 +2397,12 @@ void doSomething() {
     /* invalid */
 }
 ````
+#### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
+#### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 #### [ForbidReturnInFinallyBlock](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidReturnInFinallyBlockCheck.html)
 
 Prevent the use of a `return` statement in the `finally` block.
@@ -2283,6 +2417,9 @@ try {
     return true; // invalid
 }
 ````
+#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
+
+[IllegalThrows](#illegalthrows) performs a similar check.
 #### [ForbidWildcardAsReturnType](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ForbidWildcardAsReturnTypeCheck.html)
 
 Prevents declaring a method from returning a wildcard type as its return value.
@@ -2459,6 +2596,9 @@ void doStuff() {
     return;
 }
 ````
+#### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
+
+Generic rule; doesn't embody a 'quality' check.
 #### [ReturnBooleanFromTernary](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ReturnBooleanFromTernaryCheck.html)
 
 Ternary statements shouldn't have `Boolean` values as results.
@@ -2490,9 +2630,15 @@ Boolean isEnabled() {
     return null;
 }
 ````
+#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
+
+allow use of non-bean property-like naming
 #### [SingleBreakOrContinue](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SingleBreakOrContinueCheck.html)
 
 Checks that there is at most one `continue` or `break` statement within a looping block (e.g. `for`, `while`, ...)
+#### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
+
+Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
 #### [TernaryPerExpressionCount](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/TernaryPerExpressionCountCheck.html)
 
 Checks that there is at most one ternary statments (`?:`) within an expression.
@@ -2569,150 +2715,5 @@ Invalid:
 ````java
 int[] ints = new int[]{0, 1, 2, 3};
 ````
-
-## Disabled Checks
-
-These checks are not enabled. Notes are included for each explaining why.
-
-### Checkstyle
-
-#### [AbstractClassName](http://checkstyle.sourceforge.net/config_naming.html#AbstractClassName)
-
-Prevents some more meaningful abstract class names
-#### [ArrayTrailingComma](http://checkstyle.sourceforge.net/config_coding.html#ArrayTrailingComma)
-
-Couldn't get my IDE's (IntelliJ) code style to match.
-#### [AvoidStarImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStarImport)
-
-Ref: Clean Code, Robert C. Martin, J1: Avoid Long Import Lists by Using Wildcards
-#### [AvoidStaticImport](http://checkstyle.sourceforge.net/config_imports.html#AvoidStaticImport)
-
-Ref: Clean Code, Robert C. Martin, J2: Don't Inherit Constants
-Recommends using a static import to access constants from another class over inheriting them.
-#### [EmptyLineSeparator](http://checkstyle.sourceforge.net/config_whitespace.html#EmptyLineSeparator)
-
-
-#### [FinalLocalVariable](http://checkstyle.sourceforge.net/config_coding.html#FinalLocalVariable)
-
-Doesn't recognise Lombok's `val` as being `final`.
-#### [Header](http://checkstyle.sourceforge.net/config_header.html#Header)
-
-Shouldn't need to list in every file, simply listing in project root should be enough.
-#### [IllegalInstantiation](http://checkstyle.sourceforge.net/config_coding.html#IllegalInstantiation)
-
-Not really suitable for a template ruleset as it requires an explicit list of classes to apply to.
-#### [IllegalTokenText](http://checkstyle.sourceforge.net/config_coding.html#IllegalTokenText)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [ImportControl](http://checkstyle.sourceforge.net/config_imports.html#ImportControl)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [ImportOrder](http://checkstyle.sourceforge.net/config_imports.html#ImportOrder)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
-
-Couldn't get my IDE's (IntelliJ) code style to match.
-#### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
-
-Only exceptional cases should need to be documented.
-#### [JavadocTagContinuationIndentation](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocTagContinuationIndentation)
-
-Couldn't get my IDE's (IntelliJ) code style to match.
-#### [JavadocVariable](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocVariable)
-
-Member variables should usually be named such that it is clear what they are. Comments for clarification should be the exception.
-#### [MissingCtor](http://checkstyle.sourceforge.net/config_coding.html#MissingCtor)
-
-Would not see constructors created using Lombok's `@NoArgsConstructor`.
-#### [MissingOverride](http://checkstyle.sourceforge.net/config_annotation.html#MissingOverride)
-
-The javadoc compiler automatically inherits the javadoc from the overridden method, it doesn't need to be told to do so.
-#### [OuterTypeNumber](http://checkstyle.sourceforge.net/config_sizes.html#OuterTypeNumber)
-
-Already covered by the [OneTopLevelClass](#onetoplevelclass) check.
-#### [ParameterAssignment](http://checkstyle.sourceforge.net/config_coding.html#ParameterAssignment)
-
-[FinalParameters](#finalparameters) already protects against assigning values to parameters.
-#### [RedundantImport](http://checkstyle.sourceforge.net/config_imports.html#RedundantImport)
-
-[UnusedImports](#unusedimports) performs all the same checks and more.
-#### [RedundantModifier](http://checkstyle.sourceforge.net/config_modifier.html#RedundantModifier)
-
-conflicts with InterfaceMemberImpliedModifier which is now prefered given changes to interfaces in Java 9
-#### [Regexp](http://checkstyle.sourceforge.net/config_regexp.html#Regexp)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [RegexpHeader](http://checkstyle.sourceforge.net/config_header.html#RegexpHeader)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [RegexpMultiline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpMultiline)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [RegexpOnFilename](http://checkstyle.sourceforge.net/config_regexp.html#RegexpOnFilename)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [RegexpSingleline](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSingleline)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [RegexpSinglelineJava](http://checkstyle.sourceforge.net/config_regexp.html#RegexpSinglelineJava)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [SingleLineJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SingleLineJavadoc)
-
-I don't use single line javadoc blocks.
-#### [SummaryJavadoc](http://checkstyle.sourceforge.net/config_javadoc.html#SummaryJavadoc)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [SuperClone](http://checkstyle.sourceforge.net/config_coding.html#SuperClone)
-
-Overridding the `clone()` method is not allowed by the [NoClone](#noclone) check.
-#### [SuperFinalize](http://checkstyle.sourceforge.net/config_coding.html#SuperFinalize)
-
-[NoFinalizer](#nofinalizer) prevents use of `finalize()`.
-#### [WriteTag](http://checkstyle.sourceforge.net/config_javadoc.html#WriteTag)
-
-Generic rule; doesn't embody a 'quality' check.
-
-### Sevntu
-
-As the sevntu check are considered experimental not all those that are not enabled are listed here. Only where they are disabled due to a conflict with my 'style' or there is another irreconcilable difference that prevents them from being enabled, will they be documented to prevent repeated investigations.
-
-#### [AvoidConditionInversion](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/AvoidConditionInversionCheck.html)
-
-Should already be covered by [SimplifyBooleanExpression](simplifybooleanexpression).
-#### [AvoidModifiersForTypes](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/AvoidModifiersForTypesCheck.html)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [CauseParameterInException](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/CauseParameterInExceptionCheck.html)
-
-Should already be covered by [AvoidHidingCauseException](#avoidhidingcauseexception).
-#### [ChildBlockLength](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/ChildBlockLengthCheck.html)
-
-Appears to be broken as of `1.21.0`.
-#### [CustomDeclarationOrder](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/CustomDeclarationOrderCheck.html)
-
-The [DeclarationOrder](#declarationorder) check already imposes an order for class elements.
-#### [ForbidAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/ForbidAnnotationCheck.html)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [ForbidCertainImports](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidCertainImportsCheck.html)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [ForbidInstantiation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidInstantiationCheck.html)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [ForbidThrowAnonymousExceptions](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/ForbidThrowAnonymousExceptionsCheck.html)
-
-[IllegalThrows](#illegalthrows) performs a similar check.
-#### [RequiredParameterForAnnotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/annotation/RequiredParameterForAnnotationCheck.html)
-
-Generic rule; doesn't embody a 'quality' check.
-#### [SimpleAccessorNameNotation](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/SimpleAccessorNameNotationCheck.html)
-
-allow use of non-bean property-like naming
-#### [StaticMethodCandidate](http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/design/StaticMethodCandidateCheck.html)
-
-Can't handle private methods called by reflection, which may cause issues with Spring and other DI frameworks.
 
 [Effective Java]: http://amzn.to/2aSz6GE

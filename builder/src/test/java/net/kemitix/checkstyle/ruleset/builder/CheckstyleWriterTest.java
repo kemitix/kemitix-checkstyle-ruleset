@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.AbstractMap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +59,7 @@ public class CheckstyleWriterTest {
     private Path outputDirectory;
 
     private RuleClassLocator ruleClassLocator = mock(RuleClassLocator.class);
+    private SourcesProperties sourceProperties = new SourcesProperties();
 
     @Before
     public void setUp() throws Exception {
@@ -82,8 +84,18 @@ public class CheckstyleWriterTest {
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);
         rulesProperties = new RulesProperties();
+        sourceProperties.setSources(Arrays.asList(
+                RuleSourceMother.checkstyle.get(),
+                RuleSourceMother.sevntu.get()
+        ));
         checkstyleWriter =
-                new CheckstyleWriter(outputProperties, templateProperties, rulesProperties, ruleClassLocator);
+                new CheckstyleWriter(
+                        outputProperties,
+                        templateProperties,
+                        rulesProperties,
+                        ruleClassLocator,
+                        sourceProperties);
+        checkstyleWriter.init();
         given(ruleClassLocator.apply(any())).willReturn(ruleClassname);
     }
 
@@ -116,7 +128,7 @@ public class CheckstyleWriterTest {
     private Rule enabledRule(final RuleLevel level, final RuleParent parent) {
         val rule = new Rule();
         rule.setName(ruleName);
-        rule.setSource(RuleSource.CHECKSTYLE);
+        rule.setSource(RuleSourceMother.checkstyle.get().getName());
         rule.setEnabled(true);
         rule.setLevel(level);
         rule.setParent(parent);

@@ -55,7 +55,7 @@ public class Rule {
     /**
      * The source of the rule.
      */
-    private RuleSource source;
+    private String source;
 
     /**
      * URI for full official documentation.
@@ -83,8 +83,8 @@ public class Rule {
      * string.
      */
     protected static int sortByName(final Rule left, final Rule right) {
-        return left.getLowerCaseRuleName()
-                   .compareTo(right.getLowerCaseRuleName());
+        return left.getName().toLowerCase(LOCALE)
+                .compareTo(right.getName().toLowerCase(LOCALE));
     }
 
     /**
@@ -132,7 +132,7 @@ public class Rule {
     static String asModule(
             final String ruleClassname,
             final Rule rule
-                          ) {
+    ) {
         if (hasProperties(rule)) {
             return moduleWithParameters(rule, ruleClassname);
         } else {
@@ -142,18 +142,34 @@ public class Rule {
 
     private static String moduleNoParameters(
             final String ruleClassname
-                                            ) {
+    ) {
         return String.format(MODULE_NO_PROPERTIES, ruleClassname);
     }
 
     private static String moduleWithParameters(
             final Rule rule,
             final String ruleClassname
-                                              ) {
+    ) {
         return String.format(MODULE_WITH_PROPERTIES, ruleClassname, formatProperties(rule.getProperties()));
     }
 
-    private String getLowerCaseRuleName() {
-        return getName().toLowerCase(LOCALE);
+    /**
+     * Checks that this rule comes from the source named.
+     *
+     * @param sourceName the name of the source to check against
+     * @return true if this rule comes from the source
+     */
+    public boolean isFromSource(final String sourceName) {
+        return getSource()
+                .equals(sourceName);
+    }
+
+    /**
+     * The name of the source for the rule.
+     *
+     * @return the source name, in lowercase.
+     */
+    public String getSource() {
+        return source.toLowerCase(Locale.ENGLISH);
     }
 }
