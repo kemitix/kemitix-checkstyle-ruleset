@@ -5,14 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-* [5.4.0] - 2020-03-17
+* [5.4.0] - 2020-03-18
 
 ** Changed
 
    - Replace Jenkins with Github Actions for CI (#282)
 
+** Removed
+
+   - Disable sevntu (#284)
+
 ** Dependencies
 
+ * Bump spring-boot.version from 2.1.9.RELEASE to 2.2.5.RELEASE (#279)
+ * Bump lombok from 1.18.10 to 1.18.12 (#272)
  * Bump checkstyle from 8.20 to 8.29 (#268)
  * Bump tiles-maven-plugin from 2.15 to 2.16 (#256)
  * Bump maven-checkstyle-plugin from 3.1.0 to 3.1.1 (#274)
