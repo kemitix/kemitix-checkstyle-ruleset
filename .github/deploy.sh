@@ -24,7 +24,7 @@ echo "deploy.sh: Starting..."
 )
 
 echo "Releasing..."
-mvn -pl ruleset,tiles \
+mvn -pl ruleset,tile \
     --settings .github/settings.xml \
     -Dskip-Tests=true \
     -P release \
