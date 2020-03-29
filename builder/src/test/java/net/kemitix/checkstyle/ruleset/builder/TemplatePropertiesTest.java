@@ -4,6 +4,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,7 +26,7 @@ public class TemplatePropertiesTest {
     public void setAndGet() throws Exception {
         //given
         final Path checkstyleXml = Paths.get("checkstyle.xml");
-        final Path readmeTemplate = Paths.get("readme.md");
+        final File readmeTemplate = Paths.get("readme.md").toFile();
         final Path readmeFragments = Paths.get("readme.dir");
         //when
         templateProperties.setCheckstyleXml(checkstyleXml);

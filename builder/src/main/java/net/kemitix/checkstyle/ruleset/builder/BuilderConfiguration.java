@@ -1,6 +1,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.RequiredArgsConstructor;
+import net.kemitix.files.FileReaderWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,5 +37,15 @@ public class BuilderConfiguration {
 
     private static <K, V> AbstractMap.SimpleEntry<K, V> entry(final K key, final V value) {
         return new AbstractMap.SimpleEntry<>(key, value);
+    }
+
+    /**
+     * A wrapper for reading and writing files.
+     *
+     * @return An instance of {@link FileReaderWriter}.
+     */
+    @Bean
+    public FileReaderWriter fileReaderWriter() {
+        return new FileReaderWriter();
     }
 }

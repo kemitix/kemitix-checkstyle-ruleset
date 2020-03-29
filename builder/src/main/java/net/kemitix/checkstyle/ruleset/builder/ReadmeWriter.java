@@ -1,10 +1,11 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.RequiredArgsConstructor;
+import net.kemitix.files.FileReaderWriter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Path;
+import java.io.File;
 import java.nio.file.Paths;
 
 /**
@@ -19,16 +20,15 @@ class ReadmeWriter implements CommandLineRunner {
     private final TemplateProperties templateProperties;
     private final OutputProperties outputProperties;
     private final ReadmeBuilder readmeBuilder;
-    private final FileReader fileReader;
-    private final FileWriter fileWriter;
+    private final FileReaderWriter fileReaderWriter;
 
     @Override
     public void run(final String... args) throws Exception {
-        Path templatePath = templateProperties.getReadmeTemplate();
-        String templateBody = fileReader.read(templatePath);
-        Path outputPath = Paths.get(outputProperties.getReadme());
+        File templateFile = templateProperties.getReadmeTemplate();
+        String templateBody = fileReaderWriter.read(templateFile);
+        File outputFile = Paths.get(outputProperties.getReadme()).toFile();
         String outputBody = readmeBuilder.build(templateBody);
-        fileWriter.write(outputPath, outputBody);
+        fileReaderWriter.write(outputFile, outputBody);
     }
 
 }
