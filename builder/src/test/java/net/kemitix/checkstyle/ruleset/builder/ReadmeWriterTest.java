@@ -1,13 +1,14 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import net.kemitix.files.FileReaderWriter;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
@@ -28,16 +29,13 @@ public class ReadmeWriterTest {
     private OutputProperties outputProperties = new OutputProperties();
 
     @Mock
-    private FileReader fileReader;
-
-    @Mock
-    private FileWriter fileWriter;
+    private FileReaderWriter fileReaderWriter;
 
     @InjectMocks
     private ReadmeWriter readmeWriter;
 
     @Mock
-    private Path templatePath;
+    private File templateFile;
     private String outputPath = UUID.randomUUID().toString();
     private String templateBody = UUID.randomUUID().toString();
     private String formattedOutput = UUID.randomUUID().toString();
@@ -48,11 +46,11 @@ public class ReadmeWriterTest {
 
         readmeWriter =
                 new ReadmeWriter(templateProperties, outputProperties,
-                        readmeBuilder, fileReader, fileWriter);
+                        readmeBuilder, fileReaderWriter);
 
-        templateProperties.setReadmeTemplate(templatePath);
+        templateProperties.setReadmeTemplate(templateFile);
         outputProperties.setReadme(outputPath);
-        given(fileReader.read(templatePath))
+        given(fileReaderWriter.read(templateFile))
                 .willReturn(templateBody);
         given(readmeBuilder.build(templateBody))
                 .willReturn(formattedOutput);
@@ -63,7 +61,8 @@ public class ReadmeWriterTest {
         //when
         readmeWriter.run();
         //then
-        verify(fileWriter).write(Paths.get(outputPath), formattedOutput);
+        verify(fileReaderWriter)
+                .write(Paths.get(outputPath).toFile(), formattedOutput);
     }
 
 }
