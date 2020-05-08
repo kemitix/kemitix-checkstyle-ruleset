@@ -29,7 +29,7 @@
         <sevntu-plugin.version>1.35.0</sevntu-plugin.version>
         <lombok.version>1.18.12</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.7.RELEASE</spring-boot.version>
         <mapstream.version>3.2.9</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>3.3.3</mockito.version>
