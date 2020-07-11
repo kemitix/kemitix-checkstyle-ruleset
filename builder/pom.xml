@@ -22,7 +22,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <tiles-maven-plugin.version>2.17</tiles-maven-plugin.version>
-        <kemitix-tiles.version>1.1.0</kemitix-tiles.version>
+        <kemitix-tiles.version>2.7.0</kemitix-tiles.version>
 
         <checkstyle.version>8.34</checkstyle.version>
         <sevntu.version>1.37.1</sevntu.version>
