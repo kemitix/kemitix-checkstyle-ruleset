@@ -32,7 +32,7 @@
         <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
         <mapstream.version>3.2.9</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
-        <mockito.version>3.5.2</mockito.version>
+        <mockito.version>3.5.5</mockito.version>
         <assertj.version>3.16.1</assertj.version>
         <classgraph.version>4.8.87</classgraph.version>
 
