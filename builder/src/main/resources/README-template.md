@@ -2,9 +2,13 @@
 
 Provides an extensive Checkstyle ruleset for use with Checkstyle, together with a fully configured maven-tile.
 
- ![Sonatype Nexus (Release)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
- ![Maven Central](https://img.shields.io/maven-central/v/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)
- ![JPeek](http://i.jpeek.org/net.kemitix.checkstyle/ruleset/badge.svg)
+![GitHub release (latest by date)](
+https://img.shields.io/github/v/release/kemitix/kemitix-checkstyle-ruleset?style=for-the-badge)
+![GitHub Release Date](
+https://img.shields.io/github/release-date/kemitix/kemitix-checkstyle-ruleset?style=for-the-badge)
+
+[![Sonatype Nexus (Release)](https://img.shields.io/nexus/r/https/oss.sonatype.org/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)](https://repo1.maven.org/maven2/net/kemitix/checkstyle/)
+[![Maven Central](https://img.shields.io/maven-central/v/net.kemitix.checkstyle/ruleset.svg?style=for-the-badge)](https://search.maven.org/search?q=g:net.kemitix.checkstyle)
 
 The ruleset includes checks from both the core Checkstyle library and from the Sevntu-Checkstyle library.
 
@@ -35,7 +39,7 @@ The simplest way to use the ruleset is with the maven-tile:
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.checkstyle:tile:DEV-SNAPSHOT</tile>
+                        <tile>net.kemitix.checkstyle:tile:${version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
