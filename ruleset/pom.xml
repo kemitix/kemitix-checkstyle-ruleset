@@ -22,7 +22,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
-        <kemitix-tiles.version>2.7.0</kemitix-tiles.version>
+        <kemitix-tiles.version>3.0.1</kemitix-tiles.version>
     </properties>
 
     <licenses>
@@ -57,7 +57,6 @@
                 <configuration>
                     <tiles>
                         <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:enforcer:${kemitix-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>
