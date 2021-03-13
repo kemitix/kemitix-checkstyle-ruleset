@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 public class ClassGraphPackageScanner implements PackageScanner {
 
-    private final ClassGraph classGraph = new ClassGraph();
+    private final transient ClassGraph classGraph = new ClassGraph();
 
     @Override
     public final List<String> apply(final RuleSource ruleSource) {

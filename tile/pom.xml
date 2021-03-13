@@ -12,13 +12,13 @@
 
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>tile</artifactId>
-    <version>5.4.1</version>
+    <version>5.5.0</version>
 
     <packaging>tile</packaging>
 
     <properties>
         <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
-        <kemitix-maven-tiles.version>2.7.0</kemitix-maven-tiles.version>
+        <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
 
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <checkstyle.version>8.41</checkstyle.version>

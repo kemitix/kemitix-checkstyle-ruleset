@@ -21,16 +21,12 @@ public class ReadmeBuilder {
      * @return the formatted readme document.
      */
     public String build(final String readmeTemplate) {
-        String enabledCheckstyle = ruleLoader.loadEnabled(CHECKSTYLE);
-        String enabledSevntu = ruleLoader.loadEnabled(SEVNTU);
-        String disabledCheckstyle = ruleLoader.loadDisabled(CHECKSTYLE);
-        String disabledSevntu = ruleLoader.loadDisabled(SEVNTU);
         return String.format(readmeTemplate,
                 indexBuilder.build(),
-                enabledCheckstyle,
-                enabledSevntu,
-                disabledCheckstyle,
-                disabledSevntu);
+                ruleLoader.loadEnabled(CHECKSTYLE),
+                ruleLoader.loadEnabled(SEVNTU),
+                ruleLoader.loadDisabled(CHECKSTYLE),
+                ruleLoader.loadDisabled(SEVNTU));
     }
 
 }

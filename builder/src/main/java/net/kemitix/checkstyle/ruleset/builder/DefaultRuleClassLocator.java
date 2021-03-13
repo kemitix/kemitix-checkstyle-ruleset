@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,18 +14,11 @@ import java.util.Objects;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class DefaultRuleClassLocator implements RuleClassLocator {
 
     private final Map<RuleSource, List<String>> checkClasses;
     private final SourcesProperties sourcesProperties;
-
-    public DefaultRuleClassLocator(
-            final Map<RuleSource, List<String>> checkClasses,
-            final SourcesProperties sourcesProperties) {
-        this.checkClasses = checkClasses;
-        this.sourcesProperties = sourcesProperties;
-    }
 
     @Override
     public final String apply(final Rule rule) {
@@ -50,8 +44,8 @@ public class DefaultRuleClassLocator implements RuleClassLocator {
             final String classname,
             final String name
     ) {
-        final String classNameWithDelimiter = "." + name;
-        return classname.endsWith(classNameWithDelimiter)
-                || classname.endsWith(classNameWithDelimiter + "Check");
+        final String delimitedName = "." + name;
+        return classname.endsWith(delimitedName)
+                || classname.endsWith(delimitedName + "Check");
     }
 }

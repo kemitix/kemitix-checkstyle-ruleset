@@ -12,5 +12,5 @@ public interface ReadmeIndexBuilder {
      *
      * @return The rule index.
      */
-    public abstract String build();
+    String build();
 }

@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import net.kemitix.files.FileReaderWriter;
 import org.springframework.boot.CommandLineRunner;
@@ -17,17 +18,18 @@ import java.nio.file.Paths;
 @RequiredArgsConstructor
 class ReadmeWriter implements CommandLineRunner {
 
-    private final TemplateProperties templateProperties;
+    private final TemplateProperties templateProps;
     private final OutputProperties outputProperties;
     private final ReadmeBuilder readmeBuilder;
     private final FileReaderWriter fileReaderWriter;
 
     @Override
+    @SuppressFBWarnings("PATH_TRAVERSAL_IN")
     public void run(final String... args) throws Exception {
-        File templateFile = templateProperties.getReadmeTemplate();
-        String templateBody = fileReaderWriter.read(templateFile);
-        File outputFile = Paths.get(outputProperties.getReadme()).toFile();
-        String outputBody = readmeBuilder.build(templateBody);
+        final File templateFile = templateProps.getReadmeTemplate();
+        final String templateBody = fileReaderWriter.read(templateFile);
+        final File outputFile = Paths.get(outputProperties.getReadme()).toFile();
+        final String outputBody = readmeBuilder.build(templateBody);
         fileReaderWriter.write(outputFile, outputBody);
     }
 

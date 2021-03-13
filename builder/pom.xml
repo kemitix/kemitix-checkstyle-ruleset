@@ -14,7 +14,7 @@
     <groupId>net.kemitix.checkstyle</groupId>
     <artifactId>builder</artifactId>
     <packaging>jar</packaging>
-    <version>5.4.1</version>
+    <version>5.5.0</version>
 
     <properties>
         <maven.install.skip>true</maven.install.skip>
@@ -22,14 +22,14 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <tiles-maven-plugin.version>2.19</tiles-maven-plugin.version>
-        <kemitix-tiles.version>2.7.0</kemitix-tiles.version>
+        <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
 
         <checkstyle.version>8.41</checkstyle.version>
         <sevntu.version>1.38.0</sevntu.version>
         <sevntu-plugin.version>1.35.0</sevntu-plugin.version>
         <lombok.version>1.18.18</lombok.version>
         <spring-platform.version>Brussels-SR6</spring-platform.version>
-        <spring-boot.version>2.3.5.RELEASE</spring-boot.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
         <mapstream.version>3.2.10</mapstream.version>
         <map-builder.version>1.0.0</map-builder.version>
         <mockito.version>3.8.0</mockito.version>
@@ -145,14 +145,14 @@
                 <extensions>true</extensions>
                 <configuration>
                     <tiles>
-                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:enforcer:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:compiler-jdk-11:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:huntbugs:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:pmd:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:testing:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:coverage:${kemitix-tiles.version}</tile>
-                        <tile>net.kemitix.tiles:pitest:${kemitix-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:maven-plugins:${kemitix-maven-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:compiler-jdk-lts:${kemitix-maven-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:pmd:${kemitix-maven-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:testing:${kemitix-maven-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:spotbugs:${kemitix-maven-tiles.version}</tile>
+<!--                        <tile>net.kemitix.tiles:coverage:${kemitix-maven-tiles.version}</tile>-->
+                        <tile>net.kemitix.tiles:pitest:${kemitix-maven-tiles.version}</tile>
+                        <tile>net.kemitix.tiles:pmd-strict:${kemitix-maven-tiles.version}</tile>
                     </tiles>
                 </configuration>
             </plugin>

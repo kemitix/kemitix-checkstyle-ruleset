@@ -40,7 +40,7 @@ public class RuleLoader {
      * @return a formatted string containing the disabled rules.
      */
     public String loadDisabled(final String sourceName) {
-        boolean enabledRuleSource = isEnabledRuleSource(sourceName);
+        final boolean enabledRuleSource = isEnabledRuleSource(sourceName);
         return readmeRules(rule ->
                 rule.isFromSource(sourceName)
                         && (!enabledRuleSource || !rule.isEnabled()));

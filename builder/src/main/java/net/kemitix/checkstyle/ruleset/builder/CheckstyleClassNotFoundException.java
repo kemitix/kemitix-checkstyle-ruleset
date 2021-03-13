@@ -7,6 +7,8 @@ package net.kemitix.checkstyle.ruleset.builder;
  */
 public class CheckstyleClassNotFoundException extends RuntimeException {
 
+    private static final long serialVersionUID = -4752607844086418212L;
+
     /**
      * Constructor.
      *

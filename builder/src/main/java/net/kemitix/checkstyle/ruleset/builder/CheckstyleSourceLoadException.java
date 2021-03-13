@@ -9,6 +9,8 @@ import java.io.IOException;
  */
 public class CheckstyleSourceLoadException extends RuntimeException {
 
+    private static final long serialVersionUID = 4770223195735989937L;
+
     /**
      * Constructor.
      *

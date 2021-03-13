@@ -57,7 +57,6 @@ public class DefaultReadmeIndexBuilder implements ReadmeIndexBuilder {
 
     private String source(final Rule rule) {
         return rule.getSource()
-                   .toString()
                    .toLowerCase(LOCALE);
     }
 
