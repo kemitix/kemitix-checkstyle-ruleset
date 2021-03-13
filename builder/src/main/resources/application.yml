@@ -427,7 +427,7 @@ rules:
         name: InterfaceMemberImpliedModifier
         parent: TREEWALKER
         level: TWEAKS
-        enabled: true
+        enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier
     -
