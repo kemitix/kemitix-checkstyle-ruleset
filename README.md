@@ -161,7 +161,7 @@ Rule|Level|Source|Enabled|Suppressible
 [InnerAssignment](#innerassignment)|tweaks|checkstyle|Yes|
 [InnerTypeLast](#innertypelast)|tweaks|checkstyle|Yes|
 [InterfaceIsType](#interfaceistype)|complexity|checkstyle|Yes|
-[InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle|Yes|
+[InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle||
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
 [JavadocMethod](#javadocmethod)|javadoc|checkstyle||
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
@@ -1115,11 +1115,6 @@ interface Foo {
     static final String "Foo!!";
 }
 ````
-#### [InterfaceMemberImpliedModifier](http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier)
-
-Checks that members of an interface explicitly state their modifiers. From Java 9 the implied modifiers for members
-are different depending on whether they are on a class or an interface. Explicitly stating the modifiers removes the
-need for the developer to remember the differences.
 #### [InterfaceTypeParameterName](http://checkstyle.sourceforge.net/config_naming.html#InterfaceTypeParameterName)
 
 Checks that the type parameters for an interface are a single uppercase letter.
