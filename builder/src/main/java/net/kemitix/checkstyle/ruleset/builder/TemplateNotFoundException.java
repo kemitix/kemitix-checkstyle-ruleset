@@ -9,6 +9,8 @@ import java.nio.file.Path;
  */
 class TemplateNotFoundException extends RuntimeException {
 
+    private static final long serialVersionUID = -5054401608077696337L;
+
     /**
      * Constructor.
      *

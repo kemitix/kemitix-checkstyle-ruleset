@@ -23,13 +23,14 @@ public class Rule {
 
     private static final Locale LOCALE = Locale.ENGLISH;
 
-    private static final String MODULE_NO_PROPERTIES = "<module name=\"%s\"/>";
+    private static final String NO_PROPERTIES = "<module name=\"%s\"/>";
 
-    private static final String MODULE_WITH_PROPERTIES = "<module name=\"%s\">%n%s%n</module>";
+    private static final String WITH_PROPERTIES = "<module name=\"%s\">%n%s%n</module>";
 
     /**
      * Configuration properties.
      */
+    @SuppressWarnings("PMD.UseConcurrentHashMap")
     private final Map<String, String> properties = new HashMap<>();
 
     /**
@@ -95,9 +96,8 @@ public class Rule {
      * @return a Predicate to check a Rule
      */
     static Predicate<Rule> hasParent(final RuleParent ruleParent) {
-        return rule -> ruleParent.equals(rule.getParent());
+        return rule -> ruleParent == rule.getParent();
     }
-
 
     /**
      * Predicate to check that the Rule is included in the given RuleLevel.
@@ -143,14 +143,14 @@ public class Rule {
     private static String moduleNoParameters(
             final String ruleClassname
     ) {
-        return String.format(MODULE_NO_PROPERTIES, ruleClassname);
+        return String.format(NO_PROPERTIES, ruleClassname);
     }
 
     private static String moduleWithParameters(
             final Rule rule,
             final String ruleClassname
     ) {
-        return String.format(MODULE_WITH_PROPERTIES, ruleClassname, formatProperties(rule.getProperties()));
+        return String.format(WITH_PROPERTIES, ruleClassname, formatProperties(rule.getProperties()));
     }
 
     /**

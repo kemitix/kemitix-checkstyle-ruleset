@@ -17,11 +17,17 @@ import java.util.Optional;
 @Setter
 @Getter
 @Configuration
-@ConfigurationProperties
+@ConfigurationProperties("")
 class SourcesProperties {
 
     private List<RuleSource> sources = new ArrayList<>();
 
+    /**
+     * Search for a RuleSource by name.
+     *
+     * @param sourceName the name of the source
+     * @return an Optional containing the RuleSource if found
+     */
     public Optional<RuleSource> findSource(final String sourceName) {
         return sources.stream()
                 .filter(ruleSource -> ruleSource.getName().equals(sourceName))

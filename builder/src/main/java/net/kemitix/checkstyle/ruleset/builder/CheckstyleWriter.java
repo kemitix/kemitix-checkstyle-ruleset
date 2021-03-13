@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -31,18 +32,22 @@ class CheckstyleWriter implements CommandLineRunner {
 
     private final OutputProperties outputProperties;
 
-    private final TemplateProperties templateProperties;
+    private final TemplateProperties templateProps;
 
     private final RulesProperties rulesProperties;
 
     private final RuleClassLocator ruleClassLocator;
 
     private final SourcesProperties sourcesProperties;
-    private final Set<String> enabledSourceNames = new HashSet<>();
 
+    private final Set<String> enabledNames = new HashSet<>();
+
+    /**
+     * Builds list of enabled sources.
+     */
     @PostConstruct
     public void init() {
-        enabledSourceNames.addAll(
+        enabledNames.addAll(
                 sourcesProperties.getSources()
                         .stream()
                         .filter(RuleSource::isEnabled)
@@ -51,7 +56,7 @@ class CheckstyleWriter implements CommandLineRunner {
     }
 
     private static Predicate<RuleLevel> excludeUnspecifiedRuleLevel() {
-        return level -> !level.equals(RuleLevel.UNSPECIFIED);
+        return level -> level != RuleLevel.UNSPECIFIED;
     }
 
     private static void writeRuleset(
@@ -81,7 +86,7 @@ class CheckstyleWriter implements CommandLineRunner {
     ) throws IOException {
         if (fileExists(template.toFile())) {
             log.info("Writing ruleset: {}", outputPath);
-            final String xmlTemplate = new String(Files.readAllBytes(template), StandardCharsets.UTF_8);
+            final String xmlTemplate = Files.readString(template);
             writeRuleset(outputPath, ruleset(checkerRules, treeWalkerRules, xmlTemplate));
         } else {
             throw new TemplateNotFoundException(template);
@@ -95,11 +100,12 @@ class CheckstyleWriter implements CommandLineRunner {
                 .forEach(this::writeCheckstyleFile);
     }
 
+    @SuppressFBWarnings("EXS_EXCEPTION_SOFTENING_NO_CONSTRAINTS")
     private void writeCheckstyleFile(final RuleLevel ruleLevel) {
         final Path outputPath = outputPath(ruleLevel);
         final String checkerRules = enabledRules(ruleLevel, RuleParent.CHECKER);
         final String treeWalkerRules = enabledRules(ruleLevel, RuleParent.TREEWALKER);
-        final Path template = templateProperties.getCheckstyleXml();
+        final Path template = templateProps.getCheckstyleXml();
         try {
             writeCheckstyleFileWithException(outputPath, checkerRules, treeWalkerRules, template);
         } catch (IOException e) {
@@ -120,7 +126,7 @@ class CheckstyleWriter implements CommandLineRunner {
         return rulesProperties.getRules()
                 .stream()
                 .filter(Rule::isEnabled)
-                .filter(rule -> enabledSourceNames.contains(rule.getSource()))
+                .filter(rule -> enabledNames.contains(rule.getSource()))
                 .filter(Rule.hasParent(ruleParent))
                 .filter(Rule.isIncludedInLevel(ruleLevel))
                 .map(rule -> Rule.asModule(ruleClassLocator.apply(rule), rule))

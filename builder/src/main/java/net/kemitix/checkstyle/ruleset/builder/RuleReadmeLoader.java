@@ -17,5 +17,5 @@ interface RuleReadmeLoader {
      *
      * @return A Stream of the readme fragment.
      */
-    public abstract Stream<String> load(Rule rule);
+    Stream<String> load(Rule rule);
 }

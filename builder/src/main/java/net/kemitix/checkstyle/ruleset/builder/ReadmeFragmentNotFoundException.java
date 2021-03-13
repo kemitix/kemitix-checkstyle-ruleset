@@ -7,6 +7,8 @@ package net.kemitix.checkstyle.ruleset.builder;
  */
 class ReadmeFragmentNotFoundException extends RuntimeException {
 
+    private static final long serialVersionUID = 1947381338394993108L;
+
     /**
      * Constructor.
      *

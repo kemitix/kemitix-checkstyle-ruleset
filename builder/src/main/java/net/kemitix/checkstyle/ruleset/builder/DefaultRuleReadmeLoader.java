@@ -1,5 +1,6 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,13 +20,14 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 class DefaultRuleReadmeLoader implements RuleReadmeLoader {
 
-    private final TemplateProperties templateProperties;
+    private final TemplateProperties templateProps;
 
     @Override
+    @SuppressFBWarnings("EXS_EXCEPTION_SOFTENING_NO_CHECKED")
     public Stream<String> load(final Rule rule) {
         if (rule.isEnabled()) {
             final Path resolve =
-                    templateProperties.getReadmeFragments()
+                    templateProps.getReadmeFragments()
                             .resolve(rule.getName() + ".md");
             log.info("Loading fragment: {}", resolve);
             try {
