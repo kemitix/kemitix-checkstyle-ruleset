@@ -2116,6 +2116,9 @@ Generic rule; doesn't embody a 'quality' check.
 #### [Indentation](http://checkstyle.sourceforge.net/config_misc.html#Indentation)
 
 Couldn't get my IDE's (IntelliJ) code style to match.
+#### [InterfaceMemberImpliedModifier](http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier)
+
+Makes interfaces overly verbose.
 #### [JavadocMethod](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocMethod)
 
 Only exceptional cases should need to be documented.

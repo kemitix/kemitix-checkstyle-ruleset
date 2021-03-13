@@ -430,6 +430,7 @@ rules:
         enabled: false
         source: CHECKSTYLE
         uri: http://checkstyle.sourceforge.net/config_modifier.html#InterfaceMemberImpliedModifier
+        reason: Makes interfaces overly verbose.
     -
         name: InterfaceTypeParameterName
         parent: TREEWALKER
