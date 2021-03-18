@@ -29,6 +29,7 @@ jobs:
           gpg --batch \
             --fast-import codesigning.asc
           mvn --settings .github/settings.xml \
+            --projects ruleset,tile
             -Dskip-Tests=true \
             -P release \
             -B \
