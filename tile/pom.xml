@@ -21,7 +21,7 @@
         <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
 
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-        <checkstyle.version>8.41.1</checkstyle.version>
+        <checkstyle.version>8.42</checkstyle.version>
         <sevntu.version>1.35.0</sevntu.version>
 
         <kemitix.checkstyle.ruleset.version>${project.version}</kemitix.checkstyle.ruleset.version>
