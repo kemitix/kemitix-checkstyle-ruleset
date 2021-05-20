@@ -21,7 +21,7 @@
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <tiles-maven-plugin.version>2.21</tiles-maven-plugin.version>
+        <tiles-maven-plugin.version>2.22</tiles-maven-plugin.version>
         <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
 
         <checkstyle.version>8.42</checkstyle.version>
