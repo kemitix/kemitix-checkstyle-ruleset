@@ -24,7 +24,7 @@
         <tiles-maven-plugin.version>2.21</tiles-maven-plugin.version>
         <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
 
-        <checkstyle.version>8.42</checkstyle.version>
+        <checkstyle.version>8.43</checkstyle.version>
         <sevntu.version>1.39.0</sevntu.version>
         <sevntu-plugin.version>1.35.0</sevntu-plugin.version>
         <lombok.version>1.18.20</lombok.version>
