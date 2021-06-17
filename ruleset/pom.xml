@@ -21,7 +21,7 @@
     <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
 
     <properties>
-        <tiles-maven-plugin.version>2.21</tiles-maven-plugin.version>
+        <tiles-maven-plugin.version>2.23</tiles-maven-plugin.version>
         <kemitix-tiles.version>3.0.1</kemitix-tiles.version>
     </properties>
 
