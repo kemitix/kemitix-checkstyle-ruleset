@@ -10,9 +10,8 @@ import java.util.stream.Collectors;
 /**
  * Implementation of {@link PackageScanner} using ClassGraph.
  *
- * @see <a href="https://github.com/classgraph/classgraph/">ClassGraph</a>
- *
  * @author Paul Campbell (pcampbell@kemitix.net).
+ * @see <a href="https://github.com/classgraph/classgraph/">ClassGraph</a>
  */
 @Service
 public class ClassGraphPackageScanner implements PackageScanner {
