@@ -21,8 +21,8 @@
     <url>https://github.com/kemitix/kemitix-checkstyle-ruleset</url>
 
     <properties>
-        <tiles-maven-plugin.version>2.21</tiles-maven-plugin.version>
-        <kemitix-tiles.version>3.0.1</kemitix-tiles.version>
+        <tiles-maven-plugin.version>2.23</tiles-maven-plugin.version>
+        <kemitix-tiles.version>3.1.0</kemitix-tiles.version>
     </properties>
 
     <licenses>
@@ -46,6 +46,15 @@
         <developerConnection>scm:git:git@github.com:kemitix/kemitix-checkstyle-ruleset.git</developerConnection>
         <url>git@github.com:kemitix/kemitix-checkstyle-ruleset.git</url>
     </scm>
+
+    <dependencies>
+        <dependency>
+            <artifactId>version-tracker</artifactId>
+            <groupId>net.kemitix.tiles</groupId>
+            <version>${kemitix-tiles.version}</version>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
