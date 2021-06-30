@@ -21,8 +21,8 @@
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <tiles-maven-plugin.version>2.21</tiles-maven-plugin.version>
-        <kemitix-maven-tiles.version>3.0.1</kemitix-maven-tiles.version>
+        <tiles-maven-plugin.version>2.23</tiles-maven-plugin.version>
+        <kemitix-maven-tiles.version>3.1.0</kemitix-maven-tiles.version>
 
         <checkstyle.version>8.44</checkstyle.version>
         <sevntu.version>1.40.0</sevntu.version>
@@ -133,6 +133,13 @@
             <groupId>com.github.sevntu-checkstyle</groupId>
             <artifactId>sevntu-checks</artifactId>
             <version>${sevntu.version}</version>
+        </dependency>
+             
+        <dependency>
+            <artifactId>version-tracker</artifactId>
+            <groupId>net.kemitix.tiles</groupId>
+            <version>${kemitix-maven-tiles.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
