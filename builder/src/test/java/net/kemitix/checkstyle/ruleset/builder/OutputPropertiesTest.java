@@ -2,8 +2,8 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class OutputPropertiesTest {
 
     private OutputProperties outputProperties;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         outputProperties = new OutputProperties();
     }

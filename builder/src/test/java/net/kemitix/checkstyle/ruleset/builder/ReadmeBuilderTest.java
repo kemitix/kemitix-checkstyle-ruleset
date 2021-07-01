@@ -1,11 +1,9 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -19,7 +17,7 @@ public class ReadmeBuilderTest {
     private ReadmeBuilder readmeBuilder;
     private String template = "i:%s,ec:%s,es:%s,dc:%s,ds:%s";
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 

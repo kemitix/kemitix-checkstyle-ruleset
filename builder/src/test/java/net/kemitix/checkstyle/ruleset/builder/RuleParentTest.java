@@ -1,7 +1,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 

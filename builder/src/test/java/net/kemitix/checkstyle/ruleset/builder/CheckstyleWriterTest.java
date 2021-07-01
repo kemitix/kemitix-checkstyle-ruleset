@@ -3,11 +3,11 @@ package net.kemitix.checkstyle.ruleset.builder;
 import lombok.val;
 import me.andrz.builder.map.MapBuilder;
 import org.assertj.core.api.ThrowableAssert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -36,11 +36,8 @@ public class CheckstyleWriterTest {
 
     private static final String FILE_SEPARATOR = System.getProperty("file.separator");
 
-    @org.junit.Rule
-    public ExpectedException exception = ExpectedException.none();
-
-    @org.junit.Rule
-    public TemporaryFolder folder = new TemporaryFolder();
+    @TempDir
+    public File folder;
 
     private CheckstyleWriter checkstyleWriter;
 
@@ -61,7 +58,7 @@ public class CheckstyleWriterTest {
     private RuleClassLocator ruleClassLocator = mock(RuleClassLocator.class);
     private SourcesProperties sourceProperties = new SourcesProperties();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         ruleName = "RegexpOnFilename";
         ruleClassname = "com.puppycrawl.tools.checkstyle.checks.regexp.RegexpOnFilenameCheck";
@@ -74,12 +71,12 @@ public class CheckstyleWriterTest {
                                                          .put(getOutputFile(RuleLevel.COMPLEXITY))
                                                          .build();
         outputProperties.setRulesetFiles(outputFiles);
-        outputDirectory = folder.newFolder()
-                                .toPath();
+        outputDirectory = folder.toPath();
+        Files.createDirectories(outputDirectory);
         outputProperties.setDirectory(outputDirectory);
         templateProperties = new TemplateProperties();
-        val checkstyleTemplate = folder.newFile("checkstyle-template.xml")
-                                       .toPath();
+        val checkstyleTemplate = folder.toPath().resolve("checkstyle-template.xml");
+        checkstyleTemplate.toFile().createNewFile();
         Files.write(
                 checkstyleTemplate, TEMPLATE.getBytes(StandardCharsets.UTF_8), StandardOpenOption.TRUNCATE_EXISTING);
         templateProperties.setCheckstyleXml(checkstyleTemplate);

@@ -1,25 +1,25 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.rules.TemporaryFolder;
+import org.assertj.core.api.WithAssertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 /**
  * Tests for {@link DefaultRuleReadmeLoader}.
  *
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
-public class DefaultRuleReadmeLoaderTest {
+public class DefaultRuleReadmeLoaderTest
+        implements WithAssertions {
 
     private RuleReadmeLoader loader;
 
@@ -27,17 +27,14 @@ public class DefaultRuleReadmeLoaderTest {
 
     private Path fragments;
 
-    @org.junit.Rule
-    public TemporaryFolder folder = new TemporaryFolder();
+    @TempDir
+    public File folder;
 
-    @org.junit.Rule
-    public ExpectedException exception = ExpectedException.none();
-
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         final TemplateProperties templateProperties = new TemplateProperties();
-        fragments = folder.newFolder("fragments")
-                          .toPath();
+        fragments = folder.toPath().resolve("fragments");
+        Files.createDirectories(fragments);
         templateProperties.setReadmeFragments(fragments);
         loader = new DefaultRuleReadmeLoader(templateProperties);
         rule = new Rule();
@@ -61,10 +58,10 @@ public class DefaultRuleReadmeLoaderTest {
     public void loadEnabledWithMissingFragment() {
         //given
         rule.setEnabled(true);
-        exception.expect(ReadmeFragmentNotFoundException.class);
-        exception.expectMessage("name");
         //when
-        loader.load(rule);
+        assertThatExceptionOfType(ReadmeFragmentNotFoundException.class)
+                .isThrownBy(() -> loader.load(rule))
+                .withMessage("name");
     }
 
     @Test
