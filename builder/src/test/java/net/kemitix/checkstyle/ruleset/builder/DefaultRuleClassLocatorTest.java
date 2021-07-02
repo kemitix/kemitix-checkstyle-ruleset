@@ -1,7 +1,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -27,7 +27,7 @@ public class DefaultRuleClassLocatorTest {
     private final RuleSource checkstyleRuleSource = RuleSourceMother.checkstyle.get();
     private final RuleSource sevntuRuleSource = RuleSourceMother.sevntu.get();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         sourceProperties.setSources(Arrays.asList(
                 checkstyleRuleSource, sevntuRuleSource

@@ -1,7 +1,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,7 +9,7 @@ public class SourcesPropertiesTest {
 
     private SourcesProperties sourcesProperties;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         sourcesProperties = new SourcesProperties();
     }

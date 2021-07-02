@@ -1,8 +1,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import net.kemitix.files.FileReaderWriter;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -40,7 +40,7 @@ public class ReadmeWriterTest {
     private String templateBody = UUID.randomUUID().toString();
     private String formattedOutput = UUID.randomUUID().toString();
 
-    @Before
+    @BeforeEach
     public void setUp() throws IOException {
         MockitoAnnotations.initMocks(this);
 

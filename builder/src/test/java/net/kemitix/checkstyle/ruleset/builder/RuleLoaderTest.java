@@ -1,7 +1,7 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -44,7 +44,7 @@ public class RuleLoaderTest {
     private String enabledRuleName = "enabled-" + UUID.randomUUID().toString();
     private String disabledRuleName = "disabled-" + UUID.randomUUID().toString();
 
-    @Before
+    @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 

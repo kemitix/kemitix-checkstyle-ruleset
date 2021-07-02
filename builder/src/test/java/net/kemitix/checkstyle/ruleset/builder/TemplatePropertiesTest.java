@@ -1,8 +1,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -17,7 +17,7 @@ public class TemplatePropertiesTest {
 
     private TemplateProperties templateProperties;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         templateProperties = new TemplateProperties();
     }
