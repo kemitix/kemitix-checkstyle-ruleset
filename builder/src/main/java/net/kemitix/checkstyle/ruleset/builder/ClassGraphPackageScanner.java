@@ -33,7 +33,7 @@ public class ClassGraphPackageScanner implements PackageScanner {
 
     private static ScanResult scanPackage(final ClassGraph classGraph, final String basePackage) {
         return classGraph
-                .whitelistPackages(basePackage)
+                .acceptPackages(basePackage)
                 .scan();
     }
 
