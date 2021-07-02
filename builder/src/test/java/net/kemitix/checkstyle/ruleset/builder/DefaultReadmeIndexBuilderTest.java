@@ -1,8 +1,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class DefaultReadmeIndexBuilderTest {
 
     private RulesProperties rulesProperties;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         rulesProperties = new RulesProperties();
         indexBuilder = new DefaultReadmeIndexBuilder(rulesProperties);

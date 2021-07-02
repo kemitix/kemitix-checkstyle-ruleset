@@ -2,9 +2,8 @@ package net.kemitix.checkstyle.ruleset.builder;
 
 import lombok.val;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 
@@ -19,7 +18,7 @@ public class RuleTest {
 
     private RuleSource ruleSource = RuleSourceMother.checkstyle.get();
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         rule = new Rule();
     }
