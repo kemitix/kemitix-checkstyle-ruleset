@@ -41,8 +41,8 @@ public class ReadmeWriterTest {
     private String formattedOutput = UUID.randomUUID().toString();
 
     @BeforeEach
-    public void setUp() throws IOException {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() throws Exception {
+        MockitoAnnotations.openMocks(this).close();
 
         readmeWriter =
                 new ReadmeWriter(templateProperties, outputProperties,

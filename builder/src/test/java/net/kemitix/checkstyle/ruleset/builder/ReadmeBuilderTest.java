@@ -18,8 +18,8 @@ public class ReadmeBuilderTest {
     private String template = "i:%s,ec:%s,es:%s,dc:%s,ds:%s";
 
     @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
+    public void setUp() throws Exception {
+        MockitoAnnotations.openMocks(this).close();
 
         readmeBuilder = new ReadmeBuilder(indexBuilder, ruleLoader);
     }
