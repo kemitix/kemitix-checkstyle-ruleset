@@ -18,7 +18,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.23</tiles-maven-plugin.version>
-        <kemitix-maven-tiles.version>3.1.0</kemitix-maven-tiles.version>
+        <kemitix-maven-tiles.version>3.1.1</kemitix-maven-tiles.version>
 
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <checkstyle.version>8.44</checkstyle.version>
