@@ -1,6 +1,5 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.RequiredArgsConstructor;
 import net.kemitix.files.FileReaderWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +15,19 @@ import java.util.stream.Collectors;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Configuration
-@RequiredArgsConstructor
 public class BuilderConfiguration {
 
-    private final SourcesProperties sourcesProperties;
+    private final transient SourcesProperties sourcesProperties =
+            new SourcesProperties();
+
+    /**
+     * Creates a new instance of the class.
+     *
+     * @param sourcesProperties the source properties
+     */
+    public BuilderConfiguration(final SourcesProperties sourcesProperties) {
+        this.sourcesProperties.setSources(sourcesProperties.getSources());
+    }
 
     /**
      * A Map of rules for each RuleSource.

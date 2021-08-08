@@ -22,7 +22,7 @@
 
     <properties>
         <tiles-maven-plugin.version>2.23</tiles-maven-plugin.version>
-        <kemitix-tiles.version>3.1.0</kemitix-tiles.version>
+        <kemitix-tiles.version>3.1.1</kemitix-tiles.version>
     </properties>
 
     <licenses>

@@ -39,7 +39,7 @@ public class DefaultRuleReadmeLoaderTest
         loader = new DefaultRuleReadmeLoader(templateProperties);
         rule = new Rule();
         rule.setName("name");
-        rule.setUri(URI.create("uri"));
+        rule.setUri("uri");
     }
 
     @Test

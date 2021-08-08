@@ -3,6 +3,8 @@ package net.kemitix.checkstyle.ruleset.builder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SourcesPropertiesTest {
@@ -24,7 +26,7 @@ public class SourcesPropertiesTest {
         final RuleSource source =
                 RuleSourceMother.create("name", true, "package");
         //when
-        sourcesProperties.getSources().add(source);
+        sourcesProperties.setSources(Collections.singletonList(source));
         //then
         assertThat(sourcesProperties.getSources()).containsExactly(source);
     }
