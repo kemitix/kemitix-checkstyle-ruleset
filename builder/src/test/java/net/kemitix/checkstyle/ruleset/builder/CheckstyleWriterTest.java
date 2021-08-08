@@ -165,8 +165,7 @@ public class CheckstyleWriterTest {
     public void writeRuleWithProperties() throws Exception {
         //given
         val rule = enabledRule(RuleLevel.LAYOUT, RuleParent.TREEWALKER);
-        rule.getProperties()
-            .put("key", "value");
+        rule.setProperties(Map.of("key", "value"));
         rulesProperties.getRules()
                        .add(rule);
         //when

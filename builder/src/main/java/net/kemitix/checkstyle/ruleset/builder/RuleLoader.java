@@ -1,20 +1,36 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Component
-@RequiredArgsConstructor
 public class RuleLoader {
 
     private static final String NEWLINE = "\n";
 
-    private final RulesProperties rulesProperties;
-    private final RuleReadmeLoader ruleReadmeLoader;
-    private final SourcesProperties sourcesProperties;
+    private final transient RulesProperties rulesProperties;
+    private final transient RuleReadmeLoader ruleReadmeLoader;
+    private final transient SourcesProperties sourcesProperties =
+            new SourcesProperties();
+
+    /**
+     * Creates a new instance of the class.
+     *
+     * @param rulesProperties the rules priorities
+     * @param ruleReadmeLoader the README loader
+     * @param sourcesProperties the source priorities
+     */
+    public RuleLoader(
+            final RulesProperties rulesProperties,
+            final RuleReadmeLoader ruleReadmeLoader,
+            final SourcesProperties sourcesProperties
+    ) {
+        this.rulesProperties = rulesProperties;
+        this.ruleReadmeLoader = ruleReadmeLoader;
+        this.sourcesProperties.setSources(sourcesProperties.getSources());
+    }
 
     /**
      * Loads from the source, where the source is enabled, all rules that are

@@ -19,20 +19,8 @@ public class DefaultRuleClassLocatorTest {
 
     private SourcesProperties sourceProperties = new SourcesProperties();
 
-    private final DefaultRuleClassLocator subject =
-            new DefaultRuleClassLocator(
-                    checkClasses,
-                    sourceProperties);
-
     private final RuleSource checkstyleRuleSource = RuleSourceMother.checkstyle.get();
     private final RuleSource sevntuRuleSource = RuleSourceMother.sevntu.get();
-
-    @BeforeEach
-    public void setUp() {
-        sourceProperties.setSources(Arrays.asList(
-                checkstyleRuleSource, sevntuRuleSource
-        ));
-    }
 
     @Test
     public void canLookupRuleWithClassNameEndingInCheck() {
@@ -43,7 +31,14 @@ public class DefaultRuleClassLocatorTest {
         final List<String> sevntuClasses = Collections.emptyList();
         checkClasses.put(checkstyleRuleSource, checkstyleClasses);
         checkClasses.put(sevntuRuleSource, sevntuClasses);
+        sourceProperties.setSources(Arrays.asList(
+                checkstyleRuleSource, sevntuRuleSource
+        ));
         final Rule rule = createCheckstyleRule(rulename);
+        DefaultRuleClassLocator subject =
+                new DefaultRuleClassLocator(
+                        checkClasses,
+                        sourceProperties);
         //when
         final String result = subject.apply(rule);
         //then
@@ -59,7 +54,14 @@ public class DefaultRuleClassLocatorTest {
         final List<String> sevntuClasses = Collections.emptyList();
         checkClasses.put(checkstyleRuleSource, checkstyleClasses);
         checkClasses.put(sevntuRuleSource, sevntuClasses);
+        sourceProperties.setSources(Arrays.asList(
+                checkstyleRuleSource, sevntuRuleSource
+        ));
         final Rule rule = createCheckstyleRule(rulename);
+        DefaultRuleClassLocator subject =
+                new DefaultRuleClassLocator(
+                        checkClasses,
+                        sourceProperties);
         //when
         final String result = subject.apply(rule);
         //then
@@ -76,6 +78,10 @@ public class DefaultRuleClassLocatorTest {
         checkClasses.put(checkstyleRuleSource, checkstyleClasses);
         checkClasses.put(sevntuRuleSource, sevntuClasses);
         final Rule rule = createCheckstyleRule(rulename);
+        DefaultRuleClassLocator subject =
+                new DefaultRuleClassLocator(
+                        checkClasses,
+                        sourceProperties);
         //then
         assertThatThrownBy(() -> subject.apply(rule))
                 .isInstanceOf(CheckstyleClassNotFoundException.class)

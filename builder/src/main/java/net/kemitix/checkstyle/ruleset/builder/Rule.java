@@ -4,7 +4,6 @@ import com.speedment.common.mapstream.MapStream;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.net.URI;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Locale;
@@ -18,8 +17,8 @@ import java.util.stream.Collectors;
  * @author Paul Campbell (pcampbell@kemitix.net)
  */
 @Setter
-@Getter
-public class Rule {
+@SuppressWarnings("methodcount")
+public final class Rule {
 
     private static final Locale LOCALE = Locale.ENGLISH;
 
@@ -31,11 +30,12 @@ public class Rule {
      * Configuration properties.
      */
     @SuppressWarnings("PMD.UseConcurrentHashMap")
-    private final Map<String, String> properties = new HashMap<>();
+    private Map<String, String> properties = new HashMap<>();
 
     /**
      * The name of the rule's Check class.
      */
+    @Getter
     private String name;
 
     /**
@@ -46,11 +46,13 @@ public class Rule {
     /**
      * The first level the rule is enabled on.
      */
+    @Getter
     private RuleLevel level;
 
     /**
      * Whether the rule is enabled.
      */
+    @Getter
     private boolean enabled;
 
     /**
@@ -61,17 +63,28 @@ public class Rule {
     /**
      * URI for full official documentation.
      */
-    private URI uri;
+    @Getter
+    private String uri;
 
     /**
      * Flag to indicate rules that can not be suppressed (via {@code @SuppressWarnings}.
      */
+    @Getter
     private boolean insuppressible;
 
     /**
      * The reason a rule has been disabled.
      */
+    @Getter
     private String reason;
+
+    public void setProperties(final Map<String, String> properties) {
+        this.properties = new HashMap<>(properties);
+    }
+
+    public Map<String, String> getProperties() {
+        return new HashMap<>(properties);
+    }
 
     /**
      * Compare two Rules lexicographically for sorting by rule name, ignoring case.
@@ -83,9 +96,9 @@ public class Rule {
      * the right string; and a value greater than 0 if the left string is lexicographically greater than the right
      * string.
      */
-    protected static int sortByName(final Rule left, final Rule right) {
-        return left.getName().toLowerCase(LOCALE)
-                .compareTo(right.getName().toLowerCase(LOCALE));
+    public static int sortByName(final Rule left, final Rule right) {
+        return left.name.toLowerCase(LOCALE)
+                .compareTo(right.name.toLowerCase(LOCALE));
     }
 
     /**
@@ -96,7 +109,7 @@ public class Rule {
      * @return a Predicate to check a Rule
      */
     static Predicate<Rule> hasParent(final RuleParent ruleParent) {
-        return rule -> ruleParent == rule.getParent();
+        return rule -> ruleParent == rule.parent;
     }
 
     /**
@@ -107,7 +120,7 @@ public class Rule {
      * @return a Predicate to check a Rule
      */
     static Predicate<Rule> isIncludedInLevel(final RuleLevel ruleLevel) {
-        return rule -> ruleLevel.compareTo(rule.getLevel()) >= 0;
+        return rule -> ruleLevel.compareTo(rule.level) >= 0;
     }
 
     private static String formatProperties(final Map<String, String> properties) {

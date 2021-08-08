@@ -1,8 +1,8 @@
 package net.kemitix.checkstyle.ruleset.builder;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -14,11 +14,24 @@ import java.util.Objects;
  * @author Paul Campbell (pcampbell@kemitix.net).
  */
 @Service
-@RequiredArgsConstructor
 public class DefaultRuleClassLocator implements RuleClassLocator {
 
-    private final Map<RuleSource, List<String>> checkClasses;
-    private final SourcesProperties sourcesProperties;
+    private final transient Map<RuleSource, List<String>> checkClasses;
+    private final transient SourcesProperties sourcesProperties = new SourcesProperties();
+
+    /**
+     * Creates a new instance of the class.
+     *
+     * @param checkClasses The list of check classes grouped by their source
+     * @param sourcesProperties the source properties
+     */
+    public DefaultRuleClassLocator(
+            final Map<RuleSource, List<String>> checkClasses,
+            final SourcesProperties sourcesProperties
+    ) {
+        this.checkClasses = new HashMap<>(checkClasses);
+        this.sourcesProperties.setSources(sourcesProperties.getSources());
+    }
 
     @Override
     public final String apply(final Rule rule) {

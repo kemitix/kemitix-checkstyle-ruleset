@@ -5,7 +5,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.net.URI;
+import java.util.Map;
 
 /**
  * Tests for {@link Rule}.
@@ -31,7 +31,7 @@ public class RuleTest {
         val level = RuleLevel.LAYOUT;
         val enabled = true;
         val insuppressible = true;
-        val uri = URI.create("rule://name.md");
+        val uri = "rule://name.md";
         val reason = "reason";
         val key = "key";
         val value = "value";
@@ -44,16 +44,12 @@ public class RuleTest {
         rule.setInsuppressible(insuppressible);
         rule.setUri(uri);
         rule.setReason(reason);
-        rule.getProperties()
-            .put(key, value);
+        rule.setProperties(Map.of(key, value));
         //then
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(rule.getName())
                   .as("set/getName()")
                   .isEqualTo(name);
-            softly.assertThat(rule.getParent())
-                  .as("set/getParent()")
-                  .isEqualTo(parent);
             softly.assertThat(rule.getLevel())
                   .as("set/getLevel()")
                   .isEqualTo(level);

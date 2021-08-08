@@ -48,12 +48,6 @@ public class RuleLoaderTest {
     public void setUp() throws Exception {
         MockitoAnnotations.openMocks(this).close();
 
-        ruleLoader =
-                new RuleLoader(
-                        ruleProperties,
-                        ruleReadmeLoader,
-                        sourcesProperties);
-
         enabledRule.setEnabled(true);
         enabledRule.setName(enabledRuleName);
 
@@ -76,12 +70,18 @@ public class RuleLoaderTest {
                 false,
                 disabledRuleSourcePackage);
         ruleSources.add(disabledRuleSource);
+        sourcesProperties.setSources(ruleSources);
         rules.add(disabledRule);
         disabledRuleLines.add(disabledRuleLineOne);
         disabledRuleLines.add(disabledRuleLineTwo);
         given(ruleReadmeLoader.load(disabledRule))
                 .willReturn(disabledRuleLines.stream());
-    }
+
+        ruleLoader =
+                new RuleLoader(
+                        ruleProperties,
+                        ruleReadmeLoader,
+                        sourcesProperties);    }
 
     @Test
     public void enabledForEnabledSource() {
