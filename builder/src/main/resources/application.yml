@@ -1552,3 +1552,10 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingLeadingAsterisk
+    -
+        name: LambdaBodyLength
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_sizes.html#LambdaBodyLength
