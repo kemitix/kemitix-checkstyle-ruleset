@@ -1545,3 +1545,10 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_whitespace.html#NoWhitespaceBeforeCaseDefaultColon
+    -
+        name: JavadocMissingLeadingAsterisk
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingLeadingAsterisk
