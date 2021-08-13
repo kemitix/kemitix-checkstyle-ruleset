@@ -274,6 +274,7 @@ Rule|Level|Source|Enabled|Suppressible
 [UniformEnumConstantName](#uniformenumconstantname)|naming|sevntu|Yes|
 [UniqueProperties](#uniqueproperties)|javadoc|checkstyle|Yes|
 [UnnecessaryParentheses](#unnecessaryparentheses)|layout|checkstyle|Yes|
+[UnnecessarySemicolonAfterOuterTypeDeclaration](#unnecessarysemicolonafteroutertypedeclaration)|layout|checkstyle|Yes|
 [UnusedImports](#unusedimports)|layout|checkstyle|Yes|
 [UpperEll](#upperell)|layout|checkstyle|Yes|
 [UselessSingleCatch](#uselesssinglecatch)|tweaks|sevntu|Yes|
@@ -2133,6 +2134,55 @@ if (a < 1) {}
 Invalid:
 ````
 if ((a < 1)) {}
+````
+#### [UnnecessarySemicolonAfterOuterTypeDeclaration](https://checkstyle.sourceforge.io/config_coding.html#UnnecessarySemicolonAfterOuterTypeDeclaration)
+
+Checks if unnecessary semicolon is used after type declaration.
+
+Valid:
+````java
+class A {
+
+   class Nested {
+
+   }; // OK, nested type declarations are ignored
+
+}
+
+interface B {
+
+}
+
+enum C {
+
+}
+
+@interface D {
+
+}
+````
+
+Invalid:
+````java
+class A {
+
+   class Nested {
+
+   }; // OK, nested type declarations are ignored
+
+}; // violation
+
+interface B {
+
+}; // violation
+
+enum C {
+
+}; // violation
+
+@interface D {
+
+}; // violation
 ````
 #### [UnusedImports](http://checkstyle.sourceforge.net/config_imports.html#UnusedImports)
 
