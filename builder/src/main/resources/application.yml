@@ -1573,3 +1573,10 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingWhitespaceAfterAsterisk
+    -
+        name: UnnecessarySemicolonAfterOuterTypeDeclaration
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#UnnecessarySemicolonAfterOuterTypeDeclaration
