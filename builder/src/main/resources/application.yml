@@ -1559,3 +1559,11 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_sizes.html#LambdaBodyLength
+    -
+        name: NoCodeInFile
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_misc.html#NoCodeInFile
+
