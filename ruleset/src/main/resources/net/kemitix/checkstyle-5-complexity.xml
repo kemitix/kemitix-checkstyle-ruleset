@@ -187,6 +187,11 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.design.VisibilityModifierCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCaseDefaultColonCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMissingLeadingAsteriskCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.sizes.LambdaBodyLengthCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.NoCodeInFileCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMissingWhitespaceAfterAsteriskCheck"/>
 
     </module><!-- /TreeWalker -->
 

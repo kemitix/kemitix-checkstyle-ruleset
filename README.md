@@ -164,6 +164,8 @@ Rule|Level|Source|Enabled|Suppressible
 [InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle||
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
 [JavadocMethod](#javadocmethod)|javadoc|checkstyle||
+[JavadocMissingLeadingAsterisk](#javadocmissingleadingasterisk)|layout|checkstyle|Yes|
+[JavadocMissingWhitespaceAfterAsterisk](#javadocmissingwhitespaceafterasterisk)|layout|checkstyle|Yes|
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
 [JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
 [JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
@@ -171,6 +173,7 @@ Rule|Level|Source|Enabled|Suppressible
 [JavadocType](#javadoctype)|javadoc|checkstyle|Yes|
 [JavadocVariable](#javadocvariable)|javadoc|checkstyle||
 [JavaNCSS](#javancss)|complexity|checkstyle|Yes|
+[LambdaBodyLength](#lambdabodylength)|complexity|checkstyle|Yes|
 [LambdaParameterName](#lambdaparametername)|naming|checkstyle|Yes|
 [LeftCurly](#leftcurly)|layout|checkstyle|Yes|
 [LineLength](#linelength)|layout|checkstyle|Yes|
@@ -203,12 +206,14 @@ Rule|Level|Source|Enabled|Suppressible
 [NestedTryDepth](#nestedtrydepth)|complexity|checkstyle|Yes|
 [NewlineAtEndOfFile](#newlineatendoffile)|layout|checkstyle|Yes|
 [NoClone](#noclone)|tweaks|checkstyle|Yes|No
+[NoCodeInFile](#nocodeinfile)|layout|checkstyle|Yes|
 [NoFinalizer](#nofinalizer)|tweaks|checkstyle|Yes|
 [NoLineWrap](#nolinewrap)|layout|checkstyle|Yes|
 [NoMainMethodInAbstractClass](#nomainmethodinabstractclass)|tweaks|sevntu|Yes|
 [NonEmptyAtclauseDescription](#nonemptyatclausedescription)|javadoc|checkstyle|Yes|
 [NoWhitespaceAfter](#nowhitespaceafter)|layout|checkstyle|Yes|
 [NoWhitespaceBefore](#nowhitespacebefore)|layout|checkstyle|Yes|
+[NoWhitespaceBeforeCaseDefaultColon](#nowhitespacebeforecasedefaultcolon)|layout|checkstyle|Yes|
 [NPathComplexity](#npathcomplexity)|complexity|checkstyle|Yes|
 [NumericLiteralNeedsUnderscore](#numericliteralneedsunderscore)|naming|sevntu|Yes|
 [OneStatementPerLine](#onestatementperline)|layout|checkstyle|Yes|
@@ -1128,6 +1133,91 @@ Invalid:
 ````
 interface <Type> Portable {}
 ````
+#### [JavadocMissingLeadingAsterisk](https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingLeadingAsterisk)
+
+Checks if the javadoc has leading asterisks on each line.
+
+The check does not require asterisks on the first line, nor on the last line if
+it is blank. All other lines in a Javadoc should start with *, including blank
+lines and code blocks. 
+
+Valid:
+````
+/**
+ * Valid Java-style comment.
+ *
+ * <pre>
+ *   int value = 0;
+ * </pre>
+ */
+class JavaStyle {} // ok
+
+/** Valid Scala-style comment.
+  * Some description here.
+  **/
+class ScalaStyle {} // ok
+
+/** **
+  * Asterisks on first and last lines are optional.
+  * */
+class Asterisks {} // ok
+
+/** No asterisks are required for single-line comments. */
+class SingleLine {} // ok
+````
+
+Invalid:
+````
+/** // violation on next blank line, javadoc has lines without leading asterisk.
+
+ */
+class BlankLine {}
+
+/** Wrapped
+    single-line comment */ // violation, javadoc has lines without leading asterisk.
+class Wrapped {}
+
+/**
+  * <pre>
+    int value; // violation, javadoc has lines without leading asterisk.
+  * </pre>
+  */
+class Code {}
+````
+#### [JavadocMissingWhitespaceAfterAsterisk](https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingWhitespaceAfterAsterisk)
+
+Checks that there is at least one whitespace after the leading asterisk.
+Although spaces after asterisks are optional in the Javadoc comments, their
+absence makes the documentation difficult to read. It is the de facto standard
+to put at least one whitespace after the leading asterisk.
+
+Valid:
+````java
+/** This is valid single-line Javadoc. */
+class TestClass {
+  /**
+   * This is valid Javadoc.
+   */
+  void validJavaDocMethod() {
+  }
+  /** This is valid single-line Javadoc. */
+  void validSingleLineJavaDocMethod() {
+  }
+}
+````
+
+Invalid:
+````java
+class TestClass {
+  /**
+   *This is invalid Javadoc.
+   */
+  int invalidJavaDoc;
+  /**This is invalid single-line Javadoc. */
+  void invalidSingleLineJavaDocMethod() {
+  }
+}
+````
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 
 Checks that each package has a `package-info.java` file.
@@ -1145,6 +1235,55 @@ Checks the format for Javadoc for classes and enums. Javadoc must be present, no
 Restricts the NCSS score for methods, classes and files to 40, 1200 and 1600 respectively. The NCSS score is a measure of the number of statements within a scope.
 
 Too high an NCSS score suggests that the method or class is doing too much and should be decomposed into smaller units.
+#### [LambdaBodyLength](https://checkstyle.sourceforge.io/config_sizes.html#LambdaBodyLength)
+
+Checks lambda body length.
+
+Rationale: Similar to anonymous inner classes, if lambda body becomes very long
+it is hard to understand and to see the flow of the method where the lambda is 
+defined. Therefore, long lambda body should usually be extracted to method. 
+
+Valid:
+````
+Runnable r3 = () -> { // ok, 10 lines
+    System.out.println(2); // line 2 of lambda
+    System.out.println(3);
+    System.out.println(4);
+    System.out.println(5);
+    System.out.println(6);
+    System.out.println(7);
+    System.out.println(8);
+    System.out.println(9);
+}; // line 10
+````
+
+Invalid:
+````
+Runnable r = () -> { // violation, 11 lines
+    System.out.println(2); // line 2 of lambda
+    System.out.println(3);
+    System.out.println(4);
+    System.out.println(5);
+    System.out.println(6);
+    System.out.println(7);
+    System.out.println(8);
+    System.out.println(9);
+    System.out.println(10);
+}; // line 11
+
+Runnable r2 = () -> // violation, 11 lines
+  "someString".concat("1") // line 1 of lambda
+              .concat("2")
+              .concat("3")
+              .concat("4")
+              .concat("5")
+              .concat("6")
+              .concat("7")
+              .concat("8")
+              .concat("9")
+              .concat("10")
+              .concat("11"); // line 11
+````
 #### [LambdaParameterName](http://checkstyle.sourceforge.net/config_naming.html#LambdaParameterName)
 
 Checks the format of lambda parameter names.
@@ -1480,6 +1619,25 @@ Checks that files end with a line-feed character, (i.e. unix-style line ending).
 Checks that the `clone()` method from `Object` has not been overridden.  Use a copy constructor, or better yet, a static factory method.
 
 > See [Effective Java], 2nd Edition by Josh Bloch: Item 11: Override clone judiciously.
+#### [NoCodeInFile](https://checkstyle.sourceforge.io/config_misc.html#NoCodeInFile)
+
+Checks whether file contains code. Files which are considered to have no code:
+
+- File with no text
+- File with only single line comment(s)
+- File with only a multi line comment(s).
+
+Invalid:
+````java
+// single line comment // violation
+````
+
+Invalid:
+````java
+/* // violation
+ block comment
+*/
+````
 #### [NoFinalizer](http://checkstyle.sourceforge.net/config_coding.html#NoFinalizer)
 
 Checks that the `finalize()` method from `Object` has not been overridden.
@@ -1558,6 +1716,36 @@ int y = {1 , 2};
 doSomething() ;
 i ++;
 i --;
+````
+#### [NoWhitespaceBeforeCaseDefaultColon](https://checkstyle.sourceforge.io/config_whitespace.html#NoWhitespaceBeforeCaseDefaultColon)
+
+Checks that there is no whitespace before the colon in a switch block. .
+
+Valid:
+````
+switch(1) {
+    case 1:
+        break;
+    case 2:
+        break;
+    default:
+        break;
+}
+````
+
+Invalid:
+````
+switch(2) {
+    case 2: // ok
+        break;
+    case 3, 4
+             : break; // violation, whitespace before ':' is not allowed here
+    case 4,
+          5: break; // ok
+    default
+          : // violation, whitespace before ':' is not allowed here
+        break;
+}
 ````
 #### [NPathComplexity](http://checkstyle.sourceforge.net/config_metrics.html#NPathComplexity)
 
