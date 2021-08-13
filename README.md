@@ -165,6 +165,7 @@ Rule|Level|Source|Enabled|Suppressible
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
 [JavadocMethod](#javadocmethod)|javadoc|checkstyle||
 [JavadocMissingLeadingAsterisk](#javadocmissingleadingasterisk)|layout|checkstyle|Yes|
+[JavadocMissingWhitespaceAfterAsterisk](#javadocmissingwhitespaceafterasterisk)|layout|checkstyle|Yes|
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
 [JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
 [JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
@@ -1182,6 +1183,40 @@ class Wrapped {}
   * </pre>
   */
 class Code {}
+````
+#### [JavadocMissingWhitespaceAfterAsterisk](https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingWhitespaceAfterAsterisk)
+
+Checks that there is at least one whitespace after the leading asterisk.
+Although spaces after asterisks are optional in the Javadoc comments, their
+absence makes the documentation difficult to read. It is the de facto standard
+to put at least one whitespace after the leading asterisk.
+
+Valid:
+````java
+/** This is valid single-line Javadoc. */
+class TestClass {
+  /**
+   * This is valid Javadoc.
+   */
+  void validJavaDocMethod() {
+  }
+  /** This is valid single-line Javadoc. */
+  void validSingleLineJavaDocMethod() {
+  }
+}
+````
+
+Invalid:
+````java
+class TestClass {
+  /**
+   *This is invalid Javadoc.
+   */
+  int invalidJavaDoc;
+  /**This is invalid single-line Javadoc. */
+  void invalidSingleLineJavaDocMethod() {
+  }
+}
 ````
 #### [JavadocPackage](http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage)
 

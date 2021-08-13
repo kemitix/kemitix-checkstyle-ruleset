@@ -55,6 +55,7 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCaseDefaultColonCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMissingLeadingAsteriskCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.NoCodeInFileCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMissingWhitespaceAfterAsteriskCheck"/>
 
     </module><!-- /TreeWalker -->
 
