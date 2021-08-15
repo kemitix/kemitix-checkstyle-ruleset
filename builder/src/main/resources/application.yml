@@ -1580,3 +1580,10 @@ rules:
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_coding.html#UnnecessarySemicolonAfterOuterTypeDeclaration
+    -
+        name: AvoidDoubleBraceInitialization
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#AvoidDoubleBraceInitialization
