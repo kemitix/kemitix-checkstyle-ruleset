@@ -91,11 +91,13 @@ Rule|Level|Source|Enabled|Suppressible
 [AvoidConditionInversion](#avoidconditioninversion)|complexity|sevntu||
 [AvoidConstantAsFirstOperandInCondition](#avoidconstantasfirstoperandincondition)|tweaks|sevntu|Yes|
 [AvoidDefaultSerializableInInnerClasses](#avoiddefaultserializableininnerclasses)|tweaks|sevntu|Yes|
+[AvoidDoubleBraceInitialization](#avoiddoublebraceinitialization)|tweaks|checkstyle|Yes|
 [AvoidEscapedUnicodeCharacters](#avoidescapedunicodecharacters)|tweaks|checkstyle|Yes|
 [AvoidHidingCauseException](#avoidhidingcauseexception)|tweaks|sevntu|Yes|
 [AvoidInlineConditionals](#avoidinlineconditionals)|complexity|checkstyle|Yes|
 [AvoidModifiersForTypes](#avoidmodifiersfortypes)|unspecified|sevntu||
 [AvoidNestedBlocks](#avoidnestedblocks)|complexity|checkstyle|Yes|
+[AvoidNoArgumentSuperConstructorCall](#avoidnoargumentsuperconstructorcall)|tweaks|checkstyle|Yes|
 [AvoidNotShortCircuitOperatorsForBoolean](#avoidnotshortcircuitoperatorsforboolean)|tweaks|sevntu|Yes|
 [AvoidStarImport](#avoidstarimport)|layout|checkstyle||
 [AvoidStaticImport](#avoidstaticimport)|complexity|checkstyle||
@@ -164,8 +166,8 @@ Rule|Level|Source|Enabled|Suppressible
 [InterfaceMemberImpliedModifier](#interfacememberimpliedmodifier)|tweaks|checkstyle||
 [InterfaceTypeParameterName](#interfacetypeparametername)|naming|checkstyle|Yes|
 [JavadocMethod](#javadocmethod)|javadoc|checkstyle||
-[JavadocMissingLeadingAsterisk](#javadocmissingleadingasterisk)|layout|checkstyle|Yes|
-[JavadocMissingWhitespaceAfterAsterisk](#javadocmissingwhitespaceafterasterisk)|layout|checkstyle|Yes|
+[JavadocMissingLeadingAsterisk](#javadocmissingleadingasterisk)|javadoc|checkstyle|Yes|
+[JavadocMissingWhitespaceAfterAsterisk](#javadocmissingwhitespaceafterasterisk)|javadoc|checkstyle|Yes|
 [JavadocPackage](#javadocpackage)|javadoc|checkstyle|Yes|
 [JavadocParagraph](#javadocparagraph)|javadoc|checkstyle|Yes|
 [JavadocStyle](#javadocstyle)|javadoc|checkstyle|Yes|
@@ -381,6 +383,38 @@ Javadoc `@` clauses must be in the order:
  * @deprecated ...
  */
 ````
+#### [AvoidDoubleBraceInitialization](https://checkstyle.sourceforge.io/config_coding.html#AvoidDoubleBraceInitialization)
+
+Detects double brace initialization.
+
+Rationale: Double brace initialization (set of Instance Initializers in class
+body) may look cool, but it is considered as anti-pattern and should be avoided.
+This is also can lead to a hard-to-detect memory leak, if the anonymous class
+instance is returned outside and other object(s) hold reference to it. Created
+anonymous class is not static, it holds an implicit reference to the outer class
+instance. See this
+[blog post](https://blog.jooq.org/2014/12/08/dont-be-clever-the-double-curly-braces-anti-pattern/)
+and
+[article](https://www.baeldung.com/java-double-brace-initialization)
+for more details. Check ignores any comments and semicolons in class body.
+
+Invalid:
+````java
+class MyClass {
+    List<Integer> list1 = new ArrayList<>() { // violation
+        {
+            add(1);
+        }
+    };
+    List<String> list2 = new ArrayList<>() { // violation
+        ;
+        // comments and semicolons are ignored
+        {
+            add("foo");
+        }
+    };
+}
+````
 #### [AvoidEscapedUnicodeCharacters](http://checkstyle.sourceforge.net/config_misc.html#AvoidEscapedUnicodeCharacters)
 
 Prevents use of obscure escape codes (e.g. `\u221e`). However, non-printable/control characters are still permitted.
@@ -414,6 +448,34 @@ Invalid:
 // if (isDebug())
 {
     // ...
+}
+````
+#### [AvoidNoArgumentSuperConstructorCall](https://checkstyle.sourceforge.io/config_coding.html#AvoidNoArgumentSuperConstructorCall)
+
+Checks if call to superclass constructor without arguments is present. Such invocation is redundant
+because constructor body implicitly begins with a superclass constructor invocation super();
+See
+[specification](https://docs.oracle.com/javase/specs/jls/se16/html/jls-8.html#jls-8.8.7)
+for detailed information.
+
+Valid:
+````java
+class MyClass extends SomeOtherClass {
+    MyClass(int arg) {
+        super(arg); // OK, call with argument have to be explicit
+    }
+    MyClass(long arg) {
+        // OK, call is implicit
+    }
+}
+````
+
+Invalid:
+````java
+class MyClass extends SomeOtherClass {
+    MyClass() {
+        super(); // violation
+    }
 }
 ````
 #### [BooleanExpressionComplexity](http://checkstyle.sourceforge.net/config_metrics.html#BooleanExpressionComplexity)

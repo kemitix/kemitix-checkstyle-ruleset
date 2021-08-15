@@ -1548,7 +1548,7 @@ rules:
     -
         name: JavadocMissingLeadingAsterisk
         parent: TREEWALKER
-        level: LAYOUT
+        level: JAVADOC
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingLeadingAsterisk
@@ -1569,7 +1569,7 @@ rules:
     -
         name: JavadocMissingWhitespaceAfterAsterisk
         parent: TREEWALKER
-        level: LAYOUT
+        level: JAVADOC
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingWhitespaceAfterAsterisk
@@ -1583,7 +1583,14 @@ rules:
     -
         name: AvoidDoubleBraceInitialization
         parent: TREEWALKER
-        level: LAYOUT
+        level: TWEAKS
         enabled: true
         source: CHECKSTYLE
         uri: https://checkstyle.sourceforge.io/config_coding.html#AvoidDoubleBraceInitialization
+    -
+        name: AvoidNoArgumentSuperConstructorCall
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#AvoidNoArgumentSuperConstructorCall
