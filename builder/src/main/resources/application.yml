@@ -1538,3 +1538,59 @@ rules:
         enabled: true
         source: SEVNTU
         uri: http://sevntu-checkstyle.github.io/sevntu.checkstyle/apidocs/com/github/sevntu/checkstyle/checks/coding/MoveVariableInsideIfCheck.html
+    -
+        name: NoWhitespaceBeforeCaseDefaultColon
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_whitespace.html#NoWhitespaceBeforeCaseDefaultColon
+    -
+        name: JavadocMissingLeadingAsterisk
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingLeadingAsterisk
+    -
+        name: LambdaBodyLength
+        parent: TREEWALKER
+        level: COMPLEXITY
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_sizes.html#LambdaBodyLength
+    -
+        name: NoCodeInFile
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_misc.html#NoCodeInFile
+    -
+        name: JavadocMissingWhitespaceAfterAsterisk
+        parent: TREEWALKER
+        level: JAVADOC
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_javadoc.html#JavadocMissingWhitespaceAfterAsterisk
+    -
+        name: UnnecessarySemicolonAfterOuterTypeDeclaration
+        parent: TREEWALKER
+        level: LAYOUT
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#UnnecessarySemicolonAfterOuterTypeDeclaration
+    -
+        name: AvoidDoubleBraceInitialization
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#AvoidDoubleBraceInitialization
+    -
+        name: AvoidNoArgumentSuperConstructorCall
+        parent: TREEWALKER
+        level: TWEAKS
+        enabled: true
+        source: CHECKSTYLE
+        uri: https://checkstyle.sourceforge.io/config_coding.html#AvoidNoArgumentSuperConstructorCall

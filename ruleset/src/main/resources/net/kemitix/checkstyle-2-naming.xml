@@ -79,6 +79,9 @@
 <module name="com.puppycrawl.tools.checkstyle.checks.UpperEllCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAfterCheck"/>
 <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.whitespace.NoWhitespaceBeforeCaseDefaultColonCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.NoCodeInFileCheck"/>
+<module name="com.puppycrawl.tools.checkstyle.checks.coding.UnnecessarySemicolonAfterOuterTypeDeclarationCheck"/>
 
     </module><!-- /TreeWalker -->
 
